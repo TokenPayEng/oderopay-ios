@@ -1,0 +1,30 @@
+"totalPrice" = "Toplam qiymət";
+"paymentMethod" = "Ödəniş üsulu";
+
+"creditCardOrDebitCard" = "Kredit Kartı və ya Debet Kartı";
+
+"cardNumber" = "Kartın Nömrəsi";
+"mm/yy" = "AA/II";
+"cvc" = "CVC";
+"cardHolderNameSurname" = "Kart Sahibinin Adı";
+
+"installment" = "Taksit"
+"installmentChoices" = "Taksit Seçimləri";
+"singlePayment" = "Tək Ödəniş";
+
+"3dsPrompt" = "3D Secure istifadə edərək ödəyin";
+"saveCardPrompt" = "Gələcək ödənişlər üçün kartımı yadda saxlayın"
+"makePayment" = "Ödəniş Edin";
+
+"multipleCredit" = "Birdən Çox Kredit Kartı";
+"firstCardAmount" = "Birinci kartdan çıxarılacaq məbləğ";
+"secondCardAmount" = "İkinci kartdan çıxarılacaq məbləğ";
+
+"oderoLicense" = "Copyright © 2022 Token Azərbaycan MMC. Bütün hüquqlar qorunur.";
+
+"paymentSuccess" = "Ödəniş alındı!";
+"paymentError" = "Ödəniş alınmadı";
+"paymentErrorHelp" = "Əməliyyat bank tərəfindən təsdiqlənməyib, daxil etdiyiniz məlumatları yoxlayın. Daxil etdiyiniz məlumatlardan əminsinizsə, bankınızla əlaqə saxlaya bilərsiniz.";
+
+"returnToCheckout" = "Ödəniş Səhifəsinə Qayıdın";
+"returnToHome" = "ana ekranına qayıdır...";

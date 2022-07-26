@@ -1,0 +1,30 @@
+"totalPrice" = "Toplam Tutar";
+"paymentMethod" = "Ödeme Yöntemİ";
+
+"creditCardOrDebitCard" = "Kredi Kartı veya banka Kartı";
+
+"cardNumber" = "Kart Numarası";
+"mm/yy" = "AA/YY";
+"cvc" = "CVC";
+"cardHolderNameSurname" = "Kart Sahibinin Adı ve Soyadı";
+
+"installment" = "Taksit"
+"installmentChoices" = "Taksit Seçenekleri";
+"singlePayment" = "Tek Çekim";
+
+"3dsPrompt" = "3D Secure ile ödemek istiyorum";
+"saveCardPrompt" = "Sonraki ödemeler için kartımı sakla"
+"makePayment" = "Ödeme Yap";
+
+"multipleCredit" = "Çoklu Kredi Kartı";
+"firstCardAmount" = "İlk karttan çekilecek tutar";
+"secondCardAmount" = "İkinci karttan çekilecek tutar";
+
+"oderoLicense" = "Copyright © 2022 Token Ödeme Hizmetleri ve Elektronik Para A.Ş. All rights reserved.";
+
+"paymentSuccess" = "Ödemeniz alındı!";
+"paymentError" = "Ödeme alınamadı";
+"paymentErrorHelp" = "İşlem banka tarafından onaylanmadı, girdiğiniz bilgileri kontrol ediniz. Girdiğiniz bilgilerden eminseniz bankanız ile iletişime geçebilirsiniz.";
+
+"returnToCheckout" = "Ödeme Sayfasına Dön";
+"returnToHome" = "ana sayfaya dönülüyor...";

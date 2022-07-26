@@ -1,0 +1,30 @@
+"totalPrice" = "Общая цена";
+"paymentMethod" = "Метод Оплаты";
+
+"creditCardOrDebitCard" = "Кредитная или дебетовая карта";
+
+"cardNumber" = "Номер Карты";
+"mm/yy" = "ММ/ГГ";
+"cvc" = "CVC";
+"cardHolderNameSurname" = "Владелец карты";
+
+"installment" = "Разделения"
+"installmentChoices" = "Варианты Рассрочки";
+"singlePayment" = "Разовый Платеж";
+
+"3dsPrompt" = "Оплатить с помощью 3D Secure";
+"saveCardPrompt" = "Сохранить мою карту для будущих платежей"
+"makePayment" = "Оплатить";
+
+"multipleCredit" = "Несколько Кредитных Карт";
+"firstCardAmount" = "Сумма с первой карты";
+"secondCardAmount" = "Сумма со второй карты";
+
+"oderoLicense" = "Copyright © OOO \"Token Azerbaijan\" 2022. Все права защищены.";
+
+"paymentSuccess" = "Платеж принят!";
+"paymentError" = "Платеж не прошел";
+"paymentErrorHelp" = "Транзакция не была одобрена банком, пожалуйста, проверьте введенную вами информацию. Если вы уверены в введенной вами информации, вы можете обратиться в свой банк.";
+
+"returnToCheckout" = "Вернуться на страницу оформления заказа";
+"returnToHome" = "возврат на главный экран...";

@@ -1,0 +1,30 @@
+"totalPrice" = "Total Price";
+"paymentMethod" = "Payment Method";
+
+"creditCardOrDebitCard" = "Credit Card or Debit Card";
+
+"cardNumber" = "Card Number";
+"mm/yy" = "MM/YY";
+"cvc" = "CVC";
+"cardHolderNameSurname" = "Cardholder Name";
+
+"installment" = "Installments"
+"installmentChoices" = "Installment Choices";
+"singlePayment" = "Single Payment";
+
+"3dsPrompt" = "Pay using 3D Secure";
+"saveCardPrompt" = "Save my card for future payments"
+"makePayment" = "Confirm Payment";
+
+"multipleCredit" = "Multiple Credit Cards";
+"firstCardAmount" = "Amount to be withdrawn from the first card";
+"secondCardAmount" = "Amount to be withdrawn from the second card";
+
+"oderoLicense" = "Copyright © 2022 Token Payment Services and Electronic Money Inc. All rights reserved.";
+
+"paymentSuccess" = "Payment is received!";
+"paymentError" = "Payment not received";
+"paymentErrorHelp" = "The transaction was not approved by the bank, please check the information you entered. If you are sure of the information you entered, you can contact your bank.";
+
+"returnToCheckout" = "Return to Checkout Page";
+"returnToHome" = "returning to home screen...";
