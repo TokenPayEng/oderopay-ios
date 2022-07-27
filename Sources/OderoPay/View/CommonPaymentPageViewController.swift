@@ -47,7 +47,7 @@ public class CommonPaymentPageViewController: UIViewController {
     // UITextFields
     @IBOutlet weak var cardNumberTextField: UITextField! {
         didSet {
-            cardNumberTextField.forLeftView(use: UIImage(systemName: "creditcard"))
+            cardNumberTextField.forLeftView(use: UIImage(systemName: "creditcard")!)
             cardNumberTextField.placeholder = NSLocalizedString("cardNumber",
                                                                 bundle: Bundle.module,
                                                                 comment: "card number")
@@ -56,7 +56,7 @@ public class CommonPaymentPageViewController: UIViewController {
     
     @IBOutlet weak var monthYearTextField: UITextField! {
         didSet {
-            monthYearTextField.forLeftView(use: UIImage(systemName: "calendar"))
+            monthYearTextField.forLeftView(use: UIImage(systemName: "calendar")!)
             monthYearTextField.placeholder = NSLocalizedString("mm/yy",
                                                                bundle: Bundle.module,
                                                                comment: "card expire month and year")
@@ -65,7 +65,7 @@ public class CommonPaymentPageViewController: UIViewController {
     
     @IBOutlet weak var cvcTextField: UITextField! {
         didSet {
-            cvcTextField.forLeftView(use: UIImage(systemName: "lock"))
+            cvcTextField.forLeftView(use: UIImage(systemName: "lock")!)
             cvcTextField.placeholder = NSLocalizedString("cvc",
                                                          bundle: Bundle.module,
                                                          comment: "card cvc code")
@@ -74,7 +74,7 @@ public class CommonPaymentPageViewController: UIViewController {
     
     @IBOutlet weak var cardholderNameTextField: UITextField! {
         didSet {
-            cardholderNameTextField.forLeftView(use: UIImage(systemName: "person"))
+            cardholderNameTextField.forLeftView(use: UIImage(systemName: "person")!)
             cardholderNameTextField.placeholder = NSLocalizedString("cardHolderNameSurname",
                                                                     bundle: Bundle.module,
                                                                     comment: "card holder's name and surname")
