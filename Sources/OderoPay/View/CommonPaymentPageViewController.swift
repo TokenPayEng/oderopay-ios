@@ -74,8 +74,8 @@ public class CommonPaymentPageViewController: UIViewController {
         // -----------------UI CHANGES-----------------
         
         // credit or debit card number
-        let cardNumberLeftView = UIImageView(frame: CGRect(x: 8, y: 8, width: 20, height: 20))
-        let cardImage = UIImage(systemName: "creditcard")
+        let cardNumberLeftView = UIImageView()
+        let cardImage = UIImage(systemName: "creditcard")?.addLayoutMargins(20)
         
         cardNumberLeftView.image = cardImage
         cardNumberLeftView.tintColor = .systemGray4
@@ -83,7 +83,7 @@ public class CommonPaymentPageViewController: UIViewController {
         cardNumberTextField.leftViewMode = .always
         
         // card expire month year
-        let expireDateLeftYear = UIImageView(frame: CGRect(x: 8, y: 8, width: 20, height: 20))
+        let expireDateLeftYear = UIImageView()
         let calendarImage = UIImage(systemName: "calendar")
         
         expireDateLeftYear.image = calendarImage
@@ -92,7 +92,7 @@ public class CommonPaymentPageViewController: UIViewController {
         monthYearTextField.leftViewMode = .always
         
         // card secure code
-        let cvcCodeLeftView = UIImageView(frame: CGRect(x: 8, y: 8, width: 20, height: 20))
+        let cvcCodeLeftView = UIImageView()
         let lockImage = UIImage(systemName: "lock")
         
         cvcCodeLeftView.image = lockImage
@@ -101,7 +101,7 @@ public class CommonPaymentPageViewController: UIViewController {
         cvcTextField.leftViewMode = .always
         
         // card holder name surname
-        let cardHolderNameLeftView = UIImageView(frame: CGRect(x: 18, y: 18, width: 20, height: 20))
+        let cardHolderNameLeftView = UIImageView()
         let personImage = UIImage(systemName: "person")
         
         cardHolderNameLeftView.image = personImage
@@ -111,7 +111,6 @@ public class CommonPaymentPageViewController: UIViewController {
         
         // confirm payment
         confirmPaymentButton.layer.cornerRadius = 6
-        confirmPaymentButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
     }
     
 }
