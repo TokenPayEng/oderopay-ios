@@ -111,6 +111,7 @@ public extension UIViewController {
 extension UITextField {
     func forLeftView(use image: UIImage) {
         let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
+        imageView.contentMode = .scaleAspectFit
         imageView.image = image
         imageView.tintColor = .systemGray3
         
