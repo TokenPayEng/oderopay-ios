@@ -78,7 +78,7 @@ public class CommonPaymentPageViewController: UIViewController {
         let cardImage = UIImage(systemName: "creditcard")
         
         cardNumberLeftView.image = cardImage
-        cardNumberLeftView.tintColor = .systemGray5
+        cardNumberLeftView.tintColor = .systemGray4
         cardNumberTextField.leftView = cardNumberLeftView
         cardNumberTextField.leftViewMode = .always
         
@@ -87,7 +87,7 @@ public class CommonPaymentPageViewController: UIViewController {
         let calendarImage = UIImage(systemName: "calendar")
         
         expireDateLeftYear.image = calendarImage
-        expireDateLeftYear.tintColor = .systemGray5
+        expireDateLeftYear.tintColor = .systemGray4
         monthYearTextField.leftView = expireDateLeftYear
         monthYearTextField.leftViewMode = .always
         
@@ -96,21 +96,22 @@ public class CommonPaymentPageViewController: UIViewController {
         let lockImage = UIImage(systemName: "lock")
         
         cvcCodeLeftView.image = lockImage
-        cvcCodeLeftView.tintColor = .systemGray5
+        cvcCodeLeftView.tintColor = .systemGray4
         cvcTextField.leftView = cvcCodeLeftView
         cvcTextField.leftViewMode = .always
         
         // card holder name surname
-        let cardHolderNameLeftView = UIImageView(frame: CGRect(x: 8, y: 8, width: 20, height: 20))
+        let cardHolderNameLeftView = UIImageView(frame: CGRect(x: 18, y: 18, width: 20, height: 20))
         let personImage = UIImage(systemName: "person")
         
         cardHolderNameLeftView.image = personImage
-        cardHolderNameLeftView.tintColor = .systemGray5
+        cardHolderNameLeftView.tintColor = .systemGray4
         cardholderNameTextField.leftView = cardHolderNameLeftView
         cardholderNameTextField.leftViewMode = .always
         
         // confirm payment
         confirmPaymentButton.layer.cornerRadius = 6
+        confirmPaymentButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
     }
     
 }
