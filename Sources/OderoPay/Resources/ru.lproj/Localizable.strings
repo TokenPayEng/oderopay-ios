@@ -1,12 +1,12 @@
 "totalPrice" = "Общая цена";
 "paymentMethod" = "Метод Оплаты";
 
-"creditCardOrDebitCard" = "Кредитная или дебетовая карта";
+"creditCardOrDebitCard" = "Кредитная или Дебетовая карта";
 
 "cardNumber" = "Номер Карты";
 "mm/yy" = "ММ/ГГ";
 "cvc" = "CVC";
-"cardHolderNameSurname" = "Владелец карты";
+"cardHolderNameSurname" = "Владелец Карты";
 
 "installment" = "Разделения";
 "installmentChoices" = "Варианты Рассрочки";
