@@ -69,10 +69,6 @@ public class CommonPaymentPageViewController: UIViewController {
             cvcTextField.placeholder = NSLocalizedString("cvc",
                                                          bundle: Bundle.module,
                                                          comment: "card cvc code")
-            
-            if cvcTextField.text?.count > 3 {
-                cvcTextField.isEditing = false
-            }
         }
     }
     
