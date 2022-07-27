@@ -112,12 +112,12 @@ extension UITextField {
     func forLeftView(use image: UIImage) {
         let imageView = UIImageView()
         imageView.image = image
+        imageView.tintColor = .systemGray3
         
         let uiView = UIView(frame: CGRect(x: 20, y: 0, width: 20, height: 20))
         uiView.addSubview(imageView)
         
         leftView = uiView
-        tintColor = .systemGray3
         leftViewMode = .always
     }
 }
