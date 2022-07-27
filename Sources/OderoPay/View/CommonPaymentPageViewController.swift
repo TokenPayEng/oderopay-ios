@@ -11,106 +11,90 @@ import UIKit
 public class CommonPaymentPageViewController: UIViewController {
     
     // UILabels
-    @IBOutlet weak var totalPriceLabel: UILabel!
-    @IBOutlet weak var paymentMethodLabel: UILabel!
-    @IBOutlet weak var creditCardOrDebitCardLabel: UILabel!
-    @IBOutlet weak var multipleCreditCardsLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel! {
+        didSet {
+            totalPriceLabel.text = NSLocalizedString("totalPrice",
+                                                     bundle: Bundle.module,
+                                                     comment: "total price to be paid")
+        }
+    }
+    
+    @IBOutlet weak var paymentMethodLabel: UILabel! {
+        didSet {
+            paymentMethodLabel.text = NSLocalizedString("paymentMethod",
+                                                        bundle: Bundle.module,
+                                                        comment: "payment method for checkout")
+        }
+    }
+    
+    @IBOutlet weak var creditCardOrDebitCardLabel: UILabel! {
+        didSet {
+            creditCardOrDebitCardLabel.text = NSLocalizedString("creditCardOrDebitCard",
+                                                                bundle: Bundle.module,
+                                                                comment: "pay with credit card or debit card")
+        }
+        
+    }
+    
+    @IBOutlet weak var multipleCreditCardsLabel: UILabel! {
+        didSet {
+            multipleCreditCardsLabel.text = NSLocalizedString("multipleCredit",
+                                                              bundle: Bundle.module,
+                                                              comment: "pay with credit card or debit card")
+        }
+    }
     
     // UITextFields
-    @IBOutlet weak var cardNumberTextField: UITextField!
-    @IBOutlet weak var monthYearTextField: UITextField!
-    @IBOutlet weak var cvcTextField: UITextField!
-    @IBOutlet weak var cardholderNameTextField: UITextField!
+    @IBOutlet weak var cardNumberTextField: UITextField! {
+        didSet {
+            cardNumberTextField.forLeftView(use: UIImage(systemName: "creditcard"))
+            cardNumberTextField.placeholder = NSLocalizedString("cardNumber",
+                                                                bundle: Bundle.module,
+                                                                comment: "card number")
+        }
+    }
+    
+    @IBOutlet weak var monthYearTextField: UITextField! {
+        didSet {
+            monthYearTextField.forLeftView(use: UIImage(systemName: "calendar"))
+            monthYearTextField.placeholder = NSLocalizedString("mm/yy",
+                                                               bundle: Bundle.module,
+                                                               comment: "card expire month and year")
+        }
+    }
+    
+    @IBOutlet weak var cvcTextField: UITextField! {
+        didSet {
+            cvcTextField.forLeftView(use: UIImage(systemName: "lock"))
+            cvcTextField.placeholder = NSLocalizedString("cvc",
+                                                         bundle: Bundle.module,
+                                                         comment: "card cvc code")
+        }
+    }
+    
+    @IBOutlet weak var cardholderNameTextField: UITextField! {
+        didSet {
+            cardholderNameTextField.forLeftView(use: UIImage(systemName: "person"))
+            cardholderNameTextField.placeholder = NSLocalizedString("cardHolderNameSurname",
+                                                                    bundle: Bundle.module,
+                                                                    comment: "card holder's name and surname")
+        }
+    }
     
     // UIButtons
-    @IBOutlet weak var confirmPaymentButton: UIButton!
+    @IBOutlet weak var confirmPaymentButton: UIButton! {
+        didSet {
+            confirmPaymentButton.layer.cornerRadius = 6
+            confirmPaymentButton.setTitle(
+                NSLocalizedString("makePayment",
+                                  bundle: Bundle.module,
+                                  comment: "make payment with chosen payment method"),
+                for: .normal)
+        }
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // -----------------LOCALIZATIONS-----------------
-        
-        // setting up label text localizations
-        totalPriceLabel.text = NSLocalizedString("totalPrice",
-                                                 bundle: Bundle.module,
-                                                 comment: "total price to be paid")
-        
-        paymentMethodLabel.text = NSLocalizedString("paymentMethod",
-                                                    bundle: Bundle.module,
-                                                    comment: "payment method for checkout")
-        
-        creditCardOrDebitCardLabel.text = NSLocalizedString("creditCardOrDebitCard",
-                                                            bundle: Bundle.module,
-                                                            comment: "pay with credit card or debit card")
-        
-        multipleCreditCardsLabel.text = NSLocalizedString("multipleCredit",
-                                                          bundle: Bundle.module,
-                                                          comment: "pay with credit card or debit card")
-        
-        // setting up textfield placeholder localizations
-        cardNumberTextField.placeholder = NSLocalizedString("cardNumber",
-                                                            bundle: Bundle.module,
-                                                            comment: "card number")
-        
-        monthYearTextField.placeholder = NSLocalizedString("mm/yy",
-                                                           bundle: Bundle.module,
-                                                           comment: "card expire month and year")
-        
-        cvcTextField.placeholder = NSLocalizedString("cvc",
-                                                     bundle: Bundle.module,
-                                                     comment: "card cvc code")
-        
-        cardholderNameTextField.placeholder = NSLocalizedString("cardHolderNameSurname",
-                                                                bundle: Bundle.module,
-                                                                comment: "card holder's name and surname")
-        
-        // setting up button text localizations
-        confirmPaymentButton.setTitle(
-            NSLocalizedString("makePayment",
-                              bundle: Bundle.module,
-                              comment: "make payment with chosen payment method"),
-            for: .normal)
-        
-        // -----------------UI CHANGES-----------------
-        
-        // credit or debit card number
-        let cardNumberLeftView = UIImageView()
-        let cardImage = UIImage(systemName: "creditcard")?.addLayoutMargins(20)
-        
-        cardNumberLeftView.image = cardImage
-        cardNumberLeftView.tintColor = .systemGray4
-        cardNumberTextField.leftView = cardNumberLeftView
-        cardNumberTextField.leftViewMode = .always
-        
-        // card expire month year
-        let expireDateLeftYear = UIImageView()
-        let calendarImage = UIImage(systemName: "calendar")
-        
-        expireDateLeftYear.image = calendarImage
-        expireDateLeftYear.tintColor = .systemGray4
-        monthYearTextField.leftView = expireDateLeftYear
-        monthYearTextField.leftViewMode = .always
-        
-        // card secure code
-        let cvcCodeLeftView = UIImageView()
-        let lockImage = UIImage(systemName: "lock")
-        
-        cvcCodeLeftView.image = lockImage
-        cvcCodeLeftView.tintColor = .systemGray4
-        cvcTextField.leftView = cvcCodeLeftView
-        cvcTextField.leftViewMode = .always
-        
-        // card holder name surname
-        let cardHolderNameLeftView = UIImageView()
-        let personImage = UIImage(systemName: "person")
-        
-        cardHolderNameLeftView.image = personImage
-        cardHolderNameLeftView.tintColor = .systemGray4
-        cardholderNameTextField.leftView = cardHolderNameLeftView
-        cardholderNameTextField.leftViewMode = .always
-        
-        // confirm payment
-        confirmPaymentButton.layer.cornerRadius = 6
     }
     
 }
@@ -124,10 +108,16 @@ public extension UIViewController {
     }
 }
 
-extension UIImage {
-    func addLayoutMargins(_ margin: CGFloat) -> UIImage {
-        let alignmentInsets = UIEdgeInsets(top: -margin, left: -margin, bottom: -margin, right: -margin)
+extension UITextField {
+    func forLeftView(use image: UIImage) {
+        let imageView = UIImageView()
+        imageView.image = image
         
-        return withAlignmentRectInsets(alignmentInsets)
+        let uiView = UIView(frame: CGRect(x: 20, y: 0, width: 20, height: 20))
+        uiView.addSubview(imageView)
+        
+        leftView = uiView
+        tintColor = .systemGray3
+        leftViewMode = .always
     }
 }
