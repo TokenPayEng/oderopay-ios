@@ -75,28 +75,40 @@ public class CommonPaymentPageViewController: UIViewController {
         
         // credit or debit card number
         let cardNumberLeftView = UIImageView()
-        let cardImage = UIImage(systemName: "creditcard")
+        let cardImage = UIImage(systemName: "creditcard")?
+            .withTintColor(.systemGray5)
+            .addLayoutMargins(8)
+        
         cardNumberLeftView.image = cardImage
         cardNumberTextField.leftView = cardNumberLeftView
         cardNumberTextField.leftViewMode = .always
         
         // card expire month year
         let expireDateLeftYear = UIImageView()
-        let calendarImage = UIImage(systemName: "calendar")
+        let calendarImage = UIImage(systemName: "calendar")?
+            .withTintColor(.systemGray5)
+            .addLayoutMargins(8)
+        
         expireDateLeftYear.image = calendarImage
         monthYearTextField.leftView = expireDateLeftYear
         monthYearTextField.leftViewMode = .always
         
         // card secure code
         let cvcCodeLeftView = UIImageView()
-        let lockImage = UIImage(systemName: "lock")
+        let lockImage = UIImage(systemName: "lock")?
+            .withTintColor(.systemGray5)
+            .addLayoutMargins(8)
+        
         cvcCodeLeftView.image = lockImage
         cvcTextField.leftView = cvcCodeLeftView
         cvcTextField.leftViewMode = .always
         
         // card holder name surname
         let cardHolderNameLeftView = UIImageView()
-        let personImage = UIImage(systemName: "person")
+        let personImage = UIImage(systemName: "person")?
+            .withTintColor(.systemGray5)
+            .addLayoutMargins(8)
+        
         cardHolderNameLeftView.image = personImage
         cardholderNameTextField.leftView = cardHolderNameLeftView
         cardholderNameTextField.leftViewMode = .always
@@ -110,5 +122,13 @@ public extension UIViewController {
         let commonPaymentPageStoryboardViewController = UIStoryboard(name: "CommonPaymentPage", bundle: Bundle.module)
         
         return commonPaymentPageStoryboardViewController.instantiateInitialViewController()!
+    }
+}
+
+extension UIImage {
+    func addLayoutMargins(_ margin: CGFloat) -> UIImage {
+        let alignmentInsets = UIEdgeInsets(top: -margin, left: -margin, bottom: -margin, right: -margin)
+        
+        return withAlignmentRectInsets(alignmentInsets)
     }
 }
