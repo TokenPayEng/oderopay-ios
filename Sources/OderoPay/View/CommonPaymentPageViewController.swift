@@ -75,41 +75,37 @@ public class CommonPaymentPageViewController: UIViewController {
         
         // credit or debit card number
         let cardNumberLeftView = UIImageView()
-        let cardImage = UIImage(systemName: "creditcard")?
-            .withTintColor(.systemGray5)
-            .addLayoutMargins(8)
+        let cardImage = UIImage(systemName: "creditcard")
         
         cardNumberLeftView.image = cardImage
+        cardNumberLeftView.tintColor = .systemGray5
         cardNumberTextField.leftView = cardNumberLeftView
         cardNumberTextField.leftViewMode = .always
         
         // card expire month year
         let expireDateLeftYear = UIImageView()
-        let calendarImage = UIImage(systemName: "calendar")?
-            .withTintColor(.systemGray5)
-            .addLayoutMargins(8)
+        let calendarImage = UIImage(systemName: "calendar")
         
         expireDateLeftYear.image = calendarImage
+        expireDateLeftYear.tintColor = .systemGray5
         monthYearTextField.leftView = expireDateLeftYear
         monthYearTextField.leftViewMode = .always
         
         // card secure code
         let cvcCodeLeftView = UIImageView()
-        let lockImage = UIImage(systemName: "lock")?
-            .withTintColor(.systemGray5)
-            .addLayoutMargins(8)
+        let lockImage = UIImage(systemName: "lock")
         
         cvcCodeLeftView.image = lockImage
+        cvcCodeLeftView.tintColor = .systemGray5
         cvcTextField.leftView = cvcCodeLeftView
         cvcTextField.leftViewMode = .always
         
         // card holder name surname
         let cardHolderNameLeftView = UIImageView()
-        let personImage = UIImage(systemName: "person")?
-            .withTintColor(.systemGray5)
-            .addLayoutMargins(8)
+        let personImage = UIImage(systemName: "person")
         
         cardHolderNameLeftView.image = personImage
+        cardHolderNameLeftView.tintColor = .systemGray5
         cardholderNameTextField.leftView = cardHolderNameLeftView
         cardholderNameTextField.leftViewMode = .always
     }
