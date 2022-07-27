@@ -8,12 +8,12 @@
 "cvc" = "CVC";
 "cardHolderNameSurname" = "Cardholder Name";
 
-"installment" = "Installments"
+"installment" = "Installments";
 "installmentChoices" = "Installment Choices";
 "singlePayment" = "Single Payment";
 
 "3dsPrompt" = "Pay using 3D Secure";
-"saveCardPrompt" = "Save my card for future payments"
+"saveCardPrompt" = "Save my card for future payments";
 "makePayment" = "Confirm Payment";
 
 "multipleCredit" = "Multiple Credit Cards";

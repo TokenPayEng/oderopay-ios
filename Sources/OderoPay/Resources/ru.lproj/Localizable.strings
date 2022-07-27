@@ -8,12 +8,12 @@
 "cvc" = "CVC";
 "cardHolderNameSurname" = "Владелец карты";
 
-"installment" = "Разделения"
+"installment" = "Разделения";
 "installmentChoices" = "Варианты Рассрочки";
 "singlePayment" = "Разовый Платеж";
 
 "3dsPrompt" = "Оплатить с помощью 3D Secure";
-"saveCardPrompt" = "Сохранить мою карту для будущих платежей"
+"saveCardPrompt" = "Сохранить мою карту для будущих платежей";
 "makePayment" = "Оплатить";
 
 "multipleCredit" = "Несколько Кредитных Карт";
