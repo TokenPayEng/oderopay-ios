@@ -78,24 +78,28 @@ public class CommonPaymentPageViewController: UIViewController {
         let cardImage = UIImage(systemName: "creditcard")
         cardNumberLeftView.image = cardImage
         cardNumberTextField.leftView = cardNumberLeftView
+        cardNumberTextField.leftViewMode = .always
         
         // card expire month year
         let expireDateLeftYear = UIImageView()
         let calendarImage = UIImage(systemName: "calendar")
         expireDateLeftYear.image = calendarImage
-        cardNumberTextField.leftView = expireDateLeftYear
+        monthYearTextField.leftView = expireDateLeftYear
+        monthYearTextField.leftViewMode = .always
         
         // card secure code
         let cvcCodeLeftView = UIImageView()
         let lockImage = UIImage(systemName: "lock")
         cvcCodeLeftView.image = lockImage
-        cardNumberTextField.leftView = cvcCodeLeftView
+        cvcTextField.leftView = cvcCodeLeftView
+        cvcTextField.leftViewMode = .always
         
         // card holder name surname
         let cardHolderNameLeftView = UIImageView()
         let personImage = UIImage(systemName: "person")
         cardHolderNameLeftView.image = personImage
-        cardNumberTextField.leftView = cardHolderNameLeftView
+        cardholderNameTextField.leftView = cardHolderNameLeftView
+        cardholderNameTextField.leftViewMode = .always
     }
     
 }
