@@ -10,7 +10,7 @@ import UIKit
 
 public class CommonPaymentPageViewController: UIViewController {
     
-    // UILabels
+    // ---------------------UILabels---------------------
     @IBOutlet weak var totalPriceLabel: UILabel! {
         didSet {
             totalPriceLabel.text = NSLocalizedString("totalPrice",
@@ -44,7 +44,7 @@ public class CommonPaymentPageViewController: UIViewController {
         }
     }
     
-    // UITextFields
+    // ---------------------UITextFields---------------------
     @IBOutlet weak var cardNumberTextField: UITextField! {
         didSet {
             cardNumberTextField.forLeftView(use: UIImage(systemName: "creditcard")!)
@@ -69,6 +69,10 @@ public class CommonPaymentPageViewController: UIViewController {
             cvcTextField.placeholder = NSLocalizedString("cvc",
                                                          bundle: Bundle.module,
                                                          comment: "card cvc code")
+            
+            if cvcTextField.text?.count > 3 {
+                cvcTextField.isEditing = false
+            }
         }
     }
     
@@ -81,7 +85,7 @@ public class CommonPaymentPageViewController: UIViewController {
         }
     }
     
-    // UIButtons
+    // ---------------------UIButtons---------------------
     @IBOutlet weak var confirmPaymentButton: UIButton! {
         didSet {
             confirmPaymentButton.layer.cornerRadius = 6
