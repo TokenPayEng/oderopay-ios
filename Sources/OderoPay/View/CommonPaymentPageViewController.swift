@@ -110,11 +110,11 @@ public extension UIViewController {
 
 extension UITextField {
     func forLeftView(use image: UIImage) {
-        let imageView = UIImageView()
+        let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
         imageView.image = image
         imageView.tintColor = .systemGray3
         
-        let uiView = UIView(frame: CGRect(x: 20, y: 0, width: 20, height: 20))
+        let uiView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
         uiView.addSubview(imageView)
         
         leftView = uiView
