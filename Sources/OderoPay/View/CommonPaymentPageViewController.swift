@@ -24,7 +24,7 @@ public class CommonPaymentPageViewController: UIViewController {
 public extension UIViewController {
     
     static func getStoryboardViewController() -> UIViewController {
-        let commonPaymentPageStoryboardViewController = UIStoryboard(name: String(describing: self), bundle: Bundle.module)
+        let commonPaymentPageStoryboardViewController = UIStoryboard(name: "CommonPaymentPage", bundle: Bundle.module)
         
         return commonPaymentPageStoryboardViewController.instantiateInitialViewController()!
     }
