@@ -143,6 +143,7 @@
                             <constraint firstItem="Lbd-Nw-W7u" firstAttribute="top" secondItem="xAV-Be-ZQE" secondAttribute="bottom" constant="5" id="HTl-9M-83O"/>
                             <constraint firstItem="5Wd-WA-jVF" firstAttribute="top" secondItem="3r5-0d-aFN" secondAttribute="bottom" constant="20" id="JzH-4w-H8l"/>
                             <constraint firstItem="JpS-ZM-jAz" firstAttribute="top" secondItem="5Wd-WA-jVF" secondAttribute="bottom" constant="20" id="MFn-7c-mff"/>
+                            <constraint firstItem="Lbd-Nw-W7u" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zfj-0V-L0Q" secondAttribute="trailing" constant="8" symbolic="YES" id="O2r-PA-IbV"/>
                             <constraint firstItem="Zfj-0V-L0Q" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="Odm-7I-OY5"/>
                             <constraint firstItem="mVA-Ab-o1m" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Szb-0q-4x8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3r5-0d-aFN" secondAttribute="trailing" constant="55" id="Uz5-Na-lz9"/>
@@ -150,6 +151,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Lbd-Nw-W7u" secondAttribute="trailing" constant="20" id="XdD-AL-oAg"/>
                             <constraint firstItem="JpS-ZM-jAz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="crc-Pm-6fu"/>
                             <constraint firstItem="pGW-6o-moo" firstAttribute="top" secondItem="Lbd-Nw-W7u" secondAttribute="bottom" constant="30" id="eNU-uL-6PY"/>
+                            <constraint firstItem="xAV-Be-ZQE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zfj-0V-L0Q" secondAttribute="trailing" constant="8" symbolic="YES" id="hYa-Le-l7o"/>
                             <constraint firstItem="xAV-Be-ZQE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="hvc-GH-xkZ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pGW-6o-moo" secondAttribute="trailing" id="kt9-2O-R5h"/>
                             <constraint firstItem="3r5-0d-aFN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="55" id="laM-ua-mdc"/>
@@ -162,6 +164,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cardNumberTextField" destination="WPi-TU-f8t" id="dkc-tp-cxd"/>
+                        <outlet property="cardholderNameTextField" destination="eUM-0F-YhB" id="hlc-RB-M0H"/>
+                        <outlet property="confirmPaymentButton" destination="RY1-Bf-2V5" id="8dO-2a-sbb"/>
+                        <outlet property="creditCardOrDebitCardLabel" destination="VyG-OO-PLQ" id="tvu-WA-tMG"/>
+                        <outlet property="cvcTextField" destination="kRQ-9p-OtO" id="f0S-t2-I7i"/>
+                        <outlet property="monthYearTextField" destination="UxH-pK-vEj" id="ibO-p5-6Qw"/>
+                        <outlet property="multipleCreditCardsLabel" destination="nDc-7V-kXi" id="bqj-lC-3cD"/>
+                        <outlet property="paymentMethodLabel" destination="mkD-Gd-ecN" id="G9X-7e-SQq"/>
                         <outlet property="totalPriceLabel" destination="xAV-Be-ZQE" id="X4Y-0J-sU4"/>
                     </connections>
                 </viewController>

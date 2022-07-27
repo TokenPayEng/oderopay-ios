@@ -8,12 +8,12 @@
 "cvc" = "CVC";
 "cardHolderNameSurname" = "Kart Sahibinin Adı ve Soyadı";
 
-"installment" = "Taksit"
+"installment" = "Taksit";
 "installmentChoices" = "Taksit Seçenekleri";
 "singlePayment" = "Tek Çekim";
 
 "3dsPrompt" = "3D Secure ile ödemek istiyorum";
-"saveCardPrompt" = "Sonraki ödemeler için kartımı sakla"
+"saveCardPrompt" = "Sonraki ödemeler için kartımı sakla";
 "makePayment" = "Ödeme Yap";
 
 "multipleCredit" = "Çoklu Kredi Kartı";
