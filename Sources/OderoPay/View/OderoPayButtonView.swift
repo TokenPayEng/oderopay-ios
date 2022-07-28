@@ -9,6 +9,8 @@ import UIKit
 
 public class OderoPayButtonView: UIView {
 
+    var navigationController: UINavigationController?
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var oderoPayButton: UIButton! {
         didSet {
@@ -35,6 +37,10 @@ public class OderoPayButtonView: UIView {
         commonInit()
     }
     
+    public func initNavigationController(named navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+    
     private func commonInit() {
         Bundle.module.loadNibNamed("OderoPayButton", owner: self, options: nil)
         addSubview(contentView)
@@ -44,5 +50,13 @@ public class OderoPayButtonView: UIView {
     
     @IBAction func initCommonPaymentPage(_ sender: Any) {
         print("initializing common payment page")
+        let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
+        
+        guard let navigationController = navigationController else {
+            print("navigation controller was not initialized for odero pay button, please use initNavigationController method")
+            return
+        }
+
+        navigationController.pushViewController(commonPaymentPageViewController, animated: true)
     }
 }
