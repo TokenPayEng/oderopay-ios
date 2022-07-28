@@ -12,6 +12,8 @@ public class CommonPaymentPageViewController: UIViewController {
     
     // ---------------------UIViews----------------------
     
+    @IBOutlet weak var creditOrDebitCardView: UIStackView!
+    
     // ---------------------UILabels---------------------
     @IBOutlet weak var totalPriceLabel: UILabel! {
         didSet {
@@ -29,24 +31,27 @@ public class CommonPaymentPageViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var creditCardOrDebitCardLabel: UILabel! {
-        didSet {
-            creditCardOrDebitCardLabel.text = NSLocalizedString("creditCardOrDebitCard",
-                                                                bundle: Bundle.module,
-                                                                comment: "pay with credit card or debit card")
-        }
-        
-    }
-    
-    @IBOutlet weak var multipleCreditCardsLabel: UILabel! {
-        didSet {
-            multipleCreditCardsLabel.text = NSLocalizedString("multipleCredit",
-                                                              bundle: Bundle.module,
-                                                              comment: "pay with credit card or debit card")
-        }
-    }
-    
     // ---------------------UIButtons---------------------
+    @IBOutlet weak var creditCardOrDebitCardButton: UIButton! {
+        didSet {
+            creditCardOrDebitCardButton.setTitle(
+                NSLocalizedString("creditCardOrDebitCard",
+                                  bundle: Bundle.module,
+                                  comment: "pay with credit card or debit card"),
+                for: .normal)
+        }
+    }
+    
+    @IBOutlet weak var multipleCreditCardsButton: UIButton! {
+        didSet {
+            multipleCreditCardsButton.setTitle(
+                NSLocalizedString("multipleCredit",
+                                  bundle: Bundle.module,
+                                  comment: "pay with credit card or debit card"),
+                for: .normal)
+        }
+    }
+    
     @IBOutlet weak var confirmPaymentButton: UIButton! {
         didSet {
             confirmPaymentButton.layer.cornerRadius = 6
