@@ -34,12 +34,12 @@ public class OderoPayButtonView: UIView {
     
     public func addOderoPayButtonOutline(colored color: UIColor) {
         oderoPayButton.layer.borderWidth = 1
-        oderoPayButton.layer.borderColor = color
+        oderoPayButton.layer.borderColor = color.cgColor
     }
     
     public func removeOderoPayButtonOutline() {
         oderoPayButton.layer.borderWidth = 0
-        oderoPayButton.layer.borderColor = UIColor.clear
+        oderoPayButton.layer.borderColor = UIColor.clear.cgColor
     }
     
     private func commonInit() {
