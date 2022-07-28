@@ -10,7 +10,11 @@ import UIKit
 class OderoPayButtonView2: UIButton {
 
 
-    @IBOutlet var asd: UIButton!
+    @IBOutlet var asd: UIButton! {
+        didSet {
+            asd.setTitle("fuck me", for: .normal)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
