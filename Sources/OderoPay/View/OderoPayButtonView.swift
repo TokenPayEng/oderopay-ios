@@ -15,7 +15,6 @@ public class OderoPayButtonView: UIView {
     @IBOutlet weak var oderoPayButton: UIButton! {
         didSet {
             oderoPayButton.layer.cornerRadius = 6
-            oderoPayButton.imageView?.contentMode = .scaleAspectFit
         }
     }
     
@@ -29,8 +28,18 @@ public class OderoPayButtonView: UIView {
         commonInit()
     }
     
+    // ---------------- public methods ------------------------
+    
     public func initNavigationController(named navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+    
+    public func setOderoPayButtonLabelSize(ofSize size: CGFloat) {
+        oderoPayButton.titleLabel?.font = UIFont.systemFont(ofSize: size)
+    }
+    
+    public func setOderoPayButtonImageEdgeInsets(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
+        oderoPayButton.imageEdgeInsets = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
     
     public func addOderoPayButtonOutline(colored color: UIColor) {
@@ -42,6 +51,8 @@ public class OderoPayButtonView: UIView {
         oderoPayButton.layer.borderWidth = 0
         oderoPayButton.layer.borderColor = UIColor.clear.cgColor
     }
+    
+    // --------------------------------------------------------
     
     private func commonInit() {
         Bundle.module.loadNibNamed("OderoPayButton", owner: self, options: nil)
