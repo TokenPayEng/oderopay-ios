@@ -32,7 +32,7 @@ Adding navigation controller to the OderoPay button.
 
 Function:
 
-`oderoPayButtonView.initNavigationController(named: T##UINavigationController)`
+`oderoPayButtonView.initNavigationController(named: UINavigationController)`
 
 Example:
 
@@ -44,7 +44,7 @@ Adding outline of any color to the OderoPay button.
 
 Function:
 
-`oderoPayButtonView.addOderoPayButtonOutline(colored: T##UIColor)`
+`oderoPayButtonView.addOderoPayButtonOutline(colored: UIColor)`
 
 Example:
 
@@ -68,7 +68,7 @@ Setting image (OderoPay logo) insets inside OderoPay button.
 
 Function:
 
-`oderoPayButtonView.setOderoPayButtonImageEdgeInsets(top: T##CGFloat, left: T##CGFloat, bottom: T##CGFloat, right: T##CGFloat)`
+`oderoPayButtonView.setOderoPayButtonImageEdgeInsets(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat)`
 
 Example:
 
@@ -79,7 +79,7 @@ Example:
 Setting font size of OderoPay button label/title.
 
 Function:
-`oderoPayButtonView.setOderoPayButtonLabelSize(ofSize: T##CGFloat)`
+`oderoPayButtonView.setOderoPayButtonLabelSize(ofSize: CGFloat)`
 
 Example:
 
