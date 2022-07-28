@@ -17,6 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v91-9m-JDA" userLabel="Back Button">
+                                <rect key="frame" x="20" y="65" width="45" height="43.666666666666671"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="NNK-v1-iwA"/>
+                                    <constraint firstAttribute="width" constant="45" id="peG-Q4-gK5"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGray3Color"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="chevron.backward.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="popViewController:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8pe-oG-EDg"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAV-Be-ZQE">
                                 <rect key="frame" x="290" y="64" width="80" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -49,14 +62,6 @@
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <edgeInsets key="layoutMargins" top="10" left="20" bottom="10" right="0.0"/>
                             </stackView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.backward.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Zfj-0V-L0Q">
-                                <rect key="frame" x="20" y="65" width="45" height="43.666666666666671"/>
-                                <color key="tintColor" systemColor="systemGray4Color"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="lAR-gJ-ujs"/>
-                                    <constraint firstAttribute="width" constant="45" id="vAv-e4-O3a"/>
-                                </constraints>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mVA-Ab-o1m" userLabel="Credit Card Section">
                                 <rect key="frame" x="20" y="245.33333333333334" width="235" height="20.333333333333343"/>
                                 <subviews>
@@ -140,19 +145,19 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Zfj-0V-L0Q" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="3vk-Ww-D6Q"/>
+                            <constraint firstItem="v91-9m-JDA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="FMQ-Ki-71m"/>
+                            <constraint firstItem="v91-9m-JDA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="G25-7l-rvx"/>
                             <constraint firstItem="Lbd-Nw-W7u" firstAttribute="top" secondItem="xAV-Be-ZQE" secondAttribute="bottom" constant="5" id="HTl-9M-83O"/>
                             <constraint firstItem="5Wd-WA-jVF" firstAttribute="top" secondItem="3r5-0d-aFN" secondAttribute="bottom" constant="20" id="JzH-4w-H8l"/>
                             <constraint firstItem="JpS-ZM-jAz" firstAttribute="top" secondItem="5Wd-WA-jVF" secondAttribute="bottom" constant="20" id="MFn-7c-mff"/>
-                            <constraint firstItem="Lbd-Nw-W7u" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zfj-0V-L0Q" secondAttribute="trailing" constant="8" symbolic="YES" id="O2r-PA-IbV"/>
-                            <constraint firstItem="Zfj-0V-L0Q" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="Odm-7I-OY5"/>
+                            <constraint firstItem="xAV-Be-ZQE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v91-9m-JDA" secondAttribute="trailing" constant="8" symbolic="YES" id="Q6Y-dg-x6l"/>
                             <constraint firstItem="mVA-Ab-o1m" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Szb-0q-4x8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3r5-0d-aFN" secondAttribute="trailing" constant="55" id="Uz5-Na-lz9"/>
                             <constraint firstItem="5Wd-WA-jVF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="V1h-Ro-NQA"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Lbd-Nw-W7u" secondAttribute="trailing" constant="20" id="XdD-AL-oAg"/>
+                            <constraint firstItem="Lbd-Nw-W7u" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v91-9m-JDA" secondAttribute="trailing" constant="8" symbolic="YES" id="ZkF-EU-OIN"/>
                             <constraint firstItem="JpS-ZM-jAz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="crc-Pm-6fu"/>
                             <constraint firstItem="pGW-6o-moo" firstAttribute="top" secondItem="Lbd-Nw-W7u" secondAttribute="bottom" constant="30" id="eNU-uL-6PY"/>
-                            <constraint firstItem="xAV-Be-ZQE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zfj-0V-L0Q" secondAttribute="trailing" constant="8" symbolic="YES" id="hYa-Le-l7o"/>
                             <constraint firstItem="xAV-Be-ZQE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="hvc-GH-xkZ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pGW-6o-moo" secondAttribute="trailing" id="kt9-2O-R5h"/>
                             <constraint firstItem="3r5-0d-aFN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="55" id="laM-ua-mdc"/>
@@ -192,8 +197,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

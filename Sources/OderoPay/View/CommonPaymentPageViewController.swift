@@ -107,10 +107,12 @@ public class CommonPaymentPageViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    @IBAction func popViewController(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
+    }
 }
 
 public extension UIViewController {
-    
     static func getStoryboardViewController() -> UIViewController {
         let commonPaymentPageStoryboardViewController = UIStoryboard(name: "CommonPaymentPage", bundle: Bundle.module)
         
