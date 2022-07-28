@@ -87,10 +87,10 @@ public class CommonPaymentPageViewController: UIViewController {
         if creditOrDebitCardView.isHidden {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             creditOrDebitCardView.isHidden = false
+        } else {
+            creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+            creditOrDebitCardView.isHidden = true
         }
-        
-        creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        creditOrDebitCardView.isHidden = true
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
