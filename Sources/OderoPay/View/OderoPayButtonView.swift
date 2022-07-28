@@ -15,18 +15,9 @@ public class OderoPayButtonView: UIView {
     @IBOutlet weak var oderoPayButton: UIButton! {
         didSet {
             oderoPayButton.layer.cornerRadius = 6
-            
-            oderoPayButton.setTitle(
-                NSLocalizedString(
-                    "payWithOdero",
-                    bundle: Bundle.module,
-                    comment: "pay with odero button"
-                ),
-                for: .normal)
         }
     }
     
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -39,6 +30,16 @@ public class OderoPayButtonView: UIView {
     
     public func initNavigationController(named navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+    
+    public func addOderoPayButtonOutline(colored color: UIColor) {
+        oderoPayButton.layer.borderWidth = 1
+        oderoPayButton.layer.borderColor = color
+    }
+    
+    public func removeOderoPayButtonOutline() {
+        oderoPayButton.layer.borderWidth = 0
+        oderoPayButton.layer.borderColor = UIColor.clear
     }
     
     private func commonInit() {
