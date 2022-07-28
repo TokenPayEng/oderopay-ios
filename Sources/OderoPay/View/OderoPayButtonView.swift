@@ -35,7 +35,7 @@ public class OderoPayButtonView: UIView {
     }
     
     public func setOderoPayButtonLabelSize(ofSize size: CGFloat) {
-        oderoPayButton.titleLabel?.font = UIFont.systemFont(ofSize: size)
+        oderoPayButton.titleLabel?.font = UIFont.systemFont(ofSize: size, weight: .semibold)
     }
     
     public func setOderoPayButtonImageEdgeInsets(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
