@@ -63,15 +63,15 @@
                                 <edgeInsets key="layoutMargins" top="10" left="20" bottom="10" right="0.0"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mVA-Ab-o1m" userLabel="Credit Card Section">
-                                <rect key="frame" x="20" y="245.33333333333334" width="235" height="20.333333333333343"/>
+                                <rect key="frame" x="20" y="245.33333333333334" width="235" height="26.333333333333343"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wZK-5d-R5P">
-                                        <rect key="frame" x="0.0" y="4.6666666666666643" width="19" height="11.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="7.6666666666666643" width="19" height="11.666666666666668"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card or Debit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyG-OO-PLQ">
-                                        <rect key="frame" x="34" y="0.0" width="201" height="20.333333333333332"/>
+                                        <rect key="frame" x="34" y="3" width="201" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -79,35 +79,14 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="3r5-0d-aFN" userLabel="Credit Card Information View">
-                                <rect key="frame" x="55" y="285.66666666666669" width="280" height="195"/>
+                                <rect key="frame" x="55" y="291.66666666666669" width="280" height="189"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WPi-TU-f8t">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue" enablesReturnKeyAutomatically="YES" textContentType="cc-number"/>
-                                    </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZQu-WA-lVj">
-                                        <rect key="frame" x="0.0" y="50" width="280" height="34"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/YY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UxH-pK-vEj">
-                                                <rect key="frame" x="0.0" y="0.0" width="132.66666666666666" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVC" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kRQ-9p-OtO">
-                                                <rect key="frame" x="147.66666666666663" y="0.0" width="132.33333333333337" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cardholder Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUM-0F-YhB">
-                                        <rect key="frame" x="0.0" y="100" width="280" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="go" enablesReturnKeyAutomatically="YES" textContentType="name"/>
-                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUe-CW-IZe" customClass="CardInformationView" customModule="OderoPay">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="128"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RY1-Bf-2V5">
-                                        <rect key="frame" x="0.0" y="150" width="280" height="45"/>
+                                        <rect key="frame" x="0.0" y="144" width="280" height="45"/>
                                         <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="tintColor" systemColor="tertiarySystemBackgroundColor"/>
@@ -150,6 +129,7 @@
                             <constraint firstItem="Lbd-Nw-W7u" firstAttribute="top" secondItem="xAV-Be-ZQE" secondAttribute="bottom" constant="5" id="HTl-9M-83O"/>
                             <constraint firstItem="5Wd-WA-jVF" firstAttribute="top" secondItem="3r5-0d-aFN" secondAttribute="bottom" constant="20" id="JzH-4w-H8l"/>
                             <constraint firstItem="JpS-ZM-jAz" firstAttribute="top" secondItem="5Wd-WA-jVF" secondAttribute="bottom" constant="20" id="MFn-7c-mff"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="JpS-ZM-jAz" secondAttribute="bottom" constant="259.00000000000011" id="NJ3-Y3-VD3"/>
                             <constraint firstItem="xAV-Be-ZQE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v91-9m-JDA" secondAttribute="trailing" constant="8" symbolic="YES" id="Q6Y-dg-x6l"/>
                             <constraint firstItem="mVA-Ab-o1m" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Szb-0q-4x8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3r5-0d-aFN" secondAttribute="trailing" constant="55" id="Uz5-Na-lz9"/>
@@ -170,12 +150,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cardNumberTextField" destination="WPi-TU-f8t" id="dkc-tp-cxd"/>
-                        <outlet property="cardholderNameTextField" destination="eUM-0F-YhB" id="hlc-RB-M0H"/>
                         <outlet property="confirmPaymentButton" destination="RY1-Bf-2V5" id="8dO-2a-sbb"/>
                         <outlet property="creditCardOrDebitCardLabel" destination="VyG-OO-PLQ" id="tvu-WA-tMG"/>
-                        <outlet property="cvcTextField" destination="kRQ-9p-OtO" id="f0S-t2-I7i"/>
-                        <outlet property="monthYearTextField" destination="UxH-pK-vEj" id="ibO-p5-6Qw"/>
                         <outlet property="multipleCreditCardsLabel" destination="nDc-7V-kXi" id="bqj-lC-3cD"/>
                         <outlet property="paymentMethodLabel" destination="mkD-Gd-ecN" id="G9X-7e-SQq"/>
                         <outlet property="totalPriceLabel" destination="xAV-Be-ZQE" id="X4Y-0J-sU4"/>

@@ -10,6 +10,8 @@ import UIKit
 
 public class CommonPaymentPageViewController: UIViewController {
     
+    // ---------------------UIViews----------------------
+    
     // ---------------------UILabels---------------------
     @IBOutlet weak var totalPriceLabel: UILabel! {
         didSet {
@@ -41,43 +43,6 @@ public class CommonPaymentPageViewController: UIViewController {
             multipleCreditCardsLabel.text = NSLocalizedString("multipleCredit",
                                                               bundle: Bundle.module,
                                                               comment: "pay with credit card or debit card")
-        }
-    }
-    
-    // ---------------------UITextFields---------------------
-    @IBOutlet weak var cardNumberTextField: UITextField! {
-        didSet {
-            cardNumberTextField.forLeftView(use: UIImage(systemName: "creditcard")!)
-            cardNumberTextField.placeholder = NSLocalizedString("cardNumber",
-                                                                bundle: Bundle.module,
-                                                                comment: "card number")
-        }
-    }
-    
-    @IBOutlet weak var monthYearTextField: UITextField! {
-        didSet {
-            monthYearTextField.forLeftView(use: UIImage(systemName: "calendar")!)
-            monthYearTextField.placeholder = NSLocalizedString("mm/yy",
-                                                               bundle: Bundle.module,
-                                                               comment: "card expire month and year")
-        }
-    }
-    
-    @IBOutlet weak var cvcTextField: UITextField! {
-        didSet {
-            cvcTextField.forLeftView(use: UIImage(systemName: "lock")!)
-            cvcTextField.placeholder = NSLocalizedString("cvc",
-                                                         bundle: Bundle.module,
-                                                         comment: "card cvc code")
-        }
-    }
-    
-    @IBOutlet weak var cardholderNameTextField: UITextField! {
-        didSet {
-            cardholderNameTextField.forLeftView(use: UIImage(systemName: "person")!)
-            cardholderNameTextField.placeholder = NSLocalizedString("cardHolderNameSurname",
-                                                                    bundle: Bundle.module,
-                                                                    comment: "card holder's name and surname")
         }
     }
     
@@ -117,20 +82,5 @@ public extension UIViewController {
         let commonPaymentPageStoryboardViewController = UIStoryboard(name: "CommonPaymentPage", bundle: Bundle.module)
         
         return commonPaymentPageStoryboardViewController.instantiateInitialViewController()!
-    }
-}
-
-extension UITextField {
-    func forLeftView(use image: UIImage) {
-        let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = image
-        imageView.tintColor = .systemGray3
-        
-        let uiView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
-        uiView.addSubview(imageView)
-        
-        leftView = uiView
-        leftViewMode = .always
     }
 }
