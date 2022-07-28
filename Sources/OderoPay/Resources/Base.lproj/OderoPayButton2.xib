@@ -16,6 +16,7 @@
         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="zVU-hZ-J8F">
             <rect key="frame" x="0.0" y="0.0" width="67" height="31"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <state key="normal" title="Button"/>
             <buttonConfiguration key="configuration" style="plain" title="Button"/>
             <point key="canvasLocation" x="311" y="23"/>
