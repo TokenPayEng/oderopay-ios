@@ -77,9 +77,25 @@ public class CommonPaymentPageViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    // ---------------------UIButton-Actions---------------------
+    
     @IBAction func popViewController(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
+        if creditOrDebitCardView.isHidden {
+            creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            creditOrDebitCardView.isHidden = false
+        }
+        
+        creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        creditOrDebitCardView.isHidden = true
+    }
+    
+    @IBAction func collapseMultipleCreditSection(_ sender: Any) {
+    }
+    
 }
 
 public extension UIViewController {
