@@ -90,6 +90,7 @@ public class CommonPaymentPageViewController: UIViewController {
         } else {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             creditOrDebitCardView.isHidden = true
+            creditOrDebitCardView.removeFromSuperview()
         }
     }
     
