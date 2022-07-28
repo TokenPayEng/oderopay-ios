@@ -58,7 +58,7 @@ class CardInformationView: UIView {
     }
     
     private func commonInit() {
-        Bundle.module.loadNibNamed("OderoPayButton", owner: self, options: nil)
+        Bundle.module.loadNibNamed("CardInformation", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
