@@ -10,6 +10,7 @@ import UIKit
 class CardInformationView: UIView {
 
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var stackView: UIStackView!
     
     @IBOutlet weak var cardNumberTextField: UITextField! {
         didSet {
@@ -55,6 +56,10 @@ class CardInformationView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+    }
+    
+    public func setSpacing(by size: CGFloat) {
+        stackView.spacing = size
     }
     
     private func commonInit() {

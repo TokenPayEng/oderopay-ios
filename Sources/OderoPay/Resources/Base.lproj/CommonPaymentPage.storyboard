@@ -172,6 +172,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cardInformationView" destination="pkG-Ma-BkG" id="T9P-S9-Elh"/>
                         <outlet property="confirmPaymentButton" destination="mkP-aQ-xSY" id="2rW-VA-UBJ"/>
                         <outlet property="creditCardOrDebitCardButton" destination="u0C-VT-AcG" id="vif-jk-oC9"/>
                         <outlet property="creditOrDebitCardView" destination="aUQ-UC-fat" id="wmc-Of-Wbe"/>
