@@ -17,7 +17,7 @@ public class OderoPayButtonView: UIView {
             let image = UIImage(named: "odero-pay-black")
             image?.resizableImage(withCapInsets: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
             
-            oderoPayButton.setImage(image, for: .normal)
+            oderoPayButton.addSubview(image)
             oderoPayButton.layer.cornerRadius = 6
         }
     }
