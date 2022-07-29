@@ -12,12 +12,9 @@ public class OderoPayButtonView: UIView {
     var navigationController: UINavigationController?
     
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var oderoPayImageView: UIImageView!
     @IBOutlet weak var oderoPayButton: UIButton! {
         didSet {
-            let image = UIImage(named: "odero-pay-black")
-            image?.resizableImage(withCapInsets: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
-            
-            oderoPayButton.addSubview(image)
             oderoPayButton.layer.cornerRadius = 6
         }
     }
@@ -44,11 +41,11 @@ public class OderoPayButtonView: UIView {
     
     public func changeDefaultColor(fromWhiteToBlack value: Bool) {
         if value {
-            oderoPayButton.setImage(UIImage(named: "odero-pay-white"), for: .normal)
+            oderoPayImageView.image = UIImage(named: "odero-pay-white")
             oderoPayButton.tintColor = .black
             oderoPayButton.backgroundColor = .black
         } else {
-            oderoPayButton.setImage(UIImage(named: "odero-pay-black"), for: .normal)
+            oderoPayImageView.image = UIImage(named: "odero-pay-black")
             oderoPayButton.tintColor = .white
             oderoPayButton.backgroundColor = .white
         }
