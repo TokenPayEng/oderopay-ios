@@ -80,8 +80,8 @@
                                                     <action selector="collapseCreditOrDebitSection:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RCq-vf-LeO"/>
                                                 </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="aUQ-UC-fat" userLabel="Credit Card View">
-                                                <rect key="frame" x="55" y="40.999999999999972" width="280" height="220.00000000000003"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aUQ-UC-fat" userLabel="Credit Card View">
+                                                <rect key="frame" x="55" y="40.999999999999972" width="280" height="205"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkG-Ma-BkG" customClass="CardInformationView" customModule="OderoPay">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="160"/>
@@ -91,7 +91,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkP-aQ-xSY">
-                                                        <rect key="frame" x="0.0" y="175" width="280" height="45"/>
+                                                        <rect key="frame" x="0.0" y="160" width="280" height="45"/>
                                                         <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="tintColor" systemColor="tertiarySystemBackgroundColor"/>
@@ -102,7 +102,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LtQ-yj-jgd" userLabel="Custom Divider">
-                                                <rect key="frame" x="0.0" y="281" width="390" height="10"/>
+                                                <rect key="frame" x="0.0" y="266" width="390" height="10"/>
                                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -110,7 +110,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyD-Vs-TKn">
-                                                <rect key="frame" x="20" y="311" width="350" height="21"/>
+                                                <rect key="frame" x="20" y="296" width="350" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
