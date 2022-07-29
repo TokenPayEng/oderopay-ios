@@ -55,10 +55,10 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="472-2W-lDr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ivq-sd-L7N"/>
-                <constraint firstAttribute="trailing" secondItem="472-2W-lDr" secondAttribute="trailing" id="SlB-Fq-Jmo"/>
-                <constraint firstAttribute="bottom" secondItem="472-2W-lDr" secondAttribute="bottom" id="nvk-TX-fAu"/>
-                <constraint firstItem="472-2W-lDr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yqd-MP-0yh"/>
+                <constraint firstItem="472-2W-lDr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="750" id="Ivq-sd-L7N"/>
+                <constraint firstAttribute="trailing" secondItem="472-2W-lDr" secondAttribute="trailing" priority="750" id="SlB-Fq-Jmo"/>
+                <constraint firstAttribute="bottom" secondItem="472-2W-lDr" secondAttribute="bottom" priority="750" id="nvk-TX-fAu"/>
+                <constraint firstItem="472-2W-lDr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" priority="750" id="yqd-MP-0yh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="244.20289855072465" y="47.209821428571423"/>
