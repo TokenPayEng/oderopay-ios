@@ -14,8 +14,6 @@ public class CommonPaymentPageViewController: UIViewController {
     
     @IBOutlet weak var creditOrDebitCardView: UIStackView!
     
-    @IBOutlet weak var cardInformationView: CardInformationView!
-    
     // ---------------------UILabels---------------------
     @IBOutlet weak var totalPriceLabel: UILabel! {
         didSet {
@@ -90,14 +88,17 @@ public class CommonPaymentPageViewController: UIViewController {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             creditOrDebitCardView.isHidden = false
             
-
+            for constraint in creditOrDebitCardView.constraints {
+                constraint.isActive = true
+            }
             creditOrDebitCardView.constraints.first {$0.firstAnchor == creditOrDebitCardView.heightAnchor}?.isActive = false
-            cardInformationView.constraints.first {$0.firstAnchor == cardInformationView.heightAnchor}?.isActive = true
         } else {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             creditOrDebitCardView.isHidden = true
             
-            cardInformationView.constraints.first {$0.firstAnchor == cardInformationView.heightAnchor}?.isActive = false
+            for constraint in creditOrDebitCardView.constraints {
+                constraint.isActive = false
+            }
             creditOrDebitCardView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         }
     }
