@@ -87,11 +87,11 @@ public class CommonPaymentPageViewController: UIViewController {
         if creditOrDebitCardView.isHidden {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             creditOrDebitCardView.isHidden = false
-            creditOrDebitCardView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            creditOrDebitCardView.heightAnchor.constraint(equalToConstant: 0).isActive = false
         } else {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             creditOrDebitCardView.isHidden = true
-            creditOrDebitCardView.heightAnchor.constraint(equalToConstant: 0).isActive = false
+            creditOrDebitCardView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         }
     }
     
