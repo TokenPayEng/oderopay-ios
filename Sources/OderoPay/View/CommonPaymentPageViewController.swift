@@ -85,26 +85,29 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
-        if creditOrDebitCardView.isHidden {
-            creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-            creditOrDebitCardView.isHidden = false
-            
-            creditOrDebitCardView.constraints.first {$0.firstAnchor == creditOrDebitCardView.heightAnchor}?.isActive = false
-            
-            creditOrDebitCardView.spacing = 15
-            creditOrDebitCardView.updateConstraints()
-        } else {
-            creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-            creditOrDebitCardView.isHidden = true
-            creditOrDebitCardView.spacing = 0
-            creditOrDebitCardView.updateConstraints()
-            
-            creditOrDebitCardView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-
-        }
+        collapseSection(creditOrDebitCardView, using: creditCardOrDebitCardButton)
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
+        //collapseSection(creditOrDebitCardView, using: multipleCreditCardsButton)
+    }
+    
+    private func collapseSection(_ section: UIStackView, using button: UIButton) {
+        if section.isHidden {
+            button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            section.isHidden = false
+            section.constraints.first {$0.firstAnchor == section.heightAnchor}?.isActive = false
+            // removed height constraint can add spacing
+            section.spacing = 15
+            section.updateConstraints()
+        } else {
+            button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+            section.isHidden = true
+            // remove spacing to add height constraint
+            section.spacing = 0
+            section.updateConstraints()
+            section.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        }
     }
     
 }
