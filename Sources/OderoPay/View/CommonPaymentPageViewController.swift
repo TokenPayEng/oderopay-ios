@@ -90,16 +90,21 @@ public class CommonPaymentPageViewController: UIViewController {
             
             for constraint in creditOrDebitCardView.constraints {
                 constraint.isActive = true
+                
+                if constraint.firstAnchor == creditOrDebitCardView.heightAnchor {
+                    constraint.isActive = false
+                }
             }
-            creditOrDebitCardView.constraints.first {$0.firstAnchor == creditOrDebitCardView.heightAnchor}?.isActive = false
         } else {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             creditOrDebitCardView.isHidden = true
             
             for constraint in creditOrDebitCardView.constraints {
                 constraint.isActive = false
+                
+                guard let heightContraint = creditOrDebitCardView.heightAnchor else { continue }
+                heightContraint.constraint(equalToConstant: 0).isActive = true
             }
-            creditOrDebitCardView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         }
     }
     
