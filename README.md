@@ -80,12 +80,12 @@ Setting image (OderoPay logo) size inside OderoPay button.
 
 Function:
 
-`oderoPayButtonView.setOderoPayButtonImageEdgeInsets(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat)`
+`oderoPayButtonView.setOderoPayImageSize(height: CGFloat, width: CGFloat)`
 
 Example:
 
 ```swift
-    oderoPayButtonView.setOderoPayButtonImageEdgeInsets(top: 0, left: 0, bottom: -5, right: 5)
+    oderoPayButtonView.setOderoPayImageSize(height: 40, width: 80)
 ```
 
 ## License
