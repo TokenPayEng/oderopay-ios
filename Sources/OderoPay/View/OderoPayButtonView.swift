@@ -35,8 +35,14 @@ public class OderoPayButtonView: UIView {
         self.navigationController = navigationController
     }
     
-    public func setOderoPayButtonImageEdgeInsets(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
-        oderoPayButton.imageEdgeInsets = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+    public func setOderoPayImageSize(height: CGFloat, width: CGFloat) {
+        oderoPayImageView.constraints.first {$0.firstAnchor == oderoPayImageView.heightAnchor}?.isActive = false
+        oderoPayImageView.constraints.first {$0.firstAnchor == oderoPayImageView.widthAnchor}?.isActive = false
+        
+        oderoPayImageView.updateConstraints()
+        
+        oderoPayImageView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        oderoPayImageView.widthAnchor.constraint(equalToConstant: width).isActive = true
     }
     
     public func changeDefaultColor(fromWhiteToBlack value: Bool) {

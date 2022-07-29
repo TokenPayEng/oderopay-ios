@@ -76,7 +76,7 @@ Example:
     oderoPayButtonView.removeOderoPayButtonOutline()
 ```
       
-Setting image (OderoPay logo) insets inside OderoPay button.
+Setting image (OderoPay logo) size inside OderoPay button.
 
 Function:
 
