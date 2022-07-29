@@ -40,6 +40,18 @@ Example:
     oderoPayButtonView.initNavigationController(named: self.navigationController!)
 ```
 
+Changing color of the OderoPay button from white to black and reverse.
+
+Function:
+
+`oderoPayButtonView.changeDefaultColor(fromWhiteToBlack: Bool)`
+
+Example:
+
+```swift
+    oderoPayButtonView.changeDefaultColor(fromWhiteToBlack: true)
+```
+
 Adding outline of any color to the OderoPay button.
 
 Function:

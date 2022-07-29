@@ -42,6 +42,16 @@ public class OderoPayButtonView: UIView {
         oderoPayButton.imageEdgeInsets = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
     
+    public func changeDefaultColor(fromWhiteToBlack value: Bool) {
+        if value {
+            oderoPayButton.tintColor = .black
+            oderoPayButton.backgroundColor = .black
+        } else {
+            oderoPayButton.tintColor = .white
+            oderoPayButton.backgroundColor = .white
+        }
+    }
+    
     public func addOderoPayButtonOutline(colored color: UIColor) {
         oderoPayButton.layer.borderWidth = 1
         oderoPayButton.layer.borderColor = color.cgColor
