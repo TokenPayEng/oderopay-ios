@@ -89,8 +89,9 @@ public class CommonPaymentPageViewController: UIViewController {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             creditOrDebitCardView.isHidden = false
             
+
+            creditOrDebitCardView.constraints.first {$0.firstAnchor == creditOrDebitCardView.heightAnchor}?.isActive = false
             cardInformationView.constraints.first {$0.firstAnchor == cardInformationView.heightAnchor}?.isActive = true
-            creditOrDebitCardView.constraints.first {$0.firstAnchor == creditOrDebitCardView.heightAnchor}?.isActive false
         } else {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             creditOrDebitCardView.isHidden = true
