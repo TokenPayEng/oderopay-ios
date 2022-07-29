@@ -87,6 +87,7 @@ public class CommonPaymentPageViewController: UIViewController {
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
         if creditOrDebitCardView.isHidden {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            creditOrDebitCardView.spacing = 15
             creditOrDebitCardView.isHidden = false
             
             creditOrDebitCardView.constraints.first {$0.firstAnchor == creditOrDebitCardView.heightAnchor}?.isActive = false
