@@ -87,7 +87,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="160"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="160" id="fr1-kz-0g3"/>
+                                                            <constraint firstAttribute="height" priority="750" constant="160" id="fr1-kz-0g3"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkP-aQ-xSY">
