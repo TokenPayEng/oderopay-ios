@@ -100,9 +100,6 @@
                                                         <state key="normal" title="Confirm Payment"/>
                                                     </button>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" id="RDU-LF-wad"/>
-                                                </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LtQ-yj-jgd" userLabel="Custom Divider">
                                                 <rect key="frame" x="0.0" y="282" width="390" height="10"/>
