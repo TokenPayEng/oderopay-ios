@@ -90,6 +90,9 @@ public class CommonPaymentPageViewController: UIViewController {
             creditOrDebitCardView.isHidden = false
             
             creditOrDebitCardView.constraints.first {$0.firstAnchor == creditOrDebitCardView.heightAnchor}?.isActive = false
+            
+            creditOrDebitCardView.spacing = 15
+            creditOrDebitCardView.updateConstraints()
         } else {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             creditOrDebitCardView.isHidden = true
