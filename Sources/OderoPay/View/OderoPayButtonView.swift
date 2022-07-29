@@ -41,11 +41,11 @@ public class OderoPayButtonView: UIView {
     
     public func changeDefaultColor(fromWhiteToBlack value: Bool) {
         if value {
-            oderoPayImageView.image = UIImage(named: "odero-pay-white")
+            oderoPayImageView.image = UIImage(named: "odero-pay-white", in: .module, compatibleWith: nil)
             oderoPayButton.tintColor = .black
             oderoPayButton.backgroundColor = .black
         } else {
-            oderoPayImageView.image = UIImage(named: "odero-pay-black")
+            oderoPayImageView.image = UIImage(named: "odero-pay-black", in: .module, compatibleWith: nil)
             oderoPayButton.tintColor = .white
             oderoPayButton.backgroundColor = .white
         }
