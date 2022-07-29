@@ -88,17 +88,6 @@ Example:
     oderoPayButtonView.setOderoPayButtonImageEdgeInsets(top: 0, left: 0, bottom: -5, right: 5)
 ```
 
-Setting font size of OderoPay button label/title.
-
-Function:
-`oderoPayButtonView.setOderoPayButtonLabelSize(ofSize: CGFloat)`
-
-Example:
-
-```swift
-    oderoPayButtonView.setOderoPayButtonLabelSize(ofSize: 20)
-```
-
 ## License
 
 Copyright © 2022 Token Payment Services and Electronic Money Inc. All rights reserved.

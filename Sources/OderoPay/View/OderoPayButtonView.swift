@@ -14,7 +14,13 @@ public class OderoPayButtonView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var oderoPayButton: UIButton! {
         didSet {
+            let imageSize:CGSize = CGSize(width: 20, height: 20)
             oderoPayButton.layer.cornerRadius = 6
+            oderoPayButton.imageEdgeInsets = UIEdgeInsets(
+                top: (oderoPayButton.frame.size.height - imageSize.height) / 2,
+                left: (oderoPayButton.frame.size.width - imageSize.width) / 2,
+                bottom: (oderoPayButton.frame.size.height - imageSize.height) / 2,
+                right: (oderoPayButton.frame.size.width - imageSize.width) / 2)
         }
     }
     
