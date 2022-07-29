@@ -11,10 +11,10 @@ import UIKit
 public class CommonPaymentPageViewController: UIViewController {
     
     // ---------------------UIViews----------------------
-    @IBOutlet weak var cardInformationHeight: NSLayoutConstraint!
     
     @IBOutlet weak var creditOrDebitCardView: UIStackView!
     
+    @IBOutlet weak var cardInformationView: CardInformationView!
     // ---------------------UILabels---------------------
     @IBOutlet weak var totalPriceLabel: UILabel! {
         didSet {
@@ -89,13 +89,13 @@ public class CommonPaymentPageViewController: UIViewController {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             creditOrDebitCardView.isHidden = false
             
-            cardInformationHeight.isActive = true
-            creditOrDebitCardView.constraints.first {$0.firstAnchor == creditOrDebitCardView.heightAnchor}?.isActive = false
+            cardInformationView.constraints.first {$0.firstAnchor == cardInformationView.heightAnchor}?.isActive = true
+            creditOrDebitCardView.constraints.first {$0.firstAnchor == creditOrDebitCardView.heightAnchor}?.isActive false
         } else {
             creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             creditOrDebitCardView.isHidden = true
             
-            cardInformationHeight.isActive = false
+            cardInformationView.constraints.first {$0.firstAnchor == cardInformationView.heightAnchor}?.isActive = false
             creditOrDebitCardView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         }
     }
