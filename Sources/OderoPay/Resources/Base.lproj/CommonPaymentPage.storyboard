@@ -80,9 +80,8 @@
                                                     <action selector="collapseCreditOrDebitSection:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RCq-vf-LeO"/>
                                                 </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" id="aUQ-UC-fat" userLabel="Credit Card View">
-                                                <rect key="frame" x="55" y="40.999999999999986" width="280" height="221"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aUQ-UC-fat" userLabel="Credit Card View">
+                                                <rect key="frame" x="55" y="40.999999999999972" width="280" height="221.00000000000003"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkG-Ma-BkG" customClass="CardInformationView" customModule="OderoPay">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="160"/>
