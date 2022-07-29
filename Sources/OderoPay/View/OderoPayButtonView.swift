@@ -14,13 +14,11 @@ public class OderoPayButtonView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var oderoPayButton: UIButton! {
         didSet {
-            let imageSize:CGSize = CGSize(width: 20, height: 20)
+            let image = UIImage(named: "odero-pay-black")
+            image?.resizableImage(withCapInsets: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+            
+            oderoPayButton.setImage(image, for: .normal)
             oderoPayButton.layer.cornerRadius = 6
-            oderoPayButton.imageEdgeInsets = UIEdgeInsets(
-                top: (oderoPayButton.frame.size.height - imageSize.height) / 2,
-                left: (oderoPayButton.frame.size.width - imageSize.width) / 2,
-                bottom: (oderoPayButton.frame.size.height - imageSize.height) / 2,
-                right: (oderoPayButton.frame.size.width - imageSize.width) / 2)
         }
     }
     
@@ -46,9 +44,11 @@ public class OderoPayButtonView: UIView {
     
     public func changeDefaultColor(fromWhiteToBlack value: Bool) {
         if value {
+            oderoPayButton.setImage(UIImage(named: "odero-pay-white"), for: .normal)
             oderoPayButton.tintColor = .black
             oderoPayButton.backgroundColor = .black
         } else {
+            oderoPayButton.setImage(UIImage(named: "odero-pay-black"), for: .normal)
             oderoPayButton.tintColor = .white
             oderoPayButton.backgroundColor = .white
         }
