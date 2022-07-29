@@ -15,6 +15,7 @@ public class CommonPaymentPageViewController: UIViewController {
     @IBOutlet weak var creditOrDebitCardView: UIStackView!
     
     @IBOutlet weak var cardInformationView: CardInformationView!
+    
     // ---------------------UILabels---------------------
     @IBOutlet weak var totalPriceLabel: UILabel! {
         didSet {
