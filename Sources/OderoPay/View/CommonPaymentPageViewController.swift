@@ -100,7 +100,7 @@ public class CommonPaymentPageViewController: UIViewController {
             section.isHidden = false
         } else {
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-            heightConstraint.constant = -20
+            heightConstraint.constant = 0
             section.layoutIfNeeded()
             
             section.isHidden = true
