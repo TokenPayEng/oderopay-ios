@@ -19,29 +19,31 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="608"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-Ro-gLy" customClass="CardInformationView" customModule="OderoPay">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="547"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-9H-Hdu">
-                    <rect key="frame" x="0.0" y="567" width="414" height="41"/>
-                    <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="Confirm Payment"/>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-mu-8Qv">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="608"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-Ro-gLy" customClass="CardInformationView" customModule="OderoPay">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="547"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-9H-Hdu">
+                            <rect key="frame" x="0.0" y="567" width="414" height="41"/>
+                            <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Confirm Payment"/>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="b3u-9H-Hdu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5QA-o4-gpQ"/>
-                <constraint firstItem="b3u-9H-Hdu" firstAttribute="top" secondItem="j5n-Ro-gLy" secondAttribute="bottom" constant="20" id="6LV-vR-NKL"/>
-                <constraint firstItem="j5n-Ro-gLy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6es-sK-WS5"/>
-                <constraint firstItem="j5n-Ro-gLy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Yb1-vc-WAP"/>
-                <constraint firstAttribute="bottom" secondItem="b3u-9H-Hdu" secondAttribute="bottom" id="edU-i7-zOH"/>
-                <constraint firstAttribute="trailing" secondItem="b3u-9H-Hdu" secondAttribute="trailing" id="g88-C5-7Wx"/>
-                <constraint firstAttribute="trailing" secondItem="j5n-Ro-gLy" secondAttribute="trailing" id="idL-j6-VQL"/>
+                <constraint firstAttribute="trailing" secondItem="vgb-mu-8Qv" secondAttribute="trailing" id="AKQ-b9-2pd"/>
+                <constraint firstItem="vgb-mu-8Qv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BvT-0e-IaQ"/>
+                <constraint firstItem="vgb-mu-8Qv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Lw5-22-9sa"/>
+                <constraint firstAttribute="bottom" secondItem="vgb-mu-8Qv" secondAttribute="bottom" id="SIx-Y9-HiI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="237.68115942028987" y="-76.339285714285708"/>
