@@ -33,6 +33,9 @@ public class CommonPaymentPageViewController: UIViewController {
     // ---------------------UIButtons---------------------
     @IBOutlet weak var creditCardOrDebitCardButton: UIButton! {
         didSet {
+            creditCardOrDebitCardButton.setImage(
+                UIImage(systemName: creditOrDebitCardView.isHidden
+                        ? "chevron.right" : "chevront.down"), for: .normal)
             creditCardOrDebitCardButton.setTitle(
                 NSLocalizedString("creditCardOrDebitCard",
                                   bundle: Bundle.module,
@@ -94,13 +97,15 @@ public class CommonPaymentPageViewController: UIViewController {
         if section.isHidden {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             section.isHidden = false
+            
             section.constraints.first {$0.firstAnchor == section.heightAnchor}?.isActive = false
-            // removed height constraint can add spacing
             section.updateConstraints()
+            section.heightAnchor.constraint(equalToConstant: 200).isActive = true
         } else {
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             section.isHidden = true
-            // remove spacing to add height constraint
+            
+            section.constraints.first {$0.firstAnchor == section.heightAnchor}?.isActive = false
             section.updateConstraints()
             section.heightAnchor.constraint(equalToConstant: 0).isActive = true
         }
