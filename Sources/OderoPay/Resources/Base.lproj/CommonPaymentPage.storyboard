@@ -113,6 +113,7 @@
                                             <constraint firstItem="u0C-VT-AcG" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="20" id="8HZ-ad-Tzv"/>
                                             <constraint firstItem="u0C-VT-AcG" firstAttribute="top" secondItem="dUD-ew-psv" secondAttribute="top" id="A6q-gy-Sho"/>
                                             <constraint firstAttribute="trailing" secondItem="mD7-Ni-MbP" secondAttribute="trailing" constant="55" id="E29-UR-8NS"/>
+                                            <constraint firstItem="LtQ-yj-jgd" firstAttribute="top" secondItem="mD7-Ni-MbP" secondAttribute="bottom" constant="20" id="L3f-Wd-ZxU"/>
                                             <constraint firstItem="mD7-Ni-MbP" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="55" id="MfB-5q-WWp"/>
                                             <constraint firstAttribute="height" constant="545" id="S0L-jm-ReU"/>
                                             <constraint firstItem="oyD-Vs-TKn" firstAttribute="top" secondItem="LtQ-yj-jgd" secondAttribute="bottom" constant="20" id="W1z-Z7-4gi"/>
@@ -121,7 +122,6 @@
                                             <constraint firstAttribute="trailing" secondItem="u0C-VT-AcG" secondAttribute="trailing" constant="20" id="dkE-0o-yqP"/>
                                             <constraint firstItem="mD7-Ni-MbP" firstAttribute="top" secondItem="u0C-VT-AcG" secondAttribute="bottom" constant="20" id="nyw-Ae-H5z"/>
                                             <constraint firstItem="LtQ-yj-jgd" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" id="qSU-6C-afM"/>
-                                            <constraint firstItem="LtQ-yj-jgd" firstAttribute="top" secondItem="mD7-Ni-MbP" secondAttribute="bottom" constant="20" id="t9L-2u-03c"/>
                                             <constraint firstAttribute="trailing" secondItem="LtQ-yj-jgd" secondAttribute="trailing" id="wDh-1o-022"/>
                                         </constraints>
                                     </view>
