@@ -73,7 +73,7 @@
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Credit Card or Debit Card" image="chevron.right" catalog="system">
+                                                <state key="normal" title="Credit Card or Debit Card" image="chevron.down" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
                                                 </state>
                                                 <connections>
@@ -172,6 +172,7 @@
     </scenes>
     <resources>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="odero-logo" width="126" height="46"/>
         <systemColor name="systemBackgroundColor">
