@@ -84,7 +84,7 @@
                                                 <rect key="frame" x="55" y="40.999999999999972" width="280" height="200"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" priority="750" constant="200" id="D9U-PN-U6N"/>
+                                                    <constraint firstAttribute="height" constant="200" id="D9U-PN-U6N"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyD-Vs-TKn">
