@@ -11,8 +11,8 @@ import UIKit
 public class CommonPaymentPageViewController: UIViewController {
     
     // ---------------------UIViews----------------------
-    @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
     
+    @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint!
     // ---------------------UILabels---------------------
     @IBOutlet weak var totalPriceLabel: UILabel! {
@@ -34,6 +34,7 @@ public class CommonPaymentPageViewController: UIViewController {
     // ---------------------UIButtons---------------------
     @IBOutlet weak var creditCardOrDebitCardButton: UIButton! {
         didSet {
+            creditCardOrDebitCardButton.setImage(UIImage(systemName: creditOrDebitCardView.isEnabled ? "chevron.right" : "chevront.down"), for: .normal)
             creditCardOrDebitCardButton.setTitle(
                 NSLocalizedString("creditCardOrDebitCard",
                                   bundle: Bundle.module,
