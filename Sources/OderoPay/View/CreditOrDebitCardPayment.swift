@@ -39,7 +39,6 @@ class CreditOrDebitCardPayment: UIView {
         Bundle.module.loadNibNamed("CreditOrDebitCardPayment", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
     public func setSectionEnabled(_ value: Bool) {
