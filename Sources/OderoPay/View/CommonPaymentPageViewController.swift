@@ -102,9 +102,6 @@ public class CommonPaymentPageViewController: UIViewController {
             heightConstraint.constant = 0
             section.layoutIfNeeded()
         }
-        
-        heightConstraint.constant = 0
-        section.layoutIfNeeded()
     }
     
 }
