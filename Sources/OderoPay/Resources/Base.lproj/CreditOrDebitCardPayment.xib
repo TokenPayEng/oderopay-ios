@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditOrDebitCardPayment" customModule="OderoPay">
             <connections>
-                <outlet property="cardInformationView" destination="j5n-Ro-gLy" id="ZF4-XI-EdV"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="tyq-p4-a7I"/>
                 <outlet property="makePaymentButton" destination="b3u-9H-Hdu" id="PqR-pv-Jxc"/>
             </connections>
