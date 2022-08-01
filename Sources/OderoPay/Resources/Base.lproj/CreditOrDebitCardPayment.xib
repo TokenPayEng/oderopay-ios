@@ -19,15 +19,15 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="608"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-mu-8Qv">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-mu-8Qv">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="608"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-Ro-gLy" customClass="CardInformationView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="547"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="565.5"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-9H-Hdu">
-                            <rect key="frame" x="0.0" y="567" width="414" height="41"/>
+                            <rect key="frame" x="0.0" y="565.5" width="414" height="42.5"/>
                             <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
