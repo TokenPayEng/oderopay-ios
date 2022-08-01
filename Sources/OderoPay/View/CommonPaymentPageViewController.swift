@@ -98,12 +98,14 @@ public class CommonPaymentPageViewController: UIViewController {
             section.constraints.first {$0.firstAnchor == section.heightAnchor}?.isActive = false
             section.updateConstraints()
             section.heightAnchor.constraint(equalToConstant: 200).isActive = true
+            section.updateConstraints()
         } else {
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             section.isHidden = true
             section.constraints.first {$0.firstAnchor == section.heightAnchor}?.isActive = false
             section.updateConstraints()
             section.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            section.updateConstraints()
         }
     }
     
