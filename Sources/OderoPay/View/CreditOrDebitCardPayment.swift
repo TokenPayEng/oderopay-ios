@@ -8,6 +8,8 @@
 import UIKit
 
 class CreditOrDebitCardPayment: UIView {
+    
+    var isEnabled: Bool = true
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var makePaymentButton: UIButton! {
@@ -38,5 +40,9 @@ class CreditOrDebitCardPayment: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    public func setSectionEnabled(_ value: Bool) {
+        isEnabled = value
     }
 }
