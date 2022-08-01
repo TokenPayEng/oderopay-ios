@@ -13,6 +13,13 @@ class CreditOrDebitCardPayment: UIView {
     @IBOutlet weak var makePaymentButton: UIButton! {
         didSet {
             makePaymentButton.layer.cornerRadius = 6
+            makePaymentButton.setTitle(
+                NSLocalizedString(
+                    "makePayment",
+                    bundle: Bundle.module,
+                    comment: "send payment request"
+                ),
+                for: .normal)
         }
     }
     

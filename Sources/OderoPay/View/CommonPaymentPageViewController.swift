@@ -11,9 +11,7 @@ import UIKit
 public class CommonPaymentPageViewController: UIViewController {
     
     // ---------------------UIViews----------------------
-    
-    @IBOutlet weak var creditOrDebitCardView: UIStackView!
-    @IBOutlet weak var cardInformationView: CardInformationView!
+    @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
     
     // ---------------------UILabels---------------------
     @IBOutlet weak var totalPriceLabel: UILabel! {
@@ -92,19 +90,17 @@ public class CommonPaymentPageViewController: UIViewController {
         //collapseSection(creditOrDebitCardView, using: multipleCreditCardsButton)
     }
     
-    private func collapseSection(_ section: UIStackView, using button: UIButton) {
+    private func collapseSection(_ section: UIView, using button: UIButton) {
         if section.isHidden {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             section.isHidden = false
             section.constraints.first {$0.firstAnchor == section.heightAnchor}?.isActive = false
             // removed height constraint can add spacing
-            section.spacing = 15
             section.updateConstraints()
         } else {
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             section.isHidden = true
             // remove spacing to add height constraint
-            section.spacing = 0
             section.updateConstraints()
             section.heightAnchor.constraint(equalToConstant: 0).isActive = true
         }
