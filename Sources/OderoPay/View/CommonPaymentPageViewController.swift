@@ -13,6 +13,7 @@ public class CommonPaymentPageViewController: UIViewController {
     // ---------------------UIViews----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
     
+    @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint!
     // ---------------------UILabels---------------------
     @IBOutlet weak var totalPriceLabel: UILabel! {
         didSet {
@@ -83,29 +84,26 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
-        collapseSection(creditOrDebitCardView, using: creditCardOrDebitCardButton)
+        collapseSection(creditOrDebitCardView, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
         //collapseSection(creditOrDebitCardView, using: multipleCreditCardsButton)
     }
     
-    private func collapseSection(_ section: UIView, using button: UIButton) {
+    private func collapseSection(_ section: UIView, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
         if section.isHidden {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             section.isHidden = false
             
-            section.constraints.first {$0.firstAnchor == section.heightAnchor}?.isActive = false
-            section.updateConstraints()
-            section.heightAnchor.constraint(equalToConstant: 200).isActive = true
-            section.updateConstraints()
+            heightConstraint.constant = 200
+            section.layoutIfNeeded()
         } else {
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             section.isHidden = true
-            section.constraints.first {$0.firstAnchor == section.heightAnchor}?.isActive = false
-            section.updateConstraints()
-            section.heightAnchor.constraint(equalToConstant: 0).isActive = true
-            section.updateConstraints()
+            
+            heightConstraint.constant = 0
+            section.layoutIfNeeded()
         }
     }
     

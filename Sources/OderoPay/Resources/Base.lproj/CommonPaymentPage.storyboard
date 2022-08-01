@@ -159,7 +159,8 @@
                     </view>
                     <connections>
                         <outlet property="creditCardOrDebitCardButton" destination="u0C-VT-AcG" id="vif-jk-oC9"/>
-                        <outlet property="creditOrDebitCardView" destination="mD7-Ni-MbP" id="OR5-Pa-wVz"/>
+                        <outlet property="creditOrDebitCardView" destination="D9U-PN-U6N" id="mQz-eb-k64"/>
+                        <outlet property="creditOrDebitCardViewHeightConstraint" destination="D9U-PN-U6N" id="cGJ-Hl-Vqp"/>
                         <outlet property="multipleCreditCardsButton" destination="oyD-Vs-TKn" id="m0Y-lJ-9Qo"/>
                         <outlet property="paymentMethodLabel" destination="mkD-Gd-ecN" id="G9X-7e-SQq"/>
                         <outlet property="totalPriceLabel" destination="xAV-Be-ZQE" id="X4Y-0J-sU4"/>
