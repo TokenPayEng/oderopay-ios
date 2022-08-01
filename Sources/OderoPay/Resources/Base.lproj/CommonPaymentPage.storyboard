@@ -121,6 +121,130 @@
                                                     <action selector="collapseMultipleCreditSection:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xhz-LA-Dso"/>
                                                 </connections>
                                             </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="t3h-XK-zLJ">
+                                                <rect key="frame" x="20" y="352" width="315" height="451.33333333333326"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="43i-jg-Mlb" userLabel="Custom Stepper">
+                                                        <rect key="frame" x="0.0" y="0.0" width="66.666666666666671" height="451.33333333333331"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="b7v-WO-ggv">
+                                                                <rect key="frame" x="18.333333333333336" y="0.99999999999999822" width="30" height="28.666666666666664"/>
+                                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="Tkg-VU-LCY"/>
+                                                                    <constraint firstAttribute="height" constant="30" id="xII-2X-ofD"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGa-Ls-KsH" userLabel="Custom Divider 2 Vertical">
+                                                                <rect key="frame" x="33" y="30" width="1" height="162.33333333333334"/>
+                                                                <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="1" id="dS5-nl-eEz"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="2.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yCj-wM-Sj0">
+                                                                <rect key="frame" x="18.333333333333336" y="193.33333333333326" width="30" height="28.666666666666671"/>
+                                                                <color key="tintColor" systemColor="systemGray4Color"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="8Dt-hq-tRA"/>
+                                                                    <constraint firstAttribute="height" constant="30" id="Dv0-pZ-VMv"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d3X-VK-XyZ" userLabel="Custom Divider 2 Vertical">
+                                                                <rect key="frame" x="33" y="222.33333333333326" width="1" height="229"/>
+                                                                <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="1" id="IDI-zY-XEK"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L2K-aa-Hcr" userLabel="Multiple Cards Sections">
+                                                        <rect key="frame" x="71.666666666666671" y="0.0" width="243.33333333333331" height="451.33333333333331"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MEp-rd-isw">
+                                                                <rect key="frame" x="0.0" y="0.0" width="243.33333333333334" height="45"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="udR-SH-so7">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="243.33333333333334" height="34"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                    </textField>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Amount to be withdrawn from the first card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMn-OP-nZu">
+                                                                        <rect key="frame" x="0.0" y="39" width="243.33333333333334" height="6"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="45" id="8jf-rW-TLR"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXS-62-X7f" customClass="CardInformationView" customModule="OderoPay">
+                                                                <rect key="frame" x="0.0" y="45" width="243.33333333333334" height="160"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="160" id="bc4-Hp-jAy"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oe3-eu-zon" userLabel="Custom Divider 2 Horizontal">
+                                                                <rect key="frame" x="0.0" y="205" width="243.33333333333334" height="1"/>
+                                                                <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="FKg-f8-qvx"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="b8I-0h-beY">
+                                                                <rect key="frame" x="0.0" y="206" width="243.33333333333334" height="52.333333333333314"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nIx-bs-cwo">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="243.33333333333334" height="34"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                    </textField>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount to be withdrawn from the second card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYx-9D-Jze">
+                                                                        <rect key="frame" x="0.0" y="39" width="243.33333333333334" height="13.333333333333336"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hrb-k6-iMw" customClass="CardInformationView" customModule="OderoPay">
+                                                                <rect key="frame" x="0.0" y="258.33333333333326" width="243.33333333333334" height="160"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="160" id="5kH-3c-tR3"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0o-6H-tcM">
+                                                                <rect key="frame" x="0.0" y="418.33333333333326" width="243.33333333333334" height="33"/>
+                                                                <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="Confirm Payment"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="UXS-62-X7f" firstAttribute="leading" secondItem="L2K-aa-Hcr" secondAttribute="leading" id="4ou-6p-Kwj"/>
+                                                            <constraint firstItem="MEp-rd-isw" firstAttribute="top" secondItem="L2K-aa-Hcr" secondAttribute="top" id="AT6-80-FV5"/>
+                                                            <constraint firstItem="oe3-eu-zon" firstAttribute="leading" secondItem="L2K-aa-Hcr" secondAttribute="leading" id="I25-9S-uQ7"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Hrb-k6-iMw" secondAttribute="trailing" id="KVL-v2-PPE"/>
+                                                            <constraint firstAttribute="trailing" secondItem="oe3-eu-zon" secondAttribute="trailing" id="PSp-HH-Ixi"/>
+                                                            <constraint firstItem="MEp-rd-isw" firstAttribute="leading" secondItem="L2K-aa-Hcr" secondAttribute="leading" id="VqK-wI-8lc"/>
+                                                            <constraint firstAttribute="trailing" secondItem="UXS-62-X7f" secondAttribute="trailing" id="a1P-pP-ptF"/>
+                                                            <constraint firstAttribute="trailing" secondItem="n0o-6H-tcM" secondAttribute="trailing" id="aTP-k8-ONr"/>
+                                                            <constraint firstItem="n0o-6H-tcM" firstAttribute="leading" secondItem="L2K-aa-Hcr" secondAttribute="leading" id="cij-ax-9gl"/>
+                                                            <constraint firstItem="Hrb-k6-iMw" firstAttribute="leading" secondItem="L2K-aa-Hcr" secondAttribute="leading" id="nmI-TP-NoL"/>
+                                                            <constraint firstAttribute="trailing" secondItem="MEp-rd-isw" secondAttribute="trailing" id="roe-1X-Gnb"/>
+                                                            <constraint firstAttribute="trailing" secondItem="b8I-0h-beY" secondAttribute="trailing" id="sUo-i0-bUb"/>
+                                                            <constraint firstItem="b8I-0h-beY" firstAttribute="leading" secondItem="L2K-aa-Hcr" secondAttribute="leading" id="tDt-pD-eVd"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -130,11 +254,14 @@
                                             <constraint firstItem="aUQ-UC-fat" firstAttribute="top" secondItem="u0C-VT-AcG" secondAttribute="bottom" priority="750" constant="20" id="Df8-nM-5Fa"/>
                                             <constraint firstItem="oyD-Vs-TKn" firstAttribute="top" secondItem="LtQ-yj-jgd" secondAttribute="bottom" constant="20" id="MUI-SP-uTT"/>
                                             <constraint firstAttribute="height" constant="545" id="S0L-jm-ReU"/>
+                                            <constraint firstItem="t3h-XK-zLJ" firstAttribute="top" secondItem="oyD-Vs-TKn" secondAttribute="bottom" constant="20" id="Vpq-QY-h0f"/>
                                             <constraint firstAttribute="trailing" secondItem="aUQ-UC-fat" secondAttribute="trailing" constant="55" id="Zbn-LN-Eyk"/>
                                             <constraint firstItem="oyD-Vs-TKn" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="20" id="bam-u4-8wJ"/>
                                             <constraint firstAttribute="trailing" secondItem="oyD-Vs-TKn" secondAttribute="trailing" constant="20" id="dhB-Qp-QMz"/>
                                             <constraint firstAttribute="trailing" secondItem="u0C-VT-AcG" secondAttribute="trailing" constant="20" id="dkE-0o-yqP"/>
+                                            <constraint firstItem="t3h-XK-zLJ" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="20" id="obl-P4-VB5"/>
                                             <constraint firstItem="LtQ-yj-jgd" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" id="qSU-6C-afM"/>
+                                            <constraint firstAttribute="trailing" secondItem="t3h-XK-zLJ" secondAttribute="trailing" constant="55" id="uhI-uO-6gd"/>
                                             <constraint firstAttribute="trailing" secondItem="LtQ-yj-jgd" secondAttribute="trailing" id="wDh-1o-022"/>
                                             <constraint firstItem="aUQ-UC-fat" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="55" id="yUM-I6-do0"/>
                                         </constraints>
@@ -187,6 +314,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="2.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
@@ -196,6 +325,9 @@
         </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
