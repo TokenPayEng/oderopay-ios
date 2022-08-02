@@ -81,14 +81,14 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mD7-Ni-MbP" customClass="CreditOrDebitCardPayment" customModule="OderoPay">
-                                                <rect key="frame" x="55" y="20.999999999999972" width="280" height="200"/>
+                                                <rect key="frame" x="55" y="40.999999999999972" width="280" height="200"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="999" constant="200" id="D9U-PN-U6N"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyD-Vs-TKn">
-                                                <rect key="frame" x="20" y="271" width="350" height="21"/>
+                                                <rect key="frame" x="20" y="291" width="350" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -100,7 +100,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LtQ-yj-jgd" userLabel="Custom Divider">
-                                                <rect key="frame" x="0.0" y="240.99999999999997" width="390" height="10"/>
+                                                <rect key="frame" x="0.0" y="261" width="390" height="10"/>
                                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -116,11 +116,11 @@
                                             <constraint firstItem="LtQ-yj-jgd" firstAttribute="top" secondItem="mD7-Ni-MbP" secondAttribute="bottom" constant="20" id="L3f-Wd-ZxU"/>
                                             <constraint firstItem="mD7-Ni-MbP" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="55" id="MfB-5q-WWp"/>
                                             <constraint firstAttribute="height" constant="545" id="S0L-jm-ReU"/>
+                                            <constraint firstItem="mD7-Ni-MbP" firstAttribute="top" secondItem="u0C-VT-AcG" secondAttribute="bottom" constant="20" id="UzC-yN-296"/>
                                             <constraint firstItem="oyD-Vs-TKn" firstAttribute="top" secondItem="LtQ-yj-jgd" secondAttribute="bottom" constant="20" id="W1z-Z7-4gi"/>
                                             <constraint firstItem="oyD-Vs-TKn" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="20" id="bam-u4-8wJ"/>
                                             <constraint firstAttribute="trailing" secondItem="oyD-Vs-TKn" secondAttribute="trailing" constant="20" id="dhB-Qp-QMz"/>
                                             <constraint firstAttribute="trailing" secondItem="u0C-VT-AcG" secondAttribute="trailing" constant="20" id="dkE-0o-yqP"/>
-                                            <constraint firstItem="mD7-Ni-MbP" firstAttribute="top" secondItem="u0C-VT-AcG" secondAttribute="bottom" id="nyw-Ae-H5z"/>
                                             <constraint firstItem="LtQ-yj-jgd" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" id="qSU-6C-afM"/>
                                             <constraint firstAttribute="trailing" secondItem="LtQ-yj-jgd" secondAttribute="trailing" id="wDh-1o-022"/>
                                         </constraints>
