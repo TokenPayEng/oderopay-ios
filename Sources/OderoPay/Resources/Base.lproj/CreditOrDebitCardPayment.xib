@@ -23,14 +23,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="160" id="h0d-Ap-19x"/>
+                        <constraint firstAttribute="height" priority="750" constant="160" id="h0d-Ap-19x"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-9H-Hdu">
                     <rect key="frame" x="0.0" y="175" width="414" height="45"/>
                     <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="IzV-Ev-193"/>
+                        <constraint firstAttribute="height" priority="750" constant="45" id="IzV-Ev-193"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
