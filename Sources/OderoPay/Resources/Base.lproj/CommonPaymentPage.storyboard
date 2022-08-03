@@ -148,18 +148,18 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ms6-OV-ZKm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DQM-Xi-PLT"/>
                             <constraint firstItem="v91-9m-JDA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="FMQ-Ki-71m"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ms6-OV-ZKm" secondAttribute="bottom" constant="20" id="FbY-LB-zEU"/>
                             <constraint firstItem="v91-9m-JDA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="G25-7l-rvx"/>
                             <constraint firstItem="Lbd-Nw-W7u" firstAttribute="top" secondItem="xAV-Be-ZQE" secondAttribute="bottom" constant="5" id="HTl-9M-83O"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ms6-OV-ZKm" secondAttribute="trailing" id="Hpd-Y0-Xjk"/>
+                            <constraint firstItem="ms6-OV-ZKm" firstAttribute="top" secondItem="pGW-6o-moo" secondAttribute="bottom" constant="40" id="IU4-1B-zSp"/>
                             <constraint firstItem="xAV-Be-ZQE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v91-9m-JDA" secondAttribute="trailing" constant="8" symbolic="YES" id="Q6Y-dg-x6l"/>
-                            <constraint firstItem="ms6-OV-ZKm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="UzV-Rc-ZMI"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Lbd-Nw-W7u" secondAttribute="trailing" constant="20" id="XdD-AL-oAg"/>
                             <constraint firstItem="Lbd-Nw-W7u" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v91-9m-JDA" secondAttribute="trailing" constant="8" symbolic="YES" id="ZkF-EU-OIN"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ms6-OV-ZKm" secondAttribute="bottom" constant="20" id="bsO-OS-Job"/>
                             <constraint firstItem="pGW-6o-moo" firstAttribute="top" secondItem="Lbd-Nw-W7u" secondAttribute="bottom" constant="30" id="eNU-uL-6PY"/>
                             <constraint firstItem="xAV-Be-ZQE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="hvc-GH-xkZ"/>
-                            <constraint firstItem="ms6-OV-ZKm" firstAttribute="top" secondItem="pGW-6o-moo" secondAttribute="bottom" constant="40" id="iDC-Bx-wHw"/>
-                            <constraint firstItem="ms6-OV-ZKm" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="iDa-Uh-0D5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pGW-6o-moo" secondAttribute="trailing" id="kt9-2O-R5h"/>
                             <constraint firstItem="pGW-6o-moo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="wlb-pj-339"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xAV-Be-ZQE" secondAttribute="trailing" constant="20" id="ynf-Sf-33Z"/>
