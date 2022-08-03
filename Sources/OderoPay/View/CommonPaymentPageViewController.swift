@@ -92,7 +92,7 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     private func collapseSection(_ section: UIView, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
-        if heightConstraint.constant = 0 {
+        if heightConstraint.constant == 0 {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             heightConstraint.constant = 220
             section.setNeedsLayout()
