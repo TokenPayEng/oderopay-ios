@@ -18,7 +18,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="386" height="586"/>
+            <rect key="frame" x="0.0" y="0.0" width="386" height="596"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Amount to be withdrawn from the first card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3s-Tp-Vu2">
@@ -51,14 +51,14 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ds7-ip-sd7" userLabel="Horizontal Divider">
-                    <rect key="frame" x="40" y="255" width="346" height="1"/>
+                    <rect key="frame" x="40" y="265" width="346" height="1"/>
                     <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="XJO-9v-p28"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-9x-x7d">
-                    <rect key="frame" x="40" y="276" width="346" height="45"/>
+                    <rect key="frame" x="40" y="286" width="346" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="45" id="dQs-E6-yxO"/>
                     </constraints>
@@ -82,20 +82,20 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Amount to be withdrawn from the second card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXp-nh-i3Y">
-                    <rect key="frame" x="41" y="326" width="345" height="15"/>
+                    <rect key="frame" x="41" y="336" width="345" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMt-Rj-sV0" customClass="CardInformationView" customModule="OderoPay">
-                    <rect key="frame" x="41" y="361" width="345" height="160"/>
+                    <rect key="frame" x="41" y="371" width="345" height="160"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="160" id="alY-vu-bLf"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4CM-ct-rIP">
-                    <rect key="frame" x="41" y="541" width="345" height="45"/>
+                    <rect key="frame" x="41" y="551" width="345" height="45"/>
                     <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="Qg7-P8-iwH"/>
@@ -106,7 +106,7 @@
                     <state key="normal" title="Confirm Payment"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wW6-xp-NuM" userLabel="Vertical Divider 2">
-                    <rect key="frame" x="15" y="315" width="1" height="246"/>
+                    <rect key="frame" x="15" y="315" width="1" height="256"/>
                     <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="260" id="JTr-H4-OPi"/>
@@ -136,7 +136,7 @@
                 <constraint firstItem="7HU-9x-x7d" firstAttribute="top" secondItem="ds7-ip-sd7" secondAttribute="bottom" priority="750" constant="20" id="Prp-dy-dRF"/>
                 <constraint firstItem="wW6-xp-NuM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="QTX-3T-Tqa"/>
                 <constraint firstItem="uMT-9u-2vh" firstAttribute="leading" secondItem="RIv-e3-SZr" secondAttribute="trailing" constant="25" id="Ryz-SU-pp3"/>
-                <constraint firstItem="ds7-ip-sd7" firstAttribute="top" secondItem="uMT-9u-2vh" secondAttribute="bottom" priority="750" constant="10" id="TvX-Do-tO8"/>
+                <constraint firstItem="ds7-ip-sd7" firstAttribute="top" secondItem="uMT-9u-2vh" secondAttribute="bottom" priority="750" constant="20" id="TvX-Do-tO8"/>
                 <constraint firstItem="qXp-nh-i3Y" firstAttribute="top" secondItem="7HU-9x-x7d" secondAttribute="bottom" priority="750" constant="5" id="VUQ-OH-slm"/>
                 <constraint firstItem="RIv-e3-SZr" firstAttribute="top" secondItem="7Lo-2D-UUn" secondAttribute="bottom" id="Za6-O0-gwI"/>
                 <constraint firstAttribute="trailing" secondItem="qXp-nh-i3Y" secondAttribute="trailing" id="fAz-dG-D7l"/>
@@ -152,7 +152,7 @@
                 <constraint firstItem="qXp-nh-i3Y" firstAttribute="leading" secondItem="wW6-xp-NuM" secondAttribute="trailing" constant="25" id="wzV-p0-lS3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-210.1449275362319" y="-219.64285714285714"/>
+            <point key="canvasLocation" x="-210.1449275362319" y="-216.29464285714286"/>
         </view>
     </objects>
     <resources>
