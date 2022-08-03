@@ -106,12 +106,12 @@ public class CommonPaymentPageViewController: UIViewController {
         if multipleCardsView.isHidden {
             multipleCreditCardsButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             multipleCardsView.isHidden = false
-            multipleCardsView.constraints.first ($0.firstAnchor == multipleCardsView.heightAnchor)?.isActive = false
+            multipleCardsView.constraints.first {$0.firstAnchor == multipleCardsView.heightAnchor}?.isActive = false
             multipleCardsView.updateConstraints()
         } else {
             multipleCreditCardsButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             multipleCardsView.isHidden = true
-            multipleCardsView.heightAnchor.constraint(equalTo: 0).isActive = true
+            multipleCardsView.heightAnchor.constraint(equalToConstant: 0).isActive = true
             multipleCardsView.updateConstraints()
         }
     }
