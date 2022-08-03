@@ -98,7 +98,7 @@
                     <rect key="frame" x="41" y="551" width="345" height="45"/>
                     <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="Qg7-P8-iwH"/>
+                        <constraint firstAttribute="height" priority="750" constant="45" id="Qg7-P8-iwH"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
