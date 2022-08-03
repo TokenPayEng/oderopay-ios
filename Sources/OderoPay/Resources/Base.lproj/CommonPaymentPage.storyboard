@@ -172,6 +172,8 @@
                         <outlet property="creditCardOrDebitCardButton" destination="u0C-VT-AcG" id="vif-jk-oC9"/>
                         <outlet property="creditOrDebitCardView" destination="mD7-Ni-MbP" id="vwI-2z-2de"/>
                         <outlet property="creditOrDebitCardViewHeightConstraint" destination="D9U-PN-U6N" id="cGJ-Hl-Vqp"/>
+                        <outlet property="multipleCardsView" destination="m2B-NF-SFB" id="bHK-Zz-rgY"/>
+                        <outlet property="multipleCardsViewHeightConstraint" destination="Bso-AA-IuS" id="vfI-hC-I4L"/>
                         <outlet property="multipleCreditCardsButton" destination="oyD-Vs-TKn" id="m0Y-lJ-9Qo"/>
                         <outlet property="paymentMethodLabel" destination="mkD-Gd-ecN" id="G9X-7e-SQq"/>
                         <outlet property="totalPriceLabel" destination="xAV-Be-ZQE" id="X4Y-0J-sU4"/>

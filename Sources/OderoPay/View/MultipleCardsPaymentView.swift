@@ -13,7 +13,7 @@ class MultipleCardsPaymentView: UIView {
     
     @IBOutlet weak var firstCardAmountLabel: UILabel! {
         didSet {
-            firstAmountTextField.text = NSLocalizedString(
+            firstCardAmountLabel.text = NSLocalizedString(
                 "firstCardAmount",
                 bundle: Bundle.module,
                 comment: "amount of money to be paid from the first credit card"
@@ -22,7 +22,7 @@ class MultipleCardsPaymentView: UIView {
     }
     @IBOutlet weak var secondCardAmountLabel: UILabel! {
         didSet {
-            firstAmountTextField.text = NSLocalizedString(
+            secondCardAmountLabel.text = NSLocalizedString(
                 "secondCardAmount",
                 bundle: Bundle.module,
                 comment: "amount of money to be paid from the second credit card"
