@@ -105,9 +105,15 @@ public class CommonPaymentPageViewController: UIViewController {
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
         if multipleCardsView.isHidden {
             multipleCreditCardsButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            multipleCardsViewHeightConstraint.constant = 590
+            multipleCardsView.setNeedsLayout()
+            multipleCardsView.layoutIfNeeded()
             multipleCardsView.isHidden = false
         } else {
             multipleCreditCardsButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+            multipleCardsViewHeightConstraint.constant = 0
+            multipleCardsView.setNeedsLayout()
+            multipleCardsView.layoutIfNeeded()
             multipleCardsView.isHidden = true
         }
     }
