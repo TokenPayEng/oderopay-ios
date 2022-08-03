@@ -135,10 +135,10 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="dUD-ew-psv" firstAttribute="leading" secondItem="1bd-pn-OCc" secondAttribute="leading" id="5x0-gj-sjA"/>
-                                    <constraint firstItem="dUD-ew-psv" firstAttribute="height" secondItem="eL1-YA-YD9" secondAttribute="height" priority="750" id="KRr-1i-bv4"/>
+                                    <constraint firstItem="dUD-ew-psv" firstAttribute="height" secondItem="eL1-YA-YD9" secondAttribute="height" id="KRr-1i-bv4" userLabel="Payment Options.height = Frame Layout Guide.height"/>
                                     <constraint firstItem="dUD-ew-psv" firstAttribute="bottom" secondItem="1bd-pn-OCc" secondAttribute="bottom" id="S9t-Li-1Ii"/>
-                                    <constraint firstItem="1bd-pn-OCc" firstAttribute="top" secondItem="dUD-ew-psv" secondAttribute="top" id="d8a-U6-Mzl" userLabel=" Payment Options.top = Content Layout Guide.top"/>
                                     <constraint firstItem="dUD-ew-psv" firstAttribute="width" secondItem="eL1-YA-YD9" secondAttribute="width" id="ghr-9A-UeF"/>
+                                    <constraint firstItem="dUD-ew-psv" firstAttribute="top" secondItem="1bd-pn-OCc" secondAttribute="top" id="o3u-3P-deY"/>
                                     <constraint firstItem="dUD-ew-psv" firstAttribute="trailing" secondItem="1bd-pn-OCc" secondAttribute="trailing" id="oHq-5t-kgm"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="1bd-pn-OCc"/>
