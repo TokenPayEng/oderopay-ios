@@ -87,11 +87,29 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
-        collapseSection(creditOrDebitCardView, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
+        if creditOrDebitCardView.isHidden {
+            creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            creditOrDebitCardViewHeightConstraint.constant = 220
+            creditOrDebitCardView.setNeedsLayout()
+            creditOrDebitCardView.layoutIfNeeded()
+            creditOrDebitCardView.isHidden = false
+        } else {
+            creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+            creditOrDebitCardViewHeightConstraint.constant = 0
+            creditOrDebitCardView.setNeedsLayout()
+            creditOrDebitCardView.layoutIfNeeded()
+            creditOrDebitCardView.isHidden = true
+        }
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
-        collapseSection(multipleCardsView, using: multipleCreditCardsButton, and: multipleCardsViewHeightConstraint)
+        if multipleCardsView.isHidden {
+            multipleCreditCardsButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            multipleCardsView.isHidden = false
+        } else {
+            multipleCreditCardsButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+            multipleCardsView.isHidden = true
+        }
     }
     
     private func collapseSection(_ section: UIView, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
