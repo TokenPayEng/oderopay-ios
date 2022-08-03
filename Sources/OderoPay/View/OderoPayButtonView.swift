@@ -15,7 +15,7 @@ public class OderoPayButtonView: UIView {
     @IBOutlet weak var oderoPayImageView: UIImageView!
     @IBOutlet weak var oderoPayButton: UIButton! {
         didSet {
-            oderoPayButton.layer.cornerRadius = 6
+            oderoPayButton.layer.cornerRadius = 10
         }
     }
     
