@@ -14,6 +14,9 @@ public class CommonPaymentPageViewController: UIViewController {
     
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var multipleCardsView: MultipleCardsPaymentView!
+    @IBOutlet weak var multipleCardsViewHeightConstraint: NSLayoutConstraint!
+    
     // ---------------------UILabels---------------------
     @IBOutlet weak var totalPriceLabel: UILabel! {
         didSet {
@@ -88,7 +91,7 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
-        //collapseSection(creditOrDebitCardView, using: multipleCreditCardsButton)
+        collapseSection(multipleCardsView, using: multipleCreditCardsButton, and: multipleCardsViewHeightConstraint)
     }
     
     private func collapseSection(_ section: UIView, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
