@@ -11,6 +11,38 @@ class MultipleCardsPaymentView: UIView {
     
     @IBOutlet var contentView: UIView!
     
+    @IBOutlet weak var firstCardAmountLabel: UILabel! {
+        didSet {
+            firstAmountTextField.text = NSLocalizedString(
+                "firstCardAmount",
+                bundle: Bundle.module,
+                comment: "amount of money to be paid from the first credit card"
+            )
+        }
+    }
+    @IBOutlet weak var secondCardAmountLabel: UILabel! {
+        didSet {
+            firstAmountTextField.text = NSLocalizedString(
+                "secondCardAmount",
+                bundle: Bundle.module,
+                comment: "amount of money to be paid from the second credit card"
+            )
+        }
+    }
+    
+    @IBOutlet weak var makePaymentButton: UIButton! {
+        didSet {
+            makePaymentButton.layer.cornerRadius = 8
+            makePaymentButton.setTitle(
+                NSLocalizedString(
+                    "makePayment",
+                    bundle: Bundle.module,
+                    comment: "send payment request"
+                ),
+                for: .normal)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()

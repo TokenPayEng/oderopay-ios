@@ -11,6 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MultipleCardsPaymentView" customModule="OderoPay">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="LOQ-2U-fx3"/>
+                <outlet property="firstCardAmountLabel" destination="h3s-Tp-Vu2" id="DD5-wj-hZp"/>
+                <outlet property="makePaymentButton" destination="4CM-ct-rIP" id="eag-mT-zgE"/>
+                <outlet property="secondCardAmountLabel" destination="qXp-nh-i3Y" id="Pt1-is-nsj"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -30,7 +33,7 @@
                         <constraint firstAttribute="height" priority="750" constant="45" id="he1-8X-Da5"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="next"/>
                 </textField>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7Lo-2D-UUn">
                     <rect key="frame" x="0.0" y="5.5" width="30" height="29"/>
@@ -60,7 +63,7 @@
                         <constraint firstAttribute="height" priority="750" constant="45" id="dQs-E6-yxO"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                 </textField>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lYf-3o-wUb">
                     <rect key="frame" x="0.0" y="275.5" width="30" height="29"/>

@@ -14,7 +14,7 @@ class CreditOrDebitCardPayment: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var makePaymentButton: UIButton! {
         didSet {
-            makePaymentButton.layer.cornerRadius = 6
+            makePaymentButton.layer.cornerRadius = 8
             makePaymentButton.setTitle(
                 NSLocalizedString(
                     "makePayment",
