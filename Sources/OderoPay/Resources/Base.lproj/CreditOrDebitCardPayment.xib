@@ -46,7 +46,7 @@
                 <constraint firstItem="b3u-9H-Hdu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aS2-YD-A30"/>
                 <constraint firstItem="j5n-Ro-gLy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jVk-mw-zAp"/>
                 <constraint firstAttribute="bottom" secondItem="b3u-9H-Hdu" secondAttribute="bottom" id="rAz-wz-4Dh"/>
-                <constraint firstItem="b3u-9H-Hdu" firstAttribute="top" secondItem="j5n-Ro-gLy" secondAttribute="bottom" constant="15" id="tlY-CN-kxn"/>
+                <constraint firstItem="b3u-9H-Hdu" firstAttribute="top" secondItem="j5n-Ro-gLy" secondAttribute="bottom" priority="750" constant="15" id="tlY-CN-kxn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="237.68115942028987" y="-204.24107142857142"/>
