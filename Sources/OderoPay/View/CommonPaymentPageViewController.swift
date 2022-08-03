@@ -91,7 +91,7 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
-        collapseSection(multipleCreditCardsButton, ofHeight: 590, using: multipleCreditCardsButton, and: multipleCardsViewHeightConstraint)
+        collapseSection(multipleCardsView, ofHeight: 590, using: multipleCreditCardsButton, and: multipleCardsViewHeightConstraint)
     }
     
     private func collapseSection(_ section: UIView, ofHeight height: CGFloat, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
