@@ -108,7 +108,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m2B-NF-SFB" customClass="MultipleCardsPaymentView" customModule="OderoPay">
-                                                <rect key="frame" x="10" y="352" width="325" height="172.66666666666663"/>
+                                                <rect key="frame" x="15" y="352" width="320" height="172.66666666666663"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="590" id="Bso-AA-IuS"/>
@@ -121,7 +121,7 @@
                                             <constraint firstItem="u0C-VT-AcG" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="20" id="8HZ-ad-Tzv"/>
                                             <constraint firstItem="u0C-VT-AcG" firstAttribute="top" secondItem="dUD-ew-psv" secondAttribute="top" id="A6q-gy-Sho"/>
                                             <constraint firstAttribute="trailing" secondItem="mD7-Ni-MbP" secondAttribute="trailing" constant="55" id="E29-UR-8NS"/>
-                                            <constraint firstItem="m2B-NF-SFB" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="10" id="GOj-xV-gkR"/>
+                                            <constraint firstItem="m2B-NF-SFB" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="15" id="GOj-xV-gkR"/>
                                             <constraint firstItem="LtQ-yj-jgd" firstAttribute="top" secondItem="mD7-Ni-MbP" secondAttribute="bottom" constant="20" id="L3f-Wd-ZxU"/>
                                             <constraint firstItem="mD7-Ni-MbP" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="55" id="MfB-5q-WWp"/>
                                             <constraint firstItem="mD7-Ni-MbP" firstAttribute="top" secondItem="u0C-VT-AcG" secondAttribute="bottom" constant="20" id="UzC-yN-296"/>
