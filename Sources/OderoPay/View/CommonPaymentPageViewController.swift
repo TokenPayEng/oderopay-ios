@@ -87,41 +87,17 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
-        if creditOrDebitCardView.isHidden {
-            creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-            creditOrDebitCardViewHeightConstraint.constant = 220
-            creditOrDebitCardView.setNeedsLayout()
-            creditOrDebitCardView.layoutIfNeeded()
-            creditOrDebitCardView.isHidden = false
-        } else {
-            creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-            creditOrDebitCardViewHeightConstraint.constant = 0
-            creditOrDebitCardView.setNeedsLayout()
-            creditOrDebitCardView.layoutIfNeeded()
-            creditOrDebitCardView.isHidden = true
-        }
+        collapseSection(creditOrDebitCardView, ofHeight: 220, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
-        if multipleCardsView.isHidden {
-            multipleCreditCardsButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-            multipleCardsViewHeightConstraint.constant = 590
-            multipleCardsView.setNeedsLayout()
-            multipleCardsView.layoutIfNeeded()
-            multipleCardsView.isHidden = false
-        } else {
-            multipleCreditCardsButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-            multipleCardsViewHeightConstraint.constant = 0
-            multipleCardsView.setNeedsLayout()
-            multipleCardsView.layoutIfNeeded()
-            multipleCardsView.isHidden = true
-        }
+        collapseSection(multipleCreditCardsButton, ofHeight: 590, using: multipleCreditCardsButton, and: multipleCardsViewHeightConstraint)
     }
     
-    private func collapseSection(_ section: UIView, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
+    private func collapseSection(_ section: UIView, ofHeight height: CGFloat, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
         if section.isHidden {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-            heightConstraint.constant = 220
+            heightConstraint.constant = height
             section.setNeedsLayout()
             section.layoutIfNeeded()
             section.isHidden = false
