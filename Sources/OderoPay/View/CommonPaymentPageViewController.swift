@@ -93,17 +93,15 @@ public class CommonPaymentPageViewController: UIViewController {
     
     private func collapseSection(_ section: UIView, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
         if section.isHidden {
-            button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-            heightConstraint.constant = 200
-            section.layoutIfNeeded()
-            
             section.isHidden = false
+            button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            heightConstraint.constant = 230
+            section.layoutIfNeeded()
         } else {
+            section.isHidden = true
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             heightConstraint.constant = 0
             section.layoutIfNeeded()
-            
-            section.isHidden = true
         }
     }
     
