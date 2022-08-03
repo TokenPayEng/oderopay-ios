@@ -103,10 +103,10 @@
                     <state key="normal" title="Confirm Payment"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wW6-xp-NuM" userLabel="Vertical Divider 2">
-                    <rect key="frame" x="15" y="305" width="1" height="281"/>
+                    <rect key="frame" x="15" y="305" width="1" height="256"/>
                     <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" priority="750" constant="285" id="JTr-H4-OPi"/>
+                        <constraint firstAttribute="height" priority="750" constant="260" id="JTr-H4-OPi"/>
                         <constraint firstAttribute="width" constant="1" id="rMC-ba-H7W"/>
                     </constraints>
                 </view>
@@ -144,7 +144,7 @@
                 <constraint firstItem="vMt-Rj-sV0" firstAttribute="leading" secondItem="wW6-xp-NuM" secondAttribute="trailing" constant="25" id="kxH-zP-e8V"/>
                 <constraint firstItem="7HU-9x-x7d" firstAttribute="leading" secondItem="lYf-3o-wUb" secondAttribute="trailing" constant="10" id="oOc-ht-v1h"/>
                 <constraint firstItem="vMt-Rj-sV0" firstAttribute="top" secondItem="qXp-nh-i3Y" secondAttribute="bottom" priority="750" constant="20" id="oQ0-ml-dyY"/>
-                <constraint firstAttribute="bottom" secondItem="wW6-xp-NuM" secondAttribute="bottom" id="rTS-Zb-LNO"/>
+                <constraint firstAttribute="bottom" secondItem="wW6-xp-NuM" secondAttribute="bottom" constant="25" id="rTS-Zb-LNO"/>
                 <constraint firstAttribute="bottom" secondItem="4CM-ct-rIP" secondAttribute="bottom" id="tav-0Q-140"/>
                 <constraint firstItem="qXp-nh-i3Y" firstAttribute="leading" secondItem="wW6-xp-NuM" secondAttribute="trailing" constant="25" id="wzV-p0-lS3"/>
             </constraints>
