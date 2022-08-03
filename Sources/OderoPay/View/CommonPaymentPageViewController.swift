@@ -96,11 +96,13 @@ public class CommonPaymentPageViewController: UIViewController {
             section.isHidden = false
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             heightConstraint.constant = 220
+            section.setNeedsLayout()
             section.layoutIfNeeded()
         } else {
             section.isHidden = true
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             heightConstraint.constant = 0
+            section.setNeedsLayout()
             section.layoutIfNeeded()
         }
     }
