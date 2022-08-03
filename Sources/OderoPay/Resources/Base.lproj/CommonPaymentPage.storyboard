@@ -62,11 +62,11 @@
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <edgeInsets key="layoutMargins" top="10" left="20" bottom="10" right="0.0"/>
                             </stackView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ms6-OV-ZKm">
-                                <rect key="frame" x="0.0" y="245.33333333333337" width="390" height="544.66666666666674"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ms6-OV-ZKm">
+                                <rect key="frame" x="0.0" y="245.33333333333331" width="390" height="544.66666666666674"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-ew-psv" userLabel="Payment Options">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="545"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-ew-psv" userLabel="Payment Options">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="544.66666666666663"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0C-VT-AcG">
                                                 <rect key="frame" x="20" y="0.0" width="350" height="21"/>
@@ -107,8 +107,8 @@
                                                     <action selector="collapseMultipleCreditSection:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xhz-LA-Dso"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qa0-Yn-0HX" customClass="MultipleCardsPaymentView" customModule="OderoPay">
-                                                <rect key="frame" x="20" y="312" width="315" height="213"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qa0-Yn-0HX" customClass="MultipleCardsPaymentView" customModule="OderoPay">
+                                                <rect key="frame" x="20" y="312" width="315" height="212.66666666666663"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
@@ -135,6 +135,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="dUD-ew-psv" firstAttribute="leading" secondItem="1bd-pn-OCc" secondAttribute="leading" id="5x0-gj-sjA"/>
+                                    <constraint firstItem="dUD-ew-psv" firstAttribute="height" secondItem="eL1-YA-YD9" secondAttribute="height" priority="750" id="KRr-1i-bv4"/>
                                     <constraint firstItem="dUD-ew-psv" firstAttribute="bottom" secondItem="1bd-pn-OCc" secondAttribute="bottom" id="S9t-Li-1Ii"/>
                                     <constraint firstItem="1bd-pn-OCc" firstAttribute="top" secondItem="dUD-ew-psv" secondAttribute="top" id="d8a-U6-Mzl"/>
                                     <constraint firstItem="dUD-ew-psv" firstAttribute="width" secondItem="eL1-YA-YD9" secondAttribute="width" id="ghr-9A-UeF"/>
