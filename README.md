@@ -28,61 +28,83 @@ to the initNavigationController function.
 
 ## Functionality and Customizability
 
-Adding navigation controller to the OderoPay button.
+OderoPay Swift Package comes with UI customizability and detailed description of functionality. First comes customizability of the Common Payment Page, next functionality description.
 
-Function:
+## Navigating to Common Payment Page using OderoPay button
 
-`oderoPayButtonView.initNavigationController(named: UINavigationController)`
+To navigate to the common payment page you need to add navigation controller to the OderoPay button.
 
-Example:
+Function header:
+
+```swift
+    oderoPayButtonView.initNavigationController(named: UINavigationController)
+```
+
+Code example:
 
 ```swift
     oderoPayButtonView.initNavigationController(named: self.navigationController!)
 ```
 
-Changing color of the OderoPay button from white to black and reverse.
+## Changing OderoPay button color
 
-Function:
+OderoPay button color comes in two variations: black and white. You can also add button outline to the button itself. It's recommended to use black color variation or white color with black outline variation for light backgrounds, and white color variation for the dark backgrounds.
 
-`oderoPayButtonView.changeDefaultColor(fromWhiteToBlack: Bool)`
+Function header:
 
-Example:
+```swift
+    oderoPayButtonView.changeDefaultColor(fromWhiteToBlack: Bool)
+```
+
+Code example:
 
 ```swift
     oderoPayButtonView.changeDefaultColor(fromWhiteToBlack: true)
 ```
 
-Adding outline of any color to the OderoPay button.
+## Adding outline to OderoPay button
 
-Function:
+You can add any desired color outline to the OderoPay button. It's recommended only to add black colored outline to the white colored button.
 
-`oderoPayButtonView.addOderoPayButtonOutline(colored: UIColor)`
+Function header:
 
-Example:
+```swift
+    oderoPayButtonView.addOderoPayButtonOutline(colored: UIColor)
+```
+
+Code example:
 
 ```swift
     oderoPayButtonView.addOderoPayButtonOutline(colored: .black)
 ```
 
-Removing outline from the OderoPay button.
+## Removing outline from OderoPay button
 
-Function:
+You can remove added outline from the OderoPay button just as easy as adding it.
 
-`oderoPayButtonView.removeOderoPayButtonOutline()`
+Function header:
 
-Example:
+```swift
+    oderoPayButtonView.removeOderoPayButtonOutline()
+```
+
+Code example:
 
 ```swift
     oderoPayButtonView.removeOderoPayButtonOutline()
 ```
       
-Setting image (OderoPay logo) size inside OderoPay button.
+## Change OderoPay image size
 
-Function:
+You can change the size of the OderoPay sign/image inside the OderoPay button as you see fit depending on the size of your OderoPay button itself.
 
-`oderoPayButtonView.setOderoPayImageSize(height: CGFloat, width: CGFloat)`
+Function header:
 
-Example:
+```swift
+    oderoPayButtonView.setOderoPayImageSize(height: CGFloat, width: CGFloat)
+```
+
+Code example:
 
 ```swift
     oderoPayButtonView.setOderoPayImageSize(height: 40, width: 80)
