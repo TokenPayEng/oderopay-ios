@@ -78,13 +78,24 @@ public class OderoPayButtonView: UIView {
     
     @IBAction func initCommonPaymentPage(_ sender: Any) {
         print("initializing common payment page")
+        print("checking for navigation controller...")
         let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
         
         guard let navigationController = navigationController else {
+            print("navigation controller check - failure")
             print("navigation controller was not initialized for odero pay button, please use initNavigationController method")
             return
         }
-
-        navigationController.pushViewController(commonPaymentPageViewController, animated: true)
+        
+        print("navigation controller check - success")
+        print("checking for checkout form...")
+        
+        if OderoPay.checkoutForm.isReady() {
+            print("checkout form check - success")
+            navigationController.pushViewController(commonPaymentPageViewController, animated: true)
+        } else {
+            print("checkout form check - failure")
+            print("checkout form should be initialized with correct values first")
+        }
     }
 }
