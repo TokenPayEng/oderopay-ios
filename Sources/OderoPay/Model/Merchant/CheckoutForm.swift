@@ -21,16 +21,12 @@ public class CheckoutForm {
     
     convenience init() {
         self.init(orderNumber: "unknown", for: 0, in: .USD)
-        
-        CheckoutForm.isReady = false
     }
     
     public init(orderNumber: String, for price: Double, in currency: Currency) {
         self.orderNumber = orderNumber
         self.price = price
         self.currency = currency
-        
-        CheckoutForm.isReady = true
     }
     
     public init(orderNumber: String, for price: Double, in currency: Currency, from email: String) {
@@ -38,8 +34,6 @@ public class CheckoutForm {
         self.orderNumber = orderNumber
         self.price = price
         self.currency = currency
-        
-        CheckoutForm.isReady = true
     }
     
     public func isReady() -> Bool {
@@ -50,6 +44,8 @@ public class CheckoutForm {
         self.orderNumber = form.orderNumber
         self.price = form.price
         self.currency = form.currency
+        
+        CheckoutForm.isReady = true
         
         guard let email = form.email else {return}
         self.email = email
