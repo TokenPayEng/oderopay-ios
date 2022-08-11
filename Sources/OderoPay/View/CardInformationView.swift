@@ -63,6 +63,11 @@ class CardInformationView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("hi")
+        return true
+    }
 
 }
 
