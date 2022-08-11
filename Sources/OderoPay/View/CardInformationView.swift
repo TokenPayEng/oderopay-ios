@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardInformationView: UIView {
+class CardInformationView: UIView, UITextFieldDelegate {
 
     @IBOutlet var contentView: UIView!
     
@@ -62,10 +62,22 @@ class CardInformationView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        self.cardNumberTextField.delegate = self
+        self.expireDateTextField.delegate = self
+        self.cvcTextField.delegate = self
+        self.cardholderTextField.delegate = self
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("hi")
+        let nextTag = textField.tag + 1
+        
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
         return true
     }
 
