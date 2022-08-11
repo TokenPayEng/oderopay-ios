@@ -26,6 +26,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
             expireDateTextField.placeholder = NSLocalizedString("mm/yy",
                                                                bundle: Bundle.module,
                                                                comment: "card expire month and year")
+            
+            expireDateTextField.addPreviousNextToolbar()
         }
     }
     
@@ -35,6 +37,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
             cvcTextField.placeholder = NSLocalizedString("cvc",
                                                          bundle: Bundle.module,
                                                          comment: "card cvc code")
+            
+            cvcTextField.addPreviousNextToolbar()
         }
     }
     
@@ -95,6 +99,51 @@ extension UITextField {
         
         leftView = uiView
         leftViewMode = .always
+    }
+    
+    func addPreviousNextToolbar(onNext: (target: Any, action: Selector)? = nil,
+                                onPrevious: (target: Any, action: Selector)? = nil) {
+        
+        let onPrevious = onPrevious ?? (target: self, action: #selector(previousButtonTapped))
+        let onNext = onNext ?? (target: self, action: #selector(nextButtonTapped))
+        let toolbar: UIToolbar = UIToolbar()
+        
+        toolbar.items = [
+            UIBarButtonItem(
+                title: NSLocalizedString("previous", bundle: .module, comment: "go to previous text field"),
+                style: .plain,
+                target: onPrevious.target,
+                action: onPrevious.action),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(
+                title: NSLocalizedString("next", bundle: .module, comment: "go to next text field"),
+                style: .done,
+                target: onNext.target,
+                action: onNext.action),
+        ]
+        
+        toolbar.sizeToFit()
+        self.inputAccessoryView = toolbar
+    }
+    
+    @objc func nextButtonTapped() {
+        let nextTag = self.tag + 1
+        
+        if let nextResponder = self.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            self.resignFirstResponder()
+        }
+    }
+    
+    @objc func previousButtonTapped() {
+        let previousTag = self.tag - 1
+        
+        if let previousResponder = self.superview?.viewWithTag(previousTag) {
+            previousResponder.becomeFirstResponder()
+        } else {
+            self.resignFirstResponder()
+        }
     }
 }
 
