@@ -51,4 +51,8 @@ public class CheckoutForm {
         self.email = email
     }
     
+    public func getCheckoutPrice() -> String {
+        String(format: "%.2f", price) + " \(currency.rawValue)"
+    }
+    
 }

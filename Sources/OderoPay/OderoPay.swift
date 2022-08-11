@@ -12,4 +12,8 @@ public struct OderoPay {
     static public func setCheckoutForm(to form: CheckoutForm) {
         OderoPay.checkoutForm.setCheckoutForm(to: form)
     }
+    
+    static public func getCheckoutForm() -> CheckoutForm {
+        OderoPay.checkoutForm
+    }
 }

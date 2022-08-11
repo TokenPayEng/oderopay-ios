@@ -192,6 +192,7 @@
                         <outlet property="multipleCreditCardsButton" destination="oyD-Vs-TKn" id="m0Y-lJ-9Qo"/>
                         <outlet property="paymentMethodLabel" destination="mkD-Gd-ecN" id="G9X-7e-SQq"/>
                         <outlet property="totalPriceLabel" destination="xAV-Be-ZQE" id="X4Y-0J-sU4"/>
+                        <outlet property="totalPriceValueLabel" destination="Lbd-Nw-W7u" id="9ss-x7-9c2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

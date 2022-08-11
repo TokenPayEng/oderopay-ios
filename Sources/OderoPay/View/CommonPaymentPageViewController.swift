@@ -26,6 +26,12 @@ public class CommonPaymentPageViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var totalPriceValueLabel: UILabel! {
+        didSet {
+            totalPriceValueLabel.text = OderoPay.getCheckoutForm().getCheckoutPrice()
+        }
+    }
+    
     @IBOutlet weak var paymentMethodLabel: UILabel! {
         didSet {
             paymentMethodLabel.text = NSLocalizedString("paymentMethod",

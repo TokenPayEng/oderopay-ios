@@ -7,9 +7,9 @@
 
 import Foundation
 
-public enum Currency {
-    case TRY
-    case AZN
-    case USD
-    case EURO
+public enum Currency: String {
+    case TRY = "₺"
+    case AZN = "₼"
+    case USD = "$"
+    case EURO = "€"
 }
