@@ -10,7 +10,7 @@ import Foundation
 public class CheckoutForm {
 
     // mandatory
-    private var price: Int
+    private var price: Double
     private var currency: Currency
     private var orderNumber: String
     
@@ -25,7 +25,7 @@ public class CheckoutForm {
         CheckoutForm.isReady = false
     }
     
-    public init(orderNumber: String, for price: Int, in currency: Currency) {
+    public init(orderNumber: String, for price: Double, in currency: Currency) {
         self.orderNumber = orderNumber
         self.price = price
         self.currency = currency
@@ -33,7 +33,7 @@ public class CheckoutForm {
         CheckoutForm.isReady = true
     }
     
-    public init(orderNumber: String, for price: Int, in currency: Currency, from email: String) {
+    public init(orderNumber: String, for price: Double, in currency: Currency, from email: String) {
         self.email = email
         self.orderNumber = orderNumber
         self.price = price
