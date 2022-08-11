@@ -90,7 +90,7 @@ public class OderoPayButtonView: UIView {
         print("navigation controller check - success")
         print("checking for checkout form...")
         
-        if OderoPay.checkoutForm.isReady() {
+        if OderoPay.isCheckoutFormReady() {
             print("checkout form check - success")
             navigationController.pushViewController(commonPaymentPageViewController, animated: true)
         } else {

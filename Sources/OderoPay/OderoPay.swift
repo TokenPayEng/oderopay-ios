@@ -1,7 +1,11 @@
 public struct OderoPay {
     public private(set) var text = "Hello, World!"
-    static public var checkoutForm = CheckoutForm()
+    static private var checkoutForm = CheckoutForm()
 
     public init() {
+    }
+    
+    static public func isCheckoutFormReady() -> Bool {
+        OderoPay.checkoutForm.isReady()
     }
 }

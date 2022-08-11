@@ -46,4 +46,13 @@ public class CheckoutForm {
         CheckoutForm.isReady
     }
     
+    public func setCheckoutForm(to form: CheckoutForm) {
+        self.orderNumber = form.orderNumber
+        self.price = form.price
+        self.currency = form.currency
+        
+        guard let email = form.email else {return}
+        self.email = email
+    }
+    
 }
