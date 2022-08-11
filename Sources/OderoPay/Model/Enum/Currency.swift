@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Currency {
+public enum Currency {
     case TRY
     case AZN
     case USD

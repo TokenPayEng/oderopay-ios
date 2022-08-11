@@ -10,12 +10,12 @@ import Foundation
 public class CheckoutForm {
 
     // mandatory
-    var price: Int
-    var currency: Currency
-    var orderNumber: String
+    private var price: Int
+    private var currency: Currency
+    private var orderNumber: String
     
     // optional
-    var email: String?
+    private var email: String?
     
     static private var isReady: Bool = false
     
@@ -25,7 +25,7 @@ public class CheckoutForm {
         CheckoutForm.isReady = false
     }
     
-    init(orderNumber: String, for price: Int, in currency: Currency) {
+    public init(orderNumber: String, for price: Int, in currency: Currency) {
         self.orderNumber = orderNumber
         self.price = price
         self.currency = currency
@@ -33,7 +33,7 @@ public class CheckoutForm {
         CheckoutForm.isReady = true
     }
     
-    init(orderNumber: String, for price: Int, in currency: Currency, from email: String) {
+    public init(orderNumber: String, for price: Int, in currency: Currency, from email: String) {
         self.email = email
         self.orderNumber = orderNumber
         self.price = price
@@ -42,7 +42,7 @@ public class CheckoutForm {
         CheckoutForm.isReady = true
     }
     
-    func isReady() -> Bool {
+    public func isReady() -> Bool {
         CheckoutForm.isReady
     }
     
