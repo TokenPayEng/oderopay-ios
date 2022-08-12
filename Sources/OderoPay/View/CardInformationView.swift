@@ -127,6 +127,7 @@ extension UITextField {
     }
     
     @objc func nextButtonTapped() {
+        print(self.tag)
         let nextTag = self.tag + 1
         
         if let nextResponder = self.superview?.viewWithTag(nextTag) {
