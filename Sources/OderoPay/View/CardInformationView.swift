@@ -66,6 +66,13 @@ class CardInformationView: UIView, UITextFieldDelegate {
             cardholderTextField.placeholder = NSLocalizedString("cardHolderNameSurname",
                                                                     bundle: Bundle.module,
                                                                     comment: "card holder's name and surname")
+            
+            cardholderTextField.addPreviousToolbar(
+                onPrevious: (
+                    target: self,
+                    action: #selector(movePreviousTextField)
+                )
+            )
         }
     }
     
@@ -121,11 +128,11 @@ class CardInformationView: UIView, UITextFieldDelegate {
     @objc func movePreviousTextField() {
         
         if expireDateTextField.isFirstResponder {
-            expireDateTextField.resignFirstResponder()
             cardNumberTextField.becomeFirstResponder()
         } else if cvcTextField.isFirstResponder {
-            cvcTextField.resignFirstResponder()
             expireDateTextField.becomeFirstResponder()
+        } else if cardholderTextField.isFirstResponder {
+            cvcTextField.becomeFirstResponder()
         }
     }
 }
