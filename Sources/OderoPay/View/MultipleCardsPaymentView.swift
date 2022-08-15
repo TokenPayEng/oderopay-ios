@@ -62,6 +62,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             firstCardInformationView.expireDateTextField.tag = 7
             firstCardInformationView.cvcTextField.tag = 8
             firstCardInformationView.cardholderTextField.tag = 9
+            
+            print(firstCardInformationView.cardholderTextField.tag)
         }
     }
     
