@@ -58,8 +58,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     @IBOutlet weak var firstCardInformationView: CardInformationView! {
         didSet {
             firstCardInformationView.cardNumberTextField.addPreviousToolbar()
-            firstCardInformationView.cardNumberTextField.tag = 6
-            firstCardInformationView.expireDateTextField.tag = 7
+            firstCardInformationView.cardNumberTextField.tag = 7
+            firstCardInformationView.expireDateTextField.tag = 6
             firstCardInformationView.cvcTextField.tag = 8
             firstCardInformationView.cardholderTextField.tag = 9
             
