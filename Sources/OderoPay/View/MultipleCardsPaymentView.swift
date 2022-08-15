@@ -72,8 +72,28 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     action: #selector(movePreviousTextField)
                 )
             )
+            
+            firstCardInformationView.cardholderTextField.addNextToolbar(
+                onNext: (
+                    target: self,
+                    action: #selector(moveNextTextField)
+                )
+            )
         }
     }
+    
+    @IBOutlet weak var secondCardInformationView: CardInformationView! {
+        didSet {
+            secondCardInformationView.cardNumberTextField.addPreviousToolbar(
+                onPrevious: (
+                    target: self,
+                    action: #selector(movePreviousTextField)
+                )
+            )
+            
+        }
+    }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -96,22 +116,26 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     }
     
     @objc func moveNextTextField() {
-        let nextTag = self.tag + 1
+        if firstAmountTextField.isFirstResponder {
+            firstCardInformationView.cardNumberTextField.becomeFirstResponder()
+        }
         
-        if let nextResponder = self.superview?.viewWithTag(nextTag) {
-            nextResponder.becomeFirstResponder()
-        } else {
-            self.resignFirstResponder()
+        if firstCardInformationView.cardholderTextField.isFirstResponder {
+            secondAmountTextField.becomeFirstResponder()
+        }
+        
+        if secondAmountTextField.isFirstResponder {
+            secondCardInformationView.cardNumberTextField.becomeFirstResponder()
         }
     }
     
     @objc func movePreviousTextField() {
-        let previousTag = self.tag - 1
+        if firstCardInformationView.cardNumberTextField.isFirstResponder {
+            firstAmountTextField.becomeFirstResponder()
+        }
         
-        if let previousResponder = self.superview?.viewWithTag(previousTag) {
-            previousResponder.becomeFirstResponder()
-        } else {
-            self.resignFirstResponder()
+        if secondAmountTextField.isFirstResponder {
+            firstCardInformationView.cardholderTextField.becomeFirstResponder()
         }
     }
 }

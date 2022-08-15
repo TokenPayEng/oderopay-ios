@@ -17,6 +17,7 @@
                 <outlet property="makePaymentButton" destination="4CM-ct-rIP" id="eag-mT-zgE"/>
                 <outlet property="secondAmountTextField" destination="7HU-9x-x7d" id="GWn-pt-eBN"/>
                 <outlet property="secondCardAmountLabel" destination="qXp-nh-i3Y" id="Pt1-is-nsj"/>
+                <outlet property="secondCardInformationView" destination="vMt-Rj-sV0" id="Ona-5S-Ogj"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
