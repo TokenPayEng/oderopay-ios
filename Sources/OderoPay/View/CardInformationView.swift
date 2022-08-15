@@ -110,7 +110,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
     }
     
     @objc func moveNextTextField() {
-        print(self)
+        print(self.isFirstResponder)
         
         if expireDateTextField.isFirstResponder {
             cvcTextField.becomeFirstResponder()
