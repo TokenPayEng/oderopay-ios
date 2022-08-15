@@ -45,29 +45,33 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     @IBOutlet weak var firstAmountTextField: UITextField! {
         didSet {
-            firstAmountTextField.tag = 5
-            firstAmountTextField.addNextToolbar(onNext: (target: self, action: #selector(customNextTapped)))
+            firstAmountTextField.addNextToolbar(onNext: (target: self, action: #selector(moveNextTextField)))
         }
     }
                                                                  
     @IBOutlet weak var secondAmountTextField: UITextField! {
         didSet {
-            secondAmountTextField.tag = 10
-            secondAmountTextField.addPreviousNextToolbar()
+            secondAmountTextField.addPreviousNextToolbar(
+                onNext: (
+                    target: self,
+                    action: #selector(moveNextTextField)
+                ),
+                onPrevious: (
+                    target: self,
+                    action: #selector(movePreviousTextField)
+                )
+            )
         }
     }
     
     @IBOutlet weak var firstCardInformationView: CardInformationView! {
         didSet {
-            firstCardInformationView.cardNumberTextField.addPreviousToolbar()
-            
-            firstCardInformationView.cardNumberTextField.tag = 6
-            firstCardInformationView.expireDateTextField.tag = 7
-            firstCardInformationView.cvcTextField.tag = 8
-            firstCardInformationView.cardholderTextField.tag = 9
-            
-            
-            print(firstCardInformationView.cardholderTextField.tag)
+            firstCardInformationView.cardNumberTextField.addPreviousToolbar(
+                onPrevious: (
+                    target: self,
+                    action: #selector(movePreviousTextField)
+                )
+            )
         }
     }
     
@@ -91,7 +95,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         self.secondAmountTextField.delegate = self
     }
     
-    @objc func customNextTapped() {
+    @objc func moveNextTextField() {
         let nextTag = self.tag + 1
         
         if let nextResponder = self.superview?.viewWithTag(nextTag) {
@@ -101,7 +105,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         }
     }
     
-    @objc func customPreviousTapped() {
+    @objc func movePreviousTextField() {
         let previousTag = self.tag - 1
         
         if let previousResponder = self.superview?.viewWithTag(previousTag) {

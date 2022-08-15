@@ -27,7 +27,16 @@ class CardInformationView: UIView, UITextFieldDelegate {
                                                                bundle: Bundle.module,
                                                                comment: "card expire month and year")
             
-            expireDateTextField.addPreviousNextToolbar()
+            expireDateTextField.addPreviousNextToolbar(
+                onNext: (
+                    target: self,
+                    action: #selector(moveNextTextField)
+                ),
+                onPrevious: (
+                    target: self,
+                    action: #selector(movePreviousTextField)
+                )
+            )
         }
     }
     
@@ -38,7 +47,16 @@ class CardInformationView: UIView, UITextFieldDelegate {
                                                          bundle: Bundle.module,
                                                          comment: "card cvc code")
             
-            cvcTextField.addPreviousNextToolbar()
+            cvcTextField.addPreviousNextToolbar(
+                onNext: (
+                    target: self,
+                    action: #selector(moveNextTextField)
+                ),
+                onPrevious: (
+                    target: self,
+                    action: #selector(movePreviousTextField)
+                )
+            )
         }
     }
     
@@ -74,17 +92,38 @@ class CardInformationView: UIView, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let nextTag = textField.tag + 1
-
-        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
-            nextResponder.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-        }
-
+        switchTextFieldForward(textField)
         return true
     }
-
+    
+    func switchTextFieldForward(_ textField: UITextField) {
+        switch textField {
+        case cardNumberTextField:
+            expireDateTextField.becomeFirstResponder()
+        case expireDateTextField:
+            cvcTextField.becomeFirstResponder()
+        case cvcTextField:
+            cardholderTextField.becomeFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+    }
+    
+    @objc func moveNextTextField() {
+        switch self {
+        case cardNumberTextField:
+            expireDateTextField.becomeFirstResponder()
+        case expireDateTextField:
+            cvcTextField.becomeFirstResponder()
+        case cvcTextField:
+            cardholderTextField.becomeFirstResponder()
+        default:
+            self.resignFirstResponder()
+        }
+    }
+    
+    @objc func movePreviousTextField() {
+    }
 }
 
 extension UITextField {
@@ -101,11 +140,9 @@ extension UITextField {
         leftViewMode = .always
     }
     
-    func addPreviousNextToolbar(onNext: (target: Any, action: Selector)? = nil,
-                                onPrevious: (target: Any, action: Selector)? = nil) {
+    func addPreviousNextToolbar(onNext: (target: Any, action: Selector),
+                                onPrevious: (target: Any, action: Selector)) {
         
-        let onPrevious = onPrevious ?? (target: self, action: #selector(previousButtonTapped))
-        let onNext = onNext ?? (target: self, action: #selector(nextButtonTapped))
         let toolbar: UIToolbar = UIToolbar()
         
         toolbar.items = [
@@ -126,9 +163,8 @@ extension UITextField {
         self.inputAccessoryView = toolbar
     }
     
-    func addPreviousToolbar(onPrevious: (target: Any, action: Selector)? = nil) {
+    func addPreviousToolbar(onPrevious: (target: Any, action: Selector)) {
      
-        let onPrevious = onPrevious ?? (target: self, action: #selector(previousButtonTapped))
         let toolbar: UIToolbar = UIToolbar()
         
         toolbar.items = [
@@ -144,9 +180,8 @@ extension UITextField {
         self.inputAccessoryView = toolbar
     }
     
-    func addNextToolbar(onNext: (target: Any, action: Selector)? = nil) {
-        
-        let onNext = onNext ?? (target: self, action: #selector(nextButtonTapped))
+    func addNextToolbar(onNext: (target: Any, action: Selector)) {
+    
         let toolbar: UIToolbar = UIToolbar()
         
         toolbar.items = [
@@ -160,26 +195,6 @@ extension UITextField {
         
         toolbar.sizeToFit()
         self.inputAccessoryView = toolbar
-    }
-    
-    @objc func nextButtonTapped() {
-        let nextTag = self.tag + 1
-        
-        if let nextResponder = self.superview?.superview?.viewWithTag(nextTag) {
-            nextResponder.becomeFirstResponder()
-        } else {
-            self.resignFirstResponder()
-        }
-    }
-    
-    @objc func previousButtonTapped() {
-        let previousTag = self.tag - 1
-        
-        if let previousResponder = self.superview?.superview?.viewWithTag(previousTag) {
-            previousResponder.becomeFirstResponder()
-        } else {
-            self.resignFirstResponder()
-        }
     }
 }
 
