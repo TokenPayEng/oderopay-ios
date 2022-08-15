@@ -112,12 +112,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
     @objc func moveNextTextField() {
         
         if expireDateTextField.isFirstResponder {
-            expireDateTextField.resignFirstResponder()
             cvcTextField.becomeFirstResponder()
-        }
-        
-        if cvcTextField.isFirstResponder {
-            cvcTextField.resignFirstResponder()
+        } else if cvcTextField.isFirstResponder {
             cardholderTextField.becomeFirstResponder()
         }
     }
@@ -127,9 +123,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         if expireDateTextField.isFirstResponder {
             expireDateTextField.resignFirstResponder()
             cardNumberTextField.becomeFirstResponder()
-        }
-        
-        if cvcTextField.isFirstResponder {
+        } else if cvcTextField.isFirstResponder {
             cvcTextField.resignFirstResponder()
             expireDateTextField.becomeFirstResponder()
         }

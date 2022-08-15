@@ -118,13 +118,9 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     @objc func moveNextTextField() {
         if firstAmountTextField.isFirstResponder {
             firstCardInformationView.cardNumberTextField.becomeFirstResponder()
-        }
-        
-        if firstCardInformationView.cardholderTextField.isFirstResponder {
+        } else if firstCardInformationView.cardholderTextField.isFirstResponder {
             secondAmountTextField.becomeFirstResponder()
-        }
-        
-        if secondAmountTextField.isFirstResponder {
+        } else if secondAmountTextField.isFirstResponder {
             secondCardInformationView.cardNumberTextField.becomeFirstResponder()
         }
     }
@@ -132,9 +128,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     @objc func movePreviousTextField() {
         if firstCardInformationView.cardNumberTextField.isFirstResponder {
             firstAmountTextField.becomeFirstResponder()
-        }
-        
-        if secondAmountTextField.isFirstResponder {
+        } else if secondAmountTextField.isFirstResponder {
             firstCardInformationView.cardholderTextField.becomeFirstResponder()
         }
     }
