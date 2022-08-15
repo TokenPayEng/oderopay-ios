@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MultipleCardsPaymentView: UIView {
+class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     @IBOutlet var contentView: UIView!
     
@@ -43,6 +43,19 @@ class MultipleCardsPaymentView: UIView {
         }
     }
     
+    @IBOutlet weak var firstAmountTextField: UITextField! {
+        didSet {
+            firstAmountTextField.addPreviousNextToolbar(onNext: (target: self, action: #selector(customNextTapped)), onPrevious: (target: self, action: #selector(customPreviousTapped)))
+        }
+    }
+                                                                 
+    @IBOutlet weak var secondAmountTextField: UITextField! {
+        didSet {
+            secondAmountTextField.addPreviousNextToolbar()
+        }
+    }
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -58,6 +71,28 @@ class MultipleCardsPaymentView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        self.firstAmountTextField.delegate = self
+        self.secondAmountTextField.delegate = self
     }
-
+    
+    @objc func customNextTapped() {
+        let nextTag = self.tag + 1
+        
+        if let nextResponder = self.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            self.resignFirstResponder()
+        }
+    }
+    
+    @objc func customPreviousTapped() {
+        let previousTag = self.tag - 1
+        
+        if let previousResponder = self.superview?.viewWithTag(previousTag) {
+            previousResponder.becomeFirstResponder()
+        } else {
+            self.resignFirstResponder()
+        }
+    }
 }

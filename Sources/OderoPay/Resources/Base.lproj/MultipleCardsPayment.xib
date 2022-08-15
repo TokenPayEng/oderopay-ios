@@ -11,8 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MultipleCardsPaymentView" customModule="OderoPay">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="LOQ-2U-fx3"/>
+                <outlet property="firstAmountTextField" destination="Aq4-hT-vc9" id="qUR-xA-pQz"/>
                 <outlet property="firstCardAmountLabel" destination="h3s-Tp-Vu2" id="DD5-wj-hZp"/>
                 <outlet property="makePaymentButton" destination="4CM-ct-rIP" id="eag-mT-zgE"/>
+                <outlet property="secondAmountTextField" destination="7HU-9x-x7d" id="GWn-pt-eBN"/>
                 <outlet property="secondCardAmountLabel" destination="qXp-nh-i3Y" id="Pt1-is-nsj"/>
             </connections>
         </placeholder>
@@ -57,7 +59,7 @@
                         <constraint firstAttribute="height" priority="750" constant="1" id="XJO-9v-p28"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-9x-x7d">
+                <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-9x-x7d">
                     <rect key="frame" x="40" y="286" width="346" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="45" id="dQs-E6-yxO"/>
