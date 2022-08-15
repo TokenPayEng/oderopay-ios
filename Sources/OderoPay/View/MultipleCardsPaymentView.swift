@@ -45,12 +45,14 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     @IBOutlet weak var firstAmountTextField: UITextField! {
         didSet {
+            firstAmountTextField.tag = 5
             firstAmountTextField.addNextToolbar(onNext: (target: self, action: #selector(customNextTapped)))
         }
     }
                                                                  
     @IBOutlet weak var secondAmountTextField: UITextField! {
         didSet {
+            secondAmountTextField.tag = 10
             secondAmountTextField.addPreviousNextToolbar()
         }
     }
@@ -58,12 +60,12 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     @IBOutlet weak var firstCardInformationView: CardInformationView! {
         didSet {
             firstCardInformationView.cardNumberTextField.addPreviousToolbar()
-            firstAmountTextField.tag = 5
+            
             firstCardInformationView.cardNumberTextField.tag = 6
             firstCardInformationView.expireDateTextField.tag = 7
             firstCardInformationView.cvcTextField.tag = 8
             firstCardInformationView.cardholderTextField.tag = 9
-            secondAmountTextField.tag = 10
+            
             
             print(firstCardInformationView.cardholderTextField.tag)
         }
