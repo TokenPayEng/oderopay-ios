@@ -13,6 +13,7 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="LOQ-2U-fx3"/>
                 <outlet property="firstAmountTextField" destination="Aq4-hT-vc9" id="qUR-xA-pQz"/>
                 <outlet property="firstCardAmountLabel" destination="h3s-Tp-Vu2" id="DD5-wj-hZp"/>
+                <outlet property="firstCardInformationView" destination="uMT-9u-2vh" id="lRm-vR-YwL"/>
                 <outlet property="makePaymentButton" destination="4CM-ct-rIP" id="eag-mT-zgE"/>
                 <outlet property="secondAmountTextField" destination="7HU-9x-x7d" id="GWn-pt-eBN"/>
                 <outlet property="secondCardAmountLabel" destination="qXp-nh-i3Y" id="Pt1-is-nsj"/>

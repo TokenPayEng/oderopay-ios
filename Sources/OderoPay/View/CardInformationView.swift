@@ -126,6 +126,42 @@ extension UITextField {
         self.inputAccessoryView = toolbar
     }
     
+    func addPreviousToolbar(onPrevious: (target: Any, action: Selector)? = nil) {
+     
+        let onPrevious = onPrevious ?? (target: self, action: #selector(previousButtonTapped))
+        let toolbar: UIToolbar = UIToolbar()
+        
+        toolbar.items = [
+            UIBarButtonItem(
+                title: NSLocalizedString("previous", bundle: .module, comment: "go to previous text field"),
+                style: .plain,
+                target: onPrevious.target,
+                action: onPrevious.action),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        ]
+        
+        toolbar.sizeToFit()
+        self.inputAccessoryView = toolbar
+    }
+    
+    func addNextToolbar(onNext: (target: Any, action: Selector)? = nil) {
+        
+        let onNext = onNext ?? (target: self, action: #selector(nextButtonTapped))
+        let toolbar: UIToolbar = UIToolbar()
+        
+        toolbar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(
+                title: NSLocalizedString("next", bundle: .module, comment: "go to next text field"),
+                style: .done,
+                target: onNext.target,
+                action: onNext.action),
+        ]
+        
+        toolbar.sizeToFit()
+        self.inputAccessoryView = toolbar
+    }
+    
     @objc func nextButtonTapped() {
         let nextTag = self.tag + 1
         
