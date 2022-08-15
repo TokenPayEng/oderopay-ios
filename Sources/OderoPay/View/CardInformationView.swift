@@ -75,13 +75,13 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
-        
+
         if let nextResponder = textField.superview?.viewWithTag(nextTag) {
             nextResponder.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
         }
-        
+
         return true
     }
 
@@ -127,10 +127,9 @@ extension UITextField {
     }
     
     @objc func nextButtonTapped() {
-        debugPrint(self.tag)
         let nextTag = self.tag + 1
         
-        if let nextResponder = self.superview?.viewWithTag(nextTag) {
+        if let nextResponder = self.superview?.superview?.viewWithTag(nextTag) {
             nextResponder.becomeFirstResponder()
         } else {
             self.resignFirstResponder()
@@ -140,7 +139,7 @@ extension UITextField {
     @objc func previousButtonTapped() {
         let previousTag = self.tag - 1
         
-        if let previousResponder = self.superview?.viewWithTag(previousTag) {
+        if let previousResponder = self.superview?.superview?.viewWithTag(previousTag) {
             previousResponder.becomeFirstResponder()
         } else {
             self.resignFirstResponder()
