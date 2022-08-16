@@ -123,7 +123,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
             
             if cardNumberInputUpdated.count % 4 == 0 {
-                cardNumberInputCurrent.appending(" ")
+                textField.text?.append(" ")
             }
             
             return cardNumberInputUpdated.count <= 20
