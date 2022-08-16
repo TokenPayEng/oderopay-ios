@@ -53,7 +53,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                 onPrevious: (
                     target: self,
                     action: #selector(movePreviousTextField)
-                ),
+                )
             )
         }
     }
