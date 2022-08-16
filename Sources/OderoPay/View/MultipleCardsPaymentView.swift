@@ -45,7 +45,16 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     @IBOutlet weak var firstAmountTextField: UITextField! {
         didSet {
-            firstAmountTextField.addNextToolbar(onNext: (target: self, action: #selector(moveNextTextField)))
+            firstAmountTextField.addPreviousNextToolbar(
+                onNext: (
+                    target: self,
+                    action: #selector(moveNextTextField)
+                ),
+                onPrevious: (
+                    target: self,
+                    action: #selector(movePreviousTextField)
+                ),
+            )
         }
     }
                                                                  
@@ -147,6 +156,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             secondAmountTextField.becomeFirstResponder()
         } else if firstCardInformationView.cardholderTextField.isFirstResponder {
             firstCardInformationView.cvcTextField.becomeFirstResponder()
+        } else if firstAmountTextField.isFirstResponder {
+            firstAmountTextField.resignFirstResponder()
         }
     }
 }
