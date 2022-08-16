@@ -94,18 +94,10 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        let userInfo = notification.userInfo!
-        let keyboardSize = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let offset = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
-        
-        if keyboardSize?.height == offset?.height {
-            UIView.animate(withDuration: 0.1, animations: { () -> Void in
-                self.view.frame.origin.y -= keyboardSize!.height
-            })
-        } else {
-            UIView.animate(withDuration:0.1, animations: { () -> Void in
-                self.view.frame.origin.y += keyboardSize!.height - offset!.height
-            })
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
         }
     }
 
