@@ -145,8 +145,9 @@ class CardInformationView: UIView, UITextFieldDelegate {
     }
     
     @objc func moveNextTextField() {
-        
-        if expireDateTextField.isFirstResponder {
+        if cardNumberTextField.isFirstResponder {
+            expireDateTextField.becomeFirstResponder()
+        } else if expireDateTextField.isFirstResponder {
             cvcTextField.becomeFirstResponder()
         } else if cvcTextField.isFirstResponder {
             cardholderTextField.becomeFirstResponder()
