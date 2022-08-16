@@ -105,9 +105,11 @@ class CardInformationView: UIView, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
         if cvcTextField == textField {
-            guard let cvcInput = textField.text else {return true}
-            return cvcInput.count < 3
+            guard let cvcInputCurrent = textField.text as? NSString else {return true}
+            let cvcInputUpdated = cvcInputCurrent.replacingCharacters(in: range, with: string)
+            return cvcInputUpdated.count <= 3
         }
         
         return true
