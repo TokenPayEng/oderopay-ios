@@ -107,7 +107,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         print(textField.text ?? "--")
         
-        return false
+        return true
     }
     
     func switchTextFieldForward(_ textField: UITextField) {
