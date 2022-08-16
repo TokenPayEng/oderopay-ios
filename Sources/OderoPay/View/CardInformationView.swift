@@ -18,7 +18,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                                                                 bundle: Bundle.module,
                                                                 comment: "card number")
             
-            cardholderTextField.addNextToolbar(
+            cardNumberTextField.addNextToolbar(
                 onNext: (
                     target: self,
                     action: #selector(moveNextTextField)
