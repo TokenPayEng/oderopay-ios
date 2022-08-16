@@ -17,6 +17,13 @@ class CardInformationView: UIView, UITextFieldDelegate {
             cardNumberTextField.placeholder = NSLocalizedString("cardNumber",
                                                                 bundle: Bundle.module,
                                                                 comment: "card number")
+            
+            cardholderTextField.addNextToolbar(
+                onNext: (
+                    target: self,
+                    action: #selector(moveNextTextField)
+                )
+            )
         }
     }
     
