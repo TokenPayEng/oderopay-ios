@@ -73,12 +73,15 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                 )
             )
             
-            firstCardInformationView.cardholderTextField.addNextToolbar(
+            firstCardInformationView.cardholderTextField.addPreviousNextToolbar(
                 onNext: (
                     target: self,
                     action: #selector(moveNextTextField)
-                )
-            )
+                ),
+                onPrevious: (
+                    target: self,
+                    action: #selector(movePreviousTextField)
+                ))
         }
     }
     
