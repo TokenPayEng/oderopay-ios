@@ -131,6 +131,10 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             secondAmountTextField.becomeFirstResponder()
         } else if secondAmountTextField.isFirstResponder {
             secondCardInformationView.cardNumberTextField.becomeFirstResponder()
+        } else if firstCardInformationView.cardNumberTextField.isFirstResponder {
+            firstCardInformationView.expireDateTextField.becomeFirstResponder()
+        } else if secondCardInformationView.cardNumberTextField.isFirstResponder {
+            secondCardInformationView.expireDateTextField.becomeFirstResponder()
         }
     }
     
