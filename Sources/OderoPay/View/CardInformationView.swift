@@ -18,10 +18,14 @@ class CardInformationView: UIView, UITextFieldDelegate {
                                                                 bundle: Bundle.module,
                                                                 comment: "card number")
             
-            cardNumberTextField.addNextToolbar(
+            cardNumberTextField.addPreviousNextToolbar(
                 onNext: (
                     target: self,
                     action: #selector(moveNextTextField)
+                ),
+                onPrevious: (
+                    target: self,
+                    action: #selector(movePreviousTextField)
                 )
             )
         }
@@ -156,7 +160,9 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     @objc func movePreviousTextField() {
         
-        if expireDateTextField.isFirstResponder {
+        if cardNumberTextField.isFirstResponder {
+            cardNumberTextField.resignFirstResponder()
+        } else if expireDateTextField.isFirstResponder {
             cardNumberTextField.becomeFirstResponder()
         } else if cvcTextField.isFirstResponder {
             expireDateTextField.becomeFirstResponder()

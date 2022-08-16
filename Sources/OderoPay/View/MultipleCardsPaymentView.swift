@@ -66,13 +66,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     @IBOutlet weak var firstCardInformationView: CardInformationView! {
         didSet {
-            firstCardInformationView.cardNumberTextField.addPreviousToolbar(
-                onPrevious: (
-                    target: self,
-                    action: #selector(movePreviousTextField)
-                )
-            )
-            
             firstCardInformationView.cardholderTextField.addPreviousNextToolbar(
                 onNext: (
                     target: self,
@@ -85,18 +78,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         }
     }
     
-    @IBOutlet weak var secondCardInformationView: CardInformationView! {
-        didSet {
-            secondCardInformationView.cardNumberTextField.addPreviousToolbar(
-                onPrevious: (
-                    target: self,
-                    action: #selector(movePreviousTextField)
-                )
-            )
-            
-        }
-    }
-    
+    @IBOutlet weak var secondCardInformationView: CardInformationView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
