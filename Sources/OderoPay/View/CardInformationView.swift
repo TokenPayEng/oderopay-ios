@@ -121,7 +121,12 @@ class CardInformationView: UIView, UITextFieldDelegate {
         if textField == cardNumberTextField {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
-            return cardNumberInputUpdated.count <= 19
+            
+            if cardNumberInputUpdated.count % 4 == 0 {
+                cardNumberInputCurrent.appending(" ")
+            }
+            
+            return cardNumberInputUpdated.count <= 20
         }
         
         
