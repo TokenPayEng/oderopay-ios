@@ -130,6 +130,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             firstAmountTextField.becomeFirstResponder()
         } else if secondAmountTextField.isFirstResponder {
             firstCardInformationView.cardholderTextField.becomeFirstResponder()
+        } else if secondCardInformationView.cardNumberTextField.isFirstResponder {
+            secondAmountTextField.becomeFirstResponder()
         }
     }
 }
