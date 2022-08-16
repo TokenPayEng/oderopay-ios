@@ -106,8 +106,17 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-        if cvcTextField == textField {
-            guard let cvcInputCurrent = textField.text as? NSString else {return true}
+        // ensure card number is at between 13 and 19 and only numeric characters are entered
+        if textField == cardNumberTextField {
+            guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
+            let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
+            return cardNumberInputUpdated.count >= 13 && cardNumberInputUpdated.count <= 19
+        }
+        
+        
+        // ensure only 3 character long cvc field
+        if  textField == cvcTextField {
+            guard let cvcInputCurrent = textField.text as? NSString else { return true }
             let cvcInputUpdated = cvcInputCurrent.replacingCharacters(in: range, with: string)
             return cvcInputUpdated.count <= 3
         }
