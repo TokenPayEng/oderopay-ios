@@ -98,9 +98,16 @@ class CardInformationView: UIView, UITextFieldDelegate {
         self.cardholderTextField.delegate = self
     }
     
+    // delegate functions
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switchTextFieldForward(textField)
         return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print(textField.text ?? "--")
+        
+        return false
     }
     
     func switchTextFieldForward(_ textField: UITextField) {
