@@ -11,7 +11,6 @@ import UIKit
 public class CommonPaymentPageViewController: UIViewController {
     
     // ---------------------UIViews----------------------
-    
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var multipleCardsView: MultipleCardsPaymentView!

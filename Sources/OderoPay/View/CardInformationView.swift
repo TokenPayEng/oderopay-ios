@@ -117,16 +117,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-        // ensure card number is at between 13 and 19 and only numeric characters are entered
+        // card number
         if textField == cardNumberTextField {
-            guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
-            let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
-            
-            if cardNumberInputUpdated.count % 5 == 0 {
-                textField.text?.append(" ")
-            }
-            
-            return cardNumberInputUpdated.count <= 20
         }
         
         
