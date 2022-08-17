@@ -9,7 +9,7 @@ import Foundation
 
 struct Visa: CardProtocol {
     
-    var iinRanges: [Int] = [4]
-    var lengthRanges: [Int] = Array(13...19)
-    var pattern: [String] = ["#### #### #### ####", "unknown"]
+    static var iinRanges: [Int] = [4]
+    static var lengthRanges: [Int] = Array(13...19)
+    static var pattern: [String] = ["#### #### #### ####", "unknown"]
 }

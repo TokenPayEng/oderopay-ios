@@ -9,7 +9,7 @@ import Foundation
 
 struct VisaElectron: CardProtocol {
     
-    var iinRanges: [Int] = [4026, 4175_00, 4405, 4508, 4844, 4913, 4917]
-    var lengthRanges: [Int] = [16]
-    var pattern: [String] = ["#### #### #### ####"]
+    static var iinRanges: [Int] = [4026, 4175_00, 4405, 4508, 4844, 4913, 4917]
+    static var lengthRanges: [Int] = [16]
+    static var pattern: [String] = ["#### #### #### ####"]
 }

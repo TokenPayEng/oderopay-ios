@@ -9,7 +9,7 @@ import Foundation
 
 protocol CardProtocol {
     
-    var iinRanges: [Int] { get set }
-    var lengthRanges: [Int] { get set }
-    var pattern: [String] { get set }
+    static var iinRanges: [Int] { get set }
+    static var lengthRanges: [Int] { get set }
+    static var pattern: [String] { get set }
 }

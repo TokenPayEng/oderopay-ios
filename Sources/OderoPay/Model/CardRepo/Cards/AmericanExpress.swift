@@ -9,7 +9,7 @@ import Foundation
 
 struct AmericanExpress: CardProtocol {
     
-    var iinRanges: [Int] = [34, 37]
-    var lengthRanges: [Int] = [15]
-    var pattern: [String] = ["#### ###### #####"]
+    static var iinRanges: [Int] = [34, 37]
+    static var lengthRanges: [Int] = [15]
+    static var pattern: [String] = ["#### ###### #####"]
 }

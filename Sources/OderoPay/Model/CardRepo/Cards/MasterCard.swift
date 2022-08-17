@@ -9,7 +9,7 @@ import Foundation
 
 struct MasterCard: CardProtocol {
     
-    var iinRanges: [Int] = Array(51...55) + Array(2221_00...2720_99)
-    var lengthRanges: [Int] = [16]
-    var pattern: [String] = ["#### #### #### ####"]
+    static var iinRanges: [Int] = Array(51...55) + Array(2221_00...2720_99)
+    static var lengthRanges: [Int] = [16]
+    static var pattern: [String] = ["#### #### #### ####"]
 }

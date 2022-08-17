@@ -119,6 +119,13 @@ class CardInformationView: UIView, UITextFieldDelegate {
 
         // card number
         if textField == cardNumberTextField {
+            guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
+            let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
+            
+            for (key, value) in CardRepository.masterCardByIinRanges {
+                print("key is: \(key). value is: \(value)")
+            }
+            
         }
         
         

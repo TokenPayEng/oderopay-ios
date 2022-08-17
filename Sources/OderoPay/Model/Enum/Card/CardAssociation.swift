@@ -9,7 +9,11 @@ import Foundation
 
 enum CardAssociation {
     case VISA
+    case VISA_ELECTRON
     case MASTER_CARD
+    case MAESTRO
     case AMEX
     case TROY
+    case NOT_FOUND
+    case ERROR
 }
