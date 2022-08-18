@@ -160,6 +160,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                         )
                     }
                 }
+                
             case .VISA_ELECTRON:
                 if !UITextField.cardAssociationSet {
                     textField.setCardAssociation(
@@ -184,6 +185,9 @@ class CardInformationView: UIView, UITextFieldDelegate {
                         use: UIImage(named: "amex", in: .module, with: .none)!
                     )
                 }
+                
+                textField.text = formatBy(pattern: AmericanExpress.pattern.first!, this: cardNumberInputUpdated)
+                return false
             case .UNDEFINED:
                 if UITextField.cardAssociationSet {
                     textField.removeCardAssociation()
