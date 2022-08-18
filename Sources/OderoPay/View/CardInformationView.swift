@@ -135,20 +135,32 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     cardAssociation = retrievedCardAssociation
                 }
             } else {
+                // remove association
+                cardAssociation = cardNumberInputUpdated.count == 0 ? .UNDEFINED : cardAssociation
                 
                 switch cardAssociation {
                 case .VISA:
-                    textField.setCardAssociation(use: UIImage(named: "visa", in: .module, with: .none)!)
+                    textField.setCardAssociation(
+                        use: UIImage(named: "visa", in: .module, with: .none)!
+                    )
                 case .VISA_ELECTRON:
-                    textField.setCardAssociation(use: UIImage(named: "visaelectron")!)
+                    textField.setCardAssociation(
+                        use: UIImage(named: "visaelectron", in: .module, with: .none)!
+                    )
                 case .MASTER_CARD:
-                    textField.setCardAssociation(use: UIImage(named: "mastercard")!)
+                    textField.setCardAssociation(
+                        use: UIImage(named: "mastercard", in: .module, with: .none)!
+                    )
                 case .MAESTRO:
-                    textField.setCardAssociation(use: UIImage(named: "maestro")!)
+                    textField.setCardAssociation(
+                        use: UIImage(named: "maestro", in: .module, with: .none)!
+                    )
                 case .AMEX:
-                    textField.setCardAssociation(use: UIImage(named: "amex")!)
+                    textField.setCardAssociation(
+                        use: UIImage(named: "amex", in: .module, with: .none)!
+                    )
                 case .UNDEFINED:
-                    print("card association undefined")
+                    textField.removeCardAssociation()
                 }
             }
             
@@ -221,15 +233,19 @@ extension UITextField {
     }
     
     func setCardAssociation(use image: UIImage) {
-        let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
+        let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
         imageView.image = image
         
-        let uiView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
+        let uiView = UIView(frame: CGRect(x: 20, y: 20, width: 60, height: 60))
         uiView.addSubview(imageView)
         
         rightView = uiView
         rightViewMode = .always
+    }
+    
+    func removeCardAssociation() {
+        rightViewMode = .never
     }
     
     func addPreviousNextToolbar(onNext: (target: Any, action: Selector),
