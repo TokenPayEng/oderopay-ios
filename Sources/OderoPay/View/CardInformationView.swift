@@ -126,7 +126,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
 
         // card number
         if textField == cardNumberTextField {
-            guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
+            guard let cardNumberInputCurrent = textField.text as? NSString else { return false }
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
             
             // initial check
@@ -195,30 +195,40 @@ class CardInformationView: UIView, UITextFieldDelegate {
         // ensure only 5 character long field
         // check for MM < 12 and MM/YY > current month year
         if textField == expireDateTextField {
-            guard let expireDateInputCurrent = textField.text as? NSString else { return true }
-            var expireDateInputUpdated = expireDateInputCurrent.replacingCharacters(in: range, with: string)
+            guard let expireDateInputCurrent = textField.text as? NSString else { return false }
+            let expireDateInputUpdated = expireDateInputCurrent.replacingCharacters(in: range, with: string)
             
-            guard let index = expireDatePattern.firstIndex(of: "#") else { return false }
-            let position = expireDatePattern.distance(from: expireDatePattern.startIndex, to: index)
-
-            if position == 3 {
-                textField.text? += "/"
-                expireDateInputUpdated += "/"
-            }
-            
-            expireDatePattern = expireDateInputUpdated + "##/##".dropFirst(position + 1)
-            
-            print(expireDatePattern)
+            textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
+            return false
         }
         
         // ensure only 3 character long cvc field
         if  textField == cvcTextField {
-            guard let cvcInputCurrent = textField.text as? NSString else { return true }
+            guard let cvcInputCurrent = textField.text as? NSString else { return false }
             let cvcInputUpdated = cvcInputCurrent.replacingCharacters(in: range, with: string)
             return cvcInputUpdated.count <= 3
         }
         
         return true
+    }
+    
+    func formatBy(pattern: String, this str: String) -> String {
+        var result: String = String()
+        let numbers = str.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        
+        // starting with beginning
+        var index = numbers.startIndex
+        for char in pattern where index < numbers.endIndex {
+            if char == "#" {
+                result.append(numbers[index])
+                
+                index = numbers.index(after: index)
+            } else {
+                result.append(char)
+            }
+        }
+        
+        return result
     }
     
     func switchTextFieldForward(_ textField: UITextField) {
