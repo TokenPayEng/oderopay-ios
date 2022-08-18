@@ -199,12 +199,11 @@ class CardInformationView: UIView, UITextFieldDelegate {
             guard let index = expireDatePattern.firstIndex(of: "#") else { return false }
             let position = expireDatePattern.distance(from: expireDatePattern.startIndex, to: index)
 
-            
-            if position != 2 {
-                expireDatePattern = expireDatePattern.prefix(position) + string + expireDatePattern.dropFirst(position + 1)
-            } else {
+            if position  == 3 {
                 textField.text? += "/"
             }
+            
+            expireDatePattern = expireDatePattern.prefix(position) + string + expireDatePattern.dropFirst(position + 1)
             
             print(expireDatePattern)
         }
