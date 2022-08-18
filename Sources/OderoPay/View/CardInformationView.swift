@@ -143,6 +143,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 } else {
                     if CardInformationView.cardRepository.isVisaElectron(Int(cardNumberInputUpdated) ?? 0) {
                         cardAssociation = .VISA_ELECTRON
+                        cardIinRangeString = cardNumberInputUpdated
                         textField.setCardAssociation(
                             use: UIImage(named: "visaelectron", in: .module, with: .none)!
                         )
