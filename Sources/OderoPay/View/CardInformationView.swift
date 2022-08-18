@@ -148,6 +148,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                             use: UIImage(named: "visaelectron", in: .module, with: .none)!
                         )
                     } else {
+                        cardIinRangeString = "4"
                         textField.setCardAssociation(
                             use: UIImage(named: "visa", in: .module, with: .none)!
                         )
