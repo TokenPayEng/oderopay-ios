@@ -220,10 +220,12 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 }
                 
                 if month > 12 {
-                    textField.backgroundColor = .red
+                    textField.backgroundColor = .red.withAlphaComponent(0.3)
                 } else {
                     textField.backgroundColor = .clear
                 }
+            } else {
+                textField.backgroundColor = .clear
             }
             
             return false
