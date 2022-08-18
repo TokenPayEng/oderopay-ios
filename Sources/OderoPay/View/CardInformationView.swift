@@ -134,36 +134,35 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     
                     cardAssociation = retrievedCardAssociation
                 }
-            } else {
-                // remove association
-                cardAssociation = cardNumberInputUpdated.count == 0 ? .UNDEFINED : cardAssociation
-                
-                switch cardAssociation {
-                case .VISA:
-                    textField.setCardAssociation(
-                        use: UIImage(named: "visa", in: .module, with: .none)!
-                    )
-                case .VISA_ELECTRON:
-                    textField.setCardAssociation(
-                        use: UIImage(named: "visaelectron", in: .module, with: .none)!
-                    )
-                case .MASTER_CARD:
-                    textField.setCardAssociation(
-                        use: UIImage(named: "mastercard", in: .module, with: .none)!
-                    )
-                case .MAESTRO:
-                    textField.setCardAssociation(
-                        use: UIImage(named: "maestro", in: .module, with: .none)!
-                    )
-                case .AMEX:
-                    textField.setCardAssociation(
-                        use: UIImage(named: "amex", in: .module, with: .none)!
-                    )
-                case .UNDEFINED:
-                    textField.removeCardAssociation()
-                }
             }
             
+            // remove association
+            cardAssociation = cardNumberInputUpdated.count == 0 ? .UNDEFINED : cardAssociation
+            
+            switch cardAssociation {
+            case .VISA:
+                textField.setCardAssociation(
+                    use: UIImage(named: "visa", in: .module, with: .none)!
+                )
+            case .VISA_ELECTRON:
+                textField.setCardAssociation(
+                    use: UIImage(named: "visaelectron", in: .module, with: .none)!
+                )
+            case .MASTER_CARD:
+                textField.setCardAssociation(
+                    use: UIImage(named: "mastercard", in: .module, with: .none)!
+                )
+            case .MAESTRO:
+                textField.setCardAssociation(
+                    use: UIImage(named: "maestro", in: .module, with: .none)!
+                )
+            case .AMEX:
+                textField.setCardAssociation(
+                    use: UIImage(named: "amex", in: .module, with: .none)!
+                )
+            case .UNDEFINED:
+                textField.removeCardAssociation()
+            }
         }
         
         
