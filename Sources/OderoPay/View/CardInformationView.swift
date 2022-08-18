@@ -196,13 +196,14 @@ class CardInformationView: UIView, UITextFieldDelegate {
         }
         
         // create masking as MM/YY
-        // ensure only 5 character long field
+        // ensured only to have 5 character long field by masking
         // check for MM < 12 and MM/YY > current month year
         if textField == expireDateTextField {
             guard let expireDateInputCurrent = textField.text as? NSString else { return false }
             let expireDateInputUpdated = expireDateInputCurrent.replacingCharacters(in: range, with: string)
             
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
+            print(textField.text)
             return false
         }
         
