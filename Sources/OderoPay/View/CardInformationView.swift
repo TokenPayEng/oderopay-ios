@@ -195,6 +195,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         // ensure only 5 character long field
         // check for MM < 12 and MM/YY > current month year
         if textField == expireDateTextField {
+            print(expireDatePattern)
             guard let index = expireDatePattern.firstIndex(of: "#") else { return false }
             let position = expireDatePattern.distance(from: expireDatePattern.startIndex, to: index)
 
@@ -204,8 +205,6 @@ class CardInformationView: UIView, UITextFieldDelegate {
             } else {
                 textField.text? += "/"
             }
-            
-            print(expireDatePattern)
         }
         
         // ensure only 3 character long cvc field
