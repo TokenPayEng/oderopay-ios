@@ -133,6 +133,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             // setting iin range as undefined if pattern changes
             cardAssociation = cardNumberInputUpdated.count == 0 ? .UNDEFINED : cardAssociation
             cardAssociation = cardIinRangeString.count > cardNumberInputUpdated.count ? .UNDEFINED : cardAssociation
+            cardAssociation = cardIinRangeString.count > cardNumberInputUpdated.count && cardAssociation == .VISA_ELECTRON ? .VISA : cardAssociation
             
             switch cardAssociation {
             case .VISA:
