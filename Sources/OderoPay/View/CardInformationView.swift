@@ -124,7 +124,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
             
-            if cardNumberInputUpdated.count < textField.text?.count {
+            if cardNumberInputUpdated.count < textField.text!.count {
                 cardAssociation = .UNDEFINED
             }
             
