@@ -29,7 +29,7 @@ struct CardRepository {
     func lookUpCardAssociation(_ pattern: Int) -> CardAssociation? {
         
         print(pattern)
-        print(cardByIinRanges[pattern]?.rawValue!)
+        print(cardByIinRanges[pattern]?.rawValue)
         
         if cardByIinRanges.isEmpty {
             print("Error retrieving card association data.")
