@@ -124,6 +124,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
 
+            print(cardNumberInputUpdated)
             
             if cardAssociation == .UNDEFINED {
                 if var retrievedCardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0) {
@@ -138,6 +139,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
             } else {
                 // remove association
                 cardAssociation = cardNumberInputUpdated.count == 0 ? .UNDEFINED : cardAssociation
+                
+                print(cardAssociation)
                 
                 switch cardAssociation {
                 case .VISA:
@@ -252,7 +255,9 @@ extension UITextField {
     func addPreviousNextToolbar(onNext: (target: Any, action: Selector),
                                 onPrevious: (target: Any, action: Selector)) {
         
-        let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
+        let toolbar: UIToolbar = UIToolbar(
+            frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35)
+        )
         
         toolbar.items = [
             UIBarButtonItem(
@@ -274,7 +279,9 @@ extension UITextField {
     
     func addPreviousToolbar(onPrevious: (target: Any, action: Selector)) {
      
-        let toolbar: UIToolbar = UIToolbar()
+        let toolbar: UIToolbar = UIToolbar(
+            frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35)
+        )
         
         toolbar.items = [
             UIBarButtonItem(
@@ -291,7 +298,9 @@ extension UITextField {
     
     func addNextToolbar(onNext: (target: Any, action: Selector)) {
     
-        let toolbar: UIToolbar = UIToolbar()
+        let toolbar: UIToolbar = UIToolbar(
+            frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35)
+        )
         
         toolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
