@@ -199,6 +199,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             let expireDateInputUpdated = expireDateInputCurrent.replacingCharacters(in: range, with: string)
             
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
+            return false
         }
         
         // ensure only 3 character long cvc field
