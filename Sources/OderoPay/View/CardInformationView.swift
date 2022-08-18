@@ -205,6 +205,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
             } else {
                 textField.text? += "/"
             }
+            
+            print(expireDatePattern)
         }
         
         // ensure only 3 character long cvc field
