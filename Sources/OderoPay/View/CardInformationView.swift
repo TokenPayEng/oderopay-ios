@@ -20,16 +20,16 @@ class CardInformationView: UIView, UITextFieldDelegate {
                                                                 bundle: Bundle.module,
                                                                 comment: "card number")
             
-            cardNumberTextField.addPreviousNextToolbar(
-                onNext: (
-                    target: self,
-                    action: #selector(moveNextTextField)
-                ),
-                onPrevious: (
-                    target: self,
-                    action: #selector(movePreviousTextField)
-                )
-            )
+//            cardNumberTextField.addPreviousNextToolbar(
+//                onNext: (
+//                    target: self,
+//                    action: #selector(moveNextTextField)
+//                ),
+//                onPrevious: (
+//                    target: self,
+//                    action: #selector(movePreviousTextField)
+//                )
+//            )
         }
     }
     
@@ -123,6 +123,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         if textField == cardNumberTextField {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
+
             
             if cardAssociation == .UNDEFINED {
                 if var retrievedCardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0) {
