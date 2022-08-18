@@ -203,7 +203,29 @@ class CardInformationView: UIView, UITextFieldDelegate {
             let expireDateInputUpdated = expireDateInputCurrent.replacingCharacters(in: range, with: string)
             
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
-            print(textField.text)
+            
+            if textField.text!.contains("/") {
+                let expireDateFields = textField.text!.split(separator: "/")
+                
+                let monthString = expireDateFields[0]
+                let yearString = expireDateFields[1]
+                
+                var month: Int = Int()
+                var year: Int = Int()
+                
+                if monthString.starts(with: "0") {
+                    month = Int(monthString.suffix(1))!
+                } else {
+                    month = Int(monthString)!
+                }
+                
+                if month > 12 {
+                    textField.layer.borderColor = UIColor.red.cgColor
+                } else {
+                    textField.layer.borderColor = UIColor.placeholderText.cgColor
+                }
+            }
+            
             return false
         }
         
