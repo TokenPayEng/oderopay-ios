@@ -26,7 +26,7 @@ struct CardRepository {
          }
     }
     
-    func lookUpCardAssociation(_ pattern: Int) -> CardAssociation? {
+    func lookUpCardAssociation(_ pattern: Int) -> CardAssociation {
     
         if cardByIinRanges.isEmpty {
             print("Error retrieving card association data.")
@@ -36,7 +36,7 @@ struct CardRepository {
             }
         }
         
-        return nil
+        return .UNDEFINED
     }
     
     func isVisaElectron(_ pattern: Int) -> Bool {

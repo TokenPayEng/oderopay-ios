@@ -124,6 +124,10 @@ class CardInformationView: UIView, UITextFieldDelegate {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
             
+            if cardAssociation == .UNDEFINED {
+                cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0)
+            }
+            
             switch cardAssociation {
             case .VISA:
                 if !UITextField.cardAssociationSet {
@@ -163,10 +167,6 @@ class CardInformationView: UIView, UITextFieldDelegate {
             case .UNDEFINED:
                 if UITextField.cardAssociationSet {
                     textField.removeCardAssociation()
-                } else {
-                    guard let retrievedCardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0) else { return true }
-
-                    cardAssociation = retrievedCardAssociation
                 }
             }
         }
