@@ -124,47 +124,52 @@ class CardInformationView: UIView, UITextFieldDelegate {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
             
-            if cardAssociation == .UNDEFINED {
-                if var retrievedCardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0) {
-                    if retrievedCardAssociation == .VISA {
-                        if CardInformationView.cardRepository.isVisaElectron(Int(cardNumberInputUpdated) ?? 0) {
-                            retrievedCardAssociation = .VISA_ELECTRON
-                        }
+            switch cardAssociation {
+            case .VISA:
+                if !UITextField.cardAssociationSet {
+                    textField.setCardAssociation(
+                        use: UIImage(named: "visa", in: .module, with: .none)!
+                    )
+                } else {
+                    if CardInformationView.cardRepository.isVisaElectron(Int(cardNumberInputUpdated) ?? 0) {
+                        cardAssociation = .VISA_ELECTRON
+                        UITextField.cardAssociationSet = false
                     }
-                    
+                }
+            case .VISA_ELECTRON:
+                if !UITextField.cardAssociationSet {
+                    textField.setCardAssociation(
+                        use: UIImage(named: "visaelectron", in: .module, with: .none)!
+                    )
+                }
+            case .MASTER_CARD:
+                if !UITextField.cardAssociationSet {
+                    textField.setCardAssociation(
+                        use: UIImage(named: "mastercard", in: .module, with: .none)!
+                    )
+                }
+            case .MAESTRO:
+                if !UITextField.cardAssociationSet {
+                    textField.setCardAssociation(
+                        use: UIImage(named: "maestro", in: .module, with: .none)!
+                    )
+                }
+            case .AMEX:
+                if !UITextField.cardAssociationSet {
+                    textField.setCardAssociation(
+                        use: UIImage(named: "amex", in: .module, with: .none)!
+                    )
+                }
+            case .UNDEFINED:
+                if UITextField.cardAssociationSet {
+                    textField.removeCardAssociation()
+                } else {
+                    guard let retrievedCardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0) else { return true }
+
                     cardAssociation = retrievedCardAssociation
                 }
             }
-            
-            // remove association
-            cardAssociation = cardNumberInputUpdated.count == 0 ? .UNDEFINED : cardAssociation
-            
-            switch cardAssociation {
-            case .VISA:
-                textField.setCardAssociation(
-                    use: UIImage(named: "visa", in: .module, with: .none)!
-                )
-            case .VISA_ELECTRON:
-                textField.setCardAssociation(
-                    use: UIImage(named: "visaelectron", in: .module, with: .none)!
-                )
-            case .MASTER_CARD:
-                textField.setCardAssociation(
-                    use: UIImage(named: "mastercard", in: .module, with: .none)!
-                )
-            case .MAESTRO:
-                textField.setCardAssociation(
-                    use: UIImage(named: "maestro", in: .module, with: .none)!
-                )
-            case .AMEX:
-                textField.setCardAssociation(
-                    use: UIImage(named: "amex", in: .module, with: .none)!
-                )
-            case .UNDEFINED:
-                textField.removeCardAssociation()
-            }
         }
-        
         
         // ensure only 3 character long cvc field
         if  textField == cvcTextField {
@@ -218,6 +223,9 @@ extension CardInformationView {
 }
 
 extension UITextField {
+    
+    static var cardAssociationSet: Bool = false
+    
     func forLeftView(use image: UIImage) {
         let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
         imageView.contentMode = .scaleAspectFit
@@ -241,10 +249,15 @@ extension UITextField {
         
         rightView = uiView
         rightViewMode = .always
+        
+        UITextField.cardAssociationSet = true
     }
     
     func removeCardAssociation() {
+        rightView = nil
         rightViewMode = .never
+        
+        UITextField.cardAssociationSet = false
     }
     
     func addPreviousNextToolbar(onNext: (target: Any, action: Selector),
