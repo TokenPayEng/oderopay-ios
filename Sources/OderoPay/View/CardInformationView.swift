@@ -139,7 +139,9 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 } else {
                     if CardInformationView.cardRepository.isVisaElectron(Int(cardNumberInputUpdated) ?? 0) {
                         cardAssociation = .VISA_ELECTRON
-                        UITextField.cardAssociationSet = false
+                        textField.setCardAssociation(
+                            use: UIImage(named: "visaelectron", in: .module, with: .none)!
+                        )
                     }
                 }
             case .VISA_ELECTRON:
