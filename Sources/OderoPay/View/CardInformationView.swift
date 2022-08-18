@@ -204,8 +204,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
             
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
             
-            if textField.text!.contains("/") {
-                let expireDateFields = textField.text!.split(separator: "/")
+            if expireDateInputUpdated.contains("/") {
+                let expireDateFields = expireDateInputUpdated.split(separator: "/")
                 
                 let monthString = expireDateFields[0]
                 let yearString = expireDateFields[1]
@@ -220,11 +220,9 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 }
                 
                 if month > 12 {
-                    print("bad")
-                    textField.layer.borderColor = UIColor.red.cgColor
+                    textField.backgroundColor = .red
                 } else {
-                    print("good")
-                    textField.layer.borderColor = UIColor.placeholderText.cgColor
+                    textField.backgroundColor = .clear-
                 }
             }
             
