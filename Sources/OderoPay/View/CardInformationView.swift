@@ -128,6 +128,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0)
             }
             
+            cardAssociation = cardNumberInputUpdated.count == 0 ? .UNDEFINED : cardAssociation
+            
             switch cardAssociation {
             case .VISA:
                 if !UITextField.cardAssociationSet {
