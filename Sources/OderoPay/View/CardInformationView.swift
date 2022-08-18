@@ -9,6 +9,8 @@ import UIKit
 
 class CardInformationView: UIView, UITextFieldDelegate {
 
+    lazy private var cardAssociation: CardAssociation = .UNDEFINED
+    
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var cardNumberTextField: UITextField! {
@@ -122,8 +124,32 @@ class CardInformationView: UIView, UITextFieldDelegate {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
             
-            for (key, value) in CardRepository.masterCardByIinRanges {
-                print("key is: \(key). value is: \(value)")
+            if cardAssociation == .UNDEFINED {
+                if var retrievedCardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0) {
+                    if retrievedCardAssociation == .VISA {
+                        if CardInformationView.cardRepository.isVisaElectron(Int(cardNumberInputUpdated) ?? 0) {
+                            retrievedCardAssociation = .VISA_ELECTRON
+                        }
+                    }
+                    
+                    cardAssociation = retrievedCardAssociation
+                }
+            } else {
+                
+                switch cardAssociation {
+                case .VISA:
+                    textField.setCardAssociation(use: UIImage(named: "visa")!)
+                case .VISA_ELECTRON:
+                    textField.setCardAssociation(use: UIImage(named: "visaelectron")!)
+                case .MASTER_CARD:
+                    textField.setCardAssociation(use: UIImage(named: "mastercard")!)
+                case .MAESTRO:
+                    textField.setCardAssociation(use: UIImage(named: "maestro")!)
+                case .AMEX:
+                    textField.setCardAssociation(use: UIImage(named: "amex")!)
+                case .UNDEFINED:
+                    print("card association undefined")
+                }
             }
             
         }
@@ -176,6 +202,10 @@ class CardInformationView: UIView, UITextFieldDelegate {
     }
 }
 
+extension CardInformationView {
+    static var cardRepository: CardRepository = CardRepository()
+}
+
 extension UITextField {
     func forLeftView(use image: UIImage) {
         let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
@@ -188,6 +218,18 @@ extension UITextField {
         
         leftView = uiView
         leftViewMode = .always
+    }
+    
+    func setCardAssociation(use image: UIImage) {
+        let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = image
+        
+        let uiView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
+        uiView.addSubview(imageView)
+        
+        rightView = uiView
+        rightViewMode = .always
     }
     
     func addPreviousNextToolbar(onNext: (target: Any, action: Selector),

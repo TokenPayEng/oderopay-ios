@@ -13,7 +13,5 @@ enum CardAssociation {
     case MASTER_CARD
     case MAESTRO
     case AMEX
-    case TROY
-    case NOT_FOUND
-    case ERROR
+    case UNDEFINED
 }

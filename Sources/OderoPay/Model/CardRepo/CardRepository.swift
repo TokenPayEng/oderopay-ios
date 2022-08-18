@@ -10,7 +10,6 @@ import Foundation
 struct CardRepository {
     
     private var cardByIinRanges: [Int: CardAssociation] = [4: .VISA]
-    static var masterCardByIinRanges: [Int: CardAssociation] = Dictionary(uniqueKeysWithValues: MasterCard.iinRanges.map { ($0, CardAssociation.MASTER_CARD ) } )
     
     // populate dictionary on init
     init() {
@@ -27,18 +26,17 @@ struct CardRepository {
          }
     }
     
-    func lookUpCardAssociation(_ pattern: Int) -> CardAssociation {
+    func lookUpCardAssociation(_ pattern: Int) -> CardAssociation? {
         
         if cardByIinRanges.isEmpty {
             print("Error retrieving card association data.")
-            return .ERROR
         } else {
             if let cardAssociation = cardByIinRanges[pattern] {
                 return cardAssociation
             }
         }
         
-        return .NOT_FOUND
+        return nil
     }
     
     func isVisaElectron(_ pattern: Int) -> Bool {
