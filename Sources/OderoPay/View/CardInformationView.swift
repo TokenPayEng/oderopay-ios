@@ -233,11 +233,11 @@ extension UITextField {
     }
     
     func setCardAssociation(use image: UIImage) {
-        let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 50, height: 60))
+        let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 50, height: 60))
         imageView.contentMode = .scaleAspectFit
         imageView.image = image
         
-        let uiView = UIView(frame: CGRect(x: 20, y: 40, width: 60, height: 60))
+        let uiView = UIView(frame: CGRect(x: 20, y: 0, width: 60, height: 60))
         uiView.addSubview(imageView)
         
         rightView = uiView
