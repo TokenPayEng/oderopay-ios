@@ -147,6 +147,10 @@ class CardInformationView: UIView, UITextFieldDelegate {
                         textField.setCardAssociation(
                             use: UIImage(named: "visaelectron", in: .module, with: .none)!
                         )
+                    } else {
+                        textField.setCardAssociation(
+                            use: UIImage(named: "visa", in: .module, with: .none)!
+                        )
                     }
                 }
             case .VISA_ELECTRON:
