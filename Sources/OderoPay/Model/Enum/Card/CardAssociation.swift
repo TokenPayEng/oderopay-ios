@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CardAssociation {
+enum CardAssociation: String {
     case VISA
     case VISA_ELECTRON
     case MASTER_CARD
