@@ -220,8 +220,10 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 }
                 
                 if month > 12 {
+                    print("bad")
                     textField.layer.borderColor = UIColor.red.cgColor
                 } else {
+                    print("good")
                     textField.layer.borderColor = UIColor.placeholderText.cgColor
                 }
             }
