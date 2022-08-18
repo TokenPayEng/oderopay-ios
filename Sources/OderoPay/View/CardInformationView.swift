@@ -10,6 +10,7 @@ import UIKit
 class CardInformationView: UIView, UITextFieldDelegate {
 
     lazy private var cardAssociation: CardAssociation = .UNDEFINED
+    lazy private var cardIinRangeString: String = String()
     
     @IBOutlet var contentView: UIView!
     
@@ -124,13 +125,14 @@ class CardInformationView: UIView, UITextFieldDelegate {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
             
-            if cardNumberInputUpdated.count < textField.text!.count {
-                cardAssociation = .UNDEFINED
-            }
-            
             if cardAssociation == .UNDEFINED {
                 cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0)
+                cardIinRangeString = cardNumberInputUpdated
             }
+            
+            // setting iin range as undefined if pattern changes
+            cardAssociation = cardNumberInputUpdated.count == 0 ? .UNDEFINED : cardAssociation
+            cardAssociation = cardIinRangeString.count > cardNumberInputUpdated.count ? .UNDEFINED : cardAssociation
             
             switch cardAssociation {
             case .VISA:
