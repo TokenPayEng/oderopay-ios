@@ -204,8 +204,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
             
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
             
-            if expireDateInputUpdated.contains("/") {
-                let expireDateFields = expireDateInputUpdated.split(separator: "/")
+            if textField.text!.contains("/") {
+                let expireDateFields = textField.text!.split(separator: "/")
                 
                 let monthString = expireDateFields[0]
                 let yearString = expireDateFields[1]
