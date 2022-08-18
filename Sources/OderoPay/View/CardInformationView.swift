@@ -195,17 +195,19 @@ class CardInformationView: UIView, UITextFieldDelegate {
         // ensure only 5 character long field
         // check for MM < 12 and MM/YY > current month year
         if textField == expireDateTextField {
-            print(expireDatePattern)
-            guard let index = expireDatePattern.firstIndex(of: "#") else { return false }
-            let position = expireDatePattern.distance(from: expireDatePattern.startIndex, to: index)
+        
+            if !string.isEmpty {
+                guard let index = expireDatePattern.firstIndex(of: "#") else { return false }
+                let position = expireDatePattern.distance(from: expireDatePattern.startIndex, to: index)
 
-            if position  == 3 {
-                textField.text? += "/"
+                if position == 3 {
+                    textField.text? += "/"
+                }
+                
+                expireDatePattern = expireDatePattern.prefix(position) + string + expireDatePattern.dropFirst(position + 1)
+                
+                print(expireDatePattern)
             }
-            
-            expireDatePattern = expireDatePattern.prefix(position) + string + expireDatePattern.dropFirst(position + 1)
-            
-            print(expireDatePattern)
         }
         
         // ensure only 3 character long cvc field
