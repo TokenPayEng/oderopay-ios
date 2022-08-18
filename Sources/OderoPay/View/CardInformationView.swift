@@ -11,6 +11,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
 
     lazy private var cardAssociation: CardAssociation = .UNDEFINED
     lazy private var cardIinRangeString: String = String()
+    lazy private var expireDatePattern: String = "##/##"
     
     @IBOutlet var contentView: UIView!
     
@@ -125,6 +126,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
             
+            // initial check
             if cardAssociation == .UNDEFINED {
                 cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0)
                 cardIinRangeString = cardNumberInputUpdated
@@ -134,6 +136,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             cardAssociation = cardNumberInputUpdated.count == 0 ? .UNDEFINED : cardAssociation
             cardAssociation = cardIinRangeString.count > cardNumberInputUpdated.count && cardAssociation == .VISA_ELECTRON ? .VISA : cardIinRangeString.count > cardNumberInputUpdated.count ? .UNDEFINED : cardAssociation
             
+            // by associtation
             switch cardAssociation {
             case .VISA:
                 if !UITextField.cardAssociationSet {
@@ -185,6 +188,11 @@ class CardInformationView: UIView, UITextFieldDelegate {
             }
         }
         
+        // create masking as MM/DD and ensure only 5 character long field
+        if textField == expireDateTextField {
+            print(string)
+        }
+        
         // ensure only 3 character long cvc field
         if  textField == cvcTextField {
             guard let cvcInputCurrent = textField.text as? NSString else { return true }
@@ -219,7 +227,6 @@ class CardInformationView: UIView, UITextFieldDelegate {
     }
     
     @objc func movePreviousTextField() {
-        
         if cardNumberTextField.isFirstResponder {
             cardNumberTextField.resignFirstResponder()
         } else if expireDateTextField.isFirstResponder {
