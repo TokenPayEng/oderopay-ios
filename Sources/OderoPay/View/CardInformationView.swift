@@ -20,16 +20,16 @@ class CardInformationView: UIView, UITextFieldDelegate {
                                                                 bundle: Bundle.module,
                                                                 comment: "card number")
             
-//            cardNumberTextField.addPreviousNextToolbar(
-//                onNext: (
-//                    target: self,
-//                    action: #selector(moveNextTextField)
-//                ),
-//                onPrevious: (
-//                    target: self,
-//                    action: #selector(movePreviousTextField)
-//                )
-//            )
+            cardNumberTextField.addPreviousNextToolbar(
+                onNext: (
+                    target: self,
+                    action: #selector(moveNextTextField)
+                ),
+                onPrevious: (
+                    target: self,
+                    action: #selector(movePreviousTextField)
+                )
+            )
         }
     }
     
@@ -252,7 +252,7 @@ extension UITextField {
     func addPreviousNextToolbar(onNext: (target: Any, action: Selector),
                                 onPrevious: (target: Any, action: Selector)) {
         
-        let toolbar: UIToolbar = UIToolbar()
+        let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
         
         toolbar.items = [
             UIBarButtonItem(
