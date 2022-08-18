@@ -138,7 +138,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 
                 switch cardAssociation {
                 case .VISA:
-                    textField.setCardAssociation(use: UIImage(systemName: "creditcard")!)
+                    textField.setCardAssociation(use: UIImage(named: "visa", in: .module, with: .none)!)
                 case .VISA_ELECTRON:
                     textField.setCardAssociation(use: UIImage(named: "visaelectron")!)
                 case .MASTER_CARD:
