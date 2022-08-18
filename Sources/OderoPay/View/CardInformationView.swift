@@ -237,7 +237,7 @@ extension UITextField {
         imageView.contentMode = .scaleAspectFit
         imageView.image = image
         
-        let uiView = UIView(frame: CGRect(x: 20, y: 0, width: 50, height: 50))
+        let uiView = UIView(frame: CGRect(x: -20, y: 0, width: 50, height: 50))
         uiView.addSubview(imageView)
         
         rightView = uiView
