@@ -11,6 +11,9 @@ class CardInformationView: UIView, UITextFieldDelegate {
 
     lazy private var cardAssociation: CardAssociation = .UNDEFINED
     lazy private var cardIinRangeString: String = String()
+    
+    lazy private var expireMonth: Int8 = Int8()
+    lazy private var expireYear: Int8 = Int8()
     lazy private var expireDatePattern: String = "##/##"
     
     @IBOutlet var contentView: UIView!
@@ -188,9 +191,21 @@ class CardInformationView: UIView, UITextFieldDelegate {
             }
         }
         
-        // create masking as MM/DD and ensure only 5 character long field
+        // create masking as MM/YY
+        // ensure only 5 character long field
+        // check for MM < 12 and MM/YY > current month year
         if textField == expireDateTextField {
-            print(string)
+            guard let index = expireDatePattern.firstIndex(of: "#") else { return false }
+            let position = expireDatePattern.distance(from: expireDatePattern.startIndex, to: index)
+
+            
+            if position != 2 {
+                expireDatePattern = expireDatePattern.prefix(position) + string + expireDatePattern.dropFirst(position + 1)
+            } else {
+                textField.text? += "/"
+            }
+            
+            print(expireDatePattern)
         }
         
         // ensure only 3 character long cvc field
