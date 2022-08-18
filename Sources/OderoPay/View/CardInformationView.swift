@@ -125,6 +125,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
 
             print(cardNumberInputUpdated)
+            print(cardAssociation)
             
             if cardAssociation == .UNDEFINED {
                 if var retrievedCardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0) {
