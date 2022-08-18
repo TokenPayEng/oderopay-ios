@@ -124,12 +124,12 @@ class CardInformationView: UIView, UITextFieldDelegate {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return true }
             let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
             
-            if cardAssociation == .UNDEFINED {
-                cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0)
+            if cardNumberInputUpdated.count < textField.text?.count {
+                cardAssociation = .UNDEFINED
             }
             
-            if cardNumberInputUpdated.count < cardNumberInputCurrent.count {
-                cardAssociation = .UNDEFINED
+            if cardAssociation == .UNDEFINED {
+                cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0)
             }
             
             switch cardAssociation {
