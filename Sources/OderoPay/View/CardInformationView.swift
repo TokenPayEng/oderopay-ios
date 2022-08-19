@@ -168,13 +168,10 @@ class CardInformationView: UIView, UITextFieldDelegate {
                         
                         if cardNumberInputUpdated.count < 13 {
                             textField.text = formatBy(pattern: Visa.pattern.first!, this: cardNumberInputUpdated)
-                            print("less than 13")
                         } else if cardNumberInputUpdated.count > 19 {
-                            print("more than 19")
                             return false
                         } else {
                             textField.text = formatBy(pattern: Visa.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
-                            print("here")
                         }
                         return false
                     }
