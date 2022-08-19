@@ -12,5 +12,15 @@ struct Maestro: CardProtocol {
     static var iinRanges: [Int] = Array(5000_00...5099_99) + Array(5600_00...5899_99) + Array(6000_00...6999_99)
     
     static var lengthRanges: [Int] = Array(12...19)
-    static var pattern: [String] = ["#### #### #####", "#### #### #### ####", "#### ###### #####", "#### #### #### #### ###", "unknown"]
+    static var pattern: [String] = ["#### #### #### ####", "#### #### #####", "#### ###### #####", "#### #### #### #### ###", "unknown"]
+    static var patternByLength: [Int: String] = [
+        12: "#### #### ####",
+        13: pattern[0],
+        14: "#### ###### ####",
+        15: pattern[2],
+        16: pattern[1],
+        17: "#### ###### #### ###",
+        18: "#### ##### ##### ####",
+        19: pattern[3],
+    ]
 }

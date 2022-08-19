@@ -161,23 +161,41 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     }
                 }
                 
+                if cardNumberInputUpdated.count < 13 {
+                    textField.text = formatBy(pattern: Visa.pattern.first!, this: cardNumberInputUpdated)
+                } else {
+                    textField.text = formatBy(pattern: Visa.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
+                }
+                return false
             case .VISA_ELECTRON:
                 if !UITextField.cardAssociationSet {
                     textField.setCardAssociation(
                         use: UIImage(named: "visaelectron", in: .module, with: .none)!
                     )
                 }
+                
+                textField.text = formatBy(pattern: VisaElectron.pattern.first!, this: cardNumberInputUpdated)
+                return false
             case .MASTER_CARD:
                 if !UITextField.cardAssociationSet {
                     textField.setCardAssociation(
                         use: UIImage(named: "mastercard", in: .module, with: .none)!
                     )
                 }
+                
+                textField.text = formatBy(pattern: MasterCard.pattern.first!, this: cardNumberInputUpdated)
+                return false
             case .MAESTRO:
                 if !UITextField.cardAssociationSet {
                     textField.setCardAssociation(
                         use: UIImage(named: "maestro", in: .module, with: .none)!
                     )
+                }
+                
+                if cardNumberInputUpdated.count < 12 {
+                    textField.text = formatBy(pattern: MasterCard.pattern.first!, this: cardNumberInputUpdated)
+                } else {
+                    textField.text = formatBy(pattern: MasterCard.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
                 }
             case .AMEX:
                 if !UITextField.cardAssociationSet {
@@ -204,29 +222,33 @@ class CardInformationView: UIView, UITextFieldDelegate {
             
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
             
-            if textField.text!.contains("/") {
-                let expireDateFields = textField.text!.split(separator: "/")
+            if expireDateInputUpdated.count == 2 {
                 
-                let monthString = expireDateFields[0]
-                let yearString = expireDateFields[1]
-                
-                var month: Int = Int()
-                var year: Int = Int()
-                
-                if monthString.starts(with: "0") {
-                    month = Int(monthString.suffix(1))!
-                } else {
-                    month = Int(monthString)!
-                }
-                
-                if month > 12 {
-                    textField.backgroundColor = .red.withAlphaComponent(0.3)
-                } else {
-                    textField.backgroundColor = .clear
-                }
-            } else {
-                textField.backgroundColor = .clear
             }
+            
+//            if textField.text!.contains("/") {
+//                let expireDateFields = textField.text!.split(separator: "/")
+//
+//                let monthString = expireDateFields[0]
+//                let yearString = expireDateFields[1]
+//
+//                var month: Int = Int()
+//                var year: Int = Int()
+//
+//                if monthString.starts(with: "0") {
+//                    month = Int(monthString.suffix(1))!
+//                } else {
+//                    month = Int(monthString)!
+//                }
+//
+//                if month > 12 {
+//                    textField.backgroundColor = .red.withAlphaComponent(0.3)
+//                } else {
+//                    textField.backgroundColor = .clear
+//                }
+//            } else {
+//                textField.backgroundColor = .clear
+//            }
             
             return false
         }
