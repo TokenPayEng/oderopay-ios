@@ -265,6 +265,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 
                 if Int(expireMonth)! > 12 {
                     textField.isError(true)
+                    return false
                 } else {
                     textField.isError(false)
                 }
