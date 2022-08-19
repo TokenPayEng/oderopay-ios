@@ -249,8 +249,6 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 .replacingCharacters(in: range, with: string)
                 .replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
             
-            textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
-            
             switch expireDateInputUpdated.count {
             case 0:
                 expireMonth = String()
@@ -260,7 +258,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 
                 if expireDateInputUpdated != "0" && expireDateInputUpdated != "1" {
                     textField.isError(true)
-                    break
+                    return false
                 }
                 
                 if string != "0" && !string.isEmpty {
@@ -272,6 +270,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 
                 if Int(expireMonth)! > 12 {
                     textField.isError(true)
+                    return false
                 } else {
                     textField.isError(false)
                 }
@@ -280,9 +279,10 @@ class CardInformationView: UIView, UITextFieldDelegate {
             case 4:
                 expireYear += string
             default:
-                break
+                return true
             }
             
+            textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
             return false
         }
         
