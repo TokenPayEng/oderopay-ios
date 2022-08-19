@@ -132,7 +132,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             // initial check
             if cardAssociation == .UNDEFINED {
                 cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0)
-                cardIinRangeString = cardNumberInputUpdated
+                cardIinRangeString = cardNumberInputUpdated.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
             }
             
             // setting iin range as undefined if pattern changes
