@@ -126,7 +126,11 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 2
-        textField.layer.borderColor = .init(red: 108, green: 209, blue: 78, alpha: 1)
+        textField.layer.borderColor = UIColor(red: 108, green: 209, blue: 78, alpha: 1).cgColor
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 0
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
