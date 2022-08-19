@@ -125,7 +125,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.layer.borderWidth = 2
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 4
         textField.layer.borderColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
     }
     
