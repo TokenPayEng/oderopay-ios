@@ -285,10 +285,20 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 }
             case 4:
                 expireYear += string
+                if !string.isEmpty {
+                    if Int(string)! >= (year % 1000) {
+                        textField.isError(false)
+                        expireYear += string
+                    } else {
+                        textField.isError(true)
+                        return false
+                    }
+                }
                 
                 if Int(expireYear)! == year {
                     return Int(expireMonth)! <= month
                 }
+                // TODO: here
             default:
                 break
             }
