@@ -168,7 +168,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                         if cardNumber.count < 13 {
                             textField.text = formatBy(pattern: Visa.pattern.first!, this: cardNumberInputUpdated)
                             print("less than 13")
-                        } else if cardNumberInputUpdated.count > 19 {
+                        } else if cardNumber.count > 19 {
                             print("more than 19")
                             return false
                         } else {
@@ -207,7 +207,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                             
                 if cardNumber.count < 11 {
                     textField.text = formatBy(pattern: Maestro.pattern.first!, this: cardNumberInputUpdated)
-                } else if cardNumberInputUpdated.count > 19 {
+                } else if cardNumber.count > 19 {
                     return false
                 } else {
                     textField.text = formatBy(pattern: Maestro.patternByLength[cardNumber.count]!, this: cardNumber)
