@@ -205,7 +205,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 
                 let cardNumber = cardNumberInputUpdated.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
                             
-                if cardNumber.count < 11 {
+                if cardNumber.count < 12 {
                     textField.text = formatBy(pattern: Maestro.pattern.first!, this: cardNumberInputUpdated)
                 } else if cardNumber.count > 19 {
                     return false
