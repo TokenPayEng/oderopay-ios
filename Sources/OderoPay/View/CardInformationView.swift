@@ -14,12 +14,11 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     lazy private var cardNumberPattern: String = "#### ##"
     
-    lazy private var expireMonth: Int8 = Int8()
-    lazy private var expireYear: Int8 = Int8()
+    lazy private var expireMonth: String = String()
+    lazy private var expireYear: String = "20"
     lazy private var expireDatePattern: String = "##/##"
     
     lazy private var successCGColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
-    lazy private var errorCGColor = UIColor(red: 235/255, green: 0/255, blue: 27/255, alpha: 1).cgColor
     
     @IBOutlet var contentView: UIView!
     
@@ -246,11 +245,36 @@ class CardInformationView: UIView, UITextFieldDelegate {
         // check for MM < 12 and MM/YY > current month year
         if textField == expireDateTextField {
             guard let expireDateInputCurrent = textField.text as? NSString else { return false }
-            let expireDateInputUpdated = expireDateInputCurrent.replacingCharacters(in: range, with: string)
+            let expireDateInputUpdated = expireDateInputCurrent
+                .replacingCharacters(in: range, with: string)
+                .replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
             
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
+            
+            switch expireDateInputUpdated.count {
+            case 1:
+                if string != "0" {
+                    expireMonth += string
+                } else {
+                    expireMonth = String()
+                }
+            case 2:
+                expireMonth += string
+                
+                if Int(expireMonth)! > 12 {
+                    textField.isError(true)
+                } else {
+                    textField.isError(false)
+                }
+            case 3:
+                expireYear += string
+            case 4:
+                expireYear += string
+            default:
+                break
+            }
+            
             return false
-            // go by digit add to month year
         }
         
         // ensure only 3 character long cvc field
@@ -325,6 +349,19 @@ extension CardInformationView {
 extension UITextField {
     
     static var cardAssociationSet: Bool = false
+    static var errorState: Bool = false
+
+    func isError(_ value: Bool) {
+        UITextField.errorState = value
+        
+        if UITextField.errorState {
+            self.layer.borderWidth = 1
+            self.layer.cornerRadius = 4
+            self.layer.borderColor = UIColor(red: 235/255, green: 0/255, blue: 27/255, alpha: 1).cgColor
+        } else {
+            self.layer.borderWidth = 0
+        }
+    }
     
     func forLeftView(use image: UIImage) {
         let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
