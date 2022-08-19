@@ -163,6 +163,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                         )
                         
                         let cardNumber = cardNumberInputUpdated.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+                        print(cardNumber)
                         
                         if cardNumber.count < 13 {
                             textField.text = formatBy(pattern: Visa.pattern.first!, this: cardNumberInputUpdated)
@@ -203,8 +204,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 }
                 
                 let cardNumber = cardNumberInputUpdated.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-                print(cardNumber)
-                
+                            
                 if cardNumber.count < 11 {
                     textField.text = formatBy(pattern: Maestro.pattern.first!, this: cardNumberInputUpdated)
                 } else if cardNumberInputUpdated.count > 19 {
