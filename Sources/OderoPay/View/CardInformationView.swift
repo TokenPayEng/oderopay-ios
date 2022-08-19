@@ -260,6 +260,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
             case 2:
                 if expireMonth.count > 1 {
                     expireMonth = expireDateInputUpdated
+                } else {
+                    expireMonth += string
                 }
                 
                 if Int(expireMonth)! > 12 {
