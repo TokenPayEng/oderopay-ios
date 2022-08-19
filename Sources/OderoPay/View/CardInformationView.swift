@@ -294,7 +294,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     return Int(expireMonth)! <= month
                 }
             default:
-                return true
+                break
             }
             
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
