@@ -55,6 +55,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     action: #selector(movePreviousTextField)
                 )
             )
+            
+            firstAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrency())"
         }
     }
                                                                  
@@ -70,6 +72,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     action: #selector(movePreviousTextField)
                 )
             )
+            
+            secondAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrency())"
         }
     }
     
