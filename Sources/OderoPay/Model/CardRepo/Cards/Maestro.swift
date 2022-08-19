@@ -15,10 +15,10 @@ struct Maestro: CardProtocol {
     static var pattern: [String] = ["#### #### #### ####", "#### #### #####", "#### ###### #####", "#### #### #### #### ###", "unknown"]
     static var patternByLength: [Int: String] = [
         12: "#### #### ####",
-        13: pattern[0],
+        13: pattern[1],
         14: "#### ###### ####",
         15: pattern[2],
-        16: pattern[1],
+        16: pattern[0],
         17: "#### ###### #### ###",
         18: "#### ##### ##### ####",
         19: pattern[3],
