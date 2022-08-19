@@ -254,20 +254,13 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 expireMonth = String()
                 textField.isError(false)
             case 1:
-                expireMonth = String()
-                
-                if expireDateInputUpdated != "0" && expireDateInputUpdated != "1" {
-                    textField.isError(true)
-                    textField.text = string
-                    return false
-                }
-                
                 if string != "0" && !string.isEmpty {
                     expireMonth += string
                 }
-                
             case 2:
-                expireMonth += string
+                if expireMonth.count > 1 {
+                    expireMonth = expireDateInputUpdated
+                }
                 
                 if Int(expireMonth)! > 12 {
                     textField.isError(true)
