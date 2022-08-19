@@ -17,6 +17,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
     lazy private var expireMonth: String = String()
     lazy private var expireYear: String = "20"
     lazy private var expireDatePattern: String = "##/##"
+    private let month = Calendar.current.component(.month, from: Date())
     private let year = Calendar.current.component(.year, from: Date())
     
     lazy private var successCGColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
@@ -273,10 +274,18 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 expireYear = String()
                 textField.isError(false)
             case 3:
-                print(year)
-                expireYear += string
+                if Int(string)! >= (year % 100) {
+                    expireYear += string
+                } else {
+                    textField.isError(true)
+                    return false
+                }
             case 4:
                 expireYear += string
+                
+                if Int(expireYear)! == year {
+                    return Int(expireMonth)! <= month
+                }
             default:
                 return true
             }
