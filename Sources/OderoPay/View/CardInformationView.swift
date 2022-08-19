@@ -284,11 +284,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     }
                 }
             case 4:
-                if expireYear.count > 1 {
-                    expireYear = String(expireDateInputUpdated.suffix(2))
-                } else {
-                    expireYear += string
-                }
+                expireYear += string
                 
                 if Int(expireYear)! == year {
                     return Int(expireMonth)! <= month
