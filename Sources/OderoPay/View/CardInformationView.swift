@@ -258,7 +258,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             case 1:
                 expireMonth = String()
                 
-                if expireDateInputUpdated != "0" || expireDateInputUpdated != "1" {
+                if expireDateInputCurrent != "0" || expireDateInputCurrent != "1" {
                     textField.isError(true)
                     break
                 }
