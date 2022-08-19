@@ -18,6 +18,9 @@ class CardInformationView: UIView, UITextFieldDelegate {
     lazy private var expireYear: Int8 = Int8()
     lazy private var expireDatePattern: String = "##/##"
     
+    lazy private var successCGColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
+    lazy private var errorCGColor = UIColor(red: 235/255, green: 0/255, blue: 27/255, alpha: 1).cgColor
+    
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var cardNumberTextField: UITextField! {
@@ -127,7 +130,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 4
-        textField.layer.borderColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
+        textField.layer.borderColor = successCGColor
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -246,36 +249,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
             let expireDateInputUpdated = expireDateInputCurrent.replacingCharacters(in: range, with: string)
             
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
-            
-            if expireDateInputUpdated.count == 2 {
-                
-            }
-            
-//            if textField.text!.contains("/") {
-//                let expireDateFields = textField.text!.split(separator: "/")
-//
-//                let monthString = expireDateFields[0]
-//                let yearString = expireDateFields[1]
-//
-//                var month: Int = Int()
-//                var year: Int = Int()
-//
-//                if monthString.starts(with: "0") {
-//                    month = Int(monthString.suffix(1))!
-//                } else {
-//                    month = Int(monthString)!
-//                }
-//
-//                if month > 12 {
-//                    textField.backgroundColor = .red.withAlphaComponent(0.3)
-//                } else {
-//                    textField.backgroundColor = .clear
-//                }
-//            } else {
-//                textField.backgroundColor = .clear
-//            }
-            
             return false
+            // go by digit add to month year
         }
         
         // ensure only 3 character long cvc field
