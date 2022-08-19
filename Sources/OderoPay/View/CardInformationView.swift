@@ -124,6 +124,11 @@ class CardInformationView: UIView, UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 2
+        textField.layer.borderColor = UIColor.green.cgColor
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
         // card number
