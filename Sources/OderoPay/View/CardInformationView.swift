@@ -193,9 +193,9 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 }
                 
                 if cardNumberInputUpdated.count < 12 {
-                    textField.text = formatBy(pattern: MasterCard.pattern.first!, this: cardNumberInputUpdated)
+                    textField.text = formatBy(pattern: Maestro.pattern.first!, this: cardNumberInputUpdated)
                 } else {
-                    textField.text = formatBy(pattern: MasterCard.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
+                    textField.text = formatBy(pattern: Maestro.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
                 }
             case .AMEX:
                 if !UITextField.cardAssociationSet {
