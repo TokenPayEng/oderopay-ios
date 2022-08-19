@@ -252,11 +252,13 @@ class CardInformationView: UIView, UITextFieldDelegate {
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
             
             switch expireDateInputUpdated.count {
+            case 0:
+                expireMonth = String()
             case 1:
+                expireMonth = String()
+                
                 if string != "0" {
                     expireMonth += string
-                } else {
-                    expireMonth = String()
                 }
             case 2:
                 expireMonth += string
