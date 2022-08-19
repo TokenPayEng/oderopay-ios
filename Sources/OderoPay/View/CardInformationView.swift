@@ -171,7 +171,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                             print("more than 19")
                             return false
                         } else {
-                            textField.text = formatBy(pattern: Visa.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
+                            textField.text = formatBy(pattern: Visa.patternByLength[cardNumber.count]!, this: cardNumber)
                             print("here")
                         }
                         return false
@@ -209,7 +209,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 } else if cardNumberInputUpdated.count > 19 {
                     return false
                 } else {
-                    textField.text = formatBy(pattern: Maestro.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
+                    textField.text = formatBy(pattern: Maestro.patternByLength[cardNumber.count]!, this: cardNumber)
                 }
                 return false
             case .AMEX:
