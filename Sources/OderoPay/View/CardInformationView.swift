@@ -275,6 +275,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 textField.isError(false)
             case 3:
                 if Int(string)! >= ((year % 100) / 10) {
+                    textField.isError(false)
                     expireYear += string
                 } else {
                     textField.isError(true)
