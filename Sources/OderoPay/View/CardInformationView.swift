@@ -197,7 +197,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     )
                 }
                 
-                if cardNumberInputUpdated.count < 12 {
+                if cardNumberInputUpdated.count < 11 {
                     textField.text = formatBy(pattern: Maestro.pattern.first!, this: cardNumberInputUpdated)
                 } else if cardNumberInputUpdated.count > 19 {
                     return false
