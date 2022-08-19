@@ -258,6 +258,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 
                 if expireDateInputUpdated != "0" && expireDateInputUpdated != "1" {
                     textField.isError(true)
+                    textField.text = string
                     return false
                 }
                 
