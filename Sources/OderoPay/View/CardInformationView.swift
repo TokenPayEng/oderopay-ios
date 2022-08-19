@@ -164,6 +164,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
                         
                         if cardNumberInputUpdated.count < 13 {
                             textField.text = formatBy(pattern: Visa.pattern.first!, this: cardNumberInputUpdated)
+                        } else if cardNumberInputUpdated.count > 19 {
+                            return false
                         } else {
                             textField.text = formatBy(pattern: Visa.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
                         }
@@ -197,9 +199,12 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 
                 if cardNumberInputUpdated.count < 12 {
                     textField.text = formatBy(pattern: Maestro.pattern.first!, this: cardNumberInputUpdated)
+                } else if cardNumberInputUpdated.count > 19 {
+                    return false
                 } else {
                     textField.text = formatBy(pattern: Maestro.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
                 }
+                return false
             case .AMEX:
                 if !UITextField.cardAssociationSet {
                     textField.setCardAssociation(
