@@ -153,20 +153,23 @@ class CardInformationView: UIView, UITextFieldDelegate {
                         textField.setCardAssociation(
                             use: UIImage(named: "visaelectron", in: .module, with: .none)!
                         )
+                        
+                        textField.text = formatBy(pattern: VisaElectron.pattern.first!, this: cardNumberInputUpdated)
+                        return false
                     } else {
                         cardIinRangeString = String(Visa.iinRanges.first!)
                         textField.setCardAssociation(
                             use: UIImage(named: "visa", in: .module, with: .none)!
                         )
+                        
+                        if cardNumberInputUpdated.count < 13 {
+                            textField.text = formatBy(pattern: Visa.pattern.first!, this: cardNumberInputUpdated)
+                        } else {
+                            textField.text = formatBy(pattern: Visa.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
+                        }
+                        return false
                     }
                 }
-                
-                if cardNumberInputUpdated.count < 13 {
-                    textField.text = formatBy(pattern: Visa.pattern.first!, this: cardNumberInputUpdated)
-                } else {
-                    textField.text = formatBy(pattern: Visa.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
-                }
-                return false
             case .VISA_ELECTRON:
                 if !UITextField.cardAssociationSet {
                     textField.setCardAssociation(
