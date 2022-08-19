@@ -12,6 +12,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
     lazy private var cardAssociation: CardAssociation = .UNDEFINED
     lazy private var cardIinRangeString: String = String()
     
+    lazy private var cardNumberPattern: String = "#### ##"
+    
     lazy private var expireMonth: Int8 = Int8()
     lazy private var expireYear: Int8 = Int8()
     lazy private var expireDatePattern: String = "##/##"
@@ -223,6 +225,9 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 if UITextField.cardAssociationSet {
                     textField.removeCardAssociation()
                 }
+                
+                textField.text = formatBy(pattern: cardNumberPattern, this: cardNumberInputUpdated)
+                return false
             }
         }
         
