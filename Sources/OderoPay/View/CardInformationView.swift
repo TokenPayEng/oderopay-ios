@@ -359,7 +359,11 @@ extension UITextField {
             self.layer.cornerRadius = 4
             self.layer.borderColor = UIColor(red: 235/255, green: 0/255, blue: 27/255, alpha: 1).cgColor
         } else {
-            self.layer.borderWidth = 0
+            if self.isEditing {
+                self.layer.borderColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
+            } else {
+                self.layer.borderWidth = 0
+            }
         }
     }
     
