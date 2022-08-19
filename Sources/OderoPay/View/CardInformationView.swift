@@ -127,12 +127,14 @@ class CardInformationView: UIView, UITextFieldDelegate {
         // card number
         if textField == cardNumberTextField {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return false }
-            let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
+            let cardNumberInputUpdated = cardNumberInputCurrent
+                .replacingCharacters(in: range, with: string)
+                .replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
             
             // initial check
             if cardAssociation == .UNDEFINED {
                 cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0)
-                cardIinRangeString = cardNumberInputUpdated.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+                cardIinRangeString = cardNumberInputUpdated
             }
             
             // setting iin range as undefined if pattern changes
@@ -162,17 +164,14 @@ class CardInformationView: UIView, UITextFieldDelegate {
                             use: UIImage(named: "visa", in: .module, with: .none)!
                         )
                         
-                        let cardNumber = cardNumberInputUpdated.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-                        print(cardNumber)
-                        
-                        if cardNumber.count < 13 {
+                        if cardNumberInputUpdated.count < 13 {
                             textField.text = formatBy(pattern: Visa.pattern.first!, this: cardNumberInputUpdated)
                             print("less than 13")
-                        } else if cardNumber.count > 19 {
+                        } else if cardNumberInputUpdated.count > 19 {
                             print("more than 19")
                             return false
                         } else {
-                            textField.text = formatBy(pattern: Visa.patternByLength[cardNumber.count]!, this: cardNumber)
+                            textField.text = formatBy(pattern: Visa.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
                             print("here")
                         }
                         return false
@@ -202,15 +201,13 @@ class CardInformationView: UIView, UITextFieldDelegate {
                         use: UIImage(named: "maestro", in: .module, with: .none)!
                     )
                 }
-                
-                let cardNumber = cardNumberInputUpdated.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
                             
-                if cardNumber.count < 12 {
+                if cardNumberInputUpdated.count < 12 {
                     textField.text = formatBy(pattern: Maestro.pattern.first!, this: cardNumberInputUpdated)
-                } else if cardNumber.count > 19 {
+                } else if cardNumberInputUpdated.count > 19 {
                     return false
                 } else {
-                    textField.text = formatBy(pattern: Maestro.patternByLength[cardNumber.count]!, this: cardNumber)
+                    textField.text = formatBy(pattern: Maestro.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
                 }
                 return false
             case .AMEX:
