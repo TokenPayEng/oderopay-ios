@@ -295,6 +295,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     }
                 }
                 
+                print(expireMonth)
+                print (expireYear)
                 // TODO: check with current date
             default:
                 break
