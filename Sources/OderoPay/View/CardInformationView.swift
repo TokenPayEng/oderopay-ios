@@ -296,7 +296,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     }
                 }
                 
-                if Int("20\(expireYear)") <= year && Int(expireMonth)! < month {
+                if Int("20\(expireYear)")! <= year && Int(expireMonth)! < month {
                     textField.isError(true)
                     return false
                 }
