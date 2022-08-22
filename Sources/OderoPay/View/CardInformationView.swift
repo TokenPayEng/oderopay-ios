@@ -304,6 +304,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 break
             }
             
+            print(expireMonth + "/" + expireYear)
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
             return false
         }
