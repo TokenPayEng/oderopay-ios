@@ -136,6 +136,43 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 0
+        
+        if textField == cardNumberTextField {
+            switch cardAssociation {
+            case .VISA:
+                if Visa.lengthRanges.contains(textField.text!.count) {
+                    textField.isError(false)
+                } else {
+                    textField.isError(true)
+                }
+            case .VISA_ELECTRON:
+                if VisaElectron.lengthRanges.contains(textField.text!.count) {
+                    textField.isError(false)
+                } else {
+                    textField.isError(true)
+                }
+            case .MASTER_CARD:
+                if MasterCard.lengthRanges.contains(textField.text!.count) {
+                    textField.isError(false)
+                } else {
+                    textField.isError(true)
+                }
+            case .MAESTRO:
+                if Maestro.lengthRanges.contains(textField.text!.count) {
+                    textField.isError(false)
+                } else {
+                    textField.isError(true)
+                }
+            case .AMEX:
+                if AmericanExpress.lengthRanges.contains(textField.text!.count) {
+                    textField.isError(false)
+                } else {
+                    textField.isError(true)
+                }
+            case .UNDEFINED:
+                textField.isError(true)
+            }
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -160,6 +197,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             // by associtation
             switch cardAssociation {
             case .VISA:
+                textField.isError(false)
                 if !UITextField.cardAssociationSet {
                     textField.setCardAssociation(
                         use: UIImage(named: "visa", in: .module, with: .none)!
