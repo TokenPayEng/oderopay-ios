@@ -15,7 +15,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
     lazy private var cardNumberPattern: String = "#### ##"
     
     lazy private var expireMonth: String = String()
-    lazy private var expireYear: String = "20"
+    lazy private var expireYear: String = String()
     lazy private var expireDatePattern: String = "##/##"
     private let month = Calendar.current.component(.month, from: Date())
     private let year = Calendar.current.component(.year, from: Date())
@@ -271,7 +271,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     return false
                 }
                 
-                expireYear = "20"
+                expireYear = String()
                 textField.isError(false)
             case 3:
                 if !string.isEmpty {
@@ -284,7 +284,9 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     }
                 }
             case 4:
-                if !string.isEmpty {
+                if expireYear.count > 1 {
+                    expireMonth = expireDateInputUpdated
+                } else {
                     if Int(string)! >= (year % 10) {
                         textField.isError(false)
                         expireYear += string
