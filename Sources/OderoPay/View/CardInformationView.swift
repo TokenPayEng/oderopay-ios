@@ -299,12 +299,13 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 if Int("20\(expireYear)")! <= year && Int(expireMonth)! < month {
                     textField.isError(true)
                     return false
+                } else {
+                    textField.isError(false)
                 }
             default:
                 break
             }
             
-            print(expireMonth + "/" + expireYear)
             textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
             return false
         }
