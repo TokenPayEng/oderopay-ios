@@ -266,7 +266,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     expireMonth += string
                 }
                 
-                if Int(expireMonth)! > 12 {
+                if Int(expireMonth)! < 1 || Int(expireMonth)! > 12 {
                     textField.isError(true)
                     return false
                 }
@@ -295,10 +295,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     }
                 }
                 
-                if Int(expireYear)! == year {
-                    return Int(expireMonth)! <= month
-                }
-                // TODO: here
+                // TODO: check with current date
             default:
                 break
             }
