@@ -296,12 +296,10 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     }
                 }
                 
-                print(expireMonth)
-                print (expireYear)
-                // TODO: check with current date
-                
-                print(month)
-                print(year)
+                if Int("20\(expireYear)") == year && Int(expireMonth)! < month {
+                    textField.isError(true)
+                    return false
+                }
             default:
                 break
             }
