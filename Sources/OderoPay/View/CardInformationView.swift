@@ -271,7 +271,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     return false
                 }
                 
-                expireYear = String()
+                expireYear = "20"
                 textField.isError(false)
             case 3:
                 if !string.isEmpty {
