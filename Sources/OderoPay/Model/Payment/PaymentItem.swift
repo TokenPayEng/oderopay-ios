@@ -16,14 +16,14 @@ public struct PaymentItem: Codable {
     // optional
     private var externalId: String?
     private var subMerchantId: Int?
-    private var subMerchantPrice: Int?
+    private var subMerchantPrice: Double?
     
     public init(
         named name: String,
-        for price: Int,
+        for price: Double,
         externalId: String? = nil,
         subMerchantId: Int? = nil,
-        subMerchantPrice: Int? = nil) {
+        subMerchantPrice: Double? = nil) {
             self.name = name
             self.price = price
             self.externalId = externalId
