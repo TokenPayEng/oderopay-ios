@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Currency: String {
+public enum Currency: String, Codable {
     case TRY = "₺"
     case AZN = "₼"
     case USD = "$"

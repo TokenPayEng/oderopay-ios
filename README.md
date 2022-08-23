@@ -6,6 +6,10 @@ OderoPay is a Swift Package that lets you integrate your iOS application to the 
 
 In Xcode open `File` => `Add Packages...` => enter this Github repository.
 
+## Support
+
+OderoPay supports `Visa`, `Visa Electron`, `MasterCard`, `Maestro` and `American Express` card associations.
+
 ## Usage
 
 Add `View` to your .storyboard file, place it where you would like payment button to appear. In the

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PaymentItem {
+public struct PaymentItem: Codable {
     
     private var externalId: String
     private var name: String
