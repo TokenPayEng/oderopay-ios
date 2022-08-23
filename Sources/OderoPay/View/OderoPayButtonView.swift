@@ -100,18 +100,19 @@ public class OderoPayButtonView: UIView {
             print("LOCAL CHECK #2 - SUCCESS")
             print("step #3 (CONNECTION)")
             print("sending checkout form...")
-            do {
-                print("retrieving token...")
-                // let token: String = try await OderoPay.sendCheckoutForm().getToken()
-                // print(token)
-                print("checkout form sending - success")
-                print("CONNECTION CHECK #3 - SUCCESS")
-                // guard let token = token else { return }
-                navigationController.pushViewController(commonPaymentPageViewController, animated: true)
-            } catch {
-                print("sending checkout form - failure")
-                print(error)
-                print("CONNECTION CHECK #3 - FAILURE")
+            Task {
+                do {
+                    print("retrieving token...")
+                    let token: String = try await OderoPay.sendCheckoutForm().getToken()
+                    print(token)
+                    print("checkout form sending - success")
+                    print("CONNECTION CHECK #3 - SUCCESS")
+                    navigationController.pushViewController(commonPaymentPageViewController, animated: true)
+                } catch {
+                    print("sending checkout form - failure")
+                    print(error)
+                    print("CONNECTION CHECK #3 - FAILURE")
+                }
             }
         } else {
             print("checkout form check - failure")
