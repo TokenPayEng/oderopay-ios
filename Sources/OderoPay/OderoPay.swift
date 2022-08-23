@@ -1,10 +1,16 @@
 import Foundation
+import CommonCrypto
 
 public struct OderoPay {
-    public private(set) var text = "Hello, World!"
+    static private var apiKey = String()
+    static private var secretKey = String()
+    static private var randomKey = String()
+    
     static private var checkoutForm = CheckoutForm()
-
-    public init() {
+    
+    static public func authorizeWithKeys(apiKey: String, secretKey: String) {
+        self.apiKey = apiKey
+        self.secretKey = secretKey
     }
     
     static public func isCheckoutFormReady() -> Bool {
@@ -24,6 +30,7 @@ public struct OderoPay {
         
         let encoded = try JSONEncoder().encode(OderoPay.checkoutForm)
         let json = try JSONSerialization.jsonObject(with: encoded, options: [])
+        guard let jsonString = String(data: encoded, encoding: .utf8) else { throw CheckoutError.invalidRequestBody }
         
         var components = URLComponents(string: url.absoluteString)!
         if let object = json as? [String: Any] {
@@ -34,9 +41,64 @@ public struct OderoPay {
         
         var request = URLRequest(url: components.url!)
         request.httpMethod = HTTPMethod.POST.rawValue
+        request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
+        request.addValue(randomKey, forHTTPHeaderField: "x-random-key")
+        request.addValue(generateSignature(for: request.url!.absoluteString, body: jsonString), forHTTPHeaderField: "x-signature")
+        request.addValue("1", forHTTPHeaderField: "x-auth-version")
         
         let (data, _) = try await URLSession.shared.data(from: request.url!)
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
+    }
+    
+    static private func generateSignature(for url: String, body: String) -> String {
+        let concatenatedString = url + apiKey + secretKey + randomKey + body
+        return concatenatedString.toSha256().toBase64().uppercased()
+    }
+}
+
+extension Data{
+    public func sha256() -> String{
+        return hexStringFromData(input: digest(input: self as NSData))
+    }
+    
+    private func digest(input : NSData) -> NSData {
+        let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
+        var hash = [UInt8](repeating: 0, count: digestLength)
+        CC_SHA256(input.bytes, UInt32(input.length), &hash)
+        return NSData(bytes: hash, length: digestLength)
+    }
+    
+    private  func hexStringFromData(input: NSData) -> String {
+        var bytes = [UInt8](repeating: 0, count: input.length)
+        input.getBytes(&bytes, length: input.length)
+        
+        var hexString = ""
+        for byte in bytes {
+            hexString += String(format:"%02x", UInt8(byte))
+        }
+        
+        return hexString
+    }
+}
+
+extension String {
+    func toSha256() -> String{
+        if let stringData = self.data(using: String.Encoding.utf8) {
+            return stringData.sha256()
+        }
+        return ""
+    }
+    
+    func fromBase64() -> String? {
+        guard let data = Data(base64Encoded: self) else {
+            return nil
+        }
+
+        return String(data: data, encoding: .utf8)
+    }
+
+    func toBase64() -> String {
+        return Data(self.utf8).base64EncodedString()
     }
 }
 
