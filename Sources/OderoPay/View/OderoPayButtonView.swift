@@ -76,7 +76,7 @@ public class OderoPayButtonView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    @IBAction func initCommonPaymentPage(_ sender: Any) async {
+    @IBAction func initCommonPaymentPage(_ sender: Any) {
         print("started initialization of common payment page")
         print("step #1 (LOCAL)")
         print("checking for navigation controller...")
