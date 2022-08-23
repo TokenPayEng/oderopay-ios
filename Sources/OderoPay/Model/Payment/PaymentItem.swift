@@ -11,7 +11,7 @@ public struct PaymentItem: Codable {
     
     // mandatory
     private var name: String
-    private var price: Int
+    private var price: Double
     
     // optional
     private var externalId: String?
