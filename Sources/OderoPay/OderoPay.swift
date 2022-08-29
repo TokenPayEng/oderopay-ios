@@ -58,7 +58,7 @@ public struct OderoPay {
         print()
         
         let (data, _) = try await URLSession.shared.data(from: url)
-        print(data.description)
+        print(data as NSData)
         print(try JSONDecoder().decode(CheckoutFormResult.self, from: data))
         
     
