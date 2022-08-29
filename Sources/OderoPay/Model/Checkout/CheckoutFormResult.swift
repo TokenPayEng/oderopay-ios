@@ -8,6 +8,11 @@
 import Foundation
 
 public struct CheckoutFormResult: Codable {
+    private let data: CheckoutFormDataResult?
+    private let errors: CheckoutFormErrorResult?
+}
+
+struct CheckoutFormDataResult: Codable {
     private let pageUrl: String
     private let token: String
     
@@ -18,4 +23,9 @@ public struct CheckoutFormResult: Codable {
     public func getWebViewURL() -> String {
         pageUrl
     }
+}
+
+struct CheckoutFormErrorResult: Codable {
+    private let errorCode: String
+    private let errorDescription: String
 }
