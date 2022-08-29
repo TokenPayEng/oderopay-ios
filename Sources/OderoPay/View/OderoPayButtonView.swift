@@ -125,7 +125,9 @@ public class OderoPayButtonView: UIView {
                 print("checkout form should be initialized with correct values.")
                 print("LOCAL CHECK #2 - FAILURE")
             }
+        } else {
+            print("no keys were provided - FAIL")
         }
-        print("no keys were provided - FAIL")
+        
     }
 }
