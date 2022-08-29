@@ -66,7 +66,7 @@ public struct OderoPay {
         //print(request.httpBody)
         
         let (data, _) = try await URLSession.shared.data(from: request.url!)
-        print(data)
+        print("data returned is \(data)")
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
     }
     
