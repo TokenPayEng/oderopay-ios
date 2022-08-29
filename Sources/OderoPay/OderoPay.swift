@@ -45,10 +45,10 @@ public struct OderoPay {
         
         request.httpMethod = HTTPMethod.POST.rawValue
         
-//        request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
-//        request.addValue(randomKey, forHTTPHeaderField: "x-random-key")
-//        request.addValue(signature, forHTTPHeaderField: "x-signature")
-//        request.addValue("1", forHTTPHeaderField: "x-auth-version")
+        request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
+        request.addValue(randomKey, forHTTPHeaderField: "x-random-key")
+        request.addValue(signature, forHTTPHeaderField: "x-signature")
+        request.addValue("1", forHTTPHeaderField: "x-auth-version")
         
         print("request paramaters")
         print(request.url!)
