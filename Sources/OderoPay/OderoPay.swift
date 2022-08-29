@@ -41,7 +41,7 @@ public struct OderoPay {
         let url = URL(string: APIGateway.LOCAL.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         var request = URLRequest(url: url)
         
-        let signature = try generateSignature(for: request.url!.absoluteString, body: String())
+        let signature = try generateSignature(for: url.absoluteString, body: String())
         
         request.httpMethod = HTTPMethod.POST.rawValue
         
