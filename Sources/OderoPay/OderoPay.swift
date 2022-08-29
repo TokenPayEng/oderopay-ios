@@ -44,6 +44,7 @@ public struct OderoPay {
         let signature = try generateSignature(for: url.absoluteString, body: String())
         
         request.httpMethod = HTTPMethod.POST.rawValue
+        request.httpBody = " {\"rrr\": \"rrr\" }".data(using: String.Encoding.utf8)
         
         request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
         request.addValue(randomKey, forHTTPHeaderField: "x-rnd-key")
