@@ -57,7 +57,11 @@ public struct OderoPay {
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let data = data {
-                print(data)
+                if let xx = try? JSONDecoder().decode(CheckoutFormResult.self, from: data) {
+                    print(xx)
+                } else {
+                    print("invalid response")
+                }
             } else if let error = error {
                 print("Initializing checkout form request failed due to \(error)")
             }
