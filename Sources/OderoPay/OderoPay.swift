@@ -61,10 +61,10 @@ public struct OderoPay {
         request.addValue("1", forHTTPHeaderField: "x-auth-version")
         
         print(jsonString)
-        print(request.url)
-        print(request.httpBody)
-        print(request.httpMethod)
-        print(request.allHTTPHeaderFields)
+        print(request.url!)
+        print(request.httpBody!)
+        print(request.httpMethod!)
+        print(request.allHTTPHeaderFields!)
         
         let (data, _) = try await URLSession.shared.data(from: request.url!)
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
