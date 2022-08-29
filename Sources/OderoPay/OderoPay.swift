@@ -57,7 +57,7 @@ public struct OderoPay {
         print(request.url!)
         print(request.httpMethod!)
         print(request.allHTTPHeaderFields!)
-         print(request.httpBody)
+        print(request.httpBody)
         
         let (data, _) = try await URLSession.shared.data(from: url)
         print(String(decoding: data, as: UTF8.self))
