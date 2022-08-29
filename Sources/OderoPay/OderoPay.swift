@@ -50,10 +50,12 @@ public struct OderoPay {
         request.addValue(signature, forHTTPHeaderField: "x-signature")
         request.addValue("1", forHTTPHeaderField: "x-auth-version")
         
+        print("request paramaters")
         print(request.url!)
         print(request.httpMethod!)
         print(request.allHTTPHeaderFields!)
         // print(request.httpBody)
+        print()
         
         let (data, _) = try await URLSession.shared.data(from: url)
         print(data.description)
@@ -75,8 +77,10 @@ public struct OderoPay {
     static private func generateSignature(for url: String, body: String) throws -> String {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
+        print("generating signature...")
         print(concatenatedString)
         print(concatenatedString.toSha256().toBase64().uppercased())
+        print("signature generation complete.")
         return concatenatedString.toSha256().toBase64().uppercased()
     }
 }
