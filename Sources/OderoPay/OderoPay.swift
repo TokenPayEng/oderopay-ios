@@ -50,6 +50,7 @@ public struct OderoPay {
         request.addValue(signature, forHTTPHeaderField: "x-signature")
         request.addValue("V1", forHTTPHeaderField: "x-auth-version")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("*/*", forHTTPHeaderField: "Accept")
         
         print("request paramaters")
         print(request.url!)
