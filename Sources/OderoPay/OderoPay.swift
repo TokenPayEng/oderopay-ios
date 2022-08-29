@@ -52,7 +52,7 @@ public struct OderoPay {
 //        }
         
         var request = URLRequest(url: url)
-        let signature = try generateSignature(for: request.url!.absoluteString, body: "jsonString")
+        let signature = try generateSignature(for: request.url!.absoluteString, body: String())
         
         request.httpMethod = HTTPMethod.POST.rawValue
         request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
@@ -60,7 +60,6 @@ public struct OderoPay {
         request.addValue(signature, forHTTPHeaderField: "x-signature")
         request.addValue("1", forHTTPHeaderField: "x-auth-version")
         
-        print("jsonString")
         print(request.url!)
         print(request.httpMethod!)
         print(request.allHTTPHeaderFields!)
