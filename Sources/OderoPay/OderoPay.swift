@@ -37,9 +37,35 @@ public struct OderoPay {
         OderoPay.checkoutForm
     }
     
-    static public func sendCheckoutForm() async throws -> CheckoutFormResult {
+    static public func sendCheckoutForm() throws  {
         let url = URL(string: APIGateway.LOCAL.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
+        var request = URLRequest(url: url)
         
+        let signature = try generateSignature(for: request.url!.absoluteString, body: String())
+        
+        request.httpMethod = HTTPMethod.POST.rawValue
+        
+        request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
+        request.addValue(randomKey, forHTTPHeaderField: "x-random-key")
+        request.addValue(signature, forHTTPHeaderField: "x-signature")
+        request.addValue("1", forHTTPHeaderField: "x-auth-version")
+        
+        print(request.url!)
+        print(request.httpMethod!)
+        print(request.allHTTPHeaderFields!)
+        // print(request.httpBody)
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data {
+                print(data)
+            } else if let error = error {
+                print("Initializing checkout form request failed due to \(error)")
+            }
+        }
+        
+        task.resume()
+        
+    
 //        let encoded = try JSONEncoder().encode(OderoPay.checkoutForm)
 //        let json = try JSONSerialization.jsonObject(with: encoded, options: [])
 //        guard let jsonString = String(data: encoded, encoding: .utf8) else { throw CheckoutError.invalidRequestBody }
@@ -51,23 +77,8 @@ public struct OderoPay {
 //            }
 //        }
         
-        var request = URLRequest(url: url)
-        let signature = try generateSignature(for: request.url!.absoluteString, body: String())
-        
-        request.httpMethod = HTTPMethod.POST.rawValue
-        request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
-        request.addValue(randomKey, forHTTPHeaderField: "x-random-key")
-        request.addValue(signature, forHTTPHeaderField: "x-signature")
-        request.addValue("1", forHTTPHeaderField: "x-auth-version")
-        
-        print(request.url!)
-        print(request.httpMethod!)
-        print(request.allHTTPHeaderFields!)
-        //print(request.httpBody)
-        
-        let (data, _) = try await URLSession.shared.data(from: request.url!)
-        print("data returned is \(data)")
-        return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
+//        let (data, _) = try await URLSession.shared.data(from: request.url!)
+//        return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
     }
     
     static private func generateSignature(for url: String, body: String) throws -> String {

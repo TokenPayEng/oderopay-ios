@@ -109,7 +109,7 @@ public class OderoPayButtonView: UIView {
                 Task {
                     do {
                         print("retrieving token...")
-                        print(try await OderoPay.sendCheckoutForm())
+                        print(try OderoPay.sendCheckoutForm())
                         let token = "how-long-has-this-been-going-on-ooooh"
                         print(token)
                         print("checkout form sending - success")
