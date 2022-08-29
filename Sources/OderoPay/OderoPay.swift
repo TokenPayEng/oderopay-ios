@@ -13,6 +13,14 @@ public struct OderoPay {
         self.secretKey = secretKey
     }
     
+    static func areKeysProvided() -> Bool {
+        !self.apiKey.isEmpty || !self.secretKey.isEmpty
+    }
+    
+    static func getKeys() -> (String, String) {
+        (self.apiKey, self.secretKey)
+    }
+    
     static public func isCheckoutFormReady() -> Bool {
         OderoPay.checkoutForm.isReady()
     }

@@ -78,47 +78,52 @@ public class OderoPayButtonView: UIView {
     
     @IBAction func initCommonPaymentPage(_ sender: Any) {
         print("started initialization of common payment page")
-        print("step #1 (LOCAL)")
-        print("checking for navigation controller...")
+        print("retrieving unique keys...")
         
-        let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
-        
-        guard let navigationController = navigationController else {
-            print("navigation controller check - failure")
-            print("navigation controller was not initialized for odero pay button, please use initNavigationController method")
-            return
-        }
-        
-        print("navigation controller check - success")
-        print("LOCAL CHECK #1 - SUCCESS")
-        
-        print("step #2 (LOCAL)")
-        print("checking for checkout form...")
-        
-        if OderoPay.isCheckoutFormReady() {
-            print("checkout form check - success")
-            print("LOCAL CHECK #2 - SUCCESS")
-            print("step #3 (CONNECTION)")
-            print("sending checkout form...")
-            Task {
-                do {
-                    print("retrieving token...")
-                    let token: String = try await OderoPay.sendCheckoutForm().getToken()
-                    print(token)
-                    print("checkout form sending - success")
-                    print("CONNECTION CHECK #3 - SUCCESS")
-                    navigationController.pushViewController(commonPaymentPageViewController, animated: true)
-                } catch {
-                    print("sending checkout form - failure")
-                    print(error)
-                    print("CONNECTION CHECK #3 - FAILURE")
-                }
+        if OderoPay.areKeysProvided() {
+            print("keys were found correctly: api key - \(OderoPay.getKeys().0) and secret key - \(OderoPay.getKeys().1)")
+            print("step #1 (LOCAL)")
+            print("checking for navigation controller...")
+            
+            let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
+            
+            guard let navigationController = navigationController else {
+                print("navigation controller check - FAIL")
+                print("navigation controller was not initialized for odero pay button, please use initNavigationController method")
+                return
             }
-        } else {
-            print("checkout form check - failure")
-            print("checkout form should be initialized with correct values.")
-            print("LOCAL CHECK #2 - FAILURE")
+            
+            print("navigation controller check - success")
+            print("LOCAL CHECK #1 - SUCCESS")
+            
+            print("step #2 (LOCAL)")
+            print("checking for checkout form...")
+            
+            if OderoPay.isCheckoutFormReady() {
+                print("checkout form check - success")
+                print("LOCAL CHECK #2 - SUCCESS")
+                print("step #3 (CONNECTION)")
+                print("sending checkout form...")
+                Task {
+                    do {
+                        print("retrieving token...")
+                        let token: String = try await OderoPay.sendCheckoutForm().getToken()
+                        print(token)
+                        print("checkout form sending - success")
+                        print("CONNECTION CHECK #3 - SUCCESS")
+                        navigationController.pushViewController(commonPaymentPageViewController, animated: true)
+                    } catch {
+                        print("sending checkout form - failure")
+                        print(error)
+                        print("CONNECTION CHECK #3 - FAIL")
+                    }
+                }
+            } else {
+                print("checkout form check - failure")
+                print("checkout form should be initialized with correct values.")
+                print("LOCAL CHECK #2 - FAILURE")
+            }
         }
-        
+        print("no keys were provided - FAIL")
     }
 }
