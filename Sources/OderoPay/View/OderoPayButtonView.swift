@@ -105,7 +105,8 @@ public class OderoPayButtonView: UIView {
                 print("step #3 (CONNECTION)")
                 print("sending checkout form...")
                 print("generating random key...")
-                OderoPay.assignRandomKey(using: NSUUID().uuidString)
+                //OderoPay.assignRandomKey(using: NSUUID().uuidString)
+                OderoPay.assignRandomKey(using: "111")
                 Task {
                     do {
                         print("retrieving token...")
