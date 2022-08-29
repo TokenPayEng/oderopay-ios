@@ -40,19 +40,19 @@ public struct OderoPay {
     static public func sendCheckoutForm() async throws -> CheckoutFormResult {
         let url = URL(string: APIGateway.LOCAL.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         
-        let encoded = try JSONEncoder().encode(OderoPay.checkoutForm)
-        let json = try JSONSerialization.jsonObject(with: encoded, options: [])
-        guard let jsonString = String(data: encoded, encoding: .utf8) else { throw CheckoutError.invalidRequestBody }
+//        let encoded = try JSONEncoder().encode(OderoPay.checkoutForm)
+//        let json = try JSONSerialization.jsonObject(with: encoded, options: [])
+//        guard let jsonString = String(data: encoded, encoding: .utf8) else { throw CheckoutError.invalidRequestBody }
+//
+//        var components = URLComponents(string: url.absoluteString)!
+//        if let object = json as? [String: Any] {
+//            components.queryItems = object.compactMap { (key, value) in
+//                URLQueryItem(name: key, value: "\(value)")
+//            }
+//        }
         
-        var components = URLComponents(string: url.absoluteString)!
-        if let object = json as? [String: Any] {
-            components.queryItems = object.compactMap { (key, value) in
-                URLQueryItem(name: key, value: "\(value)")
-            }
-        }
-        
-        var request = URLRequest(url: components.url!)
-        let signature = try generateSignature(for: request.url!.absoluteString, body: jsonString)
+        var request = URLRequest(url: url)
+        let signature = try generateSignature(for: request.url!.absoluteString, body: "jsonString")
         
         request.httpMethod = HTTPMethod.POST.rawValue
         request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
@@ -60,7 +60,7 @@ public struct OderoPay {
         request.addValue(signature, forHTTPHeaderField: "x-signature")
         request.addValue("1", forHTTPHeaderField: "x-auth-version")
         
-        print(jsonString)
+        print("jsonString")
         print(request.url!)
         print(request.httpMethod!)
         print(request.allHTTPHeaderFields!)
