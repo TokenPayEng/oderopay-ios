@@ -41,23 +41,22 @@ public struct OderoPay {
         let url = URL(string: APIGateway.LOCAL.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         var request = URLRequest(url: url)
         
-        let signature = try generateSignature(for: url.absoluteString, body: " {\"rrr\": \"rrr\" }")
+        let signature = try generateSignature(for: url.absoluteString, body: String())
         
         request.httpMethod = HTTPMethod.POST.rawValue
-        request.httpBody = " {\"rrr\": \"rrr\" }".data(using: String.Encoding.utf8)
         
         request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
         request.addValue(randomKey, forHTTPHeaderField: "x-rnd-key")
         request.addValue(signature, forHTTPHeaderField: "x-signature")
         request.addValue("V1", forHTTPHeaderField: "x-auth-version")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("*/*", forHTTPHeaderField: "Accept")
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.setValue("*/*", forHTTPHeaderField: "Accept")
         
         print("request paramaters")
         print(request.url!)
         print(request.httpMethod!)
         print(request.allHTTPHeaderFields!)
-        print(request.httpBody)
+//        print(request.httpBody)
         
         let (data, _) = try await URLSession.shared.data(from: url)
         print(String(decoding: data, as: UTF8.self))
