@@ -37,7 +37,7 @@ public struct OderoPay {
         OderoPay.checkoutForm
     }
     
-    static public func sendCheckoutForm() throws  {
+    static public func sendCheckoutForm() async throws {
         let url = URL(string: APIGateway.LOCAL.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         var request = URLRequest(url: url)
         
@@ -55,19 +55,8 @@ public struct OderoPay {
         print(request.allHTTPHeaderFields!)
         // print(request.httpBody)
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let data = data {
-                if let xx = try? JSONDecoder().decode(CheckoutFormResult.self, from: data) {
-                    print(xx)
-                } else {
-                    print("invalid response")
-                }
-            } else if let error = error {
-                print("Initializing checkout form request failed due to \(error)")
-            }
-        }
-        
-        task.resume()
+        let (data, _) = try await URLSession.shared.data(from: url)
+        print(try JSONDecoder().decode(CheckoutFormResult.self, from: data))
         
     
 //        let encoded = try JSONEncoder().encode(OderoPay.checkoutForm)
@@ -80,9 +69,6 @@ public struct OderoPay {
 //                URLQueryItem(name: key, value: "\(value)")
 //            }
 //        }
-        
-//        let (data, _) = try await URLSession.shared.data(from: request.url!)
-//        return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
     }
     
     static private func generateSignature(for url: String, body: String) throws -> String {
