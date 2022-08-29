@@ -13,6 +13,10 @@ public struct OderoPay {
         self.secretKey = secretKey
     }
     
+    static public func assignRandomKey(using key: String) {
+        self.randomKey = key
+    }
+    
     static func areKeysProvided() -> Bool {
         !self.apiKey.isEmpty || !self.secretKey.isEmpty
     }
@@ -48,10 +52,12 @@ public struct OderoPay {
         }
         
         var request = URLRequest(url: components.url!)
+        let signature = try generateSignature(for: request.url!.absoluteString, body: jsonString)
+        
         request.httpMethod = HTTPMethod.POST.rawValue
         request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
         request.addValue(randomKey, forHTTPHeaderField: "x-random-key")
-        request.addValue(generateSignature(for: request.url!.absoluteString, body: jsonString), forHTTPHeaderField: "x-signature")
+        request.addValue(signature, forHTTPHeaderField: "x-signature")
         request.addValue("1", forHTTPHeaderField: "x-auth-version")
         
         print(jsonString)
@@ -64,7 +70,8 @@ public struct OderoPay {
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
     }
     
-    static private func generateSignature(for url: String, body: String) -> String {
+    static private func generateSignature(for url: String, body: String) throws -> String {
+        guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
         print(concatenatedString)
         print(concatenatedString.toSha256().toBase64().uppercased())

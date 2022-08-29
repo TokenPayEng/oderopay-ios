@@ -9,4 +9,5 @@ import Foundation
 
 enum CheckoutError: Error {
     case invalidRequestBody
+    case emptyRandomKey
 }
