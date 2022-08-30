@@ -76,6 +76,8 @@ public class OderoPayButtonView: UIView, WKUIDelegate {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        webView.uiDelegate = self
     }
     
     @IBAction func initCommonPaymentPage(_ sender: Any) {
