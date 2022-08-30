@@ -84,16 +84,24 @@ public class OderoPayButtonView: UIView {
             print("unique keys retrieval ---- SUCCESS ✅")
             print("keys were found with following values \napi key = \(OderoPay.getKeys().0)\nsecret key = \(OderoPay.getKeys().1)\n")
             
-            print("STEP #1 ---- (LOCAL)")
-            print("checking for navigation controller...")
+            print("STEP #1 ---- (LOCAL")
+            print("retrieving displaying view settings...")
+            print("display settings retrieved ---- SUCCESS ✅")
+            if OderoPay.isAsWebView() {
+                print("displaying as Web View\n")
+            } else {
+                print("displaying as Native\n")
                 
-            guard let navigationController = navigationController else {
-                print("no navigation controller found ---- FAIL ❌")
-                print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
-                return
+                print("checking for navigation controller...")
+                
+                guard let navigationController = navigationController else {
+                    print("no navigation controller found ---- FAIL ❌")
+                    print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
+                    return
+                }
+                
+                print("navigation controller check ---- SUCCESS ✅\n")
             }
-            
-            print("navigation controller check ---- SUCCESS ✅\n")
             
             print("STEP #2 ---- (LOCAL)")
             print("checking for checkout form...")

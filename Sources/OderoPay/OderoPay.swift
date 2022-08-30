@@ -9,6 +9,8 @@ public struct OderoPay {
     
     static private var checkoutForm = CheckoutForm()
     
+    static private var asWebView: Bool = false
+    
     static public func assignRetrievedToken(withValue token: String) {
         self.token = token
     }
@@ -28,6 +30,14 @@ public struct OderoPay {
     
     static func getKeys() -> (String, String) {
         (self.apiKey, self.secretKey)
+    }
+    
+    static func isAsWebView() -> Bool {
+        self.asWebView
+    }
+    
+    static func changeToWebView(_ value: Bool) {
+        self.asWebView = value
     }
     
     static public func isCheckoutFormReady() -> Bool {
