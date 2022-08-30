@@ -12,4 +12,11 @@ public enum Currency: String, Codable {
     case AZN = "₼"
     case USD = "$"
     case EURO = "€"
+    
+    enum CodingKeys: String, CodingKey {
+        case TRY = "TRY"
+        case AZN = "AZN"
+        case USD = "USD"
+        case EURO = "EURO"
+    }
 }
