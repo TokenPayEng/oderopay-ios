@@ -57,10 +57,12 @@ public struct OderoPay {
         
         let encoded = try JSONEncoder().encode(OderoPay.checkoutForm)
 //        let json = try JSONSerialization.jsonObject(with: encoded, options: [])
-        guard let jsonString = String(data: encoded, encoding: .utf8) else { throw CheckoutError.invalidRequestBody }
-        guard let httpRequestBody = jsonString.data(using: .utf8) else { throw CheckoutError.invalidRequestBody }
+//        guard let jsonString = String(data: encoded, encoding: .utf8) else { throw CheckoutError.invalidRequestBody }
+//        guard let httpRequestBody = jsonString.data(using: .utf8) else { throw CheckoutError.invalidRequestBody }
         
-        request.httpBody = httpRequestBody
+        request.httpBody = encoded
+        
+        print(request.httpBody)
         
         let (data, _) = try await URLSession.shared.data(with: request)
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
