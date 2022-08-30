@@ -14,6 +14,8 @@ OderoPay supports `Visa`, `Visa Electron`, `MasterCard`, `Maestro` and `American
 
 SET API KEY AND ETC
 
+SET WEB VIEW NATIVE BY DEFAULT
+
 Add `View` to your .storyboard file, place it where you would like payment button to appear. In the
 IdentityInspector select `OderoButtonView` class for your newly added `View`. Connect IBOutlet
 to the related ViewController class.

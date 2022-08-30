@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import WebKit
 
-public class OderoPayButtonView: UIView {
-
+public class OderoPayButtonView: UIView, WKUIDelegate {
+    
+    var webView: WKWebView!
     var navigationController: UINavigationController?
     
     @IBOutlet var contentView: UIView!
@@ -84,32 +86,13 @@ public class OderoPayButtonView: UIView {
             print("unique keys retrieval ---- SUCCESS ✅")
             print("keys were found with following values \napi key = \(OderoPay.getKeys().0)\nsecret key = \(OderoPay.getKeys().1)\n")
             
-            print("STEP #1 ---- (LOCAL")
-            print("retrieving displaying view settings...")
-            print("display settings retrieved ---- SUCCESS ✅")
-            if OderoPay.isAsWebView() {
-                print("displaying as Web View\n")
-            } else {
-                print("displaying as Native\n")
-                
-                print("checking for navigation controller...")
-                
-                guard let navigationController = navigationController else {
-                    print("no navigation controller found ---- FAIL ❌")
-                    print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
-                    return
-                }
-                
-                print("navigation controller check ---- SUCCESS ✅\n")
-            }
-            
-            print("STEP #2 ---- (LOCAL)")
+            print("STEP #1 ---- (LOCAL)")
             print("checking for checkout form...")
             
             if OderoPay.isCheckoutFormReady() {
                 print("checkout form found ---- SUCCESS ✅\n")
                 
-                print("STEP #3 ---- (NETWORK)")
+                print("STEP #2 ---- (NETWORK)")
                 print("generating random key...")
                 print("sending checkout form...")
                 OderoPay.assignRandomKey(using: NSUUID().uuidString)
@@ -137,10 +120,35 @@ public class OderoPayButtonView: UIView {
                         print(token)
                         print("checkout form sent ---- SUCCESS ✅\n")
                         OderoPay.assignRetrievedToken(withValue: token)
-                        print("Navigating to the Common Payment Page")
                         
-                        let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
-                        navigationController.pushViewController(commonPaymentPageViewController, animated: true)
+                        print("STEP #3 ---- (LOCAL")
+                        print("retrieving displaying view settings...")
+                        print("display settings retrieved ---- SUCCESS ✅")
+                        if OderoPay.isAsWebView() {
+                            print("displaying as Web View\n")
+                            
+                            print("retrieving web view url and creating request...")
+                            let webViewURL = URL(string: resultFromServer.getWebViewURL())
+                            let webViewRequest = URLRequest(url: webViewURL!)
+                            print("webview url and request retrieved ---- SUCCESS ✅\n")
+                            print("Navigating to the Common Payment Page ---- (WEB VIEW)")
+                            webView.load(webViewRequest)
+                        } else {
+                            print("displaying as Native\n")
+                            print("checking for navigation controller...")
+                            
+                            guard let navigationController = navigationController else {
+                                print("no navigation controller found ---- FAIL ❌")
+                                print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
+                                return
+                            }
+                            
+                            print("navigation controller check ---- SUCCESS ✅\n")
+                            print("Navigating to the Common Payment Page ---- (NATIVE)")
+                            
+                            let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
+                            navigationController.pushViewController(commonPaymentPageViewController, animated: true)
+                        }
                     } catch {
                         print("network error occured ---- FAIL ❌")
                         print("HINT: \(error)")
