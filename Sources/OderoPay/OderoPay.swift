@@ -55,7 +55,7 @@ public struct OderoPay {
         print(request.httpMethod!)
         print(request.allHTTPHeaderFields!)
         
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let (data, _) = try await URLSession.shared.data(with: request)
         print(String(decoding: data, as: UTF8.self))
         print(try JSONDecoder().decode(CheckoutFormResult.self, from: data))
         
@@ -131,9 +131,9 @@ extension String {
 
 @available(iOS, deprecated: 15.0, message: "Use the built-in API instead")
 extension URLSession {
-    func data(from url: URL) async throws -> (Data, URLResponse) {
+    func data(with request: URLRequest) async throws -> (Data, URLResponse) {
         try await withCheckedThrowingContinuation { continuation in
-            let task = self.dataTask(with: url) { data, response, error in
+            let task = self.dataTask(with: request) { data, response, error in
                 guard let data = data, let response = response else {
                     let error = error ?? URLError(.badServerResponse)
                     return continuation.resume(throwing: error)
