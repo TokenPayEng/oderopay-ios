@@ -15,7 +15,7 @@ public class CheckoutForm: Codable {
     private var currency: Currency
     private var paymentGroup: PaymentType
     private var items: [PaymentItem]
-    lazy private var callbackUrl: String = "NO_CALLBACK_URL"
+    private var callbackUrl: String = String()
     
     // optional
     private var conversationId: String?
