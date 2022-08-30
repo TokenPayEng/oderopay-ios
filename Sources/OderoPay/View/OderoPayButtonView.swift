@@ -86,12 +86,23 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
             print("keys were found with following values \napi key = \(OderoPay.getKeys().0)\nsecret key = \(OderoPay.getKeys().1)\n")
             
             print("STEP #1 ---- (LOCAL)")
+            print("checking for navigation controller...")
+            
+            guard let navigationController = navigationController else {
+                print("no navigation controller found ---- FAIL ❌")
+                print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
+                return
+            }
+            
+            print("navigation controller check ---- SUCCESS ✅\n")
+            
+            print("STEP #2 ---- (LOCAL)")
             print("checking for checkout form...")
             
             if OderoPay.isCheckoutFormReady() {
                 print("checkout form found ---- SUCCESS ✅\n")
                 
-                print("STEP #2 ---- (NETWORK)")
+                print("STEP #3 ---- (NETWORK)")
                 print("generating random key...")
                 print("sending checkout form...")
                 OderoPay.assignRandomKey(using: NSUUID().uuidString)
@@ -120,7 +131,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                         print("checkout form sent ---- SUCCESS ✅\n")
                         OderoPay.assignRetrievedToken(withValue: token)
                         
-                        print("STEP #3 ---- (LOCAL)")
+                        print("STEP #4 ---- (LOCAL)")
                         print("retrieving displaying view settings...")
                         print("display settings retrieved ---- SUCCESS ✅")
                         if OderoPay.isAsWebView() {
@@ -129,29 +140,14 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                             let webViewURL = URL(string: resultFromServer.getWebViewURL())
                             let safariVC = SFSafariViewController(url: webViewURL!)
                             print("safari webview url and view controller created ---- SUCCESS ✅\n")
+                            
                             print("Navigating to the Common Payment Page ---- (WEB VIEW)")
-                            
-                            
-                            guard let navigationController = navigationController else {
-                                print("no navigation controller found ---- FAIL ❌")
-                                print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
-                                return
-                            }
                             navigationController.present(safariVC, animated: true)
                             
                         } else {
                             print("displaying as Native\n")
-                            print("checking for navigation controller...")
                             
-                            guard let navigationController = navigationController else {
-                                print("no navigation controller found ---- FAIL ❌")
-                                print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
-                                return
-                            }
-                            
-                            print("navigation controller check ---- SUCCESS ✅\n")
                             print("Navigating to the Common Payment Page ---- (NATIVE)")
-                            
                             let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
                             navigationController.pushViewController(commonPaymentPageViewController, animated: true)
                         }
