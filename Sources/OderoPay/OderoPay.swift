@@ -46,23 +46,26 @@ public struct OderoPay {
         let url = URL(string: APIGateway.LOCAL.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         var request = URLRequest(url: url)
         
+        // generate signature
         let signature = try generateSignature(for: url.absoluteString, body: String())
         
+        // method
         request.httpMethod = HTTPMethod.POST.rawValue
         
+        // header custom
         request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
         request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
         request.setValue(signature, forHTTPHeaderField: "x-signature")
         request.setValue("V1", forHTTPHeaderField: "x-auth-version")
+        
+        // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        // body
         let encodedBody = try JSONEncoder().encode(OderoPay.checkoutForm)
-//        let json = try JSONSerialization.jsonObject(with: encoded, options: [])
-//        guard let jsonString = String(data: encoded, encoding: .utf8) else { throw CheckoutError.invalidRequestBody }
-//        guard let httpRequestBody = jsonString.data(using: .utf8) else { throw CheckoutError.invalidRequestBody }
-        
         request.httpBody = encodedBody
         
+        // send request
         let (data, _) = try await URLSession.shared.data(with: request)
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
     }
