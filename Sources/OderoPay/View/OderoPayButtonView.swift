@@ -101,7 +101,7 @@ public class OderoPayButtonView: UIView {
             if OderoPay.isCheckoutFormReady() {
                 print("checkout form found ---- SUCCESS ✅\n")
                 
-                print("STEP #3 ---- (SERVER)")
+                print("STEP #3 ---- (NETWORK)")
                 print("generating random key...")
                 print("sending checkout form...")
                 OderoPay.assignRandomKey(using: NSUUID().uuidString)
@@ -134,9 +134,8 @@ public class OderoPayButtonView: UIView {
                         let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
                         navigationController.pushViewController(commonPaymentPageViewController, animated: true)
                     } catch {
-                        print("sending checkout form - failure")
-                        print(error)
-                        print("CONNECTION CHECK #3 - FAIL")
+                        print("network error occured ---- FAIL ❌")
+                        print("HINT: \(error)")
                     }
                 }
             } else {
