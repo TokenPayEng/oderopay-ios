@@ -76,10 +76,6 @@ public class OderoPayButtonView: UIView, WKNavigationDelegate {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        self.superview?.addSubview(webView)
     }
     
     @IBAction func initCommonPaymentPage(_ sender: Any) {
@@ -130,7 +126,9 @@ public class OderoPayButtonView: UIView, WKNavigationDelegate {
                         print("display settings retrieved ---- SUCCESS ✅")
                         if OderoPay.isAsWebView() {
                             print("displaying as Web View\n")
-                            
+                            webView = WKWebView()
+                            webView.navigationDelegate = self
+                            self.superview?.addSubview(webView)
                             print("retrieving web view url and creating request...")
                             let webViewURL = URL(string: resultFromServer.getWebViewURL())
                             let webViewRequest = URLRequest(url: webViewURL!)
