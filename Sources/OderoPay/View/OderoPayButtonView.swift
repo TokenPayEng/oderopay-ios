@@ -6,11 +6,10 @@
 //
 
 import UIKit
-import WebKit
+import SafariServices
 
-public class OderoPayButtonView: UIView, WKUIDelegate, WKNavigationDelegate {
+public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
     
-    var webView: WKWebView!
     var navigationController: UINavigationController?
     
     @IBOutlet var contentView: UIView!
@@ -125,17 +124,18 @@ public class OderoPayButtonView: UIView, WKUIDelegate, WKNavigationDelegate {
                         print("retrieving displaying view settings...")
                         print("display settings retrieved ---- SUCCESS ✅")
                         if OderoPay.isAsWebView() {
-                            print("displaying as Web View\n")
-                            webView = WKWebView()
-                            webView.uiDelegate = self
-                            webView.navigationDelegate = self
-                            self.superview!.superview!.addSubview(webView)
-                            print("retrieving web view url and creating request...")
+                            print("displaying as Safari Web View\n")
+                            print("retrieving web view url and creating safari view controller...")
                             let webViewURL = URL(string: resultFromServer.getWebViewURL())
-                            let webViewRequest = URLRequest(url: webViewURL!)
-                            print("webview url and request retrieved ---- SUCCESS ✅\n")
+                            let safariVC = SFSafariViewController(url: webViewURL!)
+                            print("safari webview url and view controller created ---- SUCCESS ✅\n")
                             print("Navigating to the Common Payment Page ---- (WEB VIEW)")
-                            webView.load(webViewRequest)
+                            guard let navigationController = navigationController else {
+                                print("no navigation controller found ---- FAIL ❌")
+                                print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
+                                return
+                            }
+                            navigationController.pushViewController(safariVC, animated: true)
                         } else {
                             print("displaying as Native\n")
                             print("checking for navigation controller...")
