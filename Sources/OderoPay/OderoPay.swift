@@ -11,7 +11,7 @@ public struct OderoPay {
     
     static private var asWebView: Bool = false
     
-    static public func assignRetrievedToken(withValue token: String) {
+    static internal func assignRetrievedToken(withValue token: String) {
         self.token = token
     }
     
@@ -20,27 +20,27 @@ public struct OderoPay {
         self.secretKey = secretKey
     }
     
-    static public func assignRandomKey(using key: String) {
+    static internal func assignRandomKey(using key: String) {
         self.randomKey = key
     }
     
-    static func areKeysProvided() -> Bool {
+    static internal func areKeysProvided() -> Bool {
         !self.apiKey.isEmpty || !self.secretKey.isEmpty
     }
     
-    static func getKeys() -> (String, String) {
+    static internal func getKeys() -> (String, String) {
         (self.apiKey, self.secretKey)
     }
     
-    static func isAsWebView() -> Bool {
+    static internal func isAsWebView() -> Bool {
         self.asWebView
     }
     
-    static func changeToWebView(_ value: Bool) {
+    static public func changeToWebView(_ value: Bool) {
         self.asWebView = value
     }
     
-    static public func isCheckoutFormReady() -> Bool {
+    static internal func isCheckoutFormReady() -> Bool {
         OderoPay.checkoutForm.isReady()
     }
     
@@ -48,11 +48,11 @@ public struct OderoPay {
         OderoPay.checkoutForm.setCheckoutForm(to: form)
     }
     
-    static public func getCheckoutForm() -> CheckoutForm {
+    static internal func getCheckoutForm() -> CheckoutForm {
         OderoPay.checkoutForm
     }
     
-    static public func sendCheckoutForm() async throws -> CheckoutFormResult {
+    static internal func sendCheckoutForm() async throws -> CheckoutFormResult {
         let url = URL(string: APIGateway.LOCAL.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         var request = URLRequest(url: url)
         
