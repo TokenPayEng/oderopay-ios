@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-public class OderoPayButtonView: UIView, WKUIDelegate {
+public class OderoPayButtonView: UIView, WKNavigationDelegate {
     
     var webView: WKWebView!
     var navigationController: UINavigationController?
@@ -79,8 +79,8 @@ public class OderoPayButtonView: UIView, WKUIDelegate {
         
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.uiDelegate = self
-        contentView = webView
+        webView.navigationDelegate = self
+        self.superview?.addSubview(webView)
     }
     
     @IBAction func initCommonPaymentPage(_ sender: Any) {
