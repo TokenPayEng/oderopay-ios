@@ -121,7 +121,7 @@ public class OderoPayButtonView: UIView, WKUIDelegate {
                         print("checkout form sent ---- SUCCESS ✅\n")
                         OderoPay.assignRetrievedToken(withValue: token)
                         
-                        print("STEP #3 ---- (LOCAL")
+                        print("STEP #3 ---- (LOCAL)")
                         print("retrieving displaying view settings...")
                         print("display settings retrieved ---- SUCCESS ✅")
                         if OderoPay.isAsWebView() {
