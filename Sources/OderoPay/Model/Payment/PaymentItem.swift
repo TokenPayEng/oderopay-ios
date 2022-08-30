@@ -18,16 +18,17 @@ public struct PaymentItem: Codable {
     private var subMerchantId: Int?
     private var subMerchantPrice: Double?
     
+    // TODO: CHANGE BACK TO NIL
     public init(
         named name: String,
         for price: Double,
         externalId: String? = nil,
-        subMerchantId: Int? = nil,
+        subMerchantId: Int? = 0,
         subMerchantPrice: Double? = nil) {
             self.name = name
             self.price = price
             self.externalId = externalId
             self.subMerchantId = subMerchantId
-            self.subMerchantPrice = subMerchantPrice
+            self.subMerchantPrice = subMerchantPrice ?? price
     }
 }
