@@ -7,8 +7,8 @@
 
 import Foundation
 
-public enum PaymentType: Codable {
-    case PRODUCT
-    case LISTING
-    case SUBSCRIPTION
+public enum PaymentType: String, Codable {
+    case PRODUCT = "PRODUCT"
+    case LISTING = "LISTING"
+    case SUBSCRIPTION = "SUBSCRIPTION"
 }

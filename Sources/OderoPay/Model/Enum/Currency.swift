@@ -15,10 +15,22 @@ public enum Currency: String, Codable {
 }
 
 extension Currency {
-    enum CodingKeys: String, CodingKey {
-        case TRY = "TRY"
-        case AZN = "AZN"
-        case USD = "USD"
-        case EURO = "EURO"
+    
+    enum Key: CodingKey {
+        case rawValue
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Key.self)
+        switch self {
+        case .TRY:
+            try container.encode("TRY", forKey: .rawValue)
+        case .AZN:
+            try container.encode("AZN", forKey: .rawValue)
+        case .USD:
+            try container.encode("USD", forKey: .rawValue)
+        case .EURO:
+            try  container.encode("EURO", forKey: .rawValue)
+        }
     }
 }
