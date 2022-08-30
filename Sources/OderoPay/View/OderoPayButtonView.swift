@@ -130,12 +130,11 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                             let safariVC = SFSafariViewController(url: webViewURL!)
                             print("safari webview url and view controller created ---- SUCCESS ✅\n")
                             print("Navigating to the Common Payment Page ---- (WEB VIEW)")
-                            guard let navigationController = navigationController else {
-                                print("no navigation controller found ---- FAIL ❌")
-                                print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
-                                return
+                            
+                            if let vc = self.next(ofType: UIViewController.self) {
+                                vc.present(safariVC, animated: true)
                             }
-                            navigationController.pushViewController(safariVC, animated: true)
+                            
                         } else {
                             print("displaying as Native\n")
                             print("checking for navigation controller...")
@@ -165,6 +164,17 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
         } else {
             print("no keys were provided by developer ---- FAIL ❌")
             return
+        }
+    }
+}
+
+extension UIResponder {
+    func next<T:UIResponder>(ofType: T.Type) -> T? {
+        let r = self.next
+        if let r = r as? T ?? r?.next(ofType: T.self) {
+            return r
+        } else {
+            return nil
         }
     }
 }
