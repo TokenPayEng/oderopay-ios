@@ -80,7 +80,7 @@ public class CheckoutForm: Codable {
     
     /// Function returns checkout price with discounts applied together with currency value. Of type String.
     public func getCheckoutPrice() -> String {
-        String(format: "%.2f", paidPrice) + " \(currency.rawValue)"
+        String(format: "%.2f", paidPrice) + " \(currency.currencySign)"
     }
     
     /// Function returns checkout currency value. Of type Sstring.

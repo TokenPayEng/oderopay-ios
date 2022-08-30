@@ -8,16 +8,23 @@
 import Foundation
 
 public enum Currency: String, Codable {
-    case TRY = "₺"
-    case AZN = "₼"
-    case USD = "$"
-    case EURO = "€"
+    case TRY = "TRY"
+    case AZN = "AZN"
+    case USD = "USD"
+    case EURO = "EURO"
 }
 
 extension Currency {
-    
-    enum Key: String, CodingKey {
-        case TRY = "TRY"
-        case AZN = "AZN"
+    var currencySign: String {
+        switch self {
+        case .TRY:
+            return "₺"
+        case .AZN:
+            return "₼"
+        case .USD:
+            return "$"
+        case .EURO:
+            return "€"
+        }
     }
 }
