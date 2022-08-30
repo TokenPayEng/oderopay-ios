@@ -77,43 +77,61 @@ public class OderoPayButtonView: UIView {
     }
     
     @IBAction func initCommonPaymentPage(_ sender: Any) {
-        print("started initialization of common payment page")
+        print("Started process of initialization for Common Payment Page\n")
         print("retrieving unique keys...")
         
         if OderoPay.areKeysProvided() {
-            print("keys were found correctly: api key - \(OderoPay.getKeys().0) and secret key - \(OderoPay.getKeys().1)")
-            print("step #1 (LOCAL)")
+            print("unique keys retrieval ---- SUCCESS ✅")
+            print("keys were found with following values \napi key = \(OderoPay.getKeys().0)\nsecret key = \(OderoPay.getKeys().1)\n")
+            
+            print("STEP #1 ---- (LOCAL)")
             print("checking for navigation controller...")
-            
-            let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
-            
+                
             guard let navigationController = navigationController else {
-                print("navigation controller check - FAIL")
-                print("navigation controller was not initialized for odero pay button, please use initNavigationController method")
+                print("no navigation controller found ---- FAIL ❌")
+                print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
                 return
             }
             
-            print("navigation controller check - success")
-            print("LOCAL CHECK #1 - SUCCESS")
+            print("navigation controller check ---- SUCCESS ✅\n")
             
-            print("step #2 (LOCAL)")
+            print("STEP #2 ---- (LOCAL)")
             print("checking for checkout form...")
             
             if OderoPay.isCheckoutFormReady() {
-                print("checkout form check - success")
-                print("LOCAL CHECK #2 - SUCCESS")
-                print("step #3 (CONNECTION)")
-                print("sending checkout form...")
+                print("checkout form found ---- SUCCESS ✅\n")
+                
+                print("STEP #3 ---- (SERVER)")
                 print("generating random key...")
+                print("sending checkout form...")
                 OderoPay.assignRandomKey(using: NSUUID().uuidString)
                 Task {
                     do {
+                        let checkoutFormResponse = try await OderoPay.sendCheckoutForm()
+                        
+                        if checkoutFormResponse.hasErrors() != nil {
+                            print("checkout form returned with errors --- FAIL ❌")
+                            print("Error code: \(String(describing: checkoutFormResponse.hasErrors()?.getErrorCode()))")
+                            print("Error description: \(String(describing: checkoutFormResponse.hasErrors()?.getErrorDescription()))")
+                            
+                            return
+                        }
+                        
+                        guard let resultFromServer = checkoutFormResponse.hasData() else {
+                            print("Error occured ---- FAIL ❌")
+                            print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
+                            return
+                        }
+                        
                         print("retrieving token...")
-                        print(try await OderoPay.sendCheckoutForm())
-                        let token = "how-long-has-this-been-going-on-ooooh"
+                        let token = resultFromServer.getToken()
+                        print("token retrieved ---- SUCCESS ✅")
                         print(token)
-                        print("checkout form sending - success")
-                        print("CONNECTION CHECK #3 - SUCCESS")
+                        print("checkout form sent ---- SUCCESS ✅\n")
+                        OderoPay.assignRetrievedToken(withValue: token)
+                        print("Navigating to the Common Payment Page")
+                        
+                        let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
                         navigationController.pushViewController(commonPaymentPageViewController, animated: true)
                     } catch {
                         print("sending checkout form - failure")
@@ -122,13 +140,13 @@ public class OderoPayButtonView: UIView {
                     }
                 }
             } else {
-                print("checkout form check - failure")
-                print("checkout form should be initialized with correct values.")
-                print("LOCAL CHECK #2 - FAILURE")
+                print("checkout form is not provided by developer ---- FAIL ❌")
+                print("HINT: checkout form should be initialized with correct values.")
+                return
             }
         } else {
-            print("no keys were provided - FAIL")
+            print("no keys were provided by developer ---- FAIL ❌")
+            return
         }
-        
     }
 }

@@ -10,9 +10,17 @@ import Foundation
 public struct CheckoutFormResult: Codable {
     private let data: CheckoutFormDataResult?
     private let errors: CheckoutFormErrorResult?
+    
+    public func hasData() -> CheckoutFormDataResult? {
+        data
+    }
+    
+    public func hasErrors() -> CheckoutFormErrorResult? {
+        errors
+    }
 }
 
-struct CheckoutFormDataResult: Codable {
+public struct CheckoutFormDataResult: Codable {
     private let pageUrl: String
     private let token: String
     
@@ -25,7 +33,15 @@ struct CheckoutFormDataResult: Codable {
     }
 }
 
-struct CheckoutFormErrorResult: Codable {
+public struct CheckoutFormErrorResult: Codable {
     private let errorCode: String
     private let errorDescription: String
+    
+    public func getErrorCode() -> String {
+        errorCode
+    }
+    
+    public func getErrorDescription() -> String {
+        errorDescription
+    }
 }

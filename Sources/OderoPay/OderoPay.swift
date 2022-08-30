@@ -5,8 +5,13 @@ public struct OderoPay {
     static private var apiKey = String()
     static private var secretKey = String()
     static private var randomKey = String()
+    static private var token = String()
     
     static private var checkoutForm = CheckoutForm()
+    
+    static public func assignRetrievedToken(withValue token: String) {
+        self.token = token
+    }
     
     static public func authorizeWithKeys(apiKey: String, secretKey: String) {
         self.apiKey = apiKey
@@ -37,7 +42,7 @@ public struct OderoPay {
         OderoPay.checkoutForm
     }
     
-    static public func sendCheckoutForm() async throws {
+    static public func sendCheckoutForm() async throws -> CheckoutFormResult {
         let url = URL(string: APIGateway.LOCAL.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         var request = URLRequest(url: url)
         
@@ -50,14 +55,9 @@ public struct OderoPay {
         request.setValue(signature, forHTTPHeaderField: "x-signature")
         request.setValue("V1", forHTTPHeaderField: "x-auth-version")
         
-        print("request paramaters")
-        print(request.url!)
-        print(request.httpMethod!)
-        print(request.allHTTPHeaderFields!)
-        
         let (data, _) = try await URLSession.shared.data(with: request)
         print(String(decoding: data, as: UTF8.self))
-        print(try JSONDecoder().decode(CheckoutFormResult.self, from: data))
+        return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
         
 //        print(request.httpBody)
 //        let encoded = try JSONEncoder().encode(OderoPay.checkoutForm)
@@ -75,10 +75,6 @@ public struct OderoPay {
     static private func generateSignature(for url: String, body: String) throws -> String {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
-        print("generating signature...")
-        print(concatenatedString)
-        print(concatenatedString.toSha256().toBase64().uppercased())
-        print("signature generation complete.")
         return concatenatedString.toSha256().toBase64().uppercased()
     }
 }
