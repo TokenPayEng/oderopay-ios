@@ -77,8 +77,7 @@ public class OderoPayButtonView: UIView, WKNavigationDelegate {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView = WKWebView()
         webView.navigationDelegate = self
         self.superview?.addSubview(webView)
     }
