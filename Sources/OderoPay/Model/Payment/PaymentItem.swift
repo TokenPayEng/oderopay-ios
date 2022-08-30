@@ -23,12 +23,12 @@ public struct PaymentItem: Codable {
         named name: String,
         for price: Double,
         externalId: String? = nil,
-        subMerchantId: Int? = 0,
+        subMerchantId: Int? = nil,
         subMerchantPrice: Double? = nil) {
             self.name = name
             self.price = price
             self.externalId = externalId
-            self.subMerchantId = subMerchantId
+            self.subMerchantId = subMerchantId ?? 0
             self.subMerchantPrice = subMerchantPrice ?? price
     }
 }
