@@ -129,7 +129,7 @@ public class OderoPayButtonView: UIView, WKUIDelegate, WKNavigationDelegate {
                             webView = WKWebView()
                             webView.uiDelegate = self
                             webView.navigationDelegate = self
-                            self.superview!WKUIDelegate.superview!.addSubview(webView)
+                            self.superview!.superview!.addSubview(webView)
                             print("retrieving web view url and creating request...")
                             let webViewURL = URL(string: resultFromServer.getWebViewURL())
                             let webViewRequest = URLRequest(url: webViewURL!)
