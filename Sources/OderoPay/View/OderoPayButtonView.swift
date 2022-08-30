@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-public class OderoPayButtonView: UIView, WKNavigationDelegate {
+public class OderoPayButtonView: UIView, WKUIDelegate, WKNavigationDelegate {
     
     var webView: WKWebView!
     var navigationController: UINavigationController?
@@ -127,8 +127,9 @@ public class OderoPayButtonView: UIView, WKNavigationDelegate {
                         if OderoPay.isAsWebView() {
                             print("displaying as Web View\n")
                             webView = WKWebView()
+                            webView.uiDelegate = self
                             webView.navigationDelegate = self
-                            self.superview!.superview!.addSubview(webView)
+                            self.superview!WKUIDelegate.superview!.addSubview(webView)
                             print("retrieving web view url and creating request...")
                             let webViewURL = URL(string: resultFromServer.getWebViewURL())
                             let webViewRequest = URLRequest(url: webViewURL!)
