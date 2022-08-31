@@ -433,7 +433,10 @@ extension CardInformationView {
                                                         comment: "choose desired installment")
         chooseInstallmentLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         
+        print(CardInformationView.height)
+        print(chooseInstallmentLabel.bounds.size.height)
         CardInformationView.height += chooseInstallmentLabel.bounds.size.height
+        print(CardInformationView.height)
         
         coreStackView.addArrangedSubview(chooseInstallmentLabel)
     }
