@@ -41,7 +41,7 @@ class CreditOrDebitCardPayment: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        print("why " + contentView.frame.size.height)
+        print("why \(contentView.frame.size.height)")
         height = contentView.frame.size.height
     }
     
