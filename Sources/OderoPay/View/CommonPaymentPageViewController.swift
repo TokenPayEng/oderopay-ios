@@ -74,6 +74,7 @@ public class CommonPaymentPageViewController: UIViewController {
     
     public override func viewDidLayoutSubviews() {
         creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
+        view.setNeedsLayout()
     }
     
     public override func viewDidLoad() {
@@ -133,7 +134,6 @@ public class CommonPaymentPageViewController: UIViewController {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         }
         
-        section.setNeedsLayout()
         section.layoutIfNeeded()
     }
     
