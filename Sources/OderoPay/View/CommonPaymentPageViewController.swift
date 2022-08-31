@@ -74,7 +74,6 @@ public class CommonPaymentPageViewController: UIViewController {
     
     public override func viewDidLayoutSubviews() {
         creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
-        print("ha")
     }
     
     public override func viewDidLoad() {
@@ -135,6 +134,7 @@ public class CommonPaymentPageViewController: UIViewController {
         } else {
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             heightConstraint.constant = 0
+            print("haha1")
             section.setNeedsLayout()
             section.layoutIfNeeded()
             section.isHidden = true
