@@ -9,6 +9,8 @@ import UIKit
 
 class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
+    static var height: CGFloat = 590
+    
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var firstCardAmountLabel: UILabel! {

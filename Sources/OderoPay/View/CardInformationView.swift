@@ -8,7 +8,7 @@
 import UIKit
 
 class CardInformationView: UIView, UITextFieldDelegate {
-
+    
     lazy private var cardAssociation: CardAssociation = .UNDEFINED
     lazy private var cardIinRangeString: String = String()
     
@@ -116,6 +116,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         Bundle.module.loadNibNamed("CardInformation", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
+        //contentView.frame.size.height
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         self.cardNumberTextField.delegate = self
@@ -428,6 +429,9 @@ extension CardInformationView {
         chooseInstallmentLabel.text = NSLocalizedString("installmentChoices",
                                                         bundle: Bundle.module,
                                                         comment: "choose desired installment")
+        chooseInstallmentLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        
+        //chooseInstallmentLabel.bounds.size.height
         
         coreStackView.addArrangedSubview(chooseInstallmentLabel)
     }
