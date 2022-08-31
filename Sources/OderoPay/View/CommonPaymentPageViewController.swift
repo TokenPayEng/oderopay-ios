@@ -137,10 +137,7 @@ public class CommonPaymentPageViewController: UIViewController {
             heightConstraint.constant = pickerHeightVisible
         }
         
-        UIView.animate(withDuration: 0.2, animations: {
-              () -> Void in
-            section.layoutIfNeeded()
-         }, completion: nil)
+        section.layoutIfNeeded()
     }
     
 }
