@@ -435,7 +435,7 @@ extension CardInformationView {
         
         print(CardInformationView.height)
         print(chooseInstallmentLabel.bounds.size.height)
-        CardInformationView.height += chooseInstallmentLabel.bounds.size.height
+        CardInformationView.height += 10
         print(CardInformationView.height)
         
         coreStackView.addArrangedSubview(chooseInstallmentLabel)
