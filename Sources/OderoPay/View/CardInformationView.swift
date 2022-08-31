@@ -24,6 +24,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     @IBOutlet var contentView: UIView!
     
+    @IBOutlet weak var coreStackView: UIStackView!
+    
     @IBOutlet weak var cardNumberTextField: UITextField! {
         didSet {
             cardNumberTextField.forLeftView(use: UIImage(systemName: "creditcard")!)
@@ -278,6 +280,11 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 textField.text = formatBy(pattern: cardNumberPattern, this: cardNumberInputUpdated)
                 return false
             }
+            
+            // check for installment options
+            if cardNumberInputUpdated.count > 6 {
+                addInstallmentOptions()
+            }
         }
         
         // create masking as MM/YY
@@ -415,6 +422,15 @@ class CardInformationView: UIView, UITextFieldDelegate {
 
 extension CardInformationView {
     static var cardRepository: CardRepository = CardRepository()
+    
+    func addInstallmentOptions() {
+        let chooseInstallmentLabel = UILabel()
+        chooseInstallmentLabel.text = NSLocalizedString("installmentChoices",
+                                                        bundle: Bundle.module,
+                                                        comment: "choose desired installment")
+        
+        coreStackView.addArrangedSubview(chooseInstallmentLabel)
+    }
 }
 
 extension UITextField {
