@@ -76,6 +76,7 @@ public class CommonPaymentPageViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
+        print("why")
 //        creditOrDebitCardView.setNeedsLayout()
 //        creditOrDebitCardView.layoutIfNeeded()
     }
@@ -130,14 +131,14 @@ public class CommonPaymentPageViewController: UIViewController {
         if section.isHidden {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             heightConstraint.constant = height
-//            section.setNeedsLayout()
-//            section.layoutIfNeeded()
+            section.setNeedsLayout()
+            section.layoutIfNeeded()
             section.isHidden = false
         } else {
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             heightConstraint.constant = 0
-//            section.setNeedsLayout()
-//            section.layoutIfNeeded()
+            section.setNeedsLayout()
+            section.layoutIfNeeded()
             section.isHidden = true
         }
     }
