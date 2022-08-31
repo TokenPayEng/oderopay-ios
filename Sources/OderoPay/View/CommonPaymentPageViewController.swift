@@ -132,7 +132,7 @@ public class CommonPaymentPageViewController: UIViewController {
             heightConstraint.constant = 0
         }
         
-        UIView.animateWithDuration(0.2, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
               () -> Void in
             section.layoutIfNeeded()
          }, completion: nil)
