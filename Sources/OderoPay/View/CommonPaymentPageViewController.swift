@@ -75,9 +75,9 @@ public class CommonPaymentPageViewController: UIViewController {
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-//        creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
-//        creditOrDebitCardView.setNeedsLayout()
-//        creditOrDebitCardView.layoutIfNeeded()
+        creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
+        creditOrDebitCardView.setNeedsLayout()
+        creditOrDebitCardView.layoutIfNeeded()
     }
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +119,7 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
-        collapseSection(creditOrDebitCardView, ofHeight: CardInformationView.height, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
+        collapseSection(creditOrDebitCardView, ofHeight: CardInformationView.height + 60, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
