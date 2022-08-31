@@ -12,14 +12,7 @@ public class CommonPaymentPageViewController: UIViewController {
     
     // ---------------------UIViews----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
-    @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint! {
-        didSet {
-            creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
-            print("why")
-            creditOrDebitCardView.setNeedsLayout()
-            creditOrDebitCardView.layoutIfNeeded()
-        }
-    }
+    @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var multipleCardsView: MultipleCardsPaymentView!
     @IBOutlet weak var multipleCardsViewHeightConstraint: NSLayoutConstraint!
     
@@ -78,6 +71,13 @@ public class CommonPaymentPageViewController: UIViewController {
         }
     }
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    public override func viewWillLayoutSubviews() {
+        creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
+        print("why")
+        creditOrDebitCardView.setNeedsLayout()
+        creditOrDebitCardView.layoutIfNeeded()
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
