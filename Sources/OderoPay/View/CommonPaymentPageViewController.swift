@@ -75,7 +75,7 @@ public class CommonPaymentPageViewController: UIViewController {
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
+//        creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
         print("why")
 //        creditOrDebitCardView.setNeedsLayout()
 //        creditOrDebitCardView.layoutIfNeeded()
