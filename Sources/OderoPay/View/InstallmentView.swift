@@ -48,7 +48,7 @@ class InstallmentView: UIView {
     @objc func installmentClicked() {
         
         if selected {
-            checkImageView.image = UIImage(named: "circle.inset.filled")
+            checkImageView.image = UIImage(systemName: "circle.inset.filled")
             checkImageView.tintColor = UIColor.init(red: 53, green: 211, blue: 47, alpha: 1)
         } else {
             checkImageView.image = UIImage(named: "circle")

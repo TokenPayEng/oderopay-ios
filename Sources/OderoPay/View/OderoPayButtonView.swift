@@ -68,6 +68,30 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
         oderoPayButton.layer.borderColor = UIColor.clear.cgColor
     }
     
+    func showLoadingIndicator(_ show: Bool) {
+        let tag = 05_14_21
+        if show {
+            oderoPayImageView.image = nil
+            oderoPayButton.isEnabled = false
+            oderoPayButton.alpha = 0.5
+            let indicator = UIActivityIndicatorView()
+            let buttonHeight = oderoPayButton.bounds.size.height
+            let buttonWidth = oderoPayButton.bounds.size.width
+            indicator.center = CGPoint(x: buttonWidth/2, y: buttonHeight/2)
+            indicator.tag = tag
+            oderoPayButton.addSubview(indicator)
+            indicator.startAnimating()
+        } else {
+            oderoPayImageView.image = UIImage(named: "odero-pay-black", in: .module, with: .none)
+            oderoPayButton.isEnabled = true
+            oderoPayButton.alpha = 1.0
+            if let indicator = oderoPayButton.viewWithTag(tag) as? UIActivityIndicatorView {
+                indicator.stopAnimating()
+                indicator.removeFromSuperview()
+            }
+        }
+    }
+    
     // --------------------------------------------------------
     
     private func commonInit() {
@@ -102,7 +126,8 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
             if OderoPay.isCheckoutFormReady() {
                 print("checkout form found ---- SUCCESS ✅\n")
                 
-                oderoPayButton.loadingIndicator(true)
+                showLoadingIndicator(true)
+                
                 print("STEP #3 ---- (NETWORK)")
                 print("generating random key...")
                 print("sending checkout form...")
@@ -132,7 +157,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                         print("checkout form sent ---- SUCCESS ✅\n")
                         OderoPay.assignRetrievedToken(withValue: token)
                         
-                        oderoPayButton.loadingIndicator(false)
+                        showLoadingIndicator(false)
                         
                         print("STEP #4 ---- (LOCAL)")
                         print("retrieving displaying view settings...")
@@ -167,32 +192,6 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
         } else {
             print("no keys were provided by developer ---- FAIL ❌")
             return
-        }
-    }
-}
-
-extension UIButton {
-    func loadingIndicator(_ show: Bool) {
-        let tag = 05_14_21
-        if show {
-            self.setImage(nil, for: .normal)
-            self.isEnabled = false
-            self.alpha = 0.5
-            self.setImage(nil, for: .normal)
-            let indicator = UIActivityIndicatorView()
-            let buttonHeight = self.bounds.size.height
-            let buttonWidth = self.bounds.size.width
-            indicator.center = CGPoint(x: buttonWidth/2, y: buttonHeight/2)
-            indicator.tag = tag
-            self.addSubview(indicator)
-            indicator.startAnimating()
-        } else {
-            self.isEnabled = true
-            self.alpha = 1.0
-            if let indicator = self.viewWithTag(tag) as? UIActivityIndicatorView {
-                indicator.stopAnimating()
-                indicator.removeFromSuperview()
-            }
         }
     }
 }
