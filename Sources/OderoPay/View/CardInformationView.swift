@@ -282,7 +282,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
             }
             
             // check for installment options
-            if cardNumberInputUpdated.count > 6 {
+            if cardNumberInputUpdated.count == 6 {
+                print("im here as well")
                 addInstallmentOptions()
             }
         }
