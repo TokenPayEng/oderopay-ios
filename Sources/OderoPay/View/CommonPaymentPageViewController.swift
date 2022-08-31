@@ -14,8 +14,7 @@ public class CommonPaymentPageViewController: UIViewController {
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint! {
         didSet {
-            creditOrDebitCardViewHeightConstraint.constant = 300
-            print(creditOrDebitCardView.height)
+            creditOrDebitCardViewHeightConstraint.constant = creditOrDebitCardView.height
             creditOrDebitCardView.setNeedsLayout()
             creditOrDebitCardView.layoutIfNeeded()
         }
