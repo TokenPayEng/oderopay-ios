@@ -72,9 +72,8 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     @IBOutlet weak var scrollView: UIScrollView!
     
-    public override func viewWillLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
-        print("why")
         creditOrDebitCardView.setNeedsLayout()
         creditOrDebitCardView.layoutIfNeeded()
     }
@@ -129,6 +128,7 @@ public class CommonPaymentPageViewController: UIViewController {
     private func collapseSection(_ section: UIView, ofHeight height: CGFloat, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
         if section.isHidden {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            print("haha")
             heightConstraint.constant = height
             section.setNeedsLayout()
             section.layoutIfNeeded()
