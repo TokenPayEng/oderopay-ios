@@ -127,10 +127,12 @@ public class CommonPaymentPageViewController: UIViewController {
     
     private func collapseSection(_ section: UIView, ofHeight height: CGFloat, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
         if heightConstraint.constant != 0 {
+            print("1")
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             pickerHeightVisible = heightConstraint.constant
             heightConstraint.constant = 0
         } else {
+            print("2")
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             heightConstraint.constant = pickerHeightVisible
         }
