@@ -429,6 +429,8 @@ extension CardInformationView {
                                                         bundle: Bundle.module,
                                                         comment: "choose desired installment")
         
+        print("im here")
+        
         coreStackView.addArrangedSubview(chooseInstallmentLabel)
     }
 }
