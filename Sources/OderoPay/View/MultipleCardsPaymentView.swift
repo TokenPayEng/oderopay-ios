@@ -9,7 +9,7 @@ import UIKit
 
 class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
-    static var height: CGFloat = 590
+    var height: CGFloat = 0
     
     @IBOutlet var contentView: UIView!
     
@@ -134,6 +134,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        height = contentView.frame.size.height
         
         self.firstAmountTextField.delegate = self
         self.secondAmountTextField.delegate = self
