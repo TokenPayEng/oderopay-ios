@@ -172,24 +172,10 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
 }
 
 extension UIButton {
-    struct ButtonState {
-        var state: UIControl.State
-        var title: String?
-        var image: UIImage?
-    }
-    
-    static private (set) var buttonStates: [ButtonState] = []
-    
     func loadingIndicator(_ show: Bool) {
         let tag = 05_14_21
         if show {
-            var buttonStates: [ButtonState] = []
-            for state in [UIControl.State.disabled] {
-                let buttonState = ButtonState(state: state, title: title(for: state), image: image(for: state))
-                buttonStates.append(buttonState)
-                setImage(UIImage(), for: state)
-            }
-            UIButton.buttonStates = buttonStates
+            self.setImage(nil, for: .normal)
             self.isEnabled = false
             self.alpha = 0.5
             self.setImage(nil, for: .normal)
@@ -201,10 +187,6 @@ extension UIButton {
             self.addSubview(indicator)
             indicator.startAnimating()
         } else {
-            for buttonState in UIButton.buttonStates {
-                setTitle(buttonState.title, for: buttonState.state)
-                setImage(buttonState.image, for: buttonState.state)
-            }
             self.isEnabled = true
             self.alpha = 1.0
             if let indicator = self.viewWithTag(tag) as? UIActivityIndicatorView {
