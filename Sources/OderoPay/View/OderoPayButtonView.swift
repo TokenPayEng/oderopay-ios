@@ -177,7 +177,7 @@ extension UIButton {
         if show {
             self.isEnabled = false
             self.alpha = 0.5
-            self.setImage(nil, for: .disabled)
+            self.setImage(nil, for: .normal)
             let indicator = UIActivityIndicatorView()
             let buttonHeight = self.bounds.size.height
             let buttonWidth = self.bounds.size.width
