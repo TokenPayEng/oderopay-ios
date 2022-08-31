@@ -186,7 +186,12 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 .replacingCharacters(in: range, with: string)
                 .replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
             
-            // initial check
+            // check for installment options
+            if cardNumberInputUpdated.count == 6 {
+                addInstallmentOptions()
+            }
+            
+            // initial check for association
             if cardAssociation == .UNDEFINED {
                 cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0)
                 cardIinRangeString = cardNumberInputUpdated
@@ -279,12 +284,6 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 
                 textField.text = formatBy(pattern: cardNumberPattern, this: cardNumberInputUpdated)
                 return false
-            }
-            
-            // check for installment options
-            if cardNumberInputUpdated.count == 6 {
-                print("im here as well")
-                addInstallmentOptions()
             }
         }
         
@@ -429,8 +428,6 @@ extension CardInformationView {
         chooseInstallmentLabel.text = NSLocalizedString("installmentChoices",
                                                         bundle: Bundle.module,
                                                         comment: "choose desired installment")
-        
-        print("im here")
         
         coreStackView.addArrangedSubview(chooseInstallmentLabel)
     }
