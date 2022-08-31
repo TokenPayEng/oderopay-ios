@@ -10,8 +10,6 @@ import UIKit
 
 public class CommonPaymentPageViewController: UIViewController {
     
-    private var pickerHeightVisible: CGFloat!
-    
     // ---------------------UIViews----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint!
@@ -129,14 +127,13 @@ public class CommonPaymentPageViewController: UIViewController {
         if heightConstraint.constant != 0 {
             print("1")
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-            pickerHeightVisible = heightConstraint.constant
             heightConstraint.constant = 0
         } else {
             print("2")
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-            heightConstraint.constant = pickerHeightVisible
         }
         
+        section.setNeedsLayout()
         section.layoutIfNeeded()
     }
     
