@@ -127,9 +127,11 @@ public class CommonPaymentPageViewController: UIViewController {
         if heightConstraint.constant == 0 {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             heightConstraint.constant = height
+            section.isHidden = false
         } else {
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             heightConstraint.constant = 0
+            section.isHidden = true
         }
         
         UIView.animate(withDuration: 0.2, animations: {
