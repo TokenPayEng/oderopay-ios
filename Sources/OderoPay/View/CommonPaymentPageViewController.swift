@@ -74,7 +74,6 @@ public class CommonPaymentPageViewController: UIViewController {
     
     public override func viewDidLayoutSubviews() {
         creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
-        print("x")
     }
     
     public override func viewDidLoad() {
@@ -125,15 +124,18 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     private func collapseSection(_ section: UIView, ofHeight height: CGFloat, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
-        if section.isHidden {
+        if heightConstraint.constant == 0 {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             heightConstraint.constant = height
-            section.isHidden = false
         } else {
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             heightConstraint.constant = 0
-            section.isHidden = true
         }
+        
+        UIView.animateWithDuration(0.2, animations: {
+              () -> Void in
+            section.layoutIfNeeded()
+         }, completion: nil)
     }
     
 }
