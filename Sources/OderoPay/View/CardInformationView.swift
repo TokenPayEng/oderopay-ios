@@ -9,8 +9,6 @@ import UIKit
 
 class CardInformationView: UIView, UITextFieldDelegate {
     
-    static var height: CGFloat = 160
-    
     lazy private var cardAssociation: CardAssociation = .UNDEFINED
     lazy private var cardIinRangeString: String = String()
     
@@ -24,12 +22,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     lazy private var successCGColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
     
-    @IBOutlet var contentView: UIView! {
-        didSet {
-            contentView.frame.size.height = CardInformationView.height
-        }
-    }
-    
+    @IBOutlet var contentView: UIView!
     @IBOutlet weak var coreStackView: UIStackView!
     
     @IBOutlet weak var cardNumberTextField: UITextField! {
@@ -437,9 +430,6 @@ extension CardInformationView {
                                                         comment: "choose desired installment")
         chooseInstallmentLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         coreStackView.addArrangedSubview(chooseInstallmentLabel)
-        contentView.frame.size.height += 60
-        CardInformationView.height += 60
-        self.layoutIfNeeded()
     }
 }
 
