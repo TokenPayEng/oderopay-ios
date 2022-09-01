@@ -187,7 +187,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             
             // check for installment options
             if cardNumberInputUpdated.count == 6 {
-                print("eat shit")
+                CreditOrDebitCardPayment.resizeView()
             }
             
             // initial check for association

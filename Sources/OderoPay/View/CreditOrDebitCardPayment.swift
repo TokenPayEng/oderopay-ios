@@ -44,6 +44,10 @@ class CreditOrDebitCardPayment: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
+    static func resizeView() {
+        print("eat shit!")
+    }
+    
     internal func setSectionEnabled(_ value: Bool) {
         isEnabled = value
     }
