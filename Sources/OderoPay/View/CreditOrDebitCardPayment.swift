@@ -9,7 +9,7 @@ import UIKit
 
 class CreditOrDebitCardPayment: UIView {
     
-    static var height: CGFloat = 220
+    var height: CGFloat = 220
     var isEnabled: Bool = true
     
     @IBOutlet var contentView: UIView!
@@ -42,11 +42,6 @@ class CreditOrDebitCardPayment: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    }
-    
-    static func resizeView() {
-        height = 260
-        CreditOrDebitCardPayment().layoutIfNeeded()
     }
     
     internal func setSectionEnabled(_ value: Bool) {
