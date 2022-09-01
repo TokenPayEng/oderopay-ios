@@ -93,6 +93,10 @@ public class CommonPaymentPageViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    func changeHeightConstraint(_ size: CGFloat) {
+        creditOrDebitCardViewHeightConstraint.constant = size
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         let info = notification.userInfo
         let keyBoardSize = info![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
