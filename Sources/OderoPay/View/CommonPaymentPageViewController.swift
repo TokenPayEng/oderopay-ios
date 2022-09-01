@@ -80,6 +80,12 @@ public class CommonPaymentPageViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateHeight), name: NSNotification.Name(rawValue: "update"), object: nil)
+    }
+    
+    @objc func updateHeight() {
+        creditOrDebitCardViewHeightConstraint.constant = 300
     }
     
     override public func viewDidDisappear(_ animated: Bool) {

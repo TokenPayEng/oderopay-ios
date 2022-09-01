@@ -188,7 +188,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             // check for installment options
             if  cardNumberInputUpdated.count == 6 &&
                 textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression).count == 5 {
-                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update"), object: nil)
             }
             
             // initial check for association
