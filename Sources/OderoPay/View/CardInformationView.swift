@@ -115,7 +115,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         Bundle.module.loadNibNamed("CardInformation", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
-        //contentView.frame.size.height
+        contentView.frame.size.height = 160
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         self.cardNumberTextField.delegate = self
