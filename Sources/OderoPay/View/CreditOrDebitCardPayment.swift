@@ -9,14 +9,9 @@ import UIKit
 
 class CreditOrDebitCardPayment: UIView {
     
-    var height: CGFloat = CardInformationView().height + 60
     var isEnabled: Bool = true
 
-    @IBOutlet var contentView: UIView! {
-        didSet {
-            contentView.frame.size.height = height
-        }
-    }
+    @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var makePaymentButton: UIButton! {
         didSet {

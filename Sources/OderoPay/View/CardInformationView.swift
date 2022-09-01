@@ -9,7 +9,7 @@ import UIKit
 
 class CardInformationView: UIView, UITextFieldDelegate {
     
-    var height: CGFloat = 160
+    static var height: CGFloat = 160
     
     lazy private var cardAssociation: CardAssociation = .UNDEFINED
     lazy private var cardIinRangeString: String = String()
@@ -26,7 +26,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     @IBOutlet var contentView: UIView! {
         didSet {
-            contentView.frame.size.height = height
+            contentView.frame.size.height = CardInformationView.height
         }
     }
     
