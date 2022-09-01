@@ -76,10 +76,6 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     @IBOutlet weak var scrollView: UIScrollView!
     
-    public override func viewDidLayoutSubviews() {
-        creditOrDebitCardViewHeightConstraint.constant = CreditOrDebitCardPayment.height
-    }
-    
     public override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

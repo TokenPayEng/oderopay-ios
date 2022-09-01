@@ -46,6 +46,7 @@ class CreditOrDebitCardPayment: UIView {
     
     static func resizeView() {
         height = 260
+        CreditOrDebitCardPayment().layoutIfNeeded()
     }
     
     internal func setSectionEnabled(_ value: Bool) {
