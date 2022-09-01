@@ -96,7 +96,7 @@
                                                 <rect key="frame" x="55" y="42" width="280" height="0.0"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="D9U-PN-U6N"/>
+                                                    <constraint firstAttribute="height" id="D9U-PN-U6N"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LtQ-yj-jgd" userLabel="Custom Divider">
