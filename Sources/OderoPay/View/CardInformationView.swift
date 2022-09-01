@@ -121,7 +121,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         self.expireDateTextField.delegate = self
         self.cvcTextField.delegate = self
         self.cardholderTextField.delegate = self
-        self.frame.height = 160
+        self.frame.size.height = 160
     }
     
     // delegate functions
