@@ -75,7 +75,7 @@ public class CommonPaymentPageViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     public override func viewDidLayoutSubviews() {
-       creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
+       //creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
     }
     
     public override func viewDidLoad() {
