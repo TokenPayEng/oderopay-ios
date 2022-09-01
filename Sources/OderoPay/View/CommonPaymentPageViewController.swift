@@ -12,6 +12,7 @@ public class CommonPaymentPageViewController: UIViewController {
     
     // ---------------------UIViews----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
+    @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var multipleCardsView: MultipleCardsPaymentView!
     @IBOutlet weak var multipleCardsViewHeightConstraint: NSLayoutConstraint!
     
@@ -111,19 +112,21 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
-        collapseSection(creditOrDebitCardView, ofHeight: 220, using: creditCardOrDebitCardButton)
+        collapseSection(creditOrDebitCardView, ofHeight: 220, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
-        collapseSection(multipleCardsView, ofHeight: 590, using: multipleCreditCardsButton)
+        collapseSection(multipleCardsView, ofHeight: 590, using: multipleCreditCardsButton, and: multipleCardsViewHeightConstraint)
     }
     
-    private func collapseSection(_ section: UIView, ofHeight height: CGFloat, using button: UIButton) {
+    private func collapseSection(_ section: UIView, ofHeight height: CGFloat, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
         if section.isHidden {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            heightConstraint.constant = height
             section.isHidden = false
         } else {
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+            heightConstraint.constant = 0
             section.isHidden = true
         }
         
