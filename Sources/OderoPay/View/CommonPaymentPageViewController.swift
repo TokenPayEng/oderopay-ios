@@ -10,6 +10,8 @@ import UIKit
 
 public class CommonPaymentPageViewController: UIViewController {
     
+    static var showInstallments: Bool = false
+    
     // ---------------------UIViews----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint!
@@ -124,6 +126,9 @@ public class CommonPaymentPageViewController: UIViewController {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             heightConstraint.constant = height
             section.isHidden = false
+            if CommonPaymentPageViewController.showInstallments {
+                heightConstraint.constant = height + 60
+            }
         } else {
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             heightConstraint.constant = 0
