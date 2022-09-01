@@ -10,6 +10,8 @@ import UIKit
 
 public class CommonPaymentPageViewController: UIViewController {
     
+    var savedCardInformationViewHeight: CGFloat!
+    
     // ---------------------UIViews----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint!
@@ -127,11 +129,14 @@ public class CommonPaymentPageViewController: UIViewController {
         if heightConstraint.constant != 0 {
             print("1")
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+            savedCardInformationViewHeight = CardInformationView.height
+            CardInformationView.height = 0
             heightConstraint.constant = 0
         } else {
             print("2")
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-            heightConstraint.constant = height
+            heightConstraint.constant = savedCardInformationViewHeight + 60
+            CardInformationView.height = savedCardInformationViewHeight
         }
         
         section.layoutIfNeeded()
