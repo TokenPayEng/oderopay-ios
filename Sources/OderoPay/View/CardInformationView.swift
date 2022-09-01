@@ -186,7 +186,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 .replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
             
             // check for installment options
-            if cardNumberInputUpdated.count == 6 && textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression).count == 5 {
+            if  cardNumberInputUpdated.count == 6 &&
+                textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression).count == 5 {
                 CreditOrDebitCardPayment.resizeView()
             }
             
