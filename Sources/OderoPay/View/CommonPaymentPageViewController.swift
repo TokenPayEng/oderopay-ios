@@ -86,9 +86,6 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @objc func updateHeight() {
-        let installmentsChoiceLabel = UILabel()
-        installmentsChoiceLabel.text = NSLocalizedString("installmentChoices", bundle: .module, comment: "Installments Choices")
-        creditOrDebitCardView.addSubview(creditOrDebitCardView)
         creditOrDebitCardViewHeightConstraint.constant = 300
         creditOrDebitPaymentViewHeight = 300
     }
