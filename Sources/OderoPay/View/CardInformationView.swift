@@ -424,12 +424,22 @@ extension CardInformationView {
     static var cardRepository: CardRepository = CardRepository()
     
     func addInstallmentOptions() {
+        print("+------------------------+")
+        print(coreStackView.frame.height)
+        print("--------------------------")
+        print(coreStackView.frame.size.height)
+        print("+------------------------+")
         let chooseInstallmentLabel = UILabel()
         chooseInstallmentLabel.text = NSLocalizedString("installmentChoices",
                                                         bundle: Bundle.module,
                                                         comment: "choose desired installment")
         chooseInstallmentLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         coreStackView.addArrangedSubview(chooseInstallmentLabel)
+        print("+------------------------+")
+        print(coreStackView.frame.height)
+        print("--------------------------")
+        print(coreStackView.frame.size.height)
+        print("+------------------------+")
     }
 }
 
