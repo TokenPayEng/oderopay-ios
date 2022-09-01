@@ -131,6 +131,7 @@ public class CommonPaymentPageViewController: UIViewController {
         } else {
             print("2")
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            heightConstraint.constant = height
         }
         
         section.layoutIfNeeded()
