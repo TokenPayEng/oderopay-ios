@@ -10,8 +10,6 @@ import UIKit
 
 public class CommonPaymentPageViewController: UIViewController {
     
-    var savedCardInformationViewHeight: CGFloat!
-    
     // ---------------------UIViews----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint!
@@ -74,10 +72,6 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     @IBOutlet weak var scrollView: UIScrollView!
     
-    public override func viewDidLayoutSubviews() {
-       //creditOrDebitCardViewHeightConstraint.constant = CardInformationView.height + 60
-    }
-    
     public override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -118,31 +112,27 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
-        collapseSection(creditOrDebitCardView, ofHeight: CardInformationView.height + 60, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
+        collapseSection(creditOrDebitCardView, ofHeight: 220, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
-        collapseSection(multipleCardsView, ofHeight: multipleCardsView.height, using: multipleCreditCardsButton, and: multipleCardsViewHeightConstraint)
+        collapseSection(multipleCardsView, ofHeight: 590, using: multipleCreditCardsButton, and: multipleCardsViewHeightConstraint)
     }
     
     private func collapseSection(_ section: UIView, ofHeight height: CGFloat, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
-        print(savedCardInformationViewHeight ?? "nil")
-        if heightConstraint.constant != 0 {
-            print("1")
-            button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-            savedCardInformationViewHeight = CardInformationView.height
-            CardInformationView.height = 0
-            heightConstraint.constant = 0
-            section.isHidden = true
-        } else {
-            print("2")
+        if section.isHidden {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-            heightConstraint.constant = savedCardInformationViewHeight + 60
-            CardInformationView.height = savedCardInformationViewHeight
+            heightConstraint.constant = height
+            section.setNeedsLayout()
+            section.layoutIfNeeded()
             section.isHidden = false
+        } else {
+            button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+            heightConstraint.constant = 0
+            section.setNeedsLayout()
+            section.layoutIfNeeded()
+            section.isHidden = true
         }
-        
-        section.layoutIfNeeded()
     }
     
 }
