@@ -9,9 +9,15 @@ import UIKit
 
 class CreditOrDebitCardPayment: UIView {
     
+    var height: CGFloat = CardInformationView().height + 60
     var isEnabled: Bool = true
 
-    @IBOutlet var contentView: UIView!
+    @IBOutlet var contentView: UIView! {
+        didSet {
+            contentView.frame.size.height = height
+        }
+    }
+    
     @IBOutlet weak var makePaymentButton: UIButton! {
         didSet {
             makePaymentButton.layer.cornerRadius = 8
