@@ -94,7 +94,7 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     func changeHeightConstraint(_ size: CGFloat) {
-        creditOrDebitCardViewHeightConstraint.constant = size
+        self.creditOrDebitCardViewHeightConstraint.constant = size
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
