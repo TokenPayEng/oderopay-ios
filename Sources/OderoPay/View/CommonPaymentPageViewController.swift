@@ -12,9 +12,10 @@ public class CommonPaymentPageViewController: UIViewController {
     
     // ---------------------UIViews----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
+    var creditOrDebitPaymentViewHeight: CGFloat = 220
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint! {
         didSet {
-            creditOrDebitCardViewHeightConstraint.constant = 220
+            creditOrDebitCardViewHeightConstraint.constant = creditOrDebitPaymentViewHeight
         }
     }
     @IBOutlet weak var multipleCardsView: MultipleCardsPaymentView!
@@ -86,6 +87,7 @@ public class CommonPaymentPageViewController: UIViewController {
     
     @objc func updateHeight() {
         creditOrDebitCardViewHeightConstraint.constant = 300
+        creditOrDebitPaymentViewHeight = 300
     }
     
     override public func viewDidDisappear(_ animated: Bool) {
@@ -122,7 +124,7 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
-        collapseSection(creditOrDebitCardView, ofHeight: 220, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
+        collapseSection(creditOrDebitCardView, ofHeight: creditOrDebitPaymentViewHeight, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
