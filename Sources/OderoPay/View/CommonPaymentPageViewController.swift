@@ -133,11 +133,13 @@ public class CommonPaymentPageViewController: UIViewController {
             savedCardInformationViewHeight = CardInformationView.height
             CardInformationView.height = 0
             heightConstraint.constant = 0
+            section.isHidden = true
         } else {
             print("2")
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             heightConstraint.constant = savedCardInformationViewHeight + 60
             CardInformationView.height = savedCardInformationViewHeight
+            section.isHidden = false
         }
         
         section.layoutIfNeeded()
