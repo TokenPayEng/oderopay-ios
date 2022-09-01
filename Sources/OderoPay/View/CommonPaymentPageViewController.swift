@@ -126,6 +126,7 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     private func collapseSection(_ section: UIView, ofHeight height: CGFloat, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
+        print(savedCardInformationViewHeight ?? "nil")
         if heightConstraint.constant != 0 {
             print("1")
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
