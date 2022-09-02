@@ -12,6 +12,7 @@ class CreditOrDebitCardPaymentView: UIView {
     var isEnabled: Bool = true
     
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var optionsView: OptionsView!
     
     @IBOutlet weak var makePaymentButton: UIButton! {
         didSet {

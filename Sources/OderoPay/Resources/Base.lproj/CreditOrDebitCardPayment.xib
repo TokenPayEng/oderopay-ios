@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="tyq-p4-a7I"/>
                 <outlet property="makePaymentButton" destination="b3u-9H-Hdu" id="PqR-pv-Jxc"/>
+                <outlet property="optionsView" destination="VbD-pP-ABi" id="zEX-8l-lMz"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

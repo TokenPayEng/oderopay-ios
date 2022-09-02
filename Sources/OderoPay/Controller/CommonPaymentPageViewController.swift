@@ -13,10 +13,14 @@ public class CommonPaymentPageViewController: UIViewController {
     var creditOrDebitPaymentViewHeight: CGFloat = 300
     
     // ---------------------UIViews----------------------
-    @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPaymentView!
+    @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPaymentView! {
+        didSet {
+            creditOrDebitCardView.isHidden = true
+        }
+    }
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint! {
         didSet {
-            creditOrDebitCardViewHeightConstraint.constant = creditOrDebitPaymentViewHeight
+            creditOrDebitCardViewHeightConstraint.constant = 0
         }
     }
     @IBOutlet weak var multipleCardsView: MultipleCardsPaymentView!
@@ -53,6 +57,8 @@ public class CommonPaymentPageViewController: UIViewController {
                                   bundle: Bundle.module,
                                   comment: "pay with credit card or debit card"),
                 for: .normal)
+            
+            creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         }
     }
     
