@@ -18,6 +18,6 @@ struct CreditOrDebitCardPaymentController: FormProtocol {
     }
     
     var image: UIImage {
-        isformEnabled ? UIImage(systemName: "chevron.right")! : UIImage(systemName: "chevron.down")!
+        isformEnabled ? UIImage(systemName: "chevron.down")! : UIImage(systemName: "chevron.right")!
     }
 }
