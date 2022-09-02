@@ -19,7 +19,7 @@ class CreditOrDebitCardPaymentView: UIView {
     }
     @IBOutlet weak var optionsView: OptionsView! {
         didSet {
-            optionsView.isHidden = true
+            //optionsView.isHidden = true
         }
     }
     
