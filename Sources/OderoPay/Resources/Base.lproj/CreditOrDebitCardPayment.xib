@@ -26,7 +26,7 @@
                         <constraint firstAttribute="height" priority="750" constant="160" id="hcp-Bv-ZMl"/>
                     </constraints>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-pP-ABi" customClass="OptionsView" customModule="OderoPay">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-pP-ABi" customClass="OptionsView" customModule="OderoPay">
                     <rect key="frame" x="0.0" y="175" width="414" height="65"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
