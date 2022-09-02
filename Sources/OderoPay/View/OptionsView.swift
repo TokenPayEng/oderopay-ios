@@ -52,7 +52,7 @@ class OptionsView: UIView {
         threeDSSelected.toggle()
         
         if threeDSSelected {
-            threeDSCheckImageView.image = UIImage(systemName: "checkmark.square")
+            threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
             threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
         } else {
             threeDSCheckImageView.image = UIImage(systemName: "square")
@@ -64,7 +64,7 @@ class OptionsView: UIView {
         saveCardSelected.toggle()
         
         if saveCardSelected {
-            saveCardCheckImageView.image = UIImage(systemName: "checkmark.square")
+            saveCardCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
             saveCardCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
         } else {
             saveCardCheckImageView.image = UIImage(systemName: "square")
