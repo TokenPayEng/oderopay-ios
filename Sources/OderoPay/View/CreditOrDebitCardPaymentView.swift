@@ -14,12 +14,6 @@ class CreditOrDebitCardPaymentView: UIView {
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var optionsView: OptionsView!
-    @IBOutlet weak var optionsViewHeightConstraint: NSLayoutConstraint! {
-        didSet {
-            optionsViewHeightConstraint.constant = 0
-        }
-    }
-    
     
     @IBOutlet weak var makePaymentButton: UIButton! {
         didSet {

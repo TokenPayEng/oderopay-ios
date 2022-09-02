@@ -14,7 +14,7 @@ struct CreditOrDebitCardPaymentController: FormProtocol {
     var hasInstallment: Bool = false
     
     var height: CGFloat {
-        isformEnabled ? isCardValid ? 300 : 330 : 0
+        isformEnabled ? isCardValid ? 300 : 300 : 0
     }
     
     var image: UIImage {
