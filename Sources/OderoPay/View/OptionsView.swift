@@ -9,8 +9,8 @@ import UIKit
 
 class OptionsView: UIView {
 
-    private let tapped3DS = UITapGestureRecognizer(target: OptionsView.self, action: #selector(threeDSClicked))
-    private let tappedSaveCard = UITapGestureRecognizer(target: OptionsView.self, action: #selector(saveCardClicked))
+    private let tapped3DS = UITapGestureRecognizer(target: self, action: #selector(threeDSClicked))
+    private let tappedSaveCard = UITapGestureRecognizer(target: self, action: #selector(saveCardClicked))
     private var threeDSSelected: Bool = false
     private var saveCardSelected: Bool = false
     
