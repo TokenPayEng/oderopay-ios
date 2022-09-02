@@ -17,7 +17,9 @@ class OptionsView: UIView {
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var threeDSChoiceStackView: UIStackView!
+    @IBOutlet weak var threeDSCheckImageView: UIImageView!
     @IBOutlet weak var saveCardChoiceStackView: UIStackView!
+    @IBOutlet weak var saveCardCheckImageView: UIImageView!
     
     @IBOutlet weak var threeDSLabel: UILabel! {
         didSet {
@@ -51,11 +53,11 @@ class OptionsView: UIView {
     @objc func threeDSClicked() {
         
         if threeDSSelected {
-            checkImageView.image = UIImage(systemName: "checkmark.square")
-            checkImageView.tintColor = UIColor.init(red: 53, green: 211, blue: 47, alpha: 1)
+            threeDSCheckImageView.image = UIImage(systemName: "checkmark.square")
+            threeDSCheckImageView.tintColor = UIColor.init(red: 53, green: 211, blue: 47, alpha: 1)
         } else {
-            checkImageView.image = UIImage(named: "square")
-            checkImageView.tintColor = UIColor.init(red: 225, green: 225, blue: 225, alpha: 1)
+            threeDSCheckImageView.image = UIImage(named: "square")
+            threeDSCheckImageView.tintColor = UIColor.init(red: 225, green: 225, blue: 225, alpha: 1)
         }
     
     }
@@ -63,11 +65,11 @@ class OptionsView: UIView {
     @objc func saveCardClicked() {
         
         if saveCardSelected {
-            checkImageView.image = UIImage(systemName: "checkmark.square")
-            checkImageView.tintColor = UIColor.init(red: 53, green: 211, blue: 47, alpha: 1)
+            saveCardCheckImageView.image = UIImage(systemName: "checkmark.square")
+            saveCardCheckImageView.tintColor = UIColor.init(red: 53, green: 211, blue: 47, alpha: 1)
         } else {
-            checkImageView.image = UIImage(named: "square")
-            checkImageView.tintColor = UIColor.init(red: 225, green: 225, blue: 225, alpha: 1)
+            saveCardCheckImageView.image = UIImage(named: "square")
+            saveCardCheckImageView.tintColor = UIColor.init(red: 225, green: 225, blue: 225, alpha: 1)
         }
     
     }

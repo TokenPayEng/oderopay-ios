@@ -11,8 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OptionsView" customModule="OderoPay">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="xHW-VK-ky6"/>
+                <outlet property="saveCardCheckImageView" destination="uJT-MC-Iw1" id="7Tp-8E-wRv"/>
                 <outlet property="saveCardChoiceStackView" destination="RbV-hj-Xf5" id="7pk-Rh-FkY"/>
                 <outlet property="saveCardLabel" destination="c5v-IC-Fr2" id="uTA-ub-ZYy"/>
+                <outlet property="threeDSCheckImageView" destination="lz0-ZO-n2a" id="J36-0n-fBh"/>
                 <outlet property="threeDSChoiceStackView" destination="bs8-sH-JHS" id="eeX-gV-MeF"/>
                 <outlet property="threeDSLabel" destination="1kq-Y7-f07" id="taz-SK-bAe"/>
             </connections>
