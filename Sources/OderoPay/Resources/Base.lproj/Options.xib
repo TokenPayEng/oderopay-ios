@@ -99,7 +99,11 @@
                 <action selector="threeDSClicked:" destination="-1" id="xeA-r3-nAb"/>
             </connections>
         </tapGestureRecognizer>
-        <tapGestureRecognizer id="qq4-92-pg8"/>
+        <tapGestureRecognizer id="qq4-92-pg8">
+            <connections>
+                <action selector="saveCardClicked:" destination="-1" id="HkE-2X-yW5"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="square" catalog="system" width="128" height="114"/>
