@@ -55,7 +55,7 @@ class OptionsView: UIView {
             threeDSCheckImageView.image = UIImage(systemName: "checkmark.square")
             threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
         } else {
-            threeDSCheckImageView.image = UIImage(named: "square")
+            threeDSCheckImageView.image = UIImage(systemName: "square")
             threeDSCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
         }
     }
@@ -67,7 +67,7 @@ class OptionsView: UIView {
             saveCardCheckImageView.image = UIImage(systemName: "checkmark.square")
             saveCardCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
         } else {
-            saveCardCheckImageView.image = UIImage(named: "square")
+            saveCardCheckImageView.image = UIImage(systemName: "square")
             saveCardCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
         }
     }
