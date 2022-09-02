@@ -9,24 +9,14 @@ import UIKit
 
 class OptionsView: UIView {
 
-    private let tapped3DS = UITapGestureRecognizer(target: self, action: #selector(threeDSClicked))
-    private let tappedSaveCard = UITapGestureRecognizer(target: self, action: #selector(saveCardClicked))
     private var threeDSSelected: Bool = false
     private var saveCardSelected: Bool = false
     
     @IBOutlet var contentView: UIView!
     
-    @IBOutlet weak var threeDSChoiceStackView: UIStackView! {
-        didSet {
-            threeDSChoiceStackView.addGestureRecognizer(tapped3DS)
-        }
-    }
+    @IBOutlet weak var threeDSChoiceStackView: UIStackView!
     @IBOutlet weak var threeDSCheckImageView: UIImageView!
-    @IBOutlet weak var saveCardChoiceStackView: UIStackView! {
-        didSet {
-            saveCardChoiceStackView.addGestureRecognizer(tappedSaveCard)
-        }
-    }
+    @IBOutlet weak var saveCardChoiceStackView: UIStackView!
     @IBOutlet weak var saveCardCheckImageView: UIImageView!
     
     @IBOutlet weak var threeDSLabel: UILabel! {
@@ -58,8 +48,7 @@ class OptionsView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    @objc func threeDSClicked() {
-        
+    @IBAction func threeDSClicked(_ sender: UITapGestureRecognizer) {
         if threeDSSelected {
             threeDSCheckImageView.image = UIImage(systemName: "checkmark.square")
             threeDSCheckImageView.tintColor = UIColor.init(red: 53, green: 211, blue: 47, alpha: 1)
@@ -67,7 +56,6 @@ class OptionsView: UIView {
             threeDSCheckImageView.image = UIImage(named: "square")
             threeDSCheckImageView.tintColor = UIColor.init(red: 225, green: 225, blue: 225, alpha: 1)
         }
-    
     }
     
     @objc func saveCardClicked() {
