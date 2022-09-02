@@ -26,14 +26,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="160" id="ZcK-FE-6WR"/>
+                                <constraint firstAttribute="height" priority="750" constant="160" id="ZcK-FE-6WR"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-pP-ABi" customClass="OptionsView" customModule="OderoPay">
                             <rect key="frame" x="0.0" y="179" width="414" height="65"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="65" id="FiQ-N2-QIT"/>
+                                <constraint firstAttribute="height" priority="750" constant="65" id="FiQ-N2-QIT"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-9H-Hdu">
