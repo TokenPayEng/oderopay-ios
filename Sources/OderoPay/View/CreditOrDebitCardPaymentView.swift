@@ -13,7 +13,11 @@ class CreditOrDebitCardPaymentView: UIView {
     
     @IBOutlet var contentView: UIView!
     
-    @IBOutlet weak var optionsView: OptionsView!
+    @IBOutlet weak var optionsView: OptionsView! {
+        didSet {
+            optionsView.isHidden = true
+        }
+    }
     
     @IBOutlet weak var makePaymentButton: UIButton! {
         didSet {
