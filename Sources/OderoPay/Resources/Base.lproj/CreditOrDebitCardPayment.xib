@@ -13,6 +13,7 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="tyq-p4-a7I"/>
                 <outlet property="makePaymentButton" destination="b3u-9H-Hdu" id="PqR-pv-Jxc"/>
                 <outlet property="optionViewHeightConstraint" destination="23v-WG-4x4" id="WiV-hi-oxm"/>
+                <outlet property="optionViewHeightTopConstraint" destination="VQQ-xl-eqM" id="fvz-M3-JWk"/>
                 <outlet property="optionsView" destination="VbD-pP-ABi" id="zEX-8l-lMz"/>
             </connections>
         </placeholder>
@@ -61,7 +62,7 @@
                 <constraint firstItem="j5n-Ro-gLy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ty7-8J-gTK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-49.275362318840585" y="-173.10267857142856"/>
+            <point key="canvasLocation" x="-49.275362318840585" y="-173.4375"/>
         </view>
     </objects>
     <resources>
