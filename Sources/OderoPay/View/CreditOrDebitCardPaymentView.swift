@@ -14,9 +14,6 @@ class CreditOrDebitCardPaymentView: UIView {
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var optionsView: OptionsView! {
-        didSet {
-            optionsView.isHidden = true
-        }
         
     }
     @IBOutlet weak var optionsViewHeightConstraint: NSLayoutConstraint! {
