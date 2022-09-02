@@ -11,6 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OptionsView" customModule="OderoPay">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="xHW-VK-ky6"/>
+                <outlet property="saveCardChoiceStackView" destination="RbV-hj-Xf5" id="7pk-Rh-FkY"/>
+                <outlet property="saveCardLabel" destination="c5v-IC-Fr2" id="uTA-ub-ZYy"/>
+                <outlet property="threeDSChoiceStackView" destination="bs8-sH-JHS" id="eeX-gV-MeF"/>
+                <outlet property="threeDSLabel" destination="1kq-Y7-f07" id="taz-SK-bAe"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
