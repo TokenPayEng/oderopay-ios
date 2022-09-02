@@ -10,7 +10,7 @@ import UIKit
 
 public class CommonPaymentPageViewController: UIViewController {
     
-    var creditOrDebitPaymentViewHeight: CGFloat = 260
+    var creditOrDebitPaymentViewHeight: CGFloat = 400
     
     // ---------------------UIViews----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPaymentView!
