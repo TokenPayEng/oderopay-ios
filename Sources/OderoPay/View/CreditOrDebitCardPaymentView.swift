@@ -12,16 +12,19 @@ class CreditOrDebitCardPaymentView: UIView {
     var isEnabled: Bool = true
     
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var optionViewHeightConstraint: NSLayoutConstraint! {
-        didSet {
-            //optionViewHeightConstraint.constant = 0
-        }
-    }
+    
     @IBOutlet weak var optionsView: OptionsView! {
         didSet {
-            //optionsView.isHidden = true
+            optionsView.isHidden = true
+        }
+        
+    }
+    @IBOutlet weak var optionsViewHeightConstraint: NSLayoutConstraint! {
+        didSet {
+            optionsViewHeightConstraint.constant = 0
         }
     }
+    
     
     @IBOutlet weak var makePaymentButton: UIButton! {
         didSet {
