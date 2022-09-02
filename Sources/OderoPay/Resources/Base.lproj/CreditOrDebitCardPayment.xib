@@ -19,19 +19,19 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="237"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NzP-48-lKZ">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NzP-48-lKZ">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="237"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-Ro-gLy" customClass="CardInformationView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="92.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="69"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-pP-ABi" customClass="OptionsView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="107.5" width="414" height="64"/>
+                            <rect key="frame" x="0.0" y="84" width="414" height="69"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-9H-Hdu">
-                            <rect key="frame" x="0.0" y="186.5" width="414" height="50.5"/>
+                            <rect key="frame" x="0.0" y="168" width="414" height="69"/>
                             <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="750" constant="45" id="IzV-Ev-193"/>

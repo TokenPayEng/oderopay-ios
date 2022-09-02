@@ -11,27 +11,27 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OptionsView" customModule="OderoPay">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="xHW-VK-ky6"/>
-                <outlet property="saveCardCheckImageView" destination="uJT-MC-Iw1" id="7Tp-8E-wRv"/>
+                <outlet property="saveCardCheckImageView" destination="uJT-MC-Iw1" id="vcG-Il-2NC"/>
                 <outlet property="saveCardChoiceStackView" destination="RbV-hj-Xf5" id="7pk-Rh-FkY"/>
-                <outlet property="saveCardLabel" destination="c5v-IC-Fr2" id="uTA-ub-ZYy"/>
-                <outlet property="threeDSCheckImageView" destination="lz0-ZO-n2a" id="J36-0n-fBh"/>
+                <outlet property="saveCardLabel" destination="c5v-IC-Fr2" id="RkZ-kQ-tCm"/>
+                <outlet property="threeDSCheckImageView" destination="lz0-ZO-n2a" id="TVa-zg-aOm"/>
                 <outlet property="threeDSChoiceStackView" destination="bs8-sH-JHS" id="eeX-gV-MeF"/>
-                <outlet property="threeDSLabel" destination="1kq-Y7-f07" id="taz-SK-bAe"/>
+                <outlet property="threeDSLabel" destination="1kq-Y7-f07" id="6Kh-Z4-cwQ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="138"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OL5-qm-QLh">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="138"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bs8-sH-JHS">
-                            <rect key="frame" x="0.0" y="0.0" width="171.5" height="22"/>
+                            <rect key="frame" x="0.0" y="0.0" width="171.5" height="50"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lz0-ZO-n2a">
-                                    <rect key="frame" x="0.0" y="2" width="20" height="17.5"/>
+                                    <rect key="frame" x="0.0" y="16" width="20" height="17.5"/>
                                     <color key="tintColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="DMh-Ap-N6q"/>
@@ -39,7 +39,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay using 3D Secure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kq-Y7-f07">
-                                    <rect key="frame" x="35" y="2.5" width="136.5" height="17"/>
+                                    <rect key="frame" x="35" y="16.5" width="136.5" height="17"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -47,10 +47,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="RbV-hj-Xf5">
-                            <rect key="frame" x="0.0" y="37" width="258.5" height="24"/>
+                            <rect key="frame" x="0.0" y="65" width="258.5" height="73"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uJT-MC-Iw1">
-                                    <rect key="frame" x="0.0" y="3" width="20" height="17.5"/>
+                                    <rect key="frame" x="0.0" y="27.5" width="20" height="17.5"/>
                                     <color key="tintColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="FtF-ai-r0m"/>
@@ -58,7 +58,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save my card for future payments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5v-IC-Fr2">
-                                    <rect key="frame" x="35" y="3.5" width="223.5" height="17"/>
+                                    <rect key="frame" x="35" y="28" width="223.5" height="17"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                 <constraint firstItem="OL5-qm-QLh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jS0-d9-Qga"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="137.68115942028987" y="-128.90625"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-154.6875"/>
         </view>
     </objects>
     <resources>
