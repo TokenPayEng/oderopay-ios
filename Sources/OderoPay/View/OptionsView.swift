@@ -52,6 +52,7 @@ class OptionsView: UIView {
     
     @objc func threeDSClicked() {
         
+        print("im clicked")
         if threeDSSelected {
             threeDSCheckImageView.image = UIImage(systemName: "checkmark.square")
             threeDSCheckImageView.tintColor = UIColor.init(red: 53, green: 211, blue: 47, alpha: 1)
