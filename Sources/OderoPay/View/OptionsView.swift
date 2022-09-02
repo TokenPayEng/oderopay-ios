@@ -49,6 +49,8 @@ class OptionsView: UIView {
     }
     
     @IBAction func threeDSClicked(_ sender: UITapGestureRecognizer) {
+        threeDSSelected.toggle()
+        
         if threeDSSelected {
             threeDSCheckImageView.image = UIImage(systemName: "checkmark.square")
             threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
@@ -59,6 +61,8 @@ class OptionsView: UIView {
     }
     
     @IBAction func saveCardClicked(_ sender: UITapGestureRecognizer) {
+        saveCardSelected.toggle()
+        
         if saveCardSelected {
             saveCardCheckImageView.image = UIImage(systemName: "checkmark.square")
             saveCardCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
