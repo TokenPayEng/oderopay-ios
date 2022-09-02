@@ -16,9 +16,17 @@ class OptionsView: UIView {
     
     @IBOutlet var contentView: UIView!
     
-    @IBOutlet weak var threeDSChoiceStackView: UIStackView!
+    @IBOutlet weak var threeDSChoiceStackView: UIStackView! {
+        didSet {
+            threeDSChoiceStackView.addGestureRecognizer(tapped3DS)
+        }
+    }
     @IBOutlet weak var threeDSCheckImageView: UIImageView!
-    @IBOutlet weak var saveCardChoiceStackView: UIStackView!
+    @IBOutlet weak var saveCardChoiceStackView: UIStackView! {
+        didSet {
+            saveCardChoiceStackView.addGestureRecognizer(tappedSaveCard)
+        }
+    }
     @IBOutlet weak var saveCardCheckImageView: UIImageView!
     
     @IBOutlet weak var threeDSLabel: UILabel! {
@@ -52,7 +60,6 @@ class OptionsView: UIView {
     
     @objc func threeDSClicked() {
         
-        print("im clicked")
         if threeDSSelected {
             threeDSCheckImageView.image = UIImage(systemName: "checkmark.square")
             threeDSCheckImageView.tintColor = UIColor.init(red: 53, green: 211, blue: 47, alpha: 1)
