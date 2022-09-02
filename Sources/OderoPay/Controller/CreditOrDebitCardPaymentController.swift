@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 struct CreditOrDebitCardPaymentController: FormProtocol {
-    static var isformEnabled: Bool = false
-    static var isCardValid: Bool = false
-    static var hasInstallment: Bool = false
+    var isformEnabled: Bool = false
+    var isCardValid: Bool = false
+    var hasInstallment: Bool = false
+    
+    var height: CGFloat {
+        isformEnabled ? 300 : 0
+    }
 }

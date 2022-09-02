@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FormProtocol {
-    static var isformEnabled: Bool { get set }
-    static var isCardValid: Bool { get set }
-    static var hasInstallment: Bool { get set }
+    var isformEnabled: Bool { get set }
+    var isCardValid: Bool { get set }
+    var hasInstallment: Bool { get set }
 }

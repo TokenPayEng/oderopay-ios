@@ -10,7 +10,12 @@ import UIKit
 
 public class CommonPaymentPageViewController: UIViewController {
     
-    var creditOrDebitPaymentViewHeight: CGFloat = 300
+    
+    var creditOrDebitPaymentController: CreditOrDebitCardPaymentController = CreditOrDebitCardPaymentController()
+    
+    var creditOrDebitPaymentViewHeight: CGFloat {
+        creditOrDebitPaymentController.height
+    }
     
     // ---------------------UIViews----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPaymentView! {
@@ -20,7 +25,7 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint! {
         didSet {
-            creditOrDebitCardViewHeightConstraint.constant = 0
+            creditOrDebitCardViewHeightConstraint.constant = creditOrDebitPaymentViewHeight
         }
     }
     @IBOutlet weak var multipleCardsView: MultipleCardsPaymentView!
@@ -93,8 +98,8 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @objc func updateHeight() {
-        creditOrDebitCardViewHeightConstraint.constant = 300
-        creditOrDebitPaymentViewHeight = 300
+        // creditOrDebitCardViewHeightConstraint.constant = 300
+        // creditOrDebitPaymentViewHeight = 300
     }
     
     override public func viewDidDisappear(_ animated: Bool) {
