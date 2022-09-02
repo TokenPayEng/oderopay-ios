@@ -20,7 +20,7 @@ public class CommonPaymentPageViewController: UIViewController {
     // ---------------------UIViews----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPaymentView! {
         didSet {
-            creditOrDebitCardView.isHidden = true
+            creditOrDebitCardView.isHidden = !creditOrDebitPaymentController.isformEnabled
         }
     }
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint! {
@@ -63,7 +63,7 @@ public class CommonPaymentPageViewController: UIViewController {
                                   comment: "pay with credit card or debit card"),
                 for: .normal)
             
-            creditCardOrDebitCardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+            creditCardOrDebitCardButton.setImage(creditOrDebitPaymentController.image, for: .normal)
         }
     }
     
@@ -145,10 +145,12 @@ public class CommonPaymentPageViewController: UIViewController {
     
     private func collapseSection(_ section: UIView, ofHeight height: CGFloat, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
         if section.isHidden {
+            creditOrDebitPaymentController.isformEnabled = true
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             heightConstraint.constant = height
             section.isHidden = false
         } else {
+            creditOrDebitPaymentController.isformEnabled = false
             button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             heightConstraint.constant = 0
             section.isHidden = true

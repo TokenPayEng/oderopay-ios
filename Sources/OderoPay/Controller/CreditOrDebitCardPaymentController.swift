@@ -16,4 +16,8 @@ struct CreditOrDebitCardPaymentController: FormProtocol {
     var height: CGFloat {
         isformEnabled ? 300 : 0
     }
+    
+    var image: UIImage {
+        isformEnabled ? UIImage(systemName: "chevron.right")! : UIImage(systemName: "chevron.down")!
+    }
 }
