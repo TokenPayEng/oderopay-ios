@@ -13,7 +13,6 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="tyq-p4-a7I"/>
                 <outlet property="makePaymentButton" destination="b3u-9H-Hdu" id="PqR-pv-Jxc"/>
                 <outlet property="optionViewHeightConstraint" destination="23v-WG-4x4" id="WiV-hi-oxm"/>
-                <outlet property="optionViewHeightTopConstraint" destination="VQQ-xl-eqM" id="fvz-M3-JWk"/>
                 <outlet property="optionsView" destination="VbD-pP-ABi" id="zEX-8l-lMz"/>
             </connections>
         </placeholder>
