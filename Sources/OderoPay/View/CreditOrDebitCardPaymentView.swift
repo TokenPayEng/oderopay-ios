@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreditOrDebitCardPayment: UIView {
+class CreditOrDebitCardPaymentView: UIView {
     
     var isEnabled: Bool = true
     

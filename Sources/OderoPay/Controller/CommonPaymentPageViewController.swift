@@ -11,7 +11,7 @@ import UIKit
 public class CommonPaymentPageViewController: UIViewController {
     
     // ---------------------UIViews----------------------
-    @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPayment!
+    @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPaymentView!
     var creditOrDebitPaymentViewHeight: CGFloat = 220
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint! {
         didSet {
