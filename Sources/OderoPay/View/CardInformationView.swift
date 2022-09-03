@@ -136,36 +136,36 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 0
+        let textFieldCount = textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression).count
         
         if textField == cardNumberTextField {
             switch cardController.checkForCardAssociation() {
             case .VISA:
-                print(textField.text!.count)
-                if Visa.lengthRanges.contains(textField.text!.count) {
+                if Visa.lengthRanges.contains(textFieldCount) {
                     textField.isError(false)
                 } else {
                     textField.isError(true)
                 }
             case .VISA_ELECTRON:
-                if VisaElectron.lengthRanges.contains(textField.text!.count) {
+                if VisaElectron.lengthRanges.contains(textFieldCount) {
                     textField.isError(false)
                 } else {
                     textField.isError(true)
                 }
             case .MASTER_CARD:
-                if MasterCard.lengthRanges.contains(textField.text!.count) {
+                if MasterCard.lengthRanges.contains(textFieldCount) {
                     textField.isError(false)
                 } else {
                     textField.isError(true)
                 }
             case .MAESTRO:
-                if Maestro.lengthRanges.contains(textField.text!.count) {
+                if Maestro.lengthRanges.contains(textFieldCount) {
                     textField.isError(false)
                 } else {
                     textField.isError(true)
                 }
             case .AMEX:
-                if AmericanExpress.lengthRanges.contains(textField.text!.count) {
+                if AmericanExpress.lengthRanges.contains(textFieldCount) {
                     textField.isError(false)
                 } else {
                     textField.isError(true)
