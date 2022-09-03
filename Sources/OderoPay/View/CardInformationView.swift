@@ -11,7 +11,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     private var cardController: CardController = CardController()
     
-    lazy private var cardNumberPattern: String = "#### #### #### #### ####"
+    lazy private var cardNumberPattern: String = "#### #### #### #### ####"
     
     lazy private var expireMonth: String = String()
     lazy private var expireYear: String = String()
