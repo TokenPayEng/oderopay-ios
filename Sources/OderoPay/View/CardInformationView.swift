@@ -11,7 +11,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     private var cardController: CardController = CardController()
     
-    lazy private var cardNumberPattern: String = "#### ##"
+    lazy private var cardNumberPattern: String = "#### #### #### #### ####"
     
     lazy private var expireMonth: String = String()
     lazy private var expireYear: String = String()
@@ -190,7 +190,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             // check for installment options
             cardController.checkForAvailableInstallment()
             
-            // by associtation
+            // format by associtation
             switch cardController.checkForCardAssociation() {
             case .VISA:
                 textField.isError(false)

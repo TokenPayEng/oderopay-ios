@@ -10,11 +10,9 @@ import Foundation
 struct CardController {
     private var cardAssociation: CardAssociation = .UNDEFINED
     private var cardIinRangeString: String = String()
-    private var cardNumberPattern: String = "#### ##"
     
     private var expireMonth: String = String()
     private var expireYear: String = String()
-    private var expireDatePattern: String = "##/##"
     
     private let month = Calendar.current.component(.month, from: Date())
     private let year = Calendar.current.component(.year, from: Date())
