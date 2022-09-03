@@ -317,6 +317,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     }
                 }
             case 4:
+                print(cardController.getExpireYear())
                 if cardController.getExpireYear().count > 1 {
                     cardController.setExpireYear(to: String(cardController.getUpdatedExpireDate().suffix(2)))
                 } else {
