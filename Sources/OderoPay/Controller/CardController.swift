@@ -9,6 +9,7 @@ import Foundation
 
 struct CardController {
     private var cardAssociation: CardAssociation = .UNDEFINED
+    private var cardIinRangeString: String = String()
     private var cardNumberPattern: String = "#### ##"
     
     private var expireMonth: String = String()
@@ -38,4 +39,30 @@ struct CardController {
     }
     
     // card association
+    mutating func checkForCardAssociation() -> CardAssociation {
+        // initial check for association
+        if cardAssociation == .UNDEFINED {
+            cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(updatedCardNumber) ?? 0)
+            cardIinRangeString = updatedCardNumber
+        }
+        
+        // setting iin range as undefined if pattern changes
+        cardAssociation = updatedCardNumber.count == 0 ? .UNDEFINED : cardAssociation
+        cardAssociation = cardIinRangeString.count > updatedCardNumber.count && cardAssociation == .VISA_ELECTRON ? .VISA : cardIinRangeString.count > updatedCardNumber.count ? .UNDEFINED : cardAssociation
+        
+        return cardAssociation
+    }
+    
+    mutating func checkIfAssociationIsVisaElectron() -> Bool {
+        if CardInformationView.cardRepository.isVisaElectron(Int(updatedCardNumber) ?? 0) {
+            cardAssociation = .VISA_ELECTRON
+            cardIinRangeString = updatedCardNumber
+            
+            return true
+        } else {
+            cardIinRangeString = String(Visa.iinRanges.first!)
+            
+            return false
+        }
+    }
 }

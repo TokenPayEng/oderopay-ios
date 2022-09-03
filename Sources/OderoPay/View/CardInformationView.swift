@@ -11,9 +11,6 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     private var cardController: CardController = CardController()
     
-    lazy private var cardAssociation: CardAssociation = .UNDEFINED
-    lazy private var cardIinRangeString: String = String()
-    
     lazy private var cardNumberPattern: String = "#### ##"
     
     lazy private var expireMonth: String = String()
@@ -141,7 +138,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         textField.layer.borderWidth = 0
         
         if textField == cardNumberTextField {
-            switch cardAssociation {
+            switch cardController.checkForCardAssociation() {
             case .VISA:
                 if Visa.lengthRanges.contains(textField.text!.count) {
                     textField.isError(false)
@@ -193,18 +190,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
             // check for installment options
             cardController.checkForAvailableInstallment()
             
-            // initial check for association
-            if cardAssociation == .UNDEFINED {
-                cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(cardNumberInputUpdated) ?? 0)
-                cardIinRangeString = cardNumberInputUpdated
-            }
-            
-            // setting iin range as undefined if pattern changes
-            cardAssociation = cardNumberInputUpdated.count == 0 ? .UNDEFINED : cardAssociation
-            cardAssociation = cardIinRangeString.count > cardNumberInputUpdated.count && cardAssociation == .VISA_ELECTRON ? .VISA : cardIinRangeString.count > cardNumberInputUpdated.count ? .UNDEFINED : cardAssociation
-            
             // by associtation
-            switch cardAssociation {
+            switch cardController.checkForCardAssociation() {
             case .VISA:
                 textField.isError(false)
                 if !UITextField.cardAssociationSet {
@@ -212,9 +199,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                         use: UIImage(named: "visa", in: .module, with: .none)!
                     )
                 } else {
-                    if CardInformationView.cardRepository.isVisaElectron(Int(cardNumberInputUpdated) ?? 0) {
-                        cardAssociation = .VISA_ELECTRON
-                        cardIinRangeString = cardNumberInputUpdated
+                    if cardController.checkIfAssociationIsVisaElectron() {
                         textField.setCardAssociation(
                             use: UIImage(named: "visaelectron", in: .module, with: .none)!
                         )
@@ -222,7 +207,6 @@ class CardInformationView: UIView, UITextFieldDelegate {
                         textField.text = formatBy(pattern: VisaElectron.pattern.first!, this: cardNumberInputUpdated)
                         return false
                     } else {
-                        cardIinRangeString = String(Visa.iinRanges.first!)
                         textField.setCardAssociation(
                             use: UIImage(named: "visa", in: .module, with: .none)!
                         )
