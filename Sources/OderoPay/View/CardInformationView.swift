@@ -12,12 +12,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
     private var cardController: CardController = CardController()
     
     lazy private var cardNumberPattern: String = "#### ##"
-    
-    lazy private var expireMonth: String = String()
-    lazy private var expireYear: String = String()
     lazy private var expireDatePattern: String = "##/##"
-    private let month = Calendar.current.component(.month, from: Date())
-    private let year = Calendar.current.component(.year, from: Date())
     
     lazy private var successCGColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
     
@@ -277,56 +272,57 @@ class CardInformationView: UIView, UITextFieldDelegate {
         // check for MM < 12 and MM/YY > current month year
         if textField == expireDateTextField {
             guard let expireDateInputCurrent = textField.text as? NSString else { return false }
-            let expireDateInputUpdated = expireDateInputCurrent
-                .replacingCharacters(in: range, with: string)
-                .replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+            let expireDateInputUpdated = expireDateInputCurrent.replacingCharacters(in: range, with: string)
             
-            switch expireDateInputUpdated.count {
+            cardController.setCurrentExpireDate(to: textField.text!)
+            cardController.setUpdatedExpireDate(to: expireDateInputUpdated)
+            
+            switch cardController.getUpdatedExpireDate().count {
             case 0:
-                expireMonth = String()
+                cardController.setExpireMonth(to: String())
                 textField.isError(false)
             case 1:
                 if string != "0" && !string.isEmpty {
-                    expireMonth += string
+                    cardController.setExpireMonth(to: cardController.getExpireMonth() + string)
                 }
             case 2:
-                if expireMonth.count > 1 {
-                    expireMonth = expireDateInputUpdated
+                if cardController.getExpireMonth().count > 1 {
+                    cardController.setExpireMonth(to: cardController.getUpdatedExpireDate())
                 } else {
-                    expireMonth += string
+                    cardController.setExpireMonth(to: cardController.getExpireMonth() + string)
                 }
                 
-                if Int(expireMonth)! < 1 || Int(expireMonth)! > 12 {
+                if Int(cardController.getExpireMonth())! < 1 || Int(cardController.getExpireMonth())! > 12 {
                     textField.isError(true)
                     return false
                 }
                 
-                expireYear = String()
+                cardController.setExpireYear(to: String())
                 textField.isError(false)
             case 3:
                 if !string.isEmpty {
-                    if Int(string)! >= ((year % 100) / 10) {
+                    if Int(string)! >= ((cardController.year % 100) / 10) {
                         textField.isError(false)
-                        expireYear += string
+                        cardController.setExpireYear(to: cardController.getExpireYear() + string)
                     } else {
                         textField.isError(true)
                         return false
                     }
                 }
             case 4:
-                if expireYear.count > 1 {
-                    expireYear = String(expireDateInputUpdated.suffix(2))
+                if cardController.getExpireYear().count > 1 {
+                    cardController.setExpireYear(to: String(cardController.getUpdatedExpireDate().suffix(2)))
                 } else {
-                    if Int(string)! >= (year % 10) {
+                    if Int(string)! >= (cardController.year % 10) {
                         textField.isError(false)
-                        expireYear += string
+                        cardController.setExpireYear(to: cardController.getExpireYear() + string)
                     } else {
                         textField.isError(true)
                         return false
                     }
                 }
                 
-                if Int("20\(expireYear)")! <= year && Int(expireMonth)! < month {
+                if Int("20\(cardController.getExpireYear())")! <= cardController.year && Int(cardController.getExpireMonth())! < cardController.month {
                     textField.isError(true)
                     return false
                 } else {
@@ -336,7 +332,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 break
             }
             
-            textField.text = formatBy(pattern: expireDatePattern, this: expireDateInputUpdated)
+            textField.text = formatBy(pattern: expireDatePattern, this: cardController.getUpdatedExpireDate())
             return false
         }
         

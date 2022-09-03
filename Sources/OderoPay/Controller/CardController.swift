@@ -15,10 +15,10 @@ struct CardController {
     
     private var expireMonth: String = String()
     private var expireYear: String = String()
-    private let month = Calendar.current.component(.month, from: Date())
-    private let year = Calendar.current.component(.year, from: Date())
     private var currentExpireDate: String = String()
     private var updatedExpireDate: String = String()
+    let month = Calendar.current.component(.month, from: Date())
+    let year = Calendar.current.component(.year, from: Date())
     
     mutating func setCurrentCardNumber(to number: String) {
         self.currentCardNumber = number.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
@@ -38,6 +38,26 @@ struct CardController {
     
     mutating func setUpdatedExpireDate(to date: String) {
         self.updatedExpireDate = date.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+    }
+    
+    func getUpdatedExpireDate() -> String {
+        self.updatedExpireDate
+    }
+    
+    mutating func setExpireMonth(to month: String) {
+        self.expireMonth = month
+    }
+    
+    mutating func setExpireYear(to year: String) {
+        self.expireYear = year
+    }
+    
+    func getExpireMonth() -> String {
+        self.expireMonth
+    }
+    
+    func getExpireYear() -> String {
+        self.expireYear
     }
     
     // installment
