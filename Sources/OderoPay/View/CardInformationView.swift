@@ -180,9 +180,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         // card number
         if textField == cardNumberTextField {
             guard let cardNumberInputCurrent = textField.text as? NSString else { return false }
-            let cardNumberInputUpdated = cardNumberInputCurrent
-                .replacingCharacters(in: range, with: string)
-                .replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+            let cardNumberInputUpdated = cardNumberInputCurrent.replacingCharacters(in: range, with: string)
             
             cardController.setCurrentCardNumber(to: textField.text!)
             cardController.setUpdatedCardNumber(to: cardNumberInputUpdated)
@@ -204,19 +202,19 @@ class CardInformationView: UIView, UITextFieldDelegate {
                             use: UIImage(named: "visaelectron", in: .module, with: .none)!
                         )
                         
-                        textField.text = formatBy(pattern: VisaElectron.pattern.first!, this: cardNumberInputUpdated)
+                        textField.text = formatBy(pattern: VisaElectron.pattern.first!, this: cardController.getUpdatedCardNumber())
                         return false
                     } else {
                         textField.setCardAssociation(
                             use: UIImage(named: "visa", in: .module, with: .none)!
                         )
                         
-                        if cardNumberInputUpdated.count < 13 {
-                            textField.text = formatBy(pattern: Visa.pattern.first!, this: cardNumberInputUpdated)
-                        } else if cardNumberInputUpdated.count > 19 {
+                        if cardController.getUpdatedCardNumber().count < 13 {
+                            textField.text = formatBy(pattern: Visa.pattern.first!, this: cardController.getUpdatedCardNumber())
+                        } else if cardController.getUpdatedCardNumber().count > 19 {
                             return false
                         } else {
-                            textField.text = formatBy(pattern: Visa.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
+                            textField.text = formatBy(pattern: Visa.patternByLength[cardController.getUpdatedCardNumber().count]!, this: cardController.getUpdatedCardNumber())
                         }
                         return false
                     }
@@ -228,7 +226,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     )
                 }
                 
-                textField.text = formatBy(pattern: VisaElectron.pattern.first!, this: cardNumberInputUpdated)
+                textField.text = formatBy(pattern: VisaElectron.pattern.first!, this: cardController.getUpdatedCardNumber())
                 return false
             case .MASTER_CARD:
                 if !UITextField.cardAssociationSet {
@@ -237,7 +235,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     )
                 }
                 
-                textField.text = formatBy(pattern: MasterCard.pattern.first!, this: cardNumberInputUpdated)
+                textField.text = formatBy(pattern: MasterCard.pattern.first!, this: cardController.getUpdatedCardNumber())
                 return false
             case .MAESTRO:
                 if !UITextField.cardAssociationSet {
@@ -246,12 +244,12 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     )
                 }
                             
-                if cardNumberInputUpdated.count < 12 {
-                    textField.text = formatBy(pattern: Maestro.pattern.first!, this: cardNumberInputUpdated)
-                } else if cardNumberInputUpdated.count > 19 {
+                if cardController.getUpdatedCardNumber().count < 12 {
+                    textField.text = formatBy(pattern: Maestro.pattern.first!, this: cardController.getUpdatedCardNumber())
+                } else if cardController.getUpdatedCardNumber().count > 19 {
                     return false
                 } else {
-                    textField.text = formatBy(pattern: Maestro.patternByLength[cardNumberInputUpdated.count]!, this: cardNumberInputUpdated)
+                    textField.text = formatBy(pattern: Maestro.patternByLength[cardController.getUpdatedCardNumber().count]!, this: cardController.getUpdatedCardNumber())
                 }
                 return false
             case .AMEX:
@@ -261,14 +259,14 @@ class CardInformationView: UIView, UITextFieldDelegate {
                     )
                 }
                 
-                textField.text = formatBy(pattern: AmericanExpress.pattern.first!, this: cardNumberInputUpdated)
+                textField.text = formatBy(pattern: AmericanExpress.pattern.first!, this: cardController.getUpdatedCardNumber())
                 return false
             case .UNDEFINED:
                 if UITextField.cardAssociationSet {
                     textField.removeCardAssociation()
                 }
                 
-                textField.text = formatBy(pattern: cardNumberPattern, this: cardNumberInputUpdated)
+                textField.text = formatBy(pattern: cardNumberPattern, this: cardController.getUpdatedCardNumber())
                 return false
             }
         }
