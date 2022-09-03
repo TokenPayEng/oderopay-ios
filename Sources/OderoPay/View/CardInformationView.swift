@@ -285,6 +285,11 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 if string != "0" && !string.isEmpty {
                     cardController.setExpireMonth(to: cardController.getExpireMonth() + string)
                 }
+                
+                if Int(string) > 1 {
+                    textField.isError(true)
+                    return false
+                }
             case 2:
                 if cardController.getExpireMonth().count > 1 {
                     cardController.setExpireMonth(to: cardController.getUpdatedExpireDate())
