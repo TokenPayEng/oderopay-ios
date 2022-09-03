@@ -289,6 +289,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 if Int(string)! > 1 {
                     textField.isError(true)
                     return false
+                } else {
+                    textField.isError(false)
                 }
             case 2:
                 if cardController.getExpireMonth().count > 1 {
