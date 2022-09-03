@@ -140,6 +140,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         if textField == cardNumberTextField {
             switch cardController.checkForCardAssociation() {
             case .VISA:
+                print(textField.text!.count)
                 if Visa.lengthRanges.contains(textField.text!.count) {
                     textField.isError(false)
                 } else {
