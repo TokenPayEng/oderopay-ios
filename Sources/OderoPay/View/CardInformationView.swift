@@ -9,6 +9,8 @@ import UIKit
 
 class CardInformationView: UIView, UITextFieldDelegate {
     
+    private var cardController: CardController = CardController()
+    
     lazy private var cardAssociation: CardAssociation = .UNDEFINED
     lazy private var cardIinRangeString: String = String()
     
@@ -185,11 +187,11 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 .replacingCharacters(in: range, with: string)
                 .replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
             
+            cardController.setCurrentCardNumber(to: textField.text!)
+            cardController.setUpdatedCardNumber(to: cardNumberInputUpdated)
+            
             // check for installment options
-            if  cardNumberInputUpdated.count == 6 &&
-                textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression).count == 5 {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update"), object: nil)
-            }
+            cardController.checkForAvailableInstallment()
             
             // initial check for association
             if cardAssociation == .UNDEFINED {
