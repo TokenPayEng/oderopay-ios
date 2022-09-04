@@ -88,6 +88,8 @@ public class CommonPaymentPageViewController: UIViewController {
                                   bundle: Bundle.module,
                                   comment: "pay with credit card or debit card"),
                 for: .normal)
+            
+            multipleCreditCardsButton.setImage(multipleCardsPaymentController.image, for: .normal)
         }
     }
     
