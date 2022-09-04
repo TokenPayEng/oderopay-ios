@@ -75,10 +75,10 @@
                                 <rect key="frame" x="0.0" y="246" width="390" height="564"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-ew-psv" userLabel="Payment Options">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="704"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="705"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qMX-22-KnQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="390" height="704"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="705"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0C-VT-AcG">
                                                         <rect key="frame" x="0.0" y="0.0" width="390" height="22"/>
@@ -99,7 +99,7 @@
                                                         <rect key="frame" x="0.0" y="37" width="390" height="0.0"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" id="24l-1t-6Uw"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" id="24l-1t-6Uw"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LtQ-yj-jgd" userLabel="Custom Divider">
@@ -126,10 +126,10 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2B-NF-SFB" customClass="MultipleCardsPaymentView" customModule="OderoPay">
-                                                        <rect key="frame" x="0.0" y="114" width="390" height="590"/>
+                                                        <rect key="frame" x="0.0" y="114" width="390" height="591"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="590" id="Bso-AA-IuS"/>
+                                                            <constraint firstAttribute="height" constant="591" id="Bso-AA-IuS"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>

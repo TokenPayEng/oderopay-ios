@@ -138,7 +138,7 @@ public class CommonPaymentPageViewController: UIViewController {
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
         creditOrDebitPaymentController.isformEnabled.toggle()
-        collapseSection(creditOrDebitCardView, ofHeight: 220, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
+        collapseSection(creditOrDebitCardView, ofHeight: creditOrDebitPaymentController.height, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
