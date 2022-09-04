@@ -11,9 +11,14 @@ import UIKit
 public class CommonPaymentPageViewController: UIViewController {
     
     var creditOrDebitPaymentController: CreditOrDebitCardPaymentController = CreditOrDebitCardPaymentController()
+    var multipleCardsPaymentController: MultipleCardsPaymentController = MultipleCardsPaymentController()
     
     var creditOrDebitPaymentViewHeight: CGFloat {
         creditOrDebitPaymentController.height
+    }
+    
+    var multipleCardsPaymentViewHeight: CGFloat {
+        multipleCardsPaymentController.height
     }
     
     // ---------------------CreditOrDebitCardPayment----------------------
@@ -29,8 +34,16 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     // ---------------------MultipleCardPayment----------------------
-    @IBOutlet weak var multipleCardsView: MultipleCardsPaymentView!
-    @IBOutlet weak var multipleCardsViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var multipleCardsView: MultipleCardsPaymentView! {
+        didSet {
+            multipleCardsView.isHidden = !multipleCardsPaymentController.isformEnabled
+        }
+    }
+    @IBOutlet weak var multipleCardsViewHeightConstraint: NSLayoutConstraint! {
+        didSet {
+            multipleCardsViewHeightConstraint.constant = multipleCardsPaymentViewHeight
+        }
+    }
     
     // ---------------------UILabels---------------------
     @IBOutlet weak var totalPriceLabel: UILabel! {
@@ -142,7 +155,8 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
-        collapseSection(multipleCardsView, ofHeight: 590, using: multipleCreditCardsButton, and: multipleCardsViewHeightConstraint)
+        multipleCardsPaymentController.isformEnabled.toggle()
+        collapseSection(multipleCardsView, ofHeight: multipleCardsPaymentController.height, using: multipleCreditCardsButton, and: multipleCardsViewHeightConstraint)
     }
     
     private func collapseSection(_ section: UIView, ofHeight height: CGFloat, using button: UIButton, and heightConstraint: NSLayoutConstraint) {
