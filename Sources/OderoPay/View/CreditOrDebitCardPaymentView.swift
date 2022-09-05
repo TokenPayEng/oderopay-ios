@@ -22,6 +22,7 @@ class CreditOrDebitCardPaymentView: UIView {
     @IBOutlet weak var optionsView: OptionsView! {
         didSet {
             optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
+            setNeedsLayout()
         }
     }
     
