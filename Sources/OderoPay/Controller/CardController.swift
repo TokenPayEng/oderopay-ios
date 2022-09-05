@@ -21,6 +21,12 @@ struct CardController {
     let month = Calendar.current.component(.month, from: Date())
     let year = Calendar.current.component(.year, from: Date())
     
+    func printAll() {
+        print(cardAssociation)
+        print(isValidCard)
+        print(currentCardNumber)
+    }
+    
     mutating func setCurrentCardNumber(to number: String) {
         self.currentCardNumber = number.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
     }
