@@ -140,6 +140,9 @@ class CardController {
             isValidCard = false
         }
         
+        if isValidCard {
+            NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
+        }
         return isValidCard
     }
     
