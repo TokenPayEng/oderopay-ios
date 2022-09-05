@@ -35,7 +35,7 @@
                             <rect key="frame" x="0.0" y="175" width="485" height="65"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="65" id="7gX-UU-R7E"/>
+                                <constraint firstAttribute="height" priority="750" constant="65" id="7gX-UU-R7E"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-9H-Hdu">
