@@ -101,7 +101,9 @@ struct CardController {
         
         switch cardAssociation {
         case .VISA:
+            print("in here")
             if Visa.lengthRanges.contains(number.count) {
+                print("visa to luhn")
                 isValidCard = luhnAlgorithm(number)
             } else {
                 isValidCard = false
@@ -161,6 +163,8 @@ struct CardController {
                 return false
             }
         }
+        
+        print(luhmSum)
         
         return luhmSum % 10 == 0
     }
