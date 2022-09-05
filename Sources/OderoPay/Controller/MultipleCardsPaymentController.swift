@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct MultipleCardsPaymentController: FormProtocol {
+class MultipleCardsPaymentController: FormProtocol {
     var isformEnabled: Bool = false
     var isCardValid: Bool = false
     var hasInstallment: Bool = false
@@ -21,11 +21,11 @@ struct MultipleCardsPaymentController: FormProtocol {
         isformEnabled ? UIImage(systemName: "chevron.down")! : UIImage(systemName: "chevron.right")!
     }
     
-    mutating func enableForm(_ value: Bool) {
+    func enableForm(_ value: Bool) {
         self.isformEnabled = value
     }
     
-    mutating func validCard(_ value: Bool) {
+    func validCard(_ value: Bool) {
         self.isCardValid = value
     }
 }
