@@ -30,4 +30,9 @@ class CreditOrDebitCardPaymentController: FormProtocol {
     init(_ cardController: CardController) {
         self.cardController = cardController
     }
+    
+    func printAll() {
+        print(isCardValid)
+        print(height)
+    }
 }

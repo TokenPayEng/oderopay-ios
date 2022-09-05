@@ -111,10 +111,8 @@ public class CommonPaymentPageViewController: UIViewController {
     
     override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        print(creditOrDebitCardViewHeightConstraint.constant)
+        print(creditOrDebitCardPaymentController.printAll())
         creditOrDebitCardViewHeightConstraint.constant = creditOrDebitCardPaymentController.height
-        print(creditOrDebitCardViewHeightConstraint.constant)
-        self.creditOrDebitCardView.layoutIfNeeded()
     }
     
 //    NotificationCenter.default.addObserver(self, selector: #selector(updateHeight), name: NSNotification.Name(rawValue: "update"), object: nil)
@@ -157,8 +155,8 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
-        print(creditOrDebitCardPaymentController.height)
         creditOrDebitCardView.creditOrDebitCardPaymentController!.isformEnabled.toggle()
+        print(creditOrDebitCardPaymentController.printAll())
         collapseSection(creditOrDebitCardView, ofHeight: creditOrDebitCardPaymentController.height, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
     }
     
