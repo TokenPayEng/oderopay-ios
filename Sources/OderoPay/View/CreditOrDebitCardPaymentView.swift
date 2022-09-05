@@ -13,31 +13,10 @@ class CreditOrDebitCardPaymentView: UIView {
     
     @IBOutlet var contentView: UIView!
     
-    @IBOutlet weak var cardInformationView: CardInformationView! {
-        didSet {
-            creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardController: cardInformationView.cardController)
-        }
-    }
+    @IBOutlet weak var cardInformationView: CardInformationView!
     
-    @IBOutlet weak var optionsView: OptionsView! {
-        didSet {
-            optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
-            setNeedsLayout()
-        }
-    }
-    
-    @IBOutlet weak var makePaymentButton: UIButton! {
-        didSet {
-            makePaymentButton.layer.cornerRadius = 8
-            makePaymentButton.setTitle(
-                NSLocalizedString(
-                    "makePayment",
-                    bundle: Bundle.module,
-                    comment: "send payment request"
-                ),
-                for: .normal)
-        }
-    }
+    @IBOutlet weak var optionsView: OptionsView!
+    @IBOutlet weak var makePaymentButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,8 +30,22 @@ class CreditOrDebitCardPaymentView: UIView {
     
     private func commonInit() {
         Bundle.module.loadNibNamed("CreditOrDebitCardPayment", owner: self, options: nil)
+        
+        creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardController: cardInformationView.cardController)
+        
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
+        
+        makePaymentButton.layer.cornerRadius = 8
+        makePaymentButton.setTitle(
+            NSLocalizedString(
+                "makePayment",
+                bundle: Bundle.module,
+                comment: "send payment request"
+            ),
+            for: .normal)
     }
 }
