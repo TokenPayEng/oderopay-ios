@@ -19,8 +19,10 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         cardController.isCardValid()
     }
     
-    var height: CGFloat {
-        isformEnabled ? isCardValid ? 300 : 220 : 0
+    var height: CGFloat = 0 {
+        didSet {
+            height = isformEnabled ? isCardValid ? 300 : 220 : 0
+        }
     }
     
     var image: UIImage {
@@ -29,9 +31,5 @@ class CreditOrDebitCardPaymentController: FormProtocol {
     
     init(_ cardController: CardController) {
         self.cardController = cardController
-    }
-    
-    func enableForm(_ value: Bool) {
-        self.isformEnabled = value
     }
 }
