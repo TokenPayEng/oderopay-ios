@@ -9,8 +9,15 @@ import Foundation
 import UIKit
 
 struct CreditOrDebitCardPaymentController: FormProtocol {
+    
+    var cardController: CardController
+    
     var isformEnabled: Bool = false
-    var isCardValid: Bool = false
+    
+    var isCardValid: Bool {
+        cardController.isCardValid()
+    }
+    
     var hasInstallment: Bool = false
     
     var height: CGFloat {
@@ -23,9 +30,5 @@ struct CreditOrDebitCardPaymentController: FormProtocol {
     
     mutating func enableForm(_ value: Bool) {
         self.isformEnabled = value
-    }
-    
-    mutating func validCard(_ value: Bool) {
-        self.isCardValid = value
     }
 }
