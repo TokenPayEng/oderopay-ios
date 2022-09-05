@@ -14,6 +14,7 @@ public class CommonPaymentPageViewController: UIViewController {
     
     var creditOrDebitPaymentViewHeight: CGFloat = 0 {
         didSet {
+            print("did set")
             creditOrDebitPaymentViewHeight = creditOrDebitCardView.creditOrDebitCardPaymentController!.height
         }
     }
