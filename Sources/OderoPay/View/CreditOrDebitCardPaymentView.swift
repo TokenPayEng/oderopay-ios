@@ -9,22 +9,19 @@ import UIKit
 
 class CreditOrDebitCardPaymentView: UIView {
     
-    var creditOrDebitCardPaymentController: CreditOrDebitCardPaymentController {
-        get {
-            CreditOrDebitCardPaymentController(cardController: cardInformationView.cardController)
-        }
-        set(newValue){
-            self.creditOrDebitCardPaymentController = newValue
-        }
-    }
+    var creditOrDebitCardPaymentController: CreditOrDebitCardPaymentController? = nil
     
     @IBOutlet var contentView: UIView!
     
-    @IBOutlet weak var cardInformationView: CardInformationView!
+    @IBOutlet weak var cardInformationView: CardInformationView! {
+        didSet {
+            creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardController: cardInformationView.cardController)
+        }
+    }
     
     @IBOutlet weak var optionsView: OptionsView! {
         didSet {
-            optionsView.isHidden = !creditOrDebitCardPaymentController.isCardValid
+            optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
         }
     }
     
