@@ -15,10 +15,6 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     var multipleCardsPaymentController: MultipleCardsPaymentController = MultipleCardsPaymentController()
     
-    var creditOrDebitPaymentViewHeight: CGFloat {
-        creditOrDebitCardPaymentController.height
-    }
-    
     var multipleCardsPaymentViewHeight: CGFloat {
         multipleCardsPaymentController.height
     }
@@ -31,7 +27,7 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint! {
         didSet {
-            creditOrDebitCardViewHeightConstraint.constant = creditOrDebitPaymentViewHeight
+            creditOrDebitCardViewHeightConstraint.constant = creditOrDebitCardPaymentController.height
         }
     }
     
