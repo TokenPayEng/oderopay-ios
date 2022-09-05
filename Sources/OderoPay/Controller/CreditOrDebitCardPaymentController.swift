@@ -8,30 +8,30 @@
 import Foundation
 import UIKit
 
-struct CreditOrDebitCardPaymentController: FormProtocol {
+class CreditOrDebitCardPaymentController: FormProtocol {
     
     var cardController: CardController
     
     var isformEnabled: Bool = false
+    var hasInstallment: Bool = false
     
     var isCardValid: Bool {
         cardController.isCardValid()
     }
     
-    var hasInstallment: Bool = false
-    
-    var height: CGFloat = 220 {
-        didSet {
-            print("here")
-            height = isformEnabled ? isCardValid ? 300 : 220 : 0
-        }
+    var height: CGFloat {
+        isformEnabled ? isCardValid ? 300 : 220 : 0
     }
     
     var image: UIImage {
         isformEnabled ? UIImage(systemName: "chevron.down")! : UIImage(systemName: "chevron.right")!
     }
     
-    mutating func enableForm(_ value: Bool) {
+    init(_ cardController: CardController) {
+        self.cardController = cardController
+    }
+    
+    func enableForm(_ value: Bool) {
         self.isformEnabled = value
     }
 }

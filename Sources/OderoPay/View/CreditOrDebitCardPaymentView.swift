@@ -31,7 +31,7 @@ class CreditOrDebitCardPaymentView: UIView {
     private func commonInit() {
         Bundle.module.loadNibNamed("CreditOrDebitCardPayment", owner: self, options: nil)
         
-        creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardController: cardInformationView.cardController)
+        creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardInformationView.cardController)
         
         addSubview(contentView)
         contentView.frame = self.bounds
