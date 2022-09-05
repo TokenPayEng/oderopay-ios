@@ -29,7 +29,6 @@ struct CreditOrDebitCardPaymentController: FormProtocol {
     }
     
     mutating func enableForm(_ value: Bool) {
-        print( cardController.isCardValid())
         self.isformEnabled = value
     }
 }
