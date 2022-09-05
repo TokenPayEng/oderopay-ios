@@ -9,7 +9,7 @@ import UIKit
 
 class CardInformationView: UIView, UITextFieldDelegate {
     
-    private var cardController: CardController = CardController()
+    var cardController: CardController = CardController()
     
     lazy private var cardNumberPattern: String = "#### ##"
     lazy private var expireDatePattern: String = "##/##"
@@ -131,43 +131,9 @@ class CardInformationView: UIView, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 0
-        let textFieldCount = textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression).count
         
         if textField == cardNumberTextField {
-            switch cardController.checkForCardAssociation() {
-            case .VISA:
-                if Visa.lengthRanges.contains(textFieldCount) {
-                    textField.isError(false)
-                } else {
-                    textField.isError(true)
-                }
-            case .VISA_ELECTRON:
-                if VisaElectron.lengthRanges.contains(textFieldCount) {
-                    textField.isError(false)
-                } else {
-                    textField.isError(true)
-                }
-            case .MASTER_CARD:
-                if MasterCard.lengthRanges.contains(textFieldCount) {
-                    textField.isError(false)
-                } else {
-                    textField.isError(true)
-                }
-            case .MAESTRO:
-                if Maestro.lengthRanges.contains(textFieldCount) {
-                    textField.isError(false)
-                } else {
-                    textField.isError(true)
-                }
-            case .AMEX:
-                if AmericanExpress.lengthRanges.contains(textFieldCount) {
-                    textField.isError(false)
-                } else {
-                    textField.isError(true)
-                }
-            case .UNDEFINED:
-                textField.isError(true)
-            }
+            textField.isError(cardController.isCardNumberValid(textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)))
         }
     }
     

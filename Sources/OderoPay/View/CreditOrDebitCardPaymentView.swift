@@ -9,10 +9,18 @@ import UIKit
 
 class CreditOrDebitCardPaymentView: UIView {
     
+    var creditOrDebitCardPaymentController: CreditOrDebitCardPaymentController = CreditOrDebitCardPaymentController()
     var isEnabled: Bool = true
     
     @IBOutlet var contentView: UIView!
     
+    @IBOutlet weak var cardInformationView: CardInformationView!
+    
+//    {
+//       didSet {
+//           creditOrDebitCardPaymentController.isCardValid = cardInformationView.cardController.isCardValid()
+//       }
+//   }
     @IBOutlet weak var optionsView: OptionsView! {
         didSet {
             optionsView.isHidden = true

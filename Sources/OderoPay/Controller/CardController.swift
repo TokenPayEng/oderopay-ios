@@ -8,6 +8,7 @@
 import Foundation
 
 struct CardController {
+    private var isValidCard: Bool = false
     private var cardAssociation: CardAssociation = .UNDEFINED
     private var cardIinRangeString: String = String()
     private var currentCardNumber: String = String()
@@ -94,5 +95,73 @@ struct CardController {
             
             return false
         }
+    }
+    
+    mutating func isCardNumberValid(_ number: String) -> Bool {
+        
+        switch cardAssociation {
+        case .VISA:
+            if Visa.lengthRanges.contains(number.count) {
+                isValidCard = luhnAlgorithm(number)
+            } else {
+                isValidCard = false
+            }
+        case .VISA_ELECTRON:
+            if VisaElectron.lengthRanges.contains(number.count) {
+                isValidCard = luhnAlgorithm(number)
+            } else {
+                isValidCard = false
+            }
+        case .MASTER_CARD:
+            if MasterCard.lengthRanges.contains(number.count) {
+                isValidCard = luhnAlgorithm(number)
+            } else {
+                isValidCard = false
+            }
+        case .MAESTRO:
+            if Maestro.lengthRanges.contains(number.count) {
+                isValidCard = luhnAlgorithm(number)
+            } else {
+                isValidCard = false
+            }
+        case .AMEX:
+            if AmericanExpress.lengthRanges.contains(number.count) {
+                isValidCard = luhnAlgorithm(number)
+            } else {
+                isValidCard = false
+            }
+        case .UNDEFINED:
+            isValidCard = false
+        }
+        
+        return isValidCard
+    }
+    
+    func isCardValid() -> Bool {
+        isValidCard
+    }
+    
+    func luhnAlgorithm(_ number: String) -> Bool {
+        var luhmSum: Int = 0
+        let numberReversed = number.reversed().map { String($0) }
+        
+        for tuple in numberReversed.enumerated() {
+            if let digit = Int(tuple.element) {
+                let oddIndex = tuple.offset % 2 == 1
+                
+                switch(oddIndex, digit) {
+                case (true, 9):
+                    luhmSum += 9
+                case (true, 0...8):
+                    luhmSum += (digit * 2) % 9
+                default:
+                    luhmSum += digit
+                }
+            } else {
+                return false
+            }
+        }
+        
+        return luhmSum % 10 == 0
     }
 }

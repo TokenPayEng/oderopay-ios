@@ -9,12 +9,11 @@ import Foundation
 import UIKit
 
 public class CommonPaymentPageViewController: UIViewController {
-    
-    var creditOrDebitPaymentController: CreditOrDebitCardPaymentController = CreditOrDebitCardPaymentController()
+
     var multipleCardsPaymentController: MultipleCardsPaymentController = MultipleCardsPaymentController()
     
     var creditOrDebitPaymentViewHeight: CGFloat {
-        creditOrDebitPaymentController.height
+        creditOrDebitCardView.creditOrDebitCardPaymentController.height
     }
     
     var multipleCardsPaymentViewHeight: CGFloat {
@@ -24,7 +23,7 @@ public class CommonPaymentPageViewController: UIViewController {
     // ---------------------CreditOrDebitCardPayment----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPaymentView! {
         didSet {
-            creditOrDebitCardView.isHidden = !creditOrDebitPaymentController.isformEnabled
+            creditOrDebitCardView.isHidden = !creditOrDebitCardView.creditOrDebitCardPaymentController.isformEnabled
         }
     }
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint! {
@@ -77,7 +76,7 @@ public class CommonPaymentPageViewController: UIViewController {
                                   comment: "pay with credit card or debit card"),
                 for: .normal)
             
-            creditCardOrDebitCardButton.setImage(creditOrDebitPaymentController.image, for: .normal)
+            creditCardOrDebitCardButton.setImage(creditOrDebitCardView.creditOrDebitCardPaymentController.image, for: .normal)
         }
     }
     
@@ -109,14 +108,13 @@ public class CommonPaymentPageViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(updateHeight), name: NSNotification.Name(rawValue: "update"), object: nil)
     }
     
-    @objc func updateHeight() {
-        // creditOrDebitCardViewHeightConstraint.constant = 300
-        // creditOrDebitPaymentViewHeight = 300
-    }
+//    NotificationCenter.default.addObserver(self, selector: #selector(updateHeight), name: NSNotification.Name(rawValue: "update"), object: nil)
+//    @objc func updateHeight() {
+//         creditOrDebitCardViewHeightConstraint.constant = 300
+//         creditOrDebitPaymentViewHeight = 300
+//    }
     
     override public func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -152,8 +150,8 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
-        creditOrDebitPaymentController.isformEnabled.toggle()
-        collapseSection(creditOrDebitCardView, ofHeight: creditOrDebitPaymentController.height, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
+        creditOrDebitCardView.creditOrDebitCardPaymentController.isformEnabled.toggle()
+        collapseSection(creditOrDebitCardView, ofHeight: creditOrDebitCardView.creditOrDebitCardPaymentController.height, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
