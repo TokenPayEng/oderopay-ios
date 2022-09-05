@@ -10,13 +10,13 @@ import UIKit
 
 public class CommonPaymentPageViewController: UIViewController {
 
+    var creditOrDebitCardPaymentController: CreditOrDebitCardPaymentController {
+        creditOrDebitCardView.creditOrDebitCardPaymentController!
+    }
     var multipleCardsPaymentController: MultipleCardsPaymentController = MultipleCardsPaymentController()
     
-    var creditOrDebitPaymentViewHeight: CGFloat = 0 {
-        didSet {
-            print("did set")
-            creditOrDebitPaymentViewHeight = creditOrDebitCardView.creditOrDebitCardPaymentController!.height
-        }
+    var creditOrDebitPaymentViewHeight: CGFloat {
+        creditOrDebitCardPaymentController.height
     }
     
     var multipleCardsPaymentViewHeight: CGFloat {
@@ -26,7 +26,7 @@ public class CommonPaymentPageViewController: UIViewController {
     // ---------------------CreditOrDebitCardPayment----------------------
     @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPaymentView! {
         didSet {
-            creditOrDebitCardView.isHidden = !creditOrDebitCardView.creditOrDebitCardPaymentController!.isformEnabled
+            creditOrDebitCardView.isHidden = !creditOrDebitCardPaymentController.isformEnabled
         }
     }
     @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint! {
@@ -110,7 +110,7 @@ public class CommonPaymentPageViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        creditCardOrDebitCardButton.setImage(creditOrDebitCardView.creditOrDebitCardPaymentController?.image, for: .normal)
+        creditCardOrDebitCardButton.setImage(creditOrDebitCardPaymentController.image, for: .normal)
     }
     
 //    NotificationCenter.default.addObserver(self, selector: #selector(updateHeight), name: NSNotification.Name(rawValue: "update"), object: nil)
@@ -154,7 +154,7 @@ public class CommonPaymentPageViewController: UIViewController {
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
         creditOrDebitCardView.creditOrDebitCardPaymentController!.isformEnabled.toggle()
-        collapseSection(creditOrDebitCardView, ofHeight: creditOrDebitCardView.creditOrDebitCardPaymentController!.height, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
+        collapseSection(creditOrDebitCardView, ofHeight: creditOrDebitCardPaymentController.height, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {
