@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CardController {
+class CardController {
     private var isValidCard: Bool = false
     private var cardAssociation: CardAssociation = .UNDEFINED
     private var cardIinRangeString: String = String()
@@ -27,11 +27,11 @@ struct CardController {
         print(currentCardNumber)
     }
     
-    mutating func setCurrentCardNumber(to number: String) {
+    func setCurrentCardNumber(to number: String) {
         self.currentCardNumber = number.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
     }
     
-    mutating func setUpdatedCardNumber(to number: String) {
+    func setUpdatedCardNumber(to number: String) {
         self.updatedCardNumber = number.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
     }
     
@@ -39,11 +39,11 @@ struct CardController {
         self.updatedCardNumber
     }
     
-    mutating func setCurrentExpireDate(to date: String) {
+    func setCurrentExpireDate(to date: String) {
         self.currentExpireDate = date.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
     }
     
-    mutating func setUpdatedExpireDate(to date: String) {
+    func setUpdatedExpireDate(to date: String) {
         self.updatedExpireDate = date.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
     }
     
@@ -51,11 +51,11 @@ struct CardController {
         self.updatedExpireDate
     }
     
-    mutating func setExpireMonth(to month: String) {
+    func setExpireMonth(to month: String) {
         self.expireMonth = month
     }
     
-    mutating func setExpireYear(to year: String) {
+    func setExpireYear(to year: String) {
         self.expireYear = year
     }
     
@@ -76,7 +76,7 @@ struct CardController {
     }
     
     // card association
-    mutating func checkForCardAssociation() -> CardAssociation {
+    func checkForCardAssociation() -> CardAssociation {
         // initial check for association
         if cardAssociation == .UNDEFINED {
             cardAssociation = CardInformationView.cardRepository.lookUpCardAssociation(Int(updatedCardNumber) ?? 0)
@@ -90,7 +90,7 @@ struct CardController {
         return cardAssociation
     }
     
-    mutating func checkIfAssociationIsVisaElectron() -> Bool {
+    func checkIfAssociationIsVisaElectron() -> Bool {
         if CardInformationView.cardRepository.isVisaElectron(Int(updatedCardNumber) ?? 0) {
             cardAssociation = .VISA_ELECTRON
             cardIinRangeString = updatedCardNumber
@@ -103,7 +103,7 @@ struct CardController {
         }
     }
     
-    mutating func isCardNumberValid(_ number: String) -> Bool {
+    func isCardNumberValid(_ number: String) -> Bool {
         
         switch cardAssociation {
         case .VISA:
