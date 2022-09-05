@@ -133,7 +133,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         textField.layer.borderWidth = 0
         
         if textField == cardNumberTextField {
-            textField.isError(cardController.isCardNumberValid(textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)))
+            textField.isError(!cardController.isCardNumberValid(textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)))
         }
     }
     
