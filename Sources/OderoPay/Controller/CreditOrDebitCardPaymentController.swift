@@ -15,7 +15,7 @@ struct CreditOrDebitCardPaymentController: FormProtocol {
     var isformEnabled: Bool = false
     
     var isCardValid: Bool {
-        return cardController.isCardValid()
+        cardController.isCardValid()
     }
     
     var hasInstallment: Bool = false
