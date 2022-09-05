@@ -28,6 +28,11 @@ class CreditOrDebitCardPaymentView: UIView {
         commonInit()
     }
     
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
+    }
+    
     private func commonInit() {
         Bundle.module.loadNibNamed("CreditOrDebitCardPayment", owner: self, options: nil)
         
