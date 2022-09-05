@@ -25,8 +25,6 @@ class CreditOrDebitCardPaymentView: UIView {
     
     @IBOutlet weak var optionsView: OptionsView! {
         didSet {
-            print("called")
-            print(cardInformationView.cardController.isCardValid())
             optionsView.isHidden = !cardInformationView.cardController.isCardValid()
         }
     }
