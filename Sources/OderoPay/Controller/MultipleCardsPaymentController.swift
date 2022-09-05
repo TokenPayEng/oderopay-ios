@@ -9,23 +9,30 @@ import Foundation
 import UIKit
 
 class MultipleCardsPaymentController: FormProtocol {
+    
+    var firstCardController: CardController
+    var secondCardController: CardController
+    
     var isformEnabled: Bool = false
-    var isCardValid: Bool = false
     var hasInstallment: Bool = false
     
+    var isFirstCardValid: Bool {
+        firstCardController.isCardValid()
+    }
+    var isSecondCardValid: Bool {
+        secondCardController.isCardValid()
+    }
+    
     var height: CGFloat {
-        isformEnabled ? isCardValid ? 670 : 590 : 0
+        isformEnabled ? isFirstCardValid ? isSecondCardValid ? 750 : 670 : 590 : 0
     }
     
     var image: UIImage {
         isformEnabled ? UIImage(systemName: "chevron.down")! : UIImage(systemName: "chevron.right")!
     }
     
-    func enableForm(_ value: Bool) {
-        self.isformEnabled = value
-    }
-    
-    func validCard(_ value: Bool) {
-        self.isCardValid = value
+    init(_ firstCardController: CardController, and secondCardController: CardController) {
+        self.firstCardController = firstCardController
+        self.secondCardController = secondCardController
     }
 }

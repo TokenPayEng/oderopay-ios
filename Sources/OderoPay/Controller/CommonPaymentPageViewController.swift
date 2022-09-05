@@ -13,7 +13,9 @@ public class CommonPaymentPageViewController: UIViewController {
     var creditOrDebitCardPaymentController: CreditOrDebitCardPaymentController {
         creditOrDebitCardView.creditOrDebitCardPaymentController!
     }
-    var multipleCardsPaymentController: MultipleCardsPaymentController = MultipleCardsPaymentController()
+    var multipleCardsPaymentController: MultipleCardsPaymentController {
+        multipleCardsView.multipleCardsPaymentController!
+    }
     
     var multipleCardsPaymentViewHeight: CGFloat {
         multipleCardsPaymentController.height

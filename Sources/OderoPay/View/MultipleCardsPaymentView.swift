@@ -9,39 +9,14 @@ import UIKit
 
 class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
+    var multipleCardsPaymentController: MultipleCardsPaymentController? = nil
+    
     @IBOutlet var contentView: UIView!
     
-    @IBOutlet weak var firstCardAmountLabel: UILabel! {
-        didSet {
-            firstCardAmountLabel.text = NSLocalizedString(
-                "firstCardAmount",
-                bundle: Bundle.module,
-                comment: "amount of money to be paid from the first credit card"
-            )
-        }
-    }
-    @IBOutlet weak var secondCardAmountLabel: UILabel! {
-        didSet {
-            secondCardAmountLabel.text = NSLocalizedString(
-                "secondCardAmount",
-                bundle: Bundle.module,
-                comment: "amount of money to be paid from the second credit card"
-            )
-        }
-    }
+    @IBOutlet weak var firstCardAmountLabel: UILabel!
+    @IBOutlet weak var secondCardAmountLabel: UILabel!
     
-    @IBOutlet weak var makePaymentButton: UIButton! {
-        didSet {
-            makePaymentButton.layer.cornerRadius = 8
-            makePaymentButton.setTitle(
-                NSLocalizedString(
-                    "makePayment",
-                    bundle: Bundle.module,
-                    comment: "send payment request"
-                ),
-                for: .normal)
-        }
-    }
+    @IBOutlet weak var makePaymentButton: UIButton!
     
     @IBOutlet weak var firstAmountTextField: UITextField! {
         didSet {
@@ -129,12 +104,36 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     private func commonInit() {
         Bundle.module.loadNibNamed("MultipleCardsPayment", owner: self, options: nil)
+        
+        multipleCardsPaymentController = MultipleCardsPaymentController(firstCardInformationView.cardController, and: secondCardInformationView.cardController)
+        
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     
         self.firstAmountTextField.delegate = self
         self.secondAmountTextField.delegate = self
+        
+        firstCardAmountLabel.text = NSLocalizedString(
+            "firstCardAmount",
+            bundle: Bundle.module,
+            comment: "amount of money to be paid from the first credit card"
+        )
+        
+        secondCardAmountLabel.text = NSLocalizedString(
+            "secondCardAmount",
+            bundle: Bundle.module,
+            comment: "amount of money to be paid from the second credit card"
+        )
+        
+        makePaymentButton.layer.cornerRadius = 8
+        makePaymentButton.setTitle(
+            NSLocalizedString(
+                "makePayment",
+                bundle: Bundle.module,
+                comment: "send payment request"
+            ),
+            for: .normal)
     }
     
     @objc func moveNextTextField() {
