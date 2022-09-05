@@ -11,6 +11,14 @@ class CreditOrDebitCardPaymentView: UIView {
     
     var creditOrDebitCardPaymentController: CreditOrDebitCardPaymentController = CreditOrDebitCardPaymentController()
     
+    var issdadsa: Bool = true {
+        didSet {
+            print("called")
+            print(cardInformationView.cardController.isCardValid())
+//            cardInformationView.cardController.isCardValid()
+        }
+    }
+    
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var cardInformationView: CardInformationView!
