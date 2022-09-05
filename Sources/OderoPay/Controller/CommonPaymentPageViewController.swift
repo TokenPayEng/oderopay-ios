@@ -111,7 +111,10 @@ public class CommonPaymentPageViewController: UIViewController {
     
     override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        print(creditOrDebitCardViewHeightConstraint.constant)
         creditOrDebitCardViewHeightConstraint.constant = creditOrDebitCardPaymentController.height
+        print(creditOrDebitCardViewHeightConstraint.constant)
+        self.creditOrDebitCardView.layoutIfNeeded()
     }
     
 //    NotificationCenter.default.addObserver(self, selector: #selector(updateHeight), name: NSNotification.Name(rawValue: "update"), object: nil)
