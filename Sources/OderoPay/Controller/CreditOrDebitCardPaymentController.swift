@@ -20,7 +20,7 @@ struct CreditOrDebitCardPaymentController: FormProtocol {
     
     var hasInstallment: Bool = false
     
-    var height: CGFloat = 0 {
+    var height: CGFloat = 220 {
         didSet {
             print("here")
             height = isformEnabled ? isCardValid ? 300 : 220 : 0
