@@ -111,7 +111,6 @@ public class CommonPaymentPageViewController: UIViewController {
     
     override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        print(creditOrDebitCardPaymentController.printAll())
         creditOrDebitCardViewHeightConstraint.constant = creditOrDebitCardPaymentController.height
     }
     
@@ -156,7 +155,6 @@ public class CommonPaymentPageViewController: UIViewController {
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
         creditOrDebitCardView.creditOrDebitCardPaymentController!.isformEnabled.toggle()
-        print(creditOrDebitCardPaymentController.printAll())
         collapseSection(creditOrDebitCardView, ofHeight: creditOrDebitCardPaymentController.height, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
     }
     
