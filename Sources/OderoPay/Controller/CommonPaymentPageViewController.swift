@@ -75,8 +75,6 @@ public class CommonPaymentPageViewController: UIViewController {
                                   bundle: Bundle.module,
                                   comment: "pay with credit card or debit card"),
                 for: .normal)
-            
-            creditCardOrDebitCardButton.setImage(creditOrDebitCardView.creditOrDebitCardPaymentController.image, for: .normal)
         }
     }
     
@@ -108,6 +106,8 @@ public class CommonPaymentPageViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        creditCardOrDebitCardButton.setImage(creditOrDebitCardView.creditOrDebitCardPaymentController.image, for: .normal)
     }
     
 //    NotificationCenter.default.addObserver(self, selector: #selector(updateHeight), name: NSNotification.Name(rawValue: "update"), object: nil)
