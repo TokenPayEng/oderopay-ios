@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InstallmentView" customModule="OderoPay">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="sOc-hg-97Y"/>
-                <outlet property="installmentOptionView" destination="xMt-RV-J8I" id="fVc-tX-jTp"/>
+                <outlet property="installmentOptionsStackView" destination="fpD-Xh-mqe" id="0cA-O2-xkW"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -28,10 +28,15 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMt-RV-J8I" customClass="InstallmentOptionView" customModule="OderoPay">
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fpD-Xh-mqe">
                             <rect key="frame" x="0.0" y="32" width="396" height="45"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMt-RV-J8I" customClass="InstallmentOptionView" customModule="OderoPay">
+                                    <rect key="frame" x="0.0" y="0.0" width="396" height="45"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
+                        </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulg-Bt-Iwc" userLabel="Divider">
                             <rect key="frame" x="0.0" y="92" width="396" height="1"/>
                             <color key="backgroundColor" red="0.91125309470000004" green="0.91125309470000004" blue="0.91125309470000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -41,7 +46,8 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="xMt-RV-J8I" secondAttribute="trailing" id="SjK-jg-4rU"/>
+                        <constraint firstItem="fpD-Xh-mqe" firstAttribute="leading" secondItem="7be-7O-Zmb" secondAttribute="leading" id="8Bi-ga-eR8"/>
+                        <constraint firstAttribute="trailing" secondItem="fpD-Xh-mqe" secondAttribute="trailing" id="Tz6-Um-8FG"/>
                         <constraint firstItem="ulg-Bt-Iwc" firstAttribute="leading" secondItem="7be-7O-Zmb" secondAttribute="leading" id="pFs-0d-iGU"/>
                         <constraint firstAttribute="trailing" secondItem="ulg-Bt-Iwc" secondAttribute="trailing" id="pdu-gR-YcC"/>
                     </constraints>

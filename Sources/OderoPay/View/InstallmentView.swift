@@ -12,12 +12,12 @@ class InstallmentView: UIView {
     internal var selected: Bool = false
     
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var installmentOptionsStackView: UIStackView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-    @IBOutlet weak var installmentOptionView: InstallmentOptionView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
