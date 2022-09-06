@@ -33,7 +33,8 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         
         if hasInstallment {
             var count = cardController.retrieveInstallments().first!.getInstallmentItems().count
-            calculatingHeight += 81
+            print(count)
+            calculatingHeight += 80
         }
         
         if isCardValid {
