@@ -72,6 +72,8 @@ class CardController {
     func checkForAvailableInstallment() async {
         if currentCardNumber.count == 5 && updatedCardNumber.count == 6 {
             
+            print("\nStarting process of installments retrieval\n")
+            
             do {
                 let retrieveInstallmentsResponse = try await OderoPay.retrieveInstallments(
                     for: updatedCardNumber,
@@ -101,6 +103,7 @@ class CardController {
             } catch {
                 print("network error occured ---- FAIL ❌")
                 print("HINT: \(error)")
+                return
             }
             
             installmentFound.toggle()
