@@ -31,10 +31,14 @@ class CreditOrDebitCardPaymentView: UIView {
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-        optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
+
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
-        optionsView.threeDSSelected = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
         
+        optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
+        optionsView.threeDSSelected = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
+        if creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption() {
+            optionsView.block3DSChoice = true
+        }
         if optionsView.threeDSSelected {
             optionsView.threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
             optionsView.threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
@@ -42,9 +46,6 @@ class CreditOrDebitCardPaymentView: UIView {
             optionsView.threeDSCheckImageView.image = UIImage(systemName: "square")
             optionsView.threeDSCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
         }
-//        if creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption() {
-//            NotificationCenter.default.post(name: Notification.Name("3DSUpdate"), object: nil, userInfo: ["value": creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()])
-//        }
     }
     
     private func commonInit() {
