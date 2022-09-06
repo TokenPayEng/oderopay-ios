@@ -41,10 +41,19 @@ class CreditOrDebitCardPaymentView: UIView {
                 
                 for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
             
+                    let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
                     let installmentItemView = InstallmentOptionView()
                     installmentItemView.frame.size = CGSize(width: installmentView.frame.size.width, height: 45)
                     
                     installmentItemView.tag = index
+                    installmentItemView.addGestureRecognizer(tap)
+                
+                    installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
+                    if installmentItem.getInstallmentNumber() > 1 {
+                        installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
+                    }
+
+                    installmentView.installmentOptionsStackView.addArrangedSubview(installmentItemView)
                     
                     if installmentView.selected == installmentItemView.tag {
                         installmentItemView.installmentChoiceView.layer.borderWidth = 1
@@ -55,13 +64,6 @@ class CreditOrDebitCardPaymentView: UIView {
                         installmentItemView.checkImageView.image = UIImage(systemName: "circle")
                         installmentItemView.checkImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
                     }
-                    
-                    installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
-                    if installmentItem.getInstallmentNumber() > 1 {
-                        installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
-                    }
-
-                    installmentView.installmentOptionsStackView.addArrangedSubview(installmentItemView)
                 }
                 
                 creditOrDebitCardPaymentController!.installmentsEnabled = true
@@ -118,6 +120,12 @@ class CreditOrDebitCardPaymentView: UIView {
                 comment: "send payment request"
             ),
             for: .normal)
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        if let tag = sender.view?.tag {
+            installmentView.selected = tag
+           }
     }
 }
 
