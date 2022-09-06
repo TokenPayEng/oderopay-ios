@@ -56,6 +56,10 @@ class CreditOrDebitCardPaymentView: UIView {
             }
         } else {
             creditOrDebitCardPaymentController!.installmentsEnabled = false
+            installmentView.installmentOptionsStackView.arrangedSubviews.forEach { (view) in
+                installmentView.installmentOptionsStackView.removeArrangedSubview(view)
+                view.removeFromSuperview()
+            }
         }
         
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
