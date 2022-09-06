@@ -19,14 +19,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EW4-je-Jqk" userLabel="Installment">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rfA-m3-E5U">
-                            <rect key="frame" x="10" y="25.5" width="355.5" height="20"/>
+                            <rect key="frame" x="10" y="12.5" width="355.5" height="20"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XiB-U0-9VJ">
                                     <rect key="frame" x="0.0" y="0.5" width="20" height="19"/>
@@ -45,7 +45,7 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" text="$ 700" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulM-py-ABJ">
-                            <rect key="frame" x="365.5" y="27" width="38.5" height="17"/>
+                            <rect key="frame" x="365.5" y="14" width="38.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -54,7 +54,7 @@
                     <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstAttribute="height" priority="750" constant="45" id="y5U-Q2-OFa"/>
+                        <constraint firstAttribute="height" constant="45" id="7OS-gN-5Rs"/>
                     </constraints>
                     <edgeInsets key="layoutMargins" top="8" left="10" bottom="8" right="10"/>
                     <connections>
@@ -70,7 +70,7 @@
                 <constraint firstAttribute="bottom" secondItem="EW4-je-Jqk" secondAttribute="bottom" id="iRd-Zz-tft"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="86.956521739130437" y="155.69196428571428"/>
+            <point key="canvasLocation" x="86.956521739130437" y="146.98660714285714"/>
         </view>
         <tapGestureRecognizer id="9gZ-JR-1NC">
             <connections>
