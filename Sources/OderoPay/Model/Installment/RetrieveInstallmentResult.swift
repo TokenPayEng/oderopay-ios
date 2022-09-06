@@ -31,13 +31,13 @@ public struct RetrieveInstallmentDataResult: Codable {
 public struct RetrieveInstallmentItem: Codable {
     private let binNumber: String
     private let price: Int
-    private let cardType: String
-    private let cardAssociation: String
-    private let cardBrand: String
-    private let bankName: String
-    private let bankCode: Int
+    private let cardType: String?
+    private let cardAssociation: String?
+    private let cardBrand: String?
+    private let bankName: String?
+    private let bankCode: Int?
     private let force3ds: Bool
-    private let commercial: Bool
+    private let commercial: Bool?
     private let installmentPrices: [InstallmentItemPrices]
 }
 
