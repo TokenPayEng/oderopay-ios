@@ -52,6 +52,7 @@ class CreditOrDebitCardPaymentView: UIView {
                     installmentView.installmentOptionsStackView.addSubview(installmentItemView)
                 }
                 
+                NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
                 creditOrDebitCardPaymentController!.installmentsEnabled = true
             }
         } else {
@@ -95,9 +96,6 @@ class CreditOrDebitCardPaymentView: UIView {
                 comment: "send payment request"
             ),
             for: .normal)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.checkInstallmentChoice(notification:)), name: Notification.Name("installmentChoice"), object: nil)
-
     }
     
     @objc func checkInstallmentChoice(notification: Notification) {
