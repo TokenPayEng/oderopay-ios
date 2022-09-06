@@ -16,6 +16,9 @@ class CreditOrDebitCardPaymentController: FormProtocol {
     var hasInstallment: Bool {
         cardController.hasInstallments()
     }
+    var installmentItems: [RetrieveInstallmentItem] {
+        hasInstallment ? cardController.retrieveInstallments() : []
+    }
     
     var isCardValid: Bool {
         cardController.isCardValid()

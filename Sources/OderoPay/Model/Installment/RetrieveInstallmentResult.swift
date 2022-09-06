@@ -39,6 +39,14 @@ public struct RetrieveInstallmentItem: Codable {
     private let force3ds: Bool
     private let commercial: Bool?
     private let installmentPrices: [InstallmentItem]
+    
+    public func getForce3ds() -> Bool {
+        force3ds
+    }
+    
+    public func getInstallmentItems() -> [InstallmentItem] {
+        installmentPrices
+    }
 }
 
 public struct InstallmentItem: Codable {

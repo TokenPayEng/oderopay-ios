@@ -33,6 +33,7 @@ class CreditOrDebitCardPaymentView: UIView {
         super.layoutSubviews()
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
+        optionsView.threeDSSelected = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
     }
     
     private func commonInit() {
@@ -46,6 +47,7 @@ class CreditOrDebitCardPaymentView: UIView {
         
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
+        optionsView.threeDSSelected = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
         
         makePaymentButton.layer.cornerRadius = 8
         makePaymentButton.setTitle(

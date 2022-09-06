@@ -10,7 +10,8 @@ import Foundation
 class CardController {
     private var isValidCard: Bool = false
     private var installmentFound: Bool = false
-    private var installmentItems: [InstallmentItem] = []
+    private var installmentItems: [RetrieveInstallmentItem] = []
+    private var force3DSChoice: Bool = false
     private var cardAssociation: CardAssociation = .UNDEFINED
     private var cardIinRangeString: String = String()
     private var currentCardNumber: String = String()
@@ -22,12 +23,6 @@ class CardController {
     private var updatedExpireDate: String = String()
     let month = Calendar.current.component(.month, from: Date())
     let year = Calendar.current.component(.year, from: Date())
-    
-    func printAll() {
-        print(cardAssociation)
-        print(isValidCard)
-        print(currentCardNumber)
-    }
     
     func setCurrentCardNumber(to number: String) {
         self.currentCardNumber = number.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
@@ -105,12 +100,14 @@ class CardController {
                 }
             
                 print("retrieving installments...")
-                let items = resultFromServer.getItems()
+                self.installmentItems = resultFromServer.getItems()
                 print("items retrieved ---- SUCCESS ✅")
-                print(items)
+                print(self.installmentItems)
                 print("installments retrieved for card with bin number: \(updatedCardNumber) ---- SUCCESS ✅\n")
                 
-                self.installmentFound = true
+                self.installmentFound = !self.installmentItems.isEmpty
+                self.force3DSChoice = self.installmentItems.first?.getForce3ds() ?? false
+
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
                 }
@@ -126,6 +123,14 @@ class CardController {
     
     func hasInstallments() -> Bool {
         installmentFound
+    }
+    
+    func retrieveInstallments() -> [RetrieveInstallmentItem] {
+        installmentItems
+    }
+    
+    func retrieveForce3DSChoiceOption() -> Bool {
+        force3DSChoice
     }
     
     // card association
