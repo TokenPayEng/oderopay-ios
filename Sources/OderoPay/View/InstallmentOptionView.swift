@@ -8,8 +8,6 @@
 import UIKit
 
 class InstallmentOptionView: UIView {
-
-    internal var selected: Bool = false
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var checkImageView: UIImageView!
@@ -39,17 +37,8 @@ class InstallmentOptionView: UIView {
     }
     
     @IBAction func installmentClicked(_ sender: UITapGestureRecognizer) {
-        selected.toggle()
+        NotificationCenter.default.post(name: Notification.Name("installmentChoice"), object: nil, userInfo: ["tag": self.tag])
 
-        if selected {
-            installmentChoiceView.layer.borderWidth = 1
-            checkImageView.image = UIImage(systemName: "circle.inset.filled")
-            checkImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
-        } else {
-            installmentChoiceView.layer.borderWidth = 0
-            checkImageView.image = UIImage(systemName: "circle")
-            checkImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
-        }
     }
 
 }

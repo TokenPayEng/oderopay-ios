@@ -58,7 +58,16 @@ class CreditOrDebitCardPaymentView: UIView {
             } else {
                 installmentView.installmentOptionsStackView.arrangedSubviews.forEach { (view) in
                     let installmentItemView = view as! InstallmentOptionView
-                    print(installmentItemView.selected)
+                    
+                    if creditOrDebitCardPaymentController!.cardController.getInstallmentChoice() == installmentItemView.tag {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 1
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle.inset.filled")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+                    } else {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 0
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+                    }
                 }
             }
         } else {
@@ -99,6 +108,9 @@ class CreditOrDebitCardPaymentView: UIView {
                 comment: "send payment request"
             ),
             for: .normal)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.checkInstallmentChoice(notification:)), name: Notification.Name("installmentChoice"), object: nil)
+
     }
     
     @objc func checkInstallmentChoice(notification: Notification) {
