@@ -73,6 +73,7 @@ class CardController {
         
         if currentCardNumber.count == 6 && updatedCardNumber.count == 5 {
             self.installmentFound = false
+            NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
         }
         
         if currentCardNumber.count == 5 && updatedCardNumber.count == 6 {
