@@ -33,7 +33,7 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         
         if hasInstallment {
             let count = cardController.retrieveInstallments().first!.getInstallmentItems().count
-            calculatingHeight += CGFloat(36 + (60 * count))
+            calculatingHeight += CGFloat(40 + (60 * count))
         }
         
         if isCardValid {
