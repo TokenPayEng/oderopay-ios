@@ -9,24 +9,14 @@ import UIKit
 
 class InstallmentView: UIView {
 
+    internal var selected: Bool = false
+    
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var checkImageView: UIImageView!
     
-    @IBOutlet weak var installmentOptionLabel: UILabel! {
-        didSet {
-            installmentOptionLabel.text = NSLocalizedString(
-                "singlePayment",
-                bundle: Bundle.module,
-                comment: "installment number"
-            )
-        }
-    }
-    
+    @IBOutlet weak var installmentOptionLabel: UILabel!
     @IBOutlet weak var installmentPriceLabel: UILabel!
-    
-    private let userTap = UITapGestureRecognizer(target: InstallmentView.self, action: #selector(installmentClicked))
-    internal var selected: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,9 +33,16 @@ class InstallmentView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        installmentOptionLabel.text = NSLocalizedString(
+            "singlePayment",
+            bundle: Bundle.module,
+            comment: "installment number"
+        )
     }
     
     @objc func installmentClicked() {
+        selected.toggle()
         
         if selected {
             checkImageView.image = UIImage(systemName: "circle.inset.filled")

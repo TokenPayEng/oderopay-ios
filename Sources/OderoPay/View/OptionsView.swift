@@ -19,17 +19,8 @@ class OptionsView: UIView {
     @IBOutlet weak var saveCardChoiceStackView: UIStackView!
     @IBOutlet weak var saveCardCheckImageView: UIImageView!
     
-    @IBOutlet weak var threeDSLabel: UILabel! {
-        didSet {
-            threeDSLabel.text = NSLocalizedString("3dsPrompt", bundle: .module, comment: "Use 3DS Prompt")
-        }
-    }
-    
-    @IBOutlet weak var saveCardLabel: UILabel! {
-        didSet {
-            saveCardLabel.text = NSLocalizedString("saveCardPrompt", bundle: .module, comment: "Save Card Prompt")
-        }
-    }
+    @IBOutlet weak var threeDSLabel: UILabel!
+    @IBOutlet weak var saveCardLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,6 +37,9 @@ class OptionsView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        threeDSLabel.text = NSLocalizedString("3dsPrompt", bundle: .module, comment: "Use 3DS Prompt")
+        saveCardLabel.text = NSLocalizedString("saveCardPrompt", bundle: .module, comment: "Save Card Prompt")
     }
     
     @IBAction func threeDSClicked(_ sender: UITapGestureRecognizer) {
