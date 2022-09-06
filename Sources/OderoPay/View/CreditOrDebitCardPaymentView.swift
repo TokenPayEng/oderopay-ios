@@ -123,6 +123,7 @@ class CreditOrDebitCardPaymentView: UIView {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        print("tapped")
         if let tag = sender.view?.tag {
             installmentView.selected = tag
            }
