@@ -19,20 +19,20 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="396" height="83"/>
+            <rect key="frame" x="0.0" y="0.0" width="396" height="135"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7be-7O-Zmb">
-                    <rect key="frame" x="0.0" y="0.0" width="396" height="83"/>
+                    <rect key="frame" x="0.0" y="0.0" width="396" height="135"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Installment Choice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2f-YL-Vb8">
-                            <rect key="frame" x="0.0" y="0.0" width="123" height="23"/>
+                            <rect key="frame" x="0.0" y="0.0" width="123" height="59"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ixo-kw-dMh" userLabel="Installment">
-                            <rect key="frame" x="0.0" y="38" width="396" height="45"/>
+                            <rect key="frame" x="0.0" y="74" width="396" height="45"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MwG-Ia-GVG">
                                     <rect key="frame" x="10" y="12.5" width="337.5" height="20"/>
@@ -70,10 +70,19 @@
                                 <outletCollection property="gestureRecognizers" destination="O9j-ZC-0Gv" appends="YES" id="SdD-id-nlL"/>
                             </connections>
                         </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulg-Bt-Iwc" userLabel="Divider">
+                            <rect key="frame" x="0.0" y="134" width="396" height="1"/>
+                            <color key="backgroundColor" red="0.91125309470000004" green="0.91125309470000004" blue="0.91125309470000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="fan-3y-E83"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="ixo-kw-dMh" secondAttribute="trailing" id="L09-hz-ItS"/>
                         <constraint firstItem="ixo-kw-dMh" firstAttribute="leading" secondItem="7be-7O-Zmb" secondAttribute="leading" id="bH1-pD-k21"/>
+                        <constraint firstItem="ulg-Bt-Iwc" firstAttribute="leading" secondItem="7be-7O-Zmb" secondAttribute="leading" id="pFs-0d-iGU"/>
+                        <constraint firstAttribute="trailing" secondItem="ulg-Bt-Iwc" secondAttribute="trailing" id="pdu-gR-YcC"/>
                     </constraints>
                 </stackView>
             </subviews>
@@ -86,7 +95,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <edgeInsets key="layoutMargins" top="8" left="8" bottom="10" right="8"/>
-            <point key="canvasLocation" x="326.08695652173918" y="-80.022321428571431"/>
+            <point key="canvasLocation" x="326.08695652173918" y="-62.611607142857139"/>
         </view>
         <tapGestureRecognizer id="O9j-ZC-0Gv">
             <connections>
