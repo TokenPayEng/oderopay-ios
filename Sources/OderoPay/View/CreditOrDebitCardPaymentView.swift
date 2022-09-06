@@ -38,10 +38,12 @@ class CreditOrDebitCardPaymentView: UIView {
             
             for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
                 
-                if let viewWithTag = installmentView.installmentOptionsStackView.viewWithTag(index) {
-                    viewWithTag.removeFromSuperview()
-                }else{
-                    print("No!")
+                while let v = installmentView.installmentOptionsStackView.subviews.first {
+                    if let viewWithTag = v.viewWithTag(index) {
+                        viewWithTag.removeFromSuperview()
+                    } else {
+                        print("Not found")
+                    }
                 }
                 
                 let installmentItemView = InstallmentOptionView()
