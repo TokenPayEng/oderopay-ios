@@ -13,6 +13,7 @@ class CreditOrDebitCardPaymentController: FormProtocol {
     var cardController: CardController
     
     var isformEnabled: Bool = false
+    var installmentsEnabled: Bool = false
     var hasInstallment: Bool {
         cardController.hasInstallments()
     }

@@ -34,22 +34,28 @@ class CreditOrDebitCardPaymentView: UIView {
 
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         
+        print(installmentView.installmentOptionsStackView.subviews.count)
+        print(creditOrDebitCardPaymentController!.installmentsEnabled)
         if creditOrDebitCardPaymentController!.hasInstallment {
             
-            print(installmentView.installmentOptionsStackView.subviews.count)
-            
-            for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
-                let installmentItemView = InstallmentOptionView()
-                installmentItemView.frame = CGRect(x: 0, y: index * 60, width: Int(installmentView.frame.size.width), height: 45)
-                
-                installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
-                
-                if installmentItem.getInstallmentNumber() > 1 {
-                    installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
-                }
+            if !creditOrDebitCardPaymentController!.installmentsEnabled {
+                for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
+                    let installmentItemView = InstallmentOptionView()
+                    installmentItemView.frame = CGRect(x: 0, y: index * 60, width: Int(installmentView.frame.size.width), height: 45)
+                    
+                    installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
+                    
+                    if installmentItem.getInstallmentNumber() > 1 {
+                        installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
+                    }
 
-                installmentView.installmentOptionsStackView.addSubview(installmentItemView)
+                    installmentView.installmentOptionsStackView.addSubview(installmentItemView)
+                }
+                
+                creditOrDebitCardPaymentController!.installmentsEnabled = true
             }
+        } else {
+            creditOrDebitCardPaymentController!.installmentsEnabled = false
         }
         
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
