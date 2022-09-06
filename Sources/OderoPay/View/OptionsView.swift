@@ -40,22 +40,22 @@ class OptionsView: UIView {
         
         threeDSLabel.text = NSLocalizedString("3dsPrompt", bundle: .module, comment: "Use 3DS Prompt")
         saveCardLabel.text = NSLocalizedString("saveCardPrompt", bundle: .module, comment: "Save Card Prompt")
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.force3ds(notification:)), name: Notification.Name("3DSUpdate"), object: nil)
+//        
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.force3ds(notification:)), name: Notification.Name("3DSUpdate"), object: nil)
 
     }
     
-    @objc func force3ds(notification: Notification) {
-        threeDSSelected = notification.userInfo!["value"] as! Bool
-        
-        if threeDSSelected {
-            threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
-            threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
-        } else {
-            threeDSCheckImageView.image = UIImage(systemName: "square")
-            threeDSCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
-        }
-    }
+//    @objc func force3ds(notification: Notification) {
+//        threeDSSelected = notification.userInfo!["value"] as! Bool
+//
+//        if threeDSSelected {
+//            threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
+//            threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+//        } else {
+//            threeDSCheckImageView.image = UIImage(systemName: "square")
+//            threeDSCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+//        }
+//    }
     
     @IBAction func threeDSClicked(_ sender: UITapGestureRecognizer) {
         threeDSSelected.toggle()
