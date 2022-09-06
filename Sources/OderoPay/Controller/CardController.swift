@@ -70,6 +70,11 @@ class CardController {
     
     // installment
     func checkForAvailableInstallment() async {
+        
+        if currentCardNumber.count == 6 && updatedCardNumber.count == 5 {
+            self.installmentFound = false
+        }
+        
         if currentCardNumber.count == 5 && updatedCardNumber.count == 6 {
             
             print("\nStarting process of installments retrieval\n")
@@ -86,13 +91,14 @@ class CardController {
                     print("installments retrieval returned with errors --- FAIL ❌")
                     print("Error code: \(String(describing: retrieveInstallmentsResponse.hasErrors()?.getErrorCode()))")
                     print("Error description: \(String(describing: retrieveInstallmentsResponse.hasErrors()?.getErrorDescription()))")
-                    
+                    self.installmentFound = false
                     return
                 }
                 
                 guard let resultFromServer = retrieveInstallmentsResponse.hasData() else {
                     print("Error occured ---- FAIL ❌")
                     print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
+                    self.installmentFound = false
                     return
                 }
             
@@ -113,6 +119,8 @@ class CardController {
                 self.installmentFound = false
                 return
             }
+            
+            self.installmentFound = false
         }
     }
     
