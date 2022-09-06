@@ -37,17 +37,10 @@ class CreditOrDebitCardPaymentView: UIView {
         if creditOrDebitCardPaymentController!.hasInstallment && !creditOrDebitCardPaymentController!.installmentsEnabled {
             
             for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
-                
-                while let v = installmentView.installmentOptionsStackView.subviews.first {
-                    if let viewWithTag = v.viewWithTag(index) {
-                        viewWithTag.removeFromSuperview()
-                    } else {
-                        print("Not found")
-                    }
-                }
-                
+        
                 let installmentItemView = InstallmentOptionView()
-                installmentItemView.frame = CGRect(x: 0, y: index * 60, width: Int(installmentView.frame.size.width), height: 45)
+                installmentItemView.frame.size = CGSize(width: installmentView.frame.size.width, height: 45)
+                // = CGRect(x: 0, y: index * 60, width: Int(installmentView.frame.size.width), height: 45)
                 
                 installmentItemView.tag = index
                 
@@ -56,7 +49,7 @@ class CreditOrDebitCardPaymentView: UIView {
                     installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
                 }
 
-                installmentView.installmentOptionsStackView.addSubview(installmentItemView)
+                installmentView.installmentOptionsStackView.addArrangedSubview(installmentItemView)
             }
             
             creditOrDebitCardPaymentController!.installmentsEnabled = true
@@ -65,7 +58,7 @@ class CreditOrDebitCardPaymentView: UIView {
         }
         
         print(creditOrDebitCardPaymentController!.installmentsEnabled)
-        print(installmentView.installmentOptionsStackView.subviews.count)
+        print(installmentView.installmentOptionsStackView.arrangedSubviews.count)
         
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
         optionsView.threeDSSelected = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
