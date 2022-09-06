@@ -33,7 +33,7 @@ class InstallmentView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        installmentChoiceView.layer.borderColor = UIColor(red: 235/255, green: 0/255, blue: 27/255, alpha: 1).cgColor
+        installmentChoiceView.layer.borderColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
         installmentChoiceView.layer.cornerRadius = 4
         installmentOptionLabel.text = NSLocalizedString(
             "singlePayment",
