@@ -46,7 +46,15 @@ class OptionsView: UIView {
     }
     
     @objc func force3ds(notification: Notification) {
-        print(notification.userInfo!["value"])
+        threeDSSelected = notification.userInfo!["value"] as! Bool
+        
+        if threeDSSelected {
+            threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
+            threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+        } else {
+            threeDSCheckImageView.image = UIImage(systemName: "square")
+            threeDSCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+        }
     }
     
     @IBAction func threeDSClicked(_ sender: UITapGestureRecognizer) {
