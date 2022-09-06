@@ -38,10 +38,10 @@ public struct RetrieveInstallmentItem: Codable {
     private let bankCode: Int?
     private let force3ds: Bool
     private let commercial: Bool?
-    private let installmentPrices: [InstallmentItemPrices]
+    private let installmentPrices: [InstallmentItem]
 }
 
-public struct InstallmentItemPrices: Codable {
+public struct InstallmentItem: Codable {
     private let installmentNumber: Int
     private let installmentPrice: Int
     private let totalPrice: Int

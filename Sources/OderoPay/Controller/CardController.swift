@@ -10,6 +10,7 @@ import Foundation
 class CardController {
     private var isValidCard: Bool = false
     private var installmentFound: Bool = false
+    private var installmentItems: [InstallmentItem] = []
     private var cardAssociation: CardAssociation = .UNDEFINED
     private var cardIinRangeString: String = String()
     private var currentCardNumber: String = String()
@@ -120,8 +121,6 @@ class CardController {
                 self.installmentFound = false
                 return
             }
-            
-            self.installmentFound = false
         }
     }
     
