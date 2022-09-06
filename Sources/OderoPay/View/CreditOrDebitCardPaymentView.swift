@@ -34,7 +34,8 @@ class CreditOrDebitCardPaymentView: UIView {
 
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         
-        if creditOrDebitCardPaymentController!.hasInstallment && !creditOrDebitCardPaymentController!.installmentsEnabled {
+        if creditOrDebitCardPaymentController!.hasInstallment {
+            installmentView.installmentOptionsStackView.removeFullyAllArrangedSubviews()
             
             for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
         
@@ -51,10 +52,6 @@ class CreditOrDebitCardPaymentView: UIView {
 
                 installmentView.installmentOptionsStackView.addArrangedSubview(installmentItemView)
             }
-            
-            creditOrDebitCardPaymentController!.installmentsEnabled = true
-        } else {
-            creditOrDebitCardPaymentController!.installmentsEnabled = false
         }
         
         print(creditOrDebitCardPaymentController!.installmentsEnabled)
@@ -99,4 +96,19 @@ class CreditOrDebitCardPaymentView: UIView {
     @objc func checkInstallmentChoice(notification: Notification) {
         creditOrDebitCardPaymentController!.cardController.setInstallmentChoice(notification.userInfo!["tag"] as! Int)
     }
+}
+
+extension UIStackView {
+    
+    func removeFully(view: UIView) {
+        removeArrangedSubview(view)
+        view.removeFromSuperview()
+    }
+    
+    func removeFullyAllArrangedSubviews() {
+        arrangedSubviews.forEach { (view) in
+            removeFully(view: view)
+        }
+    }
+
 }
