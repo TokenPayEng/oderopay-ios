@@ -144,7 +144,11 @@ class CardController {
     }
     
     func setInstallmentChoice(_ item: InstallmentItem) {
-        self.installmentChoice = item
+        installmentChoice = item
+    }
+    
+    func getInstallmentChoice() -> InstallmentItem {
+        installmentChoice
     }
     
     // card association

@@ -37,8 +37,9 @@ class CreditOrDebitCardPaymentView: UIView {
         if creditOrDebitCardPaymentController!.hasInstallment {
             for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
                 let installmentItemView = InstallmentOptionView()
-
                 installmentItemView.frame = CGRect(x: 0, y: index * 60, width: Int(installmentView.frame.size.width), height: 45)
+                installmentItemView.tag = index
+                
                 installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
                 
                 if installmentItem.getInstallmentNumber() > 1 {

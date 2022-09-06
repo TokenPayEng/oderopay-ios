@@ -39,6 +39,7 @@ class InstallmentOptionView: UIView {
     }
     
     @IBAction func installmentClicked(_ sender: UITapGestureRecognizer) {
+        print(tag)
         selected.toggle()
         
         if selected {
