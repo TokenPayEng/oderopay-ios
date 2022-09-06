@@ -46,10 +46,10 @@ class InstallmentView: UIView {
         
         if selected {
             checkImageView.image = UIImage(systemName: "circle.inset.filled")
-            checkImageView.tintColor = UIColor.init(red: 53, green: 211, blue: 47, alpha: 1)
+            checkImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
         } else {
             checkImageView.image = UIImage(named: "circle")
-            checkImageView.tintColor = UIColor.init(red: 225, green: 225, blue: 225, alpha: 1)
+            checkImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
         }
         
     }
