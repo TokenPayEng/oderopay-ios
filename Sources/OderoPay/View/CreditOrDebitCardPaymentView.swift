@@ -33,6 +33,9 @@ class CreditOrDebitCardPaymentView: UIView {
         super.layoutSubviews()
 
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
+        for installmentItem in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems() {
+            print(installmentItem.getInstallmentNumber())
+        }
         
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
         optionsView.threeDSSelected = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()

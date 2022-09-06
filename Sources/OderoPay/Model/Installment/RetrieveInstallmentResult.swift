@@ -30,7 +30,7 @@ public struct RetrieveInstallmentDataResult: Codable {
 
 public struct RetrieveInstallmentItem: Codable {
     private let binNumber: String
-    private let price: Int
+    private let price: Double
     private let cardType: String?
     private let cardAssociation: String?
     private let cardBrand: String?
@@ -51,8 +51,20 @@ public struct RetrieveInstallmentItem: Codable {
 
 public struct InstallmentItem: Codable {
     private let installmentNumber: Int
-    private let installmentPrice: Int
-    private let totalPrice: Int
+    private let installmentPrice: Double
+    private let totalPrice: Double
+    
+    public func getInstallmentNumber() -> Int {
+        installmentNumber
+    }
+    
+    public func getInstallmentPrice() -> Double {
+        installmentPrice
+    }
+    
+    public func getInstallmentTotalPrice() -> Double {
+        totalPrice
+    }
 }
 
 public struct RetrieveInstallmentErrorResult: Codable {
