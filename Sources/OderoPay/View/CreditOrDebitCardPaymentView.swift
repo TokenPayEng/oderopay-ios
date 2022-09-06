@@ -36,10 +36,10 @@ class CreditOrDebitCardPaymentView: UIView {
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         
         if creditOrDebitCardPaymentController!.hasInstallment {
-            for installmentItem in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems() {
+            for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
                 let installmentItemView = InstallmentOptionView()
 
-                installmentItemView.frame.size = CGSize(width: installmentView.frame.size.width, height: 45)
+                installmentItemView.frame = CGRect(x: 0, y: index * 60, width: installmentView.frame.size.width, height: 45)
                 installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
                 
                 if installmentItem.getInstallmentNumber() > 1 {
