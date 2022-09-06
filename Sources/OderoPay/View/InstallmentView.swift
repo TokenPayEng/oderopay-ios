@@ -30,6 +30,7 @@ class InstallmentView: UIView {
     }
     
     func clearStackView() {
+        print("fuck")
         installmentOptionsStackView.removeFullyAllArrangedSubviews()
     }
 }
