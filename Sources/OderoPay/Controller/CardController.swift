@@ -80,7 +80,8 @@ class CardController {
             
             do {
                 let retrieveInstallmentsResponse = try await OderoPay.retrieveInstallments(
-                    for: updatedCardNumber,
+                    // for: updatedCardNumber,
+                    for: "552096",
                     withPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
                     // in: OderoPay.getCheckoutForm().getCheckoutCurrencyRaw()
                     in: .TRY
