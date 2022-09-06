@@ -30,12 +30,6 @@
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fpD-Xh-mqe">
                             <rect key="frame" x="0.0" y="32" width="396" height="45"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMt-RV-J8I" customClass="InstallmentOptionView" customModule="OderoPay">
-                                    <rect key="frame" x="0.0" y="0.0" width="396" height="45"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                </view>
-                            </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulg-Bt-Iwc" userLabel="Divider">
                             <rect key="frame" x="0.0" y="92" width="396" height="1"/>
