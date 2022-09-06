@@ -32,7 +32,8 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         var calculatingHeight: CGFloat = 220
         
         if hasInstallment {
-            calculatingHeight += 111
+            var count = cardController.retrieveInstallments().first!.getInstallmentItems().count
+            calculatingHeight += 81
         }
         
         if isCardValid {
