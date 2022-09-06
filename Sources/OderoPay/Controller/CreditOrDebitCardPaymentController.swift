@@ -33,7 +33,7 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         }
         
         if isCardValid {
-            calculatingHeight += 96
+            calculatingHeight += 111
         }
         
         return calculatingHeight
