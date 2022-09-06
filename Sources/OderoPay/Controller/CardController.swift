@@ -12,6 +12,7 @@ class CardController {
     private var installmentFound: Bool = false
     private var installmentItems: [RetrieveInstallmentItem] = []
     private var force3DSChoice: Bool = false
+    private var installmentChoice: InstallmentItem = InstallmentItem()
     private var cardAssociation: CardAssociation = .UNDEFINED
     private var cardIinRangeString: String = String()
     private var currentCardNumber: String = String()
@@ -140,6 +141,10 @@ class CardController {
     
     func retrieveForce3DSChoiceOption() -> Bool {
         force3DSChoice
+    }
+    
+    func setInstallmentChoice(_ item: InstallmentItem) {
+        self.installmentChoice = item
     }
     
     // card association

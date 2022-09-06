@@ -65,6 +65,12 @@ public struct InstallmentItem: Codable {
     public func getInstallmentTotalPrice() -> Double {
         totalPrice
     }
+    
+    init() {
+        self.installmentNumber = 0
+        self.installmentPrice = 0
+        self.totalPrice = 0
+    }
 }
 
 public struct RetrieveInstallmentErrorResult: Codable {
