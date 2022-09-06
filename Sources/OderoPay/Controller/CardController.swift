@@ -111,7 +111,6 @@ class CardController {
                 print("retrieving installments...")
                 self.installmentItems = resultFromServer.getItems()
                 print("items retrieved ---- SUCCESS ✅")
-                print(self.installmentItems)
                 print("installments retrieved for card with bin number: \(updatedCardNumber) ---- SUCCESS ✅\n")
                 
                 self.installmentFound = !self.installmentItems.isEmpty
