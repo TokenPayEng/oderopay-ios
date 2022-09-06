@@ -40,7 +40,7 @@ class CreditOrDebitCardPaymentView: UIView {
                 let installmentItemView = InstallmentOptionView()
 
                 installmentItemView.frame.size = CGSize(width: installmentView.frame.size.width, height: 45)
-                installmentItemView.installmentPriceLabel.text = String(installmentItem.getInstallmentTotalPrice())
+                installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
                 
                 if installmentItem.getInstallmentNumber() > 1 {
                     installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
