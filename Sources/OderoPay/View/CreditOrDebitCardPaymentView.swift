@@ -49,6 +49,8 @@ class CreditOrDebitCardPaymentView: UIView {
                 installmentItemsUIViews[installmentItem.getInstallmentNumber()] = installmentItemView
                 installmentView.installmentOptionsStackView.addSubview(installmentItemView)
             }
+        } else {
+            
         }
         
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
