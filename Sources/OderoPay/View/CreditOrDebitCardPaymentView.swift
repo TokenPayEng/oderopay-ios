@@ -44,7 +44,6 @@ class CreditOrDebitCardPaymentView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        installmentView.layer.cornerRadius = 4
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
         
