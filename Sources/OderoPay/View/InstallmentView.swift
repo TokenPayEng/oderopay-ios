@@ -8,8 +8,6 @@
 import UIKit
 
 class InstallmentView: UIView {
-
-    internal var selected: Bool = false
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var installmentOptionsStackView: UIStackView!

@@ -39,9 +39,9 @@ class InstallmentOptionView: UIView {
     }
     
     @IBAction func installmentClicked(_ sender: UITapGestureRecognizer) {
-        print(tag)
+        NotificationCenter.default.post(name: Notification.Name("installmentChoice"), object: nil, userInfo: ["tag": tag])
         selected.toggle()
-        
+
         if selected {
             installmentChoiceView.layer.borderWidth = 1
             checkImageView.image = UIImage(systemName: "circle.inset.filled")

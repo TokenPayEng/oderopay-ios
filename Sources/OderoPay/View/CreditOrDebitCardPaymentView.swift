@@ -46,6 +46,9 @@ class CreditOrDebitCardPaymentView: UIView {
                     installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
                 }
 
+                if installmentItemView.tag == creditOrDebitCardPaymentController!.cardController.getInstallmentChoice() {
+                    installmentItemView.selected = true
+                }
                 installmentView.installmentOptionsStackView.addSubview(installmentItemView)
             }
         } else {
@@ -86,5 +89,12 @@ class CreditOrDebitCardPaymentView: UIView {
                 comment: "send payment request"
             ),
             for: .normal)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.checkInstallmentChoice(notification:)), name: Notification.Name("installmentChoice"), object: nil)
+
+    }
+    
+    @objc func checkInstallmentChoice(notification: Notification) {
+        creditOrDebitCardPaymentController!.cardController.setInstallmentChoice(notification.userInfo!["tag"] as! Int)
     }
 }
