@@ -39,7 +39,6 @@ class InstallmentOptionView: UIView {
     }
     
     @IBAction func installmentClicked(_ sender: UITapGestureRecognizer) {
-        NotificationCenter.default.post(name: Notification.Name("installmentChoice"), object: nil, userInfo: ["tag": tag])
         selected.toggle()
 
         if selected {
