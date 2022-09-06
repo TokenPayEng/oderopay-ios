@@ -57,9 +57,6 @@
                         <constraint firstAttribute="height" constant="45" id="7OS-gN-5Rs"/>
                     </constraints>
                     <edgeInsets key="layoutMargins" top="8" left="10" bottom="8" right="10"/>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="9gZ-JR-1NC" appends="YES" id="loD-Rn-q1j"/>
-                    </connections>
                 </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -72,11 +69,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="86.956521739130437" y="146.98660714285714"/>
         </view>
-        <tapGestureRecognizer id="9gZ-JR-1NC">
-            <connections>
-                <action selector="installmentClicked:" destination="-1" id="3YO-t0-00Z"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="circle" catalog="system" width="128" height="121"/>

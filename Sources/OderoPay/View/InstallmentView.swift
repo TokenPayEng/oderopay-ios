@@ -9,6 +9,8 @@ import UIKit
 
 class InstallmentView: UIView {
     
+    var selected: Int = 0
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var installmentOptionsStackView: UIStackView!
     

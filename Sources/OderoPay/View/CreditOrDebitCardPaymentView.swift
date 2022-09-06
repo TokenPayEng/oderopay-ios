@@ -44,7 +44,17 @@ class CreditOrDebitCardPaymentView: UIView {
                     let installmentItemView = InstallmentOptionView()
                     installmentItemView.frame.size = CGSize(width: installmentView.frame.size.width, height: 45)
                     
-                    installmentItemView.tag = index + 100
+                    installmentItemView.tag = index
+                    
+                    if installmentView.selected == installmentItemView.tag {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 1
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle.inset.filled")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+                    } else {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 0
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+                    }
                     
                     installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
                     if installmentItem.getInstallmentNumber() > 1 {
@@ -59,7 +69,7 @@ class CreditOrDebitCardPaymentView: UIView {
                 installmentView.installmentOptionsStackView.arrangedSubviews.forEach { (view) in
                     let installmentItemView = view as! InstallmentOptionView
                     
-                    if creditOrDebitCardPaymentController!.cardController.getInstallmentChoice() == installmentItemView.tag {
+                    if installmentView.selected == installmentItemView.tag {
                         installmentItemView.installmentChoiceView.layer.borderWidth = 1
                         installmentItemView.checkImageView.image = UIImage(systemName: "circle.inset.filled")
                         installmentItemView.checkImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
@@ -108,13 +118,6 @@ class CreditOrDebitCardPaymentView: UIView {
                 comment: "send payment request"
             ),
             for: .normal)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.checkInstallmentChoice(notification:)), name: Notification.Name("installmentChoice"), object: nil)
-
-    }
-    
-    @objc func checkInstallmentChoice(notification: Notification) {
-        creditOrDebitCardPaymentController!.cardController.setInstallmentChoice(notification.userInfo!["tag"] as! Int)
     }
 }
 

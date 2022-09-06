@@ -35,10 +35,4 @@ class InstallmentOptionView: UIView {
         installmentChoiceView.layer.borderColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
         installmentChoiceView.layer.cornerRadius = 4
     }
-    
-    @IBAction func installmentClicked(_ sender: UITapGestureRecognizer) {
-        NotificationCenter.default.post(name: Notification.Name("installmentChoice"), object: nil, userInfo: ["tag": self.tag])
-
-    }
-
 }
