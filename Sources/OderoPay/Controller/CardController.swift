@@ -112,8 +112,8 @@ class CardController {
                 self.installmentFound = true
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
-                    return
                 }
+                return
             } catch {
                 print("network error occured ---- FAIL ❌")
                 print("HINT: \(error)")
