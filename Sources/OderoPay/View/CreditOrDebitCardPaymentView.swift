@@ -34,6 +34,7 @@ class CreditOrDebitCardPaymentView: UIView {
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         optionsView.threeDSSelected = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
+        print(creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption())
     }
     
     private func commonInit() {
