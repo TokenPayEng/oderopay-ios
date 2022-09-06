@@ -33,7 +33,7 @@ class CreditOrDebitCardPaymentView: UIView {
         super.layoutSubviews()
 
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
-        for installmentItem in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems() {
+        for installmentItem in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first?.getInstallmentItems() {
             print(installmentItem.getInstallmentNumber())
         }
         
