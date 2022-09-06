@@ -34,31 +34,35 @@ class CreditOrDebitCardPaymentView: UIView {
 
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         
-       
-        print(creditOrDebitCardPaymentController!.installmentsEnabled)
-        if creditOrDebitCardPaymentController!.hasInstallment {
+        if creditOrDebitCardPaymentController!.hasInstallment && !creditOrDebitCardPaymentController!.installmentsEnabled {
             
-            if !creditOrDebitCardPaymentController!.installmentsEnabled {
-                for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
-                    let installmentItemView = InstallmentOptionView()
-                    installmentItemView.frame = CGRect(x: 0, y: index * 60, width: Int(installmentView.frame.size.width), height: 45)
-                    
-                    installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
-                    
-                    if installmentItem.getInstallmentNumber() > 1 {
-                        installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
-                    }
-
-                    installmentView.installmentOptionsStackView.addSubview(installmentItemView)
+            for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
+                
+                if let viewWithTag = installmentView.installmentOptionsStackView.viewWithTag(index) {
+                    viewWithTag.removeFromSuperview()
+                }else{
+                    print("No!")
                 }
                 
-                creditOrDebitCardPaymentController!.installmentsEnabled = true
+                let installmentItemView = InstallmentOptionView()
+                installmentItemView.frame = CGRect(x: 0, y: index * 60, width: Int(installmentView.frame.size.width), height: 45)
+                
+                installmentItemView.tag = index
+                
+                installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
+                if installmentItem.getInstallmentNumber() > 1 {
+                    installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
+                }
+
+                installmentView.installmentOptionsStackView.addSubview(installmentItemView)
             }
+            
+            creditOrDebitCardPaymentController!.installmentsEnabled = true
         } else {
             creditOrDebitCardPaymentController!.installmentsEnabled = false
-            installmentView.installmentOptionsStackView.arrangedSubviews.filter({ $0 is InstallmentOptionView }).forEach({ $0.removeFromSuperview() })
         }
         
+        print(creditOrDebitCardPaymentController!.installmentsEnabled)
         print(installmentView.installmentOptionsStackView.subviews.count)
         
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
