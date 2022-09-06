@@ -9,6 +9,7 @@ import Foundation
 
 class CardController {
     private var isValidCard: Bool = false
+    private var installmentFound: Bool = false
     private var cardAssociation: CardAssociation = .UNDEFINED
     private var cardIinRangeString: String = String()
     private var currentCardNumber: String = String()
@@ -70,9 +71,13 @@ class CardController {
     // installment
     func checkForAvailableInstallment() {
         if currentCardNumber.count == 5 && updatedCardNumber.count == 6 {
-            print("fired installment")
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update"), object: nil)
+            installmentFound.toggle()
+            NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
         }
+    }
+    
+    func hasInstallments() -> Bool {
+        installmentFound
     }
     
     // card association

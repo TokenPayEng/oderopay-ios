@@ -14,8 +14,9 @@ class CreditOrDebitCardPaymentView: UIView {
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var cardInformationView: CardInformationView!
-    
+    @IBOutlet weak var installmentView: InstallmentView!
     @IBOutlet weak var optionsView: OptionsView!
+    
     @IBOutlet weak var makePaymentButton: UIButton!
     
     override init(frame: CGRect) {
@@ -31,6 +32,7 @@ class CreditOrDebitCardPaymentView: UIView {
     override public func layoutSubviews() {
         super.layoutSubviews()
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
+        installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
     }
     
     private func commonInit() {
@@ -42,6 +44,7 @@ class CreditOrDebitCardPaymentView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
         
         makePaymentButton.layer.cornerRadius = 8

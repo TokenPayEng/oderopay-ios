@@ -13,14 +13,30 @@ class CreditOrDebitCardPaymentController: FormProtocol {
     var cardController: CardController
     
     var isformEnabled: Bool = false
-    var hasInstallment: Bool = false
+    var hasInstallment: Bool {
+        cardController.hasInstallments()
+    }
     
     var isCardValid: Bool {
         cardController.isCardValid()
     }
     
     var height: CGFloat {
-        isformEnabled ? isCardValid ? 300 : 220 : 0
+        if !isformEnabled {
+            return 0
+        }
+        
+        var calculatingHeight: CGFloat = 220
+        
+        if hasInstallment {
+            calculatingHeight += 95
+        }
+        
+        if isCardValid {
+            calculatingHeight += 80
+        }
+        
+        return calculatingHeight
     }
     
     var image: UIImage {
