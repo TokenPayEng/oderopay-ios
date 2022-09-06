@@ -85,6 +85,37 @@ public struct OderoPay {
         let concatenatedString = url + apiKey + secretKey + randomKey + body
         return concatenatedString.toSha256().toBase64().uppercased()
     }
+
+    static internal func retrieveInstallments(for binNumber: String, withPrice price: Double, in currency: Currency) async throws -> RetrieveInstallmentResult {
+        let url = URL(string: APIGateway.LOCAL.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
+        var urlComponents = URLComponents(string: APIGateway.LOCAL.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "binNumber", value: binNumber),
+            URLQueryItem(name: "price", value: String(price)),
+            URLQueryItem(name: "currency", value: currency.rawValue)
+        ]
+        
+        var request = URLRequest(url: urlComponents.url!)
+        
+        // generate signature
+        let signature = try generateSignature(for: url.absoluteString, body: String())
+        
+        // method
+        request.httpMethod = HTTPMethod.GET.rawValue
+        
+        // header custom
+        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
+        request.setValue(signature, forHTTPHeaderField: "x-signature")
+        request.setValue("V1", forHTTPHeaderField: "x-auth-version")
+        
+        // header default
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // send request
+        let (data, _) = try await URLSession.shared.data(with: request)
+        return try JSONDecoder().decode(RetrieveInstallmentResult.self, from: data)
+    }
 }
 
 extension Data{

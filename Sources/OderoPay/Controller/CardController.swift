@@ -69,8 +69,40 @@ class CardController {
     }
     
     // installment
-    func checkForAvailableInstallment() {
+    func checkForAvailableInstallment() async {
         if currentCardNumber.count == 5 && updatedCardNumber.count == 6 {
+            
+            do {
+                let retrieveInstallmentsResponse = try await OderoPay.retrieveInstallments(
+                    for: updatedCardNumber,
+                    withPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
+                    in: OderoPay.getCheckoutForm().getCheckoutCurrencyRaw()
+                )
+                
+                if retrieveInstallmentsResponse.hasErrors() != nil {
+                    print("installments retrieval returned with errors --- FAIL ❌")
+                    print("Error code: \(String(describing: retrieveInstallmentsResponse.hasErrors()?.getErrorCode()))")
+                    print("Error description: \(String(describing: retrieveInstallmentsResponse.hasErrors()?.getErrorDescription()))")
+                    
+                    return
+                }
+                
+                guard let resultFromServer = retrieveInstallmentsResponse.hasData() else {
+                    print("Error occured ---- FAIL ❌")
+                    print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
+                    return
+                }
+            
+                print("retrieving installments...")
+                let items = resultFromServer.getItems()
+                print("items retrieved ---- SUCCESS ✅")
+                print(items)
+                print("installments retrieved for card with bin number: \(updatedCardNumber) ---- SUCCESS ✅\n")
+            } catch {
+                print("network error occured ---- FAIL ❌")
+                print("HINT: \(error)")
+            }
+            
             installmentFound.toggle()
             NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
         }

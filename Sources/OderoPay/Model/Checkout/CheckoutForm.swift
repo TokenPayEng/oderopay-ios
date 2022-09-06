@@ -78,6 +78,15 @@ public class CheckoutForm: Codable {
         CheckoutForm.isReady = true
     }
     
+    /// Function returns checkout currency. Of type Currency Enum.
+    public func getCheckoutCurrencyRaw() -> Currency {
+        currency
+    }
+    /// Function returns checkout price with discounts applied without the currency value. Of type Double.
+    public func getCheckoutPriceRaw() -> Double {
+        paidPrice
+    }
+    
     /// Function returns checkout price with discounts applied together with currency value. Of type String.
     public func getCheckoutPrice() -> String {
         String(format: "%.2f", paidPrice) + " \(currency.currencySign)"

@@ -147,8 +147,10 @@ class CardInformationView: UIView, UITextFieldDelegate {
             cardController.setCurrentCardNumber(to: textField.text!)
             cardController.setUpdatedCardNumber(to: cardNumberInputUpdated)
             
-            // check for installment options
-            cardController.checkForAvailableInstallment()
+            Task {
+                // check for installment options
+                await cardController.checkForAvailableInstallment()
+            }
             
             // format by associtation
             switch cardController.checkForCardAssociation() {
