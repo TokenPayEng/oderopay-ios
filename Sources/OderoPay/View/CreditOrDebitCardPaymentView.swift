@@ -35,6 +35,9 @@ class CreditOrDebitCardPaymentView: UIView {
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         
         if creditOrDebitCardPaymentController!.hasInstallment {
+            
+            print(installmentView.installmentOptionsStackView.subviews.count)
+            
             for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
                 let installmentItemView = InstallmentOptionView()
                 installmentItemView.frame = CGRect(x: 0, y: index * 60, width: Int(installmentView.frame.size.width), height: 45)
