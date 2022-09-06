@@ -28,4 +28,23 @@ class InstallmentView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
+    
+    func clearStackView() {
+        installmentOptionsStackView.removeFullyAllArrangedSubviews()
+    }
+}
+
+extension UIStackView {
+    
+    func removeFully(view: UIView) {
+        removeArrangedSubview(view)
+        view.removeFromSuperview()
+    }
+    
+    func removeFullyAllArrangedSubviews() {
+        arrangedSubviews.forEach { (view) in
+            removeFully(view: view)
+        }
+    }
+    
 }
