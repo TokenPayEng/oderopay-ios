@@ -29,11 +29,11 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         var calculatingHeight: CGFloat = 220
         
         if hasInstallment {
-            calculatingHeight += 95
+            calculatingHeight += 111
         }
         
         if isCardValid {
-            calculatingHeight += 111
+            calculatingHeight += 80
         }
         
         return calculatingHeight
