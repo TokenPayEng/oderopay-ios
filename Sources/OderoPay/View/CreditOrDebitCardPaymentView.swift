@@ -36,9 +36,8 @@ class CreditOrDebitCardPaymentView: UIView {
         
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
         optionsView.threeDSSelected = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
-        if creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption() {
-            optionsView.block3DSChoice = true
-        }
+        optionsView.block3DSChoice = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
+
         if optionsView.threeDSSelected {
             optionsView.threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
             optionsView.threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
