@@ -36,7 +36,7 @@ class CreditOrDebitCardPaymentView: UIView {
         
         if creditOrDebitCardPaymentController!.hasInstallment {
             for installmentItem in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems() {
-                installmentView.installmentOptionsStackView.addSubview(InstallmentOptionView(frame: CGRect(x: 0, y: 0, width: 150, height: 50)))
+                installmentView.installmentOptionsStackView.addSubview(InstallmentOptionView(frame: CGRect(x: 0, y: 0, width: installmentView.frame.size.width, height: 45)))
                 print(installmentItem.getInstallmentNumber())
             }
         }
