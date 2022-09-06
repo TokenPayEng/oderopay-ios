@@ -39,10 +39,12 @@ class CreditOrDebitCardPaymentView: UIView {
             if !creditOrDebitCardPaymentController!.installmentsEnabled {
                 installmentView.installmentOptionsStackView.removeFullyAllArrangedSubviews()
                 
-                for installmentItem in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems() {
+                for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
             
                     let installmentItemView = InstallmentOptionView()
                     installmentItemView.frame.size = CGSize(width: installmentView.frame.size.width, height: 45)
+                    
+                    installmentItemView.tag = index + 100
                     
                     installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
                     if installmentItem.getInstallmentNumber() > 1 {
@@ -53,6 +55,11 @@ class CreditOrDebitCardPaymentView: UIView {
                 }
                 
                 creditOrDebitCardPaymentController!.installmentsEnabled = true
+            } else {
+                installmentView.installmentOptionsStackView.arrangedSubviews.forEach { (view) in
+                    let installmentItemView = view as! InstallmentOptionView
+                    print(installmentItemView.selected)
+                }
             }
         } else {
             creditOrDebitCardPaymentController!.installmentsEnabled = false
