@@ -52,12 +52,11 @@ class CreditOrDebitCardPaymentView: UIView {
                     installmentView.installmentOptionsStackView.addSubview(installmentItemView)
                 }
                 
-                NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
                 creditOrDebitCardPaymentController!.installmentsEnabled = true
             }
         } else {
             creditOrDebitCardPaymentController!.installmentsEnabled = false
-            installmentView.clearStackView()
+            installmentView.installmentOptionsStackView.arrangedSubviews.filter({ $0 is InstallmentOptionView }).forEach({ $0.removeFromSuperview() })
         }
         
         print(installmentView.installmentOptionsStackView.subviews.count)
