@@ -40,6 +40,13 @@ class OptionsView: UIView {
         
         threeDSLabel.text = NSLocalizedString("3dsPrompt", bundle: .module, comment: "Use 3DS Prompt")
         saveCardLabel.text = NSLocalizedString("saveCardPrompt", bundle: .module, comment: "Save Card Prompt")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.force3ds(notification:)), name: Notification.Name("3DSUpdate"), object: nil)
+
+    }
+    
+    @objc func force3ds(notification: Notification) {
+        print(notification.userInfo!["value"])
     }
     
     @IBAction func threeDSClicked(_ sender: UITapGestureRecognizer) {

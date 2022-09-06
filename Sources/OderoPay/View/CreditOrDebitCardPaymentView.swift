@@ -33,8 +33,9 @@ class CreditOrDebitCardPaymentView: UIView {
         super.layoutSubviews()
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
-        optionsView.threeDSSelected = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
-        print(creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption())
+        if creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption() {
+            NotificationCenter.default.post(name: Notification.Name("3DSUpdate"), object: nil, userInfo: ["value": creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()])
+        }
     }
     
     private func commonInit() {
