@@ -56,10 +56,7 @@ class CreditOrDebitCardPaymentView: UIView {
             }
         } else {
             creditOrDebitCardPaymentController!.installmentsEnabled = false
-            installmentView.installmentOptionsStackView.arrangedSubviews.forEach { (view) in
-                installmentView.installmentOptionsStackView.removeArrangedSubview(view)
-                view.removeFromSuperview()
-            }
+            installmentView.installmentOptionsStackView.removeFullyAllArrangedSubviews()
         }
         
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
@@ -104,4 +101,19 @@ class CreditOrDebitCardPaymentView: UIView {
     @objc func checkInstallmentChoice(notification: Notification) {
         creditOrDebitCardPaymentController!.cardController.setInstallmentChoice(notification.userInfo!["tag"] as! Int)
     }
+}
+
+extension UIStackView {
+    
+    func removeFully(view: UIView) {
+        removeArrangedSubview(view)
+        view.removeFromSuperview()
+    }
+    
+    func removeFullyAllArrangedSubviews() {
+        arrangedSubviews.forEach { (view) in
+            removeFully(view: view)
+        }
+    }
+    
 }
