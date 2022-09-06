@@ -41,6 +41,8 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="fpD-Xh-mqe" firstAttribute="leading" secondItem="7be-7O-Zmb" secondAttribute="leading" id="8Bi-ga-eR8"/>
+                        <constraint firstItem="ulg-Bt-Iwc" firstAttribute="top" secondItem="fpD-Xh-mqe" secondAttribute="bottom" priority="750" constant="15" id="Eg6-jY-ASa"/>
+                        <constraint firstItem="fpD-Xh-mqe" firstAttribute="top" secondItem="Z2f-YL-Vb8" secondAttribute="bottom" priority="750" constant="15" id="FZZ-8L-inY"/>
                         <constraint firstAttribute="trailing" secondItem="fpD-Xh-mqe" secondAttribute="trailing" id="Tz6-Um-8FG"/>
                         <constraint firstItem="ulg-Bt-Iwc" firstAttribute="leading" secondItem="7be-7O-Zmb" secondAttribute="leading" id="pFs-0d-iGU"/>
                         <constraint firstAttribute="trailing" secondItem="ulg-Bt-Iwc" secondAttribute="trailing" id="pdu-gR-YcC"/>
