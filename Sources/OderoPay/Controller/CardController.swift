@@ -102,8 +102,10 @@ class CardController {
                 print(items)
                 print("installments retrieved for card with bin number: \(updatedCardNumber) ---- SUCCESS ✅\n")
                 
-                installmentFound.toggle()
-                NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
+                DispatchQueue.main.async {
+                    self.installmentFound.toggle()
+                    NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
+                }
             } catch {
                 print("network error occured ---- FAIL ❌")
                 print("HINT: \(error)")
