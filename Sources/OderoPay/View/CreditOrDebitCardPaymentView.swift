@@ -9,6 +9,7 @@ import UIKit
 
 class CreditOrDebitCardPaymentView: UIView {
     
+    var installmentItemsUIViews: [Int : InstallmentOptionView] = [:]
     var creditOrDebitCardPaymentController: CreditOrDebitCardPaymentController? = nil
     
     @IBOutlet var contentView: UIView!
@@ -36,11 +37,17 @@ class CreditOrDebitCardPaymentView: UIView {
         
         if creditOrDebitCardPaymentController!.hasInstallment {
             for installmentItem in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems() {
-                let uiview = InstallmentOptionView()
+                let installmentItemView = InstallmentOptionView()
 
-                uiview.frame.size = CGSize(width: installmentView.frame.size.width, height: 45)
+                installmentItemView.frame.size = CGSize(width: installmentView.frame.size.width, height: 45)
+                installmentItemView.installmentPriceLabel.text = String(installmentItem.getInstallmentTotalPrice())
                 
-                installmentView.installmentOptionsStackView.addSubview(uiview)
+                if installmentItem.getInstallmentNumber() > 1 {
+                    installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
+                }
+                
+                installmentItemsUIViews[installmentItem.getInstallmentNumber()] = installmentItemView
+                installmentView.installmentOptionsStackView.addSubview(installmentItemView)
             }
         }
         
