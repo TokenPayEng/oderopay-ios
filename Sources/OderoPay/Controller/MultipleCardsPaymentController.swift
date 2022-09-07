@@ -14,6 +14,8 @@ class MultipleCardsPaymentController: FormProtocol {
     var secondCardController: CardController
     
     var isformEnabled: Bool = false
+    
+    var installmentsEnabledFirstCard: Bool = false
     var hasInstallmentFirstCard: Bool {
         firstCardController.hasInstallments()
     }
@@ -22,6 +24,7 @@ class MultipleCardsPaymentController: FormProtocol {
         hasInstallmentFirstCard ? firstCardController.retrieveInstallments() : []
     }
     
+    var installmentsEnabledSecondCard: Bool = false
     var hasInstallmentSecondCard: Bool {
         secondCardController.hasInstallments()
     }

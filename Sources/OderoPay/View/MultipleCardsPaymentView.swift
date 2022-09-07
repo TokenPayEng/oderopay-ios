@@ -79,6 +79,58 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         // first card controller
         firstInstallmentView.isHidden = !multipleCardsPaymentController!.hasInstallmentFirstCard
         
+        if multipleCardsPaymentController!.hasInstallmentFirstCard {
+    
+            if !multipleCardsPaymentController!.installmentsEnabledFirstCard {
+                firstInstallmentView.installmentOptionsStackView.removeFullyAllArrangedSubviews()
+                
+                for (index, installmentItem) in multipleCardsPaymentController!.firstCardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
+            
+                    let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTapFirst(_:)))
+                    let installmentItemView = InstallmentOptionView()
+                    installmentItemView.frame.size = CGSize(width: firstInstallmentView.frame.size.width, height: 45)
+                    
+                    installmentItemView.tag = index
+                    installmentItemView.addGestureRecognizer(tap)
+                
+                    installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
+                    if installmentItem.getInstallmentNumber() > 1 {
+                        installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
+                    }
+
+                    firstInstallmentView.installmentOptionsStackView.addArrangedSubview(installmentItemView)
+                    
+                    if firstInstallmentView.selected == installmentItemView.tag {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 1
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle.inset.filled")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+                    } else {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 0
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+                    }
+                }
+                
+                multipleCardsPaymentController!.installmentsEnabledFirstCard = true
+            } else {
+                firstInstallmentView.installmentOptionsStackView.arrangedSubviews.forEach { (view) in
+                    let installmentItemView = view as! InstallmentOptionView
+                    
+                    if firstInstallmentView.selected == installmentItemView.tag {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 1
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle.inset.filled")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+                    } else {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 0
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+                    }
+                }
+            }
+        } else {
+            multipleCardsPaymentController!.installmentsEnabledFirstCard = false
+        }
+        
         firstOptionsView.isHidden = !multipleCardsPaymentController!.isFirstCardValid
         firstOptionsView.threeDSSelected = multipleCardsPaymentController!.firstCardController.retrieveForce3DSChoiceOption()
         firstOptionsView.block3DSChoice = multipleCardsPaymentController!.firstCardController.retrieveForce3DSChoiceOption()
@@ -93,6 +145,58 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
         // second card controller
         secondInstallmentView.isHidden = !multipleCardsPaymentController!.hasInstallmentSecondCard
+        
+        if multipleCardsPaymentController!.hasInstallmentSecondCard {
+    
+            if !multipleCardsPaymentController!.installmentsEnabledSecondCard {
+                secondInstallmentView.installmentOptionsStackView.removeFullyAllArrangedSubviews()
+                
+                for (index, installmentItem) in multipleCardsPaymentController!.secondCardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
+            
+                    let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTapSecond(_:)))
+                    let installmentItemView = InstallmentOptionView()
+                    installmentItemView.frame.size = CGSize(width: secondInstallmentView.frame.size.width, height: 45)
+                    
+                    installmentItemView.tag = index
+                    installmentItemView.addGestureRecognizer(tap)
+                
+                    installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
+                    if installmentItem.getInstallmentNumber() > 1 {
+                        installmentItemView.installmentOptionLabel.text = String("\(installmentItem.getInstallmentNumber()) \(NSLocalizedString("installment", bundle: .module, comment: "installment choice by number"))")
+                    }
+
+                    secondInstallmentView.installmentOptionsStackView.addArrangedSubview(installmentItemView)
+                    
+                    if secondInstallmentView.selected == installmentItemView.tag {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 1
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle.inset.filled")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+                    } else {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 0
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+                    }
+                }
+                
+                multipleCardsPaymentController!.installmentsEnabledSecondCard = true
+            } else {
+                secondInstallmentView.installmentOptionsStackView.arrangedSubviews.forEach { (view) in
+                    let installmentItemView = view as! InstallmentOptionView
+                    
+                    if secondInstallmentView.selected == installmentItemView.tag {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 1
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle.inset.filled")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+                    } else {
+                        installmentItemView.installmentChoiceView.layer.borderWidth = 0
+                        installmentItemView.checkImageView.image = UIImage(systemName: "circle")
+                        installmentItemView.checkImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+                    }
+                }
+            }
+        } else {
+            multipleCardsPaymentController!.installmentsEnabledSecondCard = false
+        }
         
         secondOptionsView.isHidden = !multipleCardsPaymentController!.isSecondCardValid
         secondOptionsView.threeDSSelected = multipleCardsPaymentController!.secondCardController.retrieveForce3DSChoiceOption()
@@ -182,6 +286,22 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
         secondOptionsView.isHidden = !multipleCardsPaymentController!.isSecondCardValid
         secondOptionsView.threeDSSelected = multipleCardsPaymentController!.secondCardController.retrieveForce3DSChoiceOption()
+    }
+    
+    @objc func handleTapFirst(_ sender: UITapGestureRecognizer) {
+        if let tag = sender.view?.tag {
+            firstInstallmentView.selected = tag
+        }
+        
+        layoutSubviews()
+    }
+    
+    @objc func handleTapSecond(_ sender: UITapGestureRecognizer) {
+        if let tag = sender.view?.tag {
+            secondInstallmentView.selected = tag
+        }
+        
+        layoutSubviews()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
