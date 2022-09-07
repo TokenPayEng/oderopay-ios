@@ -14,12 +14,15 @@
                 <outlet property="firstAmountTextField" destination="Aq4-hT-vc9" id="qUR-xA-pQz"/>
                 <outlet property="firstCardAmountLabel" destination="h3s-Tp-Vu2" id="DD5-wj-hZp"/>
                 <outlet property="firstCardInformationView" destination="uMT-9u-2vh" id="lRm-vR-YwL"/>
+                <outlet property="firstCircleImageView" destination="7Lo-2D-UUn" id="4cf-v4-Mkt"/>
                 <outlet property="firstInstallmentView" destination="Ucb-7p-s2q" id="OfS-vU-ifj"/>
                 <outlet property="firstOptionsView" destination="gKQ-ur-3kT" id="snj-YJ-eMf"/>
+                <outlet property="firstVerticalDividerHeightConstraint" destination="Szo-Cf-ser" id="RY7-9z-rwz"/>
                 <outlet property="makePaymentButton" destination="4CM-ct-rIP" id="eag-mT-zgE"/>
                 <outlet property="secondAmountTextField" destination="7HU-9x-x7d" id="GWn-pt-eBN"/>
                 <outlet property="secondCardAmountLabel" destination="qXp-nh-i3Y" id="Pt1-is-nsj"/>
                 <outlet property="secondCardInformationView" destination="vMt-Rj-sV0" id="Ona-5S-Ogj"/>
+                <outlet property="secondCircleImageView" destination="lYf-3o-wUb" id="1pW-4g-oPB"/>
                 <outlet property="secondInstallmentView" destination="ZP4-ht-gkJ" id="d8a-Fz-0jz"/>
                 <outlet property="secondOptionsView" destination="cck-kd-q4G" id="A41-DI-UtC"/>
             </connections>

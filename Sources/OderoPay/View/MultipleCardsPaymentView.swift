@@ -16,9 +16,9 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     @IBOutlet weak var firstCardAmountLabel: UILabel!
     @IBOutlet weak var secondCardAmountLabel: UILabel!
-    
     @IBOutlet weak var makePaymentButton: UIButton!
     
+    @IBOutlet weak var firstCircleImageView: UIImageView!
     @IBOutlet weak var firstAmountTextField: UITextField! {
         didSet {
             firstAmountTextField.addPreviousNextToolbar(
@@ -35,7 +35,9 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             firstAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrency())"
         }
     }
-                                                                 
+    @IBOutlet weak var firstVerticalDividerHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var secondCircleImageView: UIImageView!
     @IBOutlet weak var secondAmountTextField: UITextField! {
         didSet {
             secondAmountTextField.addPreviousNextToolbar(
@@ -69,6 +71,41 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+    }
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // first card controller
+        firstInstallmentView.isHidden = !firstCardInformationView.cardController.hasInstallments()
+        
+        firstOptionsView.isHidden = !firstCardInformationView.cardController.isCardValid()
+        firstOptionsView.threeDSSelected = firstCardInformationView.cardController.retrieveForce3DSChoiceOption()
+        firstOptionsView.block3DSChoice = firstCardInformationView.cardController.retrieveForce3DSChoiceOption()
+        
+        if firstOptionsView.threeDSSelected {
+            firstOptionsView.threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
+            firstOptionsView.threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+        } else {
+            firstOptionsView.threeDSCheckImageView.image = UIImage(systemName: "square")
+            firstOptionsView.threeDSCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+        }
+        
+        // second card controller
+        secondInstallmentView.isHidden = !secondCardInformationView.cardController.hasInstallments()
+        
+        secondOptionsView.isHidden = !secondCardInformationView.cardController.isCardValid()
+        secondOptionsView.threeDSSelected = secondCardInformationView.cardController.retrieveForce3DSChoiceOption()
+        secondOptionsView.block3DSChoice = secondCardInformationView.cardController.retrieveForce3DSChoiceOption()
+        
+        if secondOptionsView.threeDSSelected {
+            secondOptionsView.threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
+            secondOptionsView.threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+        } else {
+            secondOptionsView.threeDSCheckImageView.image = UIImage(systemName: "square")
+            secondOptionsView.threeDSCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+        }
+        
     }
     
     private func commonInit() {
@@ -135,6 +172,14 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                 comment: "send payment request"
             ),
             for: .normal)
+        
+        firstInstallmentView.isHidden = !firstCardInformationView.cardController.hasInstallments()
+        firstOptionsView.isHidden = !firstCardInformationView.cardController.isCardValid()
+        firstOptionsView.threeDSSelected = firstCardInformationView.cardController.retrieveForce3DSChoiceOption()
+        
+        secondInstallmentView.isHidden = !secondCardInformationView.cardController.hasInstallments()
+        secondOptionsView.isHidden = !secondCardInformationView.cardController.isCardValid()
+        secondOptionsView.threeDSSelected = secondCardInformationView.cardController.retrieveForce3DSChoiceOption()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
