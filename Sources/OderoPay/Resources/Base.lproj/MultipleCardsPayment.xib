@@ -25,8 +25,8 @@
             <rect key="frame" x="0.0" y="0.0" width="386" height="596"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Amount to be withdrawn from the first card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3s-Tp-Vu2">
-                    <rect key="frame" x="41" y="50" width="345" height="15"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount to be withdrawn from the first card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3s-Tp-Vu2">
+                    <rect key="frame" x="41" y="50" width="345" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -47,22 +47,30 @@
                         <constraint firstAttribute="width" constant="30" id="fqM-Wn-Q7K"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMT-9u-2vh" userLabel="CardInformationView" customClass="CardInformationView" customModule="OderoPay">
-                    <rect key="frame" x="41" y="85" width="345" height="160"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Get-Nf-U7D">
+                    <rect key="frame" x="41" y="84.5" width="345" height="160"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMT-9u-2vh" userLabel="CardInformationView" customClass="CardInformationView" customModule="OderoPay">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="160"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="750" constant="160" id="NMi-XH-8dr"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" priority="750" constant="160" id="NMi-XH-8dr"/>
+                        <constraint firstAttribute="height" priority="750" constant="160" id="Lbw-Jg-DW4"/>
                     </constraints>
-                </view>
+                </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ds7-ip-sd7" userLabel="Horizontal Divider">
-                    <rect key="frame" x="40" y="265" width="346" height="1"/>
+                    <rect key="frame" x="40" y="264.5" width="346" height="1"/>
                     <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="1" id="XJO-9v-p28"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-9x-x7d">
-                    <rect key="frame" x="40" y="286" width="346" height="45"/>
+                    <rect key="frame" x="40" y="285.5" width="346" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="45" id="dQs-E6-yxO"/>
                     </constraints>
@@ -86,7 +94,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Amount to be withdrawn from the second card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXp-nh-i3Y">
-                    <rect key="frame" x="41" y="336" width="345" height="15"/>
+                    <rect key="frame" x="41" y="335.5" width="345" height="15.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -132,28 +140,28 @@
                 <constraint firstAttribute="trailing" secondItem="vMt-Rj-sV0" secondAttribute="trailing" id="8wE-sw-cQx"/>
                 <constraint firstAttribute="trailing" secondItem="ds7-ip-sd7" secondAttribute="trailing" id="AqW-aR-d1K"/>
                 <constraint firstItem="lYf-3o-wUb" firstAttribute="top" secondItem="RIv-e3-SZr" secondAttribute="bottom" id="BNT-z3-dnp"/>
-                <constraint firstAttribute="trailing" secondItem="uMT-9u-2vh" secondAttribute="trailing" id="G9S-Ox-Utz"/>
                 <constraint firstItem="ds7-ip-sd7" firstAttribute="leading" secondItem="RIv-e3-SZr" secondAttribute="leading" constant="25" id="Gnf-mP-QRe"/>
+                <constraint firstItem="Get-Nf-U7D" firstAttribute="top" secondItem="h3s-Tp-Vu2" secondAttribute="bottom" priority="750" constant="20" id="IH8-TB-RYZ"/>
                 <constraint firstItem="4CM-ct-rIP" firstAttribute="leading" secondItem="wW6-xp-NuM" secondAttribute="trailing" constant="25" id="L0K-mO-Dam"/>
                 <constraint firstItem="h3s-Tp-Vu2" firstAttribute="top" secondItem="Aq4-hT-vc9" secondAttribute="bottom" priority="750" constant="5" id="Lg9-2u-VfS"/>
                 <constraint firstAttribute="trailing" secondItem="7HU-9x-x7d" secondAttribute="trailing" id="Lgc-pr-f1d"/>
                 <constraint firstItem="7HU-9x-x7d" firstAttribute="top" secondItem="ds7-ip-sd7" secondAttribute="bottom" priority="750" constant="20" id="Prp-dy-dRF"/>
                 <constraint firstItem="wW6-xp-NuM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="QTX-3T-Tqa"/>
-                <constraint firstItem="uMT-9u-2vh" firstAttribute="leading" secondItem="RIv-e3-SZr" secondAttribute="trailing" constant="25" id="Ryz-SU-pp3"/>
-                <constraint firstItem="ds7-ip-sd7" firstAttribute="top" secondItem="uMT-9u-2vh" secondAttribute="bottom" priority="750" constant="20" id="TvX-Do-tO8"/>
                 <constraint firstItem="qXp-nh-i3Y" firstAttribute="top" secondItem="7HU-9x-x7d" secondAttribute="bottom" priority="750" constant="5" id="VUQ-OH-slm"/>
+                <constraint firstItem="Get-Nf-U7D" firstAttribute="leading" secondItem="RIv-e3-SZr" secondAttribute="trailing" constant="25" id="Y4u-fx-xbd"/>
                 <constraint firstItem="RIv-e3-SZr" firstAttribute="top" secondItem="7Lo-2D-UUn" secondAttribute="bottom" id="Za6-O0-gwI"/>
                 <constraint firstAttribute="trailing" secondItem="qXp-nh-i3Y" secondAttribute="trailing" id="fAz-dG-D7l"/>
                 <constraint firstItem="RIv-e3-SZr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="fDv-ja-vio"/>
                 <constraint firstItem="7Lo-2D-UUn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" priority="999" constant="5" id="gb9-n8-9Cq"/>
-                <constraint firstItem="uMT-9u-2vh" firstAttribute="top" secondItem="h3s-Tp-Vu2" secondAttribute="bottom" priority="750" constant="20" id="i3a-nX-gpH"/>
                 <constraint firstItem="4CM-ct-rIP" firstAttribute="top" secondItem="vMt-Rj-sV0" secondAttribute="bottom" priority="750" constant="20" id="k54-ri-fCt"/>
                 <constraint firstItem="vMt-Rj-sV0" firstAttribute="leading" secondItem="wW6-xp-NuM" secondAttribute="trailing" constant="25" id="kxH-zP-e8V"/>
+                <constraint firstAttribute="trailing" secondItem="Get-Nf-U7D" secondAttribute="trailing" id="nMv-PI-rYe"/>
                 <constraint firstItem="7HU-9x-x7d" firstAttribute="leading" secondItem="lYf-3o-wUb" secondAttribute="trailing" constant="10" id="oOc-ht-v1h"/>
                 <constraint firstItem="vMt-Rj-sV0" firstAttribute="top" secondItem="qXp-nh-i3Y" secondAttribute="bottom" priority="750" constant="20" id="oQ0-ml-dyY"/>
                 <constraint firstAttribute="bottom" secondItem="wW6-xp-NuM" secondAttribute="bottom" constant="25" id="rTS-Zb-LNO"/>
                 <constraint firstAttribute="bottom" secondItem="4CM-ct-rIP" secondAttribute="bottom" id="tav-0Q-140"/>
                 <constraint firstItem="qXp-nh-i3Y" firstAttribute="leading" secondItem="wW6-xp-NuM" secondAttribute="trailing" constant="25" id="wzV-p0-lS3"/>
+                <constraint firstItem="ds7-ip-sd7" firstAttribute="top" secondItem="Get-Nf-U7D" secondAttribute="bottom" priority="750" constant="20" id="zpO-aw-2gy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-210.1449275362319" y="-216.29464285714286"/>
