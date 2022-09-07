@@ -53,45 +53,13 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         }
     }
     
-    @IBOutlet weak var firstCardInformationView: CardInformationView! {
-        didSet {
-            firstCardInformationView.cardNumberTextField.addPreviousNextToolbar(
-                onNext: (
-                    target: self,
-                    action: #selector(moveNextTextField)
-                ),
-                onPrevious: (
-                    target: self,
-                    action: #selector(movePreviousTextField)
-                )
-            )
-            
-            firstCardInformationView.cardholderTextField.addPreviousNextToolbar(
-                onNext: (
-                    target: self,
-                    action: #selector(moveNextTextField)
-                ),
-                onPrevious: (
-                    target: self,
-                    action: #selector(movePreviousTextField)
-                ))
-        }
-    }
+    @IBOutlet weak var firstCardInformationView: CardInformationView!
+    @IBOutlet weak var firstInstallmentView: InstallmentView!
+    @IBOutlet weak var firstOptionsView: OptionsView!
     
-    @IBOutlet weak var secondCardInformationView: CardInformationView! {
-        didSet {
-            secondCardInformationView.cardNumberTextField.addPreviousNextToolbar(
-                onNext: (
-                    target: self,
-                    action: #selector(moveNextTextField)
-                ),
-                onPrevious: (
-                    target: self,
-                    action: #selector(movePreviousTextField)
-                )
-            )
-        }
-    }
+    @IBOutlet weak var secondCardInformationView: CardInformationView!
+    @IBOutlet weak var secondInstallmentView: InstallmentView!
+    @IBOutlet weak var secondOptionsView: OptionsView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -120,11 +88,43 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             bundle: Bundle.module,
             comment: "amount of money to be paid from the first credit card"
         )
+        firstCardInformationView.cardNumberTextField.addPreviousNextToolbar(
+            onNext: (
+                target: self,
+                action: #selector(moveNextTextField)
+            ),
+            onPrevious: (
+                target: self,
+                action: #selector(movePreviousTextField)
+            )
+        )
+        
+        firstCardInformationView.cardholderTextField.addPreviousNextToolbar(
+            onNext: (
+                target: self,
+                action: #selector(moveNextTextField)
+            ),
+            onPrevious: (
+                target: self,
+                action: #selector(movePreviousTextField)
+            )
+        )
         
         secondCardAmountLabel.text = NSLocalizedString(
             "secondCardAmount",
             bundle: Bundle.module,
             comment: "amount of money to be paid from the second credit card"
+        )
+        
+        secondCardInformationView.cardNumberTextField.addPreviousNextToolbar(
+            onNext: (
+                target: self,
+                action: #selector(moveNextTextField)
+            ),
+            onPrevious: (
+                target: self,
+                action: #selector(movePreviousTextField)
+            )
         )
         
         makePaymentButton.layer.cornerRadius = 8

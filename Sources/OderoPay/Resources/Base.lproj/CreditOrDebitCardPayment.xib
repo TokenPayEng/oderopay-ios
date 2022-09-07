@@ -33,21 +33,21 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tWI-bo-H4c" customClass="InstallmentView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="175" width="485" height="89"/>
+                            <rect key="frame" x="0.0" y="175" width="485" height="96"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="750" constant="96" id="gB5-Si-fdk"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-pP-ABi" customClass="OptionsView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="279" width="485" height="65"/>
+                            <rect key="frame" x="0.0" y="286" width="485" height="65"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="750" constant="65" id="7gX-UU-R7E"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-9H-Hdu">
-                            <rect key="frame" x="0.0" y="359" width="485" height="45"/>
+                            <rect key="frame" x="0.0" y="366" width="485" height="38"/>
                             <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="750" constant="45" id="IzV-Ev-193"/>
