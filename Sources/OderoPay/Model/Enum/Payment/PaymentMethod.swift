@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PaymentMethod {
-    case CARD_PAYMENT
-    case MULTI_CARD_PAYMENT
+public enum PaymentMethod: String, Codable {
+    case CARD_PAYMENT = "CARD_PAYMENT"
+    case MULTI_CARD_PAYMENT = "MULTICARD_PAYMENT"
 }

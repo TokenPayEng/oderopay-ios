@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Installment: Int {
+public enum Installment: Int, Codable {
     case single = 1
     case double = 2
     case triple = 3
