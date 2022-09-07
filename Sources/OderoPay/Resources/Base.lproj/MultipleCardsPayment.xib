@@ -32,7 +32,7 @@
             <rect key="frame" x="0.0" y="0.0" width="386" height="934"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="D4J-4J-1RS">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="D4J-4J-1RS">
                     <rect key="frame" x="0.0" y="0.0" width="386" height="934"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dAv-YE-pAd" userLabel="Stepper">
@@ -70,9 +70,6 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="30" id="m8r-yE-gIT"/>
-                            </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rQX-Cy-n9C" userLabel="Cards">
                             <rect key="frame" x="40" y="0.0" width="346" height="934"/>
