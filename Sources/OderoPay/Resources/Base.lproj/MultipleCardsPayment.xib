@@ -70,6 +70,9 @@
                                     </constraints>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="m8r-yE-gIT"/>
+                            </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rQX-Cy-n9C" userLabel="Cards">
                             <rect key="frame" x="40" y="0.0" width="346" height="934"/>
@@ -193,7 +196,6 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="rQX-Cy-n9C" secondAttribute="trailing" id="0Hi-za-cAE"/>
-                        <constraint firstItem="rQX-Cy-n9C" firstAttribute="leading" secondItem="D4J-4J-1RS" secondAttribute="leading" constant="40" id="VGO-0p-iwK"/>
                         <constraint firstItem="dAv-YE-pAd" firstAttribute="leading" secondItem="D4J-4J-1RS" secondAttribute="leading" id="r24-1E-rjx"/>
                     </constraints>
                 </stackView>
