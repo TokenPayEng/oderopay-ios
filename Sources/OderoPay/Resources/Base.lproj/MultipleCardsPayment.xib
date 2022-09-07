@@ -31,7 +31,7 @@
             <rect key="frame" x="0.0" y="0.0" width="386" height="934"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="D4J-4J-1RS">
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="D4J-4J-1RS" userLabel="MainView">
                     <rect key="frame" x="0.0" y="0.0" width="386" height="934"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dAv-YE-pAd" userLabel="Stepper">
@@ -76,11 +76,11 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rQX-Cy-n9C" userLabel="Cards">
                             <rect key="frame" x="40" y="0.0" width="346" height="934"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="li3-oC-ap2" userLabel="Amount &amp; Label 1">
-                                    <rect key="frame" x="0.0" y="0.0" width="346" height="60"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="li3-oC-ap2" userLabel="Amount &amp; Label 1">
+                                    <rect key="frame" x="0.0" y="0.0" width="346" height="53.5"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aq4-hT-vc9">
-                                            <rect key="frame" x="0.0" y="0.0" width="346" height="40.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="346" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="750" constant="45" id="he1-8X-Da5"/>
                                             </constraints>
@@ -88,7 +88,7 @@
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="next"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount to be withdrawn from the first card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3s-Tp-Vu2">
-                                            <rect key="frame" x="0.0" y="45.5" width="346" height="14.5"/>
+                                            <rect key="frame" x="0.0" y="39" width="346" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Get-Nf-U7D" userLabel="First Card">
-                                    <rect key="frame" x="0.0" y="75" width="346" height="351"/>
+                                    <rect key="frame" x="0.0" y="68.5" width="346" height="351"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMT-9u-2vh" userLabel="CardInformationView" customClass="CardInformationView" customModule="OderoPay">
                                             <rect key="frame" x="0.0" y="0.0" width="346" height="160"/>
@@ -125,14 +125,14 @@
                                     </subviews>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ds7-ip-sd7" userLabel="Horizontal Divider">
-                                    <rect key="frame" x="0.0" y="441" width="346" height="1"/>
+                                    <rect key="frame" x="0.0" y="434.5" width="346" height="1"/>
                                     <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="999" constant="1" id="XJO-9v-p28"/>
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-eI-xSz" userLabel="Amount &amp; Label 2">
-                                    <rect key="frame" x="0.0" y="457" width="346" height="60"/>
+                                    <rect key="frame" x="0.0" y="450.5" width="346" height="60"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-9x-x7d">
                                             <rect key="frame" x="0.0" y="0.0" width="346" height="40.5"/>
@@ -154,7 +154,7 @@
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6Og-1b-2Of" userLabel="Second Card">
-                                    <rect key="frame" x="0.0" y="532" width="346" height="351"/>
+                                    <rect key="frame" x="0.0" y="525.5" width="346" height="351"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMt-Rj-sV0" customClass="CardInformationView" customModule="OderoPay">
                                             <rect key="frame" x="0.0" y="0.0" width="346" height="160"/>
@@ -180,7 +180,7 @@
                                     </subviews>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4CM-ct-rIP">
-                                    <rect key="frame" x="0.0" y="898" width="346" height="36"/>
+                                    <rect key="frame" x="0.0" y="891.5" width="346" height="42.5"/>
                                     <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="750" constant="45" id="Qg7-P8-iwH"/>
