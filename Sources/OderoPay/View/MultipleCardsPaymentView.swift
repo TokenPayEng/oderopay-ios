@@ -76,6 +76,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     override public func layoutSubviews() {
         super.layoutSubviews()
         
+        firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
+        
         // first card controller
         firstInstallmentView.isHidden = !multipleCardsPaymentController!.hasInstallmentFirstCard
         
@@ -220,6 +222,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
     
         self.firstAmountTextField.delegate = self
         self.secondAmountTextField.delegate = self

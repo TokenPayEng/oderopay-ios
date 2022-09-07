@@ -40,23 +40,47 @@ class MultipleCardsPaymentController: FormProtocol {
         secondCardController.isCardValid()
     }
     
-//    var firstVerticalDividerHeight: CGFloat {
-//        var calculatingHeight: CGFloat = 220
-//        
-//        if hasInstallment {
-//            let count = cardController.retrieveInstallments().first!.getInstallmentItems().count
-//            calculatingHeight += CGFloat(51 + (60 * count))
-//        }
-//        
-//        if isCardValid {
-//            calculatingHeight += 80
-//        }
-//        
-//        return calculatingHeight
-//    }
+    var firstVerticalDividerHeight: CGFloat {
+        var calculatingHeight: CGFloat = 246
+        
+        if hasInstallmentFirstCard {
+            let count = firstCardController.retrieveInstallments().first!.getInstallmentItems().count
+            calculatingHeight += CGFloat(51 + (60 * count))
+        }
+        
+        if isFirstCardValid {
+            calculatingHeight += 80
+        }
+        
+        return calculatingHeight
+    }
     
     var height: CGFloat {
-        isformEnabled ? isFirstCardValid ? isSecondCardValid ? 943 : 943 : 943 : 0
+        if !isformEnabled {
+            return 0
+        }
+        
+        var calculatingHeight: CGFloat = 636
+        
+        if hasInstallmentFirstCard {
+            let count = firstCardController.retrieveInstallments().first!.getInstallmentItems().count
+            calculatingHeight += CGFloat(51 + (60 * count))
+        }
+        
+        if hasInstallmentSecondCard {
+            let count = secondCardController.retrieveInstallments().first!.getInstallmentItems().count
+            calculatingHeight += CGFloat(51 + (60 * count))
+        }
+        
+        if isFirstCardValid {
+            calculatingHeight += 80
+        }
+        
+        if isSecondCardValid {
+            calculatingHeight += 80
+        }
+        
+        return calculatingHeight
     }
     
     var image: UIImage {
