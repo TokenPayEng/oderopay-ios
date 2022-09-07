@@ -113,7 +113,8 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @objc func updateHeights() {
-         creditOrDebitCardViewHeightConstraint.constant = creditOrDebitCardPaymentController.height
+        creditOrDebitCardViewHeightConstraint.constant = creditOrDebitCardPaymentController.height
+        multipleCardsViewHeightConstraint.constant = multipleCardsPaymentController.height
     }
     
     override public func viewDidDisappear(_ animated: Bool) {
