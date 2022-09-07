@@ -77,11 +77,11 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         super.layoutSubviews()
         
         // first card controller
-        firstInstallmentView.isHidden = !firstCardInformationView.cardController.hasInstallments()
+        firstInstallmentView.isHidden = !multipleCardsPaymentController!.hasInstallmentFirstCard
         
-        firstOptionsView.isHidden = !firstCardInformationView.cardController.isCardValid()
-        firstOptionsView.threeDSSelected = firstCardInformationView.cardController.retrieveForce3DSChoiceOption()
-        firstOptionsView.block3DSChoice = firstCardInformationView.cardController.retrieveForce3DSChoiceOption()
+        firstOptionsView.isHidden = !multipleCardsPaymentController!.isFirstCardValid
+        firstOptionsView.threeDSSelected = multipleCardsPaymentController!.firstCardController.retrieveForce3DSChoiceOption()
+        firstOptionsView.block3DSChoice = multipleCardsPaymentController!.firstCardController.retrieveForce3DSChoiceOption()
         
         if firstOptionsView.threeDSSelected {
             firstOptionsView.threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
@@ -92,11 +92,11 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         }
         
         // second card controller
-        secondInstallmentView.isHidden = !secondCardInformationView.cardController.hasInstallments()
+        secondInstallmentView.isHidden = !multipleCardsPaymentController!.hasInstallmentSecondCard
         
-        secondOptionsView.isHidden = !secondCardInformationView.cardController.isCardValid()
-        secondOptionsView.threeDSSelected = secondCardInformationView.cardController.retrieveForce3DSChoiceOption()
-        secondOptionsView.block3DSChoice = secondCardInformationView.cardController.retrieveForce3DSChoiceOption()
+        secondOptionsView.isHidden = !multipleCardsPaymentController!.isSecondCardValid
+        secondOptionsView.threeDSSelected = multipleCardsPaymentController!.secondCardController.retrieveForce3DSChoiceOption()
+        secondOptionsView.block3DSChoice = multipleCardsPaymentController!.secondCardController.retrieveForce3DSChoiceOption()
         
         if secondOptionsView.threeDSSelected {
             secondOptionsView.threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
@@ -173,13 +173,15 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             ),
             for: .normal)
         
-        firstInstallmentView.isHidden = !firstCardInformationView.cardController.hasInstallments()
-        firstOptionsView.isHidden = !firstCardInformationView.cardController.isCardValid()
-        firstOptionsView.threeDSSelected = firstCardInformationView.cardController.retrieveForce3DSChoiceOption()
+        firstInstallmentView.isHidden = !multipleCardsPaymentController!.hasInstallmentFirstCard
         
-        secondInstallmentView.isHidden = !secondCardInformationView.cardController.hasInstallments()
-        secondOptionsView.isHidden = !secondCardInformationView.cardController.isCardValid()
-        secondOptionsView.threeDSSelected = secondCardInformationView.cardController.retrieveForce3DSChoiceOption()
+        firstOptionsView.isHidden = !multipleCardsPaymentController!.isFirstCardValid
+        firstOptionsView.threeDSSelected = multipleCardsPaymentController!.firstCardController.retrieveForce3DSChoiceOption()
+        
+        secondInstallmentView.isHidden = !multipleCardsPaymentController!.hasInstallmentSecondCard
+        
+        secondOptionsView.isHidden = !multipleCardsPaymentController!.isSecondCardValid
+        secondOptionsView.threeDSSelected = multipleCardsPaymentController!.secondCardController.retrieveForce3DSChoiceOption()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

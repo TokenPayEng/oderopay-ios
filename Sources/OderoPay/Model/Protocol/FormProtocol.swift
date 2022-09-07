@@ -9,5 +9,4 @@ import Foundation
 
 protocol FormProtocol {
     var isformEnabled: Bool { get set }
-    var hasInstallment: Bool { get }
 }

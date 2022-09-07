@@ -25,21 +25,6 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         cardController.isCardValid()
     }
     
-    var firstVerticalDividerHeight: CGFloat {
-        var calculatingHeight: CGFloat = 220
-        
-        if hasInstallment {
-            let count = cardController.retrieveInstallments().first!.getInstallmentItems().count
-            calculatingHeight += CGFloat(51 + (60 * count))
-        }
-        
-        if isCardValid {
-            calculatingHeight += 80
-        }
-        
-        return calculatingHeight
-    }
-    
     var height: CGFloat {
         if !isformEnabled {
             return 0
