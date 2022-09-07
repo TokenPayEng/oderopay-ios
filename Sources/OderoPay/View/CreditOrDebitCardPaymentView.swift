@@ -144,7 +144,7 @@ class CreditOrDebitCardPaymentView: UIView {
         OderoPay.setCompletePaymentForm(to: form)
         Task {
             do {
-                print(try await OderoPay.sendCompletePaymentForm()
+                print(try await OderoPay.sendCompletePaymentForm())
             } catch {
                 print(error)
             }
