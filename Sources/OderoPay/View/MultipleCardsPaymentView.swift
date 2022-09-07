@@ -145,6 +145,12 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 0
+        
+        if textField == firstAmountTextField || textField == secondAmountTextField {
+            if textField.text!.isEmpty { textField.isError(true) }
+        } else {
+            textField.isError(false)
+        }
     }
     
     @objc func moveNextTextField() {
