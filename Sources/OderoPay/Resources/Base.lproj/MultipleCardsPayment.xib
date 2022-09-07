@@ -199,9 +199,9 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="D4J-4J-1RS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1l3-pX-CZB"/>
-                <constraint firstAttribute="bottom" secondItem="D4J-4J-1RS" secondAttribute="bottom" id="6jj-rV-Kcv"/>
+                <constraint firstAttribute="bottom" secondItem="D4J-4J-1RS" secondAttribute="bottom" priority="999" id="6jj-rV-Kcv"/>
                 <constraint firstAttribute="trailing" secondItem="D4J-4J-1RS" secondAttribute="trailing" id="Py7-ba-BOY"/>
-                <constraint firstItem="D4J-4J-1RS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="S0i-48-3Gc"/>
+                <constraint firstItem="D4J-4J-1RS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="999" id="S0i-48-3Gc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-259.4202898550725" y="-183.48214285714286"/>

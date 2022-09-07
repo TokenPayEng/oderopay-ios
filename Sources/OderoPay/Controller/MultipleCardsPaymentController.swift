@@ -24,7 +24,7 @@ class MultipleCardsPaymentController: FormProtocol {
     }
     
     var height: CGFloat {
-        isformEnabled ? isFirstCardValid ? isSecondCardValid ? 750 : 670 : 590 : 0
+        isformEnabled ? isFirstCardValid ? isSecondCardValid ? 943 : 943 : 943 : 0
     }
     
     var image: UIImage {
