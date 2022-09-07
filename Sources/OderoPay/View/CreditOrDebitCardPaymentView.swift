@@ -131,7 +131,24 @@ class CreditOrDebitCardPaymentView: UIView {
     }
     
     @IBAction func makePayment(_ sender: Any) {
-        print("clicked")
+        let form = CompletePaymentForm(paymentType: .CARD_PAYMENT,
+                            cardPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
+                            installment: .single,
+                            card: Card(number: creditOrDebitCardPaymentController!.cardController.getUpdatedCardNumber(),
+                                       expiringAt: .december,
+                                       2023,
+                                       withCode: 333,
+                                       belongsTo: "Imran Hajiyev")
+        )
+        
+        OderoPay.setCompletePaymentForm(to: form)
+        Task {
+            do {
+                try await OderoPay.sendCheckoutForm()
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 
