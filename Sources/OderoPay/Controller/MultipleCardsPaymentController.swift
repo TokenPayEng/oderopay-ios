@@ -45,7 +45,7 @@ class MultipleCardsPaymentController: FormProtocol {
         
         if hasInstallmentFirstCard {
             let count = firstCardController.retrieveInstallments().first!.getInstallmentItems().count
-            calculatingHeight += CGFloat(51 + (70 * count))
+            calculatingHeight += CGFloat(51 + (60 * count))
         }
         
         if isFirstCardValid {
@@ -64,7 +64,7 @@ class MultipleCardsPaymentController: FormProtocol {
         
         if hasInstallmentFirstCard {
             let count = firstCardController.retrieveInstallments().first!.getInstallmentItems().count
-            calculatingHeight += CGFloat(51 + (70 * count))
+            calculatingHeight += CGFloat(51 + (60 * count))
         }
         
         if hasInstallmentSecondCard {
