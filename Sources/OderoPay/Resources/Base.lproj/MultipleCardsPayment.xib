@@ -125,7 +125,7 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="351" id="LWO-Tv-55L"/>
+                                        <constraint firstAttribute="height" priority="750" constant="351" id="LWO-Tv-55L"/>
                                     </constraints>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ds7-ip-sd7" userLabel="Horizontal Divider">
