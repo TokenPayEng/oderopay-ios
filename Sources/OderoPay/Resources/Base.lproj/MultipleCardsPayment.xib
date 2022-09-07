@@ -70,6 +70,9 @@
                                     </constraints>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="JC6-RQ-TEU"/>
+                            </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rQX-Cy-n9C" userLabel="Cards">
                             <rect key="frame" x="40" y="0.0" width="346" height="934"/>
