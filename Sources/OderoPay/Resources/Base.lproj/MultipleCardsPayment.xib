@@ -124,9 +124,6 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="height" priority="750" constant="351" id="LWO-Tv-55L"/>
-                                    </constraints>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ds7-ip-sd7" userLabel="Horizontal Divider">
                                     <rect key="frame" x="0.0" y="441" width="346" height="1"/>
@@ -182,9 +179,6 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="height" priority="750" constant="351" id="Okd-OB-Z2X"/>
-                                    </constraints>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4CM-ct-rIP">
                                     <rect key="frame" x="0.0" y="898" width="346" height="36"/>
