@@ -135,7 +135,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-eI-xSz" userLabel="Amount &amp; Label 2">
                                     <rect key="frame" x="0.0" y="457" width="346" height="60"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-9x-x7d">
+                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-9x-x7d">
                                             <rect key="frame" x="0.0" y="0.0" width="346" height="40.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="750" constant="45" id="dQs-E6-yxO"/>

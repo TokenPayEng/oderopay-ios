@@ -129,6 +129,10 @@ class CreditOrDebitCardPaymentView: UIView {
         
         layoutSubviews()
     }
+    
+    @IBAction func makePayment(_ sender: Any) {
+        print("clicked")
+    }
 }
 
 extension UIStackView {
