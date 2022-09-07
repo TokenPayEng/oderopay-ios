@@ -10,6 +10,7 @@ import UIKit
 class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     var multipleCardsPaymentController: MultipleCardsPaymentController? = nil
+    lazy private var successCGColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
     
     @IBOutlet var contentView: UIView!
     
@@ -134,6 +135,16 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                 comment: "send payment request"
             ),
             for: .normal)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 4
+        textField.layer.borderColor = successCGColor
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 0
     }
     
     @objc func moveNextTextField() {

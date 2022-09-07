@@ -47,7 +47,7 @@
                         <constraint firstAttribute="width" constant="30" id="fqM-Wn-Q7K"/>
                     </constraints>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Get-Nf-U7D">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Get-Nf-U7D">
                     <rect key="frame" x="41" y="84.5" width="345" height="160"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMT-9u-2vh" userLabel="CardInformationView" customClass="CardInformationView" customModule="OderoPay">
@@ -58,9 +58,6 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" priority="750" constant="160" id="Lbw-Jg-DW4"/>
-                    </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ds7-ip-sd7" userLabel="Horizontal Divider">
                     <rect key="frame" x="40" y="264.5" width="346" height="1"/>
