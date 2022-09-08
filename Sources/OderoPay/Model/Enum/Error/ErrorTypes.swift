@@ -17,4 +17,8 @@ enum ErrorTypes: String {
     func localizedString() -> String {
         return NSLocalizedString(self.rawValue, comment: "")
     }
+    
+    static func getLocalized(_ choice: ErrorTypes) -> String {
+        return choice.localizedString()
+    }
 }
