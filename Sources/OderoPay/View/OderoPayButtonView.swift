@@ -93,7 +93,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
     }
     
     func showErrorAlert(ofType type: ErrorTypes) {
-        let alert = UIAlertController(title: "Error", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: "ER", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in }))
         
         navigationController?.topViewController?.present(alert, animated: true, completion: nil)
