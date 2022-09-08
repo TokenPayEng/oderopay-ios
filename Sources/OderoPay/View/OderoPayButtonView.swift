@@ -95,12 +95,9 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
     
     func showErrorAlert(ofType type: ErrorTypes) {
         oderoAlertView.controller.setErrorAlert(ofType: type)
-        oderoAlertView.frame = CGRect(x: 10, y: 10, width: 150, height: 30)
-        //self.superview!.addSubview(oderoAlertView)
-        //navigationController?.view.addSubview(oderoAlertView)
-        //navigationController?.topViewController?.view.addSubview(oderoAlertView)
-        print(navigationController?.topViewController?.nibName?.uppercased())
-        
+        oderoAlertView.frame = CGRect(x: 0, y: 0, width: 150, height: 30)
+        navigationController?.topViewController?.view.addSubview(oderoAlertView)
+        layoutSubviews()
 //        let alert = UIAlertController(title: "Remove Item?", message: nil, preferredStyle: .alert)
 //
 //        alert.addAction(UIAlertAction(title: "Yes", style: .default){(_) in
