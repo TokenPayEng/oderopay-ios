@@ -11,7 +11,6 @@ import SafariServices
 public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
     
     var navigationController: UINavigationController?
-    var oderoAlertView: OderoAlertView = OderoAlertView()
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var oderoPayImageView: UIImageView!
@@ -94,9 +93,12 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
     }
     
     func showErrorAlert(ofType type: ErrorTypes) {
-        oderoAlertView.controller.setErrorAlert(ofType: type)
-        self.superview?.addSubview(oderoAlertView)
-        navigationController?.topViewController?.presentingViewController?.view.addSubview(oderoAlertView)
+        let alert = UIAlertController(title: "Title", message: "Please Select an Option", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { (_) in
+            print("User click Approve button")
+        }))
+        
+        navigationController?.topViewController?.present(alert, animated: true, completion: nil)
         //navigationController?.topViewController?.viewWillLayoutSubviews()
 //        let alert = UIAlertController(title: "Remove Item?", message: nil, preferredStyle: .alert)
 //
