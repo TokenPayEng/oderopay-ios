@@ -99,7 +99,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
         //self.superview!.addSubview(oderoAlertView)
         //navigationController?.view.addSubview(oderoAlertView)
         //navigationController?.topViewController?.view.addSubview(oderoAlertView)
-        print(navigationController?.topViewController?.nibName)
+        print(navigationController?.topViewController?.nibName?.uppercased())
         
 //        let alert = UIAlertController(title: "Remove Item?", message: nil, preferredStyle: .alert)
 //
