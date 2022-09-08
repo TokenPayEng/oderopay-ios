@@ -150,10 +150,9 @@ public struct OderoPay {
         let encodedBody = try JSONEncoder().encode(OderoPay.completePaymentForm)
         request.httpBody = encodedBody
         
-        print(request)
-        
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)
+        print(data)
         return try JSONDecoder().decode(CompletePaymentFormResult.self, from: data)
     }
 }
