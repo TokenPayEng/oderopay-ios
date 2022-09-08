@@ -11,6 +11,7 @@ import SafariServices
 public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
     
     var navigationController: UINavigationController?
+    var oderoAlertView: OderoAlertView = OderoAlertView()
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var oderoPayImageView: UIImageView!
@@ -92,6 +93,11 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
         }
     }
     
+    func showErrorAlert(ofType type: ErrorTypes) {
+        oderoAlertView.controller.setErrorAlert(ofType: type)
+        self.superview!.addSubview(oderoAlertView)
+    }
+    
     // --------------------------------------------------------
     
     private func commonInit() {
@@ -115,6 +121,9 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
             guard let navigationController = navigationController else {
                 print("no navigation controller found ---- FAIL ❌")
                 print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
+                
+                showErrorAlert(ofType: .INTERNAL)
+                
                 return
             }
             
@@ -141,12 +150,17 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                             print("Error code: \(String(describing: checkoutFormResponse.hasErrors()?.getErrorCode()))")
                             print("Error description: \(String(describing: checkoutFormResponse.hasErrors()?.getErrorDescription()))")
                             
+                            showErrorAlert(ofType: .MISSING_DATA)
+                            
                             return
                         }
                         
                         guard let resultFromServer = checkoutFormResponse.hasData() else {
                             print("Error occured ---- FAIL ❌")
                             print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
+                            
+                            showErrorAlert(ofType: .SERVER)
+                            
                             return
                         }
                         
@@ -182,17 +196,28 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                     } catch {
                         print("network error occured ---- FAIL ❌")
                         print("HINT: \(error)")
+                        showLoadingIndicator(false)
+                        
+                        showErrorAlert(ofType: .NETWORK)
+                        
                         return
-                        //showLoadingIndicator(false)
                     }
                 }
             } else {
                 print("checkout form is not provided by developer ---- FAIL ❌")
                 print("HINT: checkout form should be initialized with correct values.")
+                showLoadingIndicator(false)
+                
+                showErrorAlert(ofType: .INTERNAL)
+                
                 return
             }
         } else {
             print("no keys were provided by developer ---- FAIL ❌")
+            showLoadingIndicator(false)
+            
+            showErrorAlert(ofType: .INTERNAL)
+            
             return
         }
     }
