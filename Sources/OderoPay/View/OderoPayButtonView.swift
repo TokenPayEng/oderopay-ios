@@ -93,7 +93,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
     }
     
     func showErrorAlert(ofType type: ErrorTypes) {
-        let alert = UIAlertController(title: "Title", message: "Please Select an Option", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Title", message: "Please Select an Option", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { (_) in
             print("User click Approve button")
         }))
