@@ -99,7 +99,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
 
         let alert = UIAlertController(title: "Remove Item?", message: nil, preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "Yes", style: .cancel){(_) in
+        alert.addAction(UIAlertAction(title: "Yes", style: .default){(_) in
         })
         alert.addAction(UIAlertAction(title: "No", style: .cancel){(_) in
         })
