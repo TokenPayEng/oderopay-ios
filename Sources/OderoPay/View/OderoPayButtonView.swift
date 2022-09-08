@@ -182,6 +182,8 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                     } catch {
                         print("network error occured ---- FAIL ❌")
                         print("HINT: \(error)")
+                        return
+                        //showLoadingIndicator(false)
                     }
                 }
             } else {
