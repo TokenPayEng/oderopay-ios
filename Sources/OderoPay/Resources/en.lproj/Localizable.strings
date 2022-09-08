@@ -33,3 +33,13 @@
 
 "next" = "Next";
 "previous" = "Previous";
+
+"networkError" = "Network Error";
+"internalError" = "Internal Error";
+"serverError" = "OderoPay Server Error";
+"missingError" = "Missing Data Error";
+"unknownError" = "Unknown Error";
+
+"laterErrorDescription" = "Something went wrong. Please try again later.";
+"errorDescription" = "Something went wrong. Please try again.";
+

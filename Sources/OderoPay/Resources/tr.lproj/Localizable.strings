@@ -33,3 +33,12 @@
 
 "next" = "Sonraki";
 "previous" = "Öncesi";
+
+"networkError" = "Network Hatası";
+"internalError" = "İç Hatası";
+"serverError" = "OderoPay Server Hatası";
+"missingError" = "Eksik Bilgiler Hatası";
+"unknownError" = "Bilinmeyen Hata";
+
+"laterErrorDescription" = "Bir şeyler yanlış gitti. Lütfen daha sonra tekrar deneyiniz.";
+"errorDescription" = "Bir şeyler yanlış gitti. Lütfen tekrar deneyin.";

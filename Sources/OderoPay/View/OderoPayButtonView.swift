@@ -92,19 +92,11 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
         }
     }
     
-    func showErrorAlert(ofType type: ErrorTypes) {
-        let alert = UIAlertController(title: "Error", message: "ER", preferredStyle: .alert)
+    func showErrorAlert(ofType type: ErrorTypes, _ description: ErrorDescriptions) {
+        let alert = UIAlertController(title: type.localizedString(), message: description.localizedString(), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in }))
         
         navigationController?.topViewController?.present(alert, animated: true, completion: nil)
-        //navigationController?.topViewController?.viewWillLayoutSubviews()
-//        let alert = UIAlertController(title: "Remove Item?", message: nil, preferredStyle: .alert)
-//
-//        alert.addAction(UIAlertAction(title: "Yes", style: .default){(_) in
-//        })
-//        alert.addAction(UIAlertAction(title: "No", style: .cancel){(_) in
-//        })
-//        navigationController?.topViewController?.present(alert, animated: true, completion: nil)
     }
     
     // --------------------------------------------------------
@@ -131,7 +123,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                 print("no navigation controller found ---- FAIL ❌")
                 print("HINT: navigation controller was not initialized for odero pay button, please use initNavigationController method")
                 
-                showErrorAlert(ofType: .INTERNAL)
+                showErrorAlert(ofType: .INTERNAL, .NOW)
                 
                 return
             }
@@ -159,7 +151,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                             print("Error code: \(String(describing: checkoutFormResponse.hasErrors()?.getErrorCode()))")
                             print("Error description: \(String(describing: checkoutFormResponse.hasErrors()?.getErrorDescription()))")
                             
-                            showErrorAlert(ofType: .MISSING_DATA)
+                            showErrorAlert(ofType: .MISSING_DATA, .NOW)
                             
                             return
                         }
@@ -168,7 +160,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                             print("Error occured ---- FAIL ❌")
                             print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
                             
-                            showErrorAlert(ofType: .SERVER)
+                            showErrorAlert(ofType: .SERVER, .LATER)
                             
                             return
                         }
@@ -207,7 +199,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                         print("HINT: \(error)")
                         showLoadingIndicator(false)
                         
-                        showErrorAlert(ofType: .NETWORK)
+                        showErrorAlert(ofType: .NETWORK, .LATER)
                         
                         return
                     }
@@ -217,7 +209,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                 print("HINT: checkout form should be initialized with correct values.")
                 showLoadingIndicator(false)
                 
-                showErrorAlert(ofType: .INTERNAL)
+                showErrorAlert(ofType: .INTERNAL, .NOW)
                 
                 return
             }
@@ -225,7 +217,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
             print("no keys were provided by developer ---- FAIL ❌")
             showLoadingIndicator(false)
             
-            showErrorAlert(ofType: .INTERNAL)
+            showErrorAlert(ofType: .INTERNAL, .NOW)
             
             return
         }

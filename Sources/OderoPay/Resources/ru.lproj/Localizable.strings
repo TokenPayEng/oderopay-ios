@@ -33,3 +33,12 @@
 
 "next" = "Далее";
 "previous" = "Назад";
+
+"networkError" = "Сетевая ошибка";
+"internalError" = "Внутренняя ошибка";
+"serverError" = "Серверная ошибка OderoPay";
+"missingError" = "Недостающие параметры";
+"unknownError" = "Неизвестная ошибка";
+
+"laterErrorDescription" = "Что-то пошло не так. Попробуйте снова позже.";
+"errorDescription" = "Что-то пошло не так. Попробуйте снова.";

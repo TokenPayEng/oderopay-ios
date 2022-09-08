@@ -8,9 +8,13 @@
 import Foundation
 
 enum ErrorTypes: String {
-    case NETWORK = "Network Error"
-    case INTERNAL = "Internal Error"
-    case SERVER = "OderoPay Server Error"
-    case MISSING_DATA = "Missing Data Error"
-    case UNKNOWN = "Unknown Error"
+    case NETWORK = "networkError"
+    case INTERNAL = "internalError"
+    case SERVER = "serverError"
+    case MISSING_DATA = "missingError"
+    case UNKNOWN = "unknownError"
+    
+    func localizedString() -> String {
+        return NSLocalizedString(self.rawValue, comment: "")
+    }
 }

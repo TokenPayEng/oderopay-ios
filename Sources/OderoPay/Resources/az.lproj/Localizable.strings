@@ -33,3 +33,12 @@
 
 "next" = "Növbəti";
 "previous" = "Əvvəlki";
+
+"networkError" = "Şəbəkə Xətası";
+"internalError" = "Daxili Xəta";
+"serverError" = "OderoPay Server Xətası";
+"missingError" = "Çatışmayan Məlumat Xətası";
+"unknownError" = "Naməlum Xəta";
+
+"laterErrorDescription" = "Xəta baş verdi. Zəhmət olmasa bir az sonra yenə cəhd edin.";
+"errorDescription" = "Xəta baş verdi. Yenidən cəhd edin.";
