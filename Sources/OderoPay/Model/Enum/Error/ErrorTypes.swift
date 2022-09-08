@@ -8,9 +8,9 @@
 import Foundation
 
 enum ErrorTypes: String {
-    case NETWORK = "Network"
-    case INTERNAL = "Internal"
-    case SERVER = "OderoPay Server"
-    case MISSING_DATA = "Missing Data"
-    case UNKNOWN = "Unknown"
+    case NETWORK = "Network Error"
+    case INTERNAL = "Internal Error"
+    case SERVER = "OderoPay Server Error"
+    case MISSING_DATA = "Missing Data Error"
+    case UNKNOWN = "Unknown Error"
 }
