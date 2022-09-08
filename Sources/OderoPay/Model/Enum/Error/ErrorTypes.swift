@@ -15,7 +15,7 @@ enum ErrorTypes: String {
     case UNKNOWN = "unknownError"
     
     func localizedString() -> String {
-        return NSLocalizedString(self.rawValue, comment: "")
+        return NSLocalizedString(self.rawValue, bundle: .module,comment: "")
     }
     
     static func getLocalized(_ choice: ErrorTypes) -> String {
