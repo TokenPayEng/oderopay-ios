@@ -152,11 +152,6 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                 print("generating random key...")
                 print("sending checkout form...")
                 OderoPay.assignRandomKey(using: NSUUID().uuidString)
-                
-                let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
-                navigationController.pushViewController(commonPaymentPageViewController, animated: true)
-                
-                
                 Task {
                     do {
                         let checkoutFormResponse = try await OderoPay.sendCheckoutForm()

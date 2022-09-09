@@ -102,7 +102,7 @@ public struct OderoPay {
 
     static internal func retrieveInstallments(for binNumber: String, withPrice price: Double, in currency: Currency) async throws -> RetrieveInstallmentResult {
         let url = URL(string: environment.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
-        var urlComponents = URLComponents(string: APIGateway.LOCAL.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
+        var urlComponents = URLComponents(string: environment.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
         urlComponents.queryItems = [
             URLQueryItem(name: "binNumber", value: binNumber),
             URLQueryItem(name: "price", value: String(price)),
