@@ -72,7 +72,7 @@ public struct OderoPay {
         let str = "https://api-gateway.tokenpay.com.tr/onboarding/v1/sub-merchants/1key-1FooBar123!Xa15Fp11T"
         print(Data(SHA256.hash(data: Data(str.utf8)).description.utf8).base64EncodedString())
         //return concatenatedString.toSha256().toBase64().uppercased()
-        return concatenatedString
+        return Data(SHA256.hash(data: Data(concatenatedString.utf8)).description.utf8).base64EncodedString()
     }
     
     static internal func sendCheckoutForm() async throws -> CheckoutFormResult {
