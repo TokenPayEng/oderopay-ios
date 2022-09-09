@@ -69,7 +69,8 @@ public struct OderoPay {
     static private func generateSignature(for url: String, body: String) throws -> String {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
-        print(concatenatedString)
+        let str = "https://api-gateway.tokenpay.com.tr/onboarding/v1/buyerskey-1FooBar123!Xa15Fp11T{\"email\":\"haluk.demir@example.com\",\"name\":\"Haluk\",\"surname\":\"Demir\",\"gsmNumber\":\"905551111111\",\"identityNumber\":\"11111111110\",\"buyerExternalId\":\"0ac49f08-f2a9-4326-a4d8-f6c1b01596fb\"}"
+        print(str.toSha256().toBase64().uppercased())
         return concatenatedString.toSha256().toBase64().uppercased()
     }
     
