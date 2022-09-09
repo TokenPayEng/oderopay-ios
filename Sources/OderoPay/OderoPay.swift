@@ -75,7 +75,7 @@ public struct OderoPay {
         print(testhash)
         print(Data(String(testhash.hashValue).utf8).base64EncodedString())
         print(Data(testhash.hashValue.description.utf8).base64EncodedString())
-        return sha256hash.description.data(using: .utf8)!.base64EncodedString().uppercased()
+        return Data(testhash.hashValue.description.utf8).base64EncodedString()
     }
     
     static internal func sendCheckoutForm() async throws -> CheckoutFormResult {
