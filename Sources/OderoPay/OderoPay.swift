@@ -71,8 +71,8 @@ public struct OderoPay {
         let concatenatedString = url + apiKey + secretKey + randomKey + body
         let str = "https://api-gateway.tokenpay.com.tr/onboarding/v1/sub-merchants/1key-1FooBar123!Xa15Fp11T"
         let sha256hash = SHA256.hash(data: Data(concatenatedString.utf8))
+        print(sha256hash)
         let testhash = SHA256.hash(data: Data(str.utf8))
-        print(testhash.description.data(using: .utf8)!.base64EncodedString().uppercased())
         return sha256hash.description.data(using: .utf8)!.base64EncodedString().uppercased()
     }
     
@@ -165,27 +165,6 @@ public struct OderoPay {
         return try JSONDecoder().decode(CompletePaymentFormResult.self, from: data)
     }
 }
-
-//extension String {
-//    func toSha256() -> String{
-//        if let stringData = self.data(using: String.Encoding.utf8) {
-//            return stringData.sha256()
-//        }
-//        return ""
-//    }
-//
-//    func fromBase64() -> String? {
-//        guard let data = Data(base64Encoded: self) else {
-//            return nil
-//        }
-//
-//        return String(data: data, encoding: .utf8)
-//    }
-//
-//    func toBase64() -> String {
-//        return Data(self.utf8).base64EncodedString()
-//    }
-//}
 
 @available(iOS, deprecated: 15.0, message: "Use the built-in API instead")
 extension URLSession {
