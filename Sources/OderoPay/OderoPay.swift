@@ -62,7 +62,7 @@ public struct OderoPay {
     }
     
     static internal func sendCheckoutForm() async throws -> CheckoutFormResult {
-        let url = URL(string: APIGateway.LOCAL.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
+        let url = URL(string: APIGateway.SANDBOX.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         var request = URLRequest(url: url)
         
         // generate signature
@@ -96,7 +96,7 @@ public struct OderoPay {
     }
 
     static internal func retrieveInstallments(for binNumber: String, withPrice price: Double, in currency: Currency) async throws -> RetrieveInstallmentResult {
-        let url = URL(string: APIGateway.LOCAL.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
+        let url = URL(string: APIGateway.SANDBOX.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
         var urlComponents = URLComponents(string: APIGateway.LOCAL.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
         urlComponents.queryItems = [
             URLQueryItem(name: "binNumber", value: binNumber),
