@@ -49,6 +49,7 @@ class MultipleCardsPaymentController: FormProtocol {
             return 0
         }
         
+        print(firstCardController.height + secondCardController.height + 151)
         return firstCardController.height + secondCardController.height + 151
     }
     
