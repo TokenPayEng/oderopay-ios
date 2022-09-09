@@ -73,8 +73,8 @@ public struct OderoPay {
         let sha256hash = SHA256.hash(data: Data(concatenatedString.utf8))
         let testhash = SHA256.hash(data: Data(str.utf8))
         print(testhash)
-        print(testhash.hashValue)
-        print(testhash.description)
+        print(Data(String(testhash.hashValue).utf8).base64EncodedString())
+        print(Data(testhash.hashValue.description.utf8).base64EncodedString())
         return sha256hash.description.data(using: .utf8)!.base64EncodedString().uppercased()
     }
     
