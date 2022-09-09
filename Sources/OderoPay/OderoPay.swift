@@ -2,6 +2,7 @@ import Foundation
 import CommonCrypto
 
 public struct OderoPay {
+    static private var environment = APIGateway.SANDBOX
     static private var apiKey = String()
     static private var secretKey = String()
     static private var randomKey = String()
@@ -19,6 +20,10 @@ public struct OderoPay {
     static public func authorizeWithKeys(apiKey: String, secretKey: String) {
         self.apiKey = apiKey
         self.secretKey = secretKey
+    }
+    
+    static public func setEnvironment(to environment: APIGateway) {
+        self.environment = environment
     }
     
     static internal func assignRandomKey(using key: String) {
@@ -96,7 +101,7 @@ public struct OderoPay {
     }
 
     static internal func retrieveInstallments(for binNumber: String, withPrice price: Double, in currency: Currency) async throws -> RetrieveInstallmentResult {
-        let url = URL(string: APIGateway.SANDBOX.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
+        let url = URL(string: environment.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
         var urlComponents = URLComponents(string: APIGateway.LOCAL.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
         urlComponents.queryItems = [
             URLQueryItem(name: "binNumber", value: binNumber),
@@ -127,7 +132,7 @@ public struct OderoPay {
     }
     
     static internal func sendCompletePaymentForm() async throws -> CompletePaymentFormResult {
-        let url = URL(string: APIGateway.LOCAL.rawValue + Path.CHECKOUT.rawValue + Action.COMPLETE.rawValue)!
+        let url = URL(string: environment.rawValue + Path.CHECKOUT.rawValue + Action.COMPLETE.rawValue)!
         var request = URLRequest(url: url)
         
         // generate signature
