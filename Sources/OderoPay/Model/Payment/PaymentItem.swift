@@ -27,8 +27,5 @@ public struct PaymentItem: Codable {
         subMerchantPrice: Double? = nil) {
             self.name = name
             self.price = price
-            self.externalId = externalId
-            self.subMerchantId = subMerchantId ?? 1
-            self.subMerchantPrice = subMerchantPrice ?? price
     }
 }
