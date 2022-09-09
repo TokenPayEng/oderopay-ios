@@ -126,40 +126,45 @@ public struct OderoPay {
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        print(request.url)
+        print(request.allHTTPHeaderFields)
+        print(String(data: request.httpBody, encoding: .utf8))
+        
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)
+        print(String(data: data, encoding: .utf8))
         return try JSONDecoder().decode(RetrieveInstallmentResult.self, from: data)
     }
     
-    static internal func sendCompletePaymentForm() async throws -> CompletePaymentFormResult {
-        let url = URL(string: environment.rawValue + Path.CHECKOUT.rawValue + Action.COMPLETE.rawValue)!
-        var request = URLRequest(url: url)
-        
-        // generate signature
-        let signature = try generateSignature(for: url.absoluteString, body: String())
-        
-        // method
-        request.httpMethod = HTTPMethod.POST.rawValue
-        
-        // header custom
-        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
-        request.setValue(signature, forHTTPHeaderField: "x-signature")
-        request.setValue("V1", forHTTPHeaderField: "x-auth-version")
-        request.setValue(token, forHTTPHeaderField: "x-token")
-        
-        // header default
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        // body
-        let encodedBody = try JSONEncoder().encode(OderoPay.completePaymentForm)
-        request.httpBody = encodedBody
-        
-        // send request
-        let (data, _) = try await URLSession.shared.data(with: request)
-        print(data)
-        return try JSONDecoder().decode(CompletePaymentFormResult.self, from: data)
-    }
+//    static internal func sendCompletePaymentForm() async throws -> CompletePaymentFormResult {
+//        let url = URL(string: environment.rawValue + Path.CHECKOUT.rawValue + Action.COMPLETE.rawValue)!
+//        var request = URLRequest(url: url)
+//        
+//        // generate signature
+//        let signature = try generateSignature(for: url.absoluteString, body: String())
+//        
+//        // method
+//        request.httpMethod = HTTPMethod.POST.rawValue
+//        
+//        // header custom
+//        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+//        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
+//        request.setValue(signature, forHTTPHeaderField: "x-signature")
+//        request.setValue("V1", forHTTPHeaderField: "x-auth-version")
+//        request.setValue(token, forHTTPHeaderField: "x-token")
+//        
+//        // header default
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        
+//        // body
+//        let encodedBody = try JSONEncoder().encode(OderoPay.completePaymentForm)
+//        request.httpBody = encodedBody
+//        
+//        // send request
+//        let (data, _) = try await URLSession.shared.data(with: request)
+//        print(data)
+//        return try JSONDecoder().decode(CompletePaymentFormResult.self, from: data)
+//    }
 }
 
 extension Data{
