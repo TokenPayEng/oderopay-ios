@@ -155,7 +155,8 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                 
                 let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
                 navigationController.pushViewController(commonPaymentPageViewController, animated: true)
-                return
+                
+                
                 Task {
                     do {
                         let checkoutFormResponse = try await OderoPay.sendCheckoutForm()
