@@ -77,11 +77,15 @@ public struct OderoPay {
         let url = URL(string: APIGateway.SANDBOX.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         var request = URLRequest(url: url)
         
-        // generate signature
-        let signature = try generateSignature(for: url.absoluteString, body: String())
-        
         // method
         request.httpMethod = HTTPMethod.POST.rawValue
+        
+        // body
+        let encodedBody = try JSONEncoder().encode(OderoPay.checkoutForm)
+        request.httpBody = encodedBody
+        
+        // generate signature
+        let signature = try generateSignature(for: url.absoluteString, body: String(data: request.httpBody!, encoding: .utf8)!)
         
         // header custom
         request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
@@ -91,10 +95,6 @@ public struct OderoPay {
         
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        // body
-        let encodedBody = try JSONEncoder().encode(OderoPay.checkoutForm)
-        request.httpBody = encodedBody
         
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)
