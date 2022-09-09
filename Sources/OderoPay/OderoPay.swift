@@ -69,12 +69,7 @@ public struct OderoPay {
     static private func generateSignature(for url: String, body: String) throws -> String {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
-        let str = "https://api-gateway.tokenpay.com.tr/onboarding/v1/sub-merchants/1key-1FooBar123!Xa15Fp11T"
         let sha256hash = SHA256.hash(data: Data(concatenatedString.utf8))
-        let testhash = SHA256.hash(data: Data(str.utf8))
-        print(testhash)
-        print(Data(String(testhash.hashValue).utf8).base64EncodedString())
-        print(Data(testhash.hashValue.description.utf8).base64EncodedString())
         return Data(sha256hash.hashValue.description.utf8).base64EncodedString()
     }
     
@@ -100,8 +95,6 @@ public struct OderoPay {
         
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        print(randomKey)
         
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)
