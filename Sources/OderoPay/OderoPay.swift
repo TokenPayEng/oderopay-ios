@@ -1,5 +1,5 @@
 import Foundation
-import CommonCrypto
+import CryptoKit
 
 public struct OderoPay {
     static private var environment = APIGateway.SANDBOX
@@ -70,8 +70,9 @@ public struct OderoPay {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
         let str = "https://api-gateway.tokenpay.com.tr/onboarding/v1/sub-merchants/1key-1FooBar123!Xa15Fp11T"
-        print(str.toSha256().toBase64().uppercased().fromBase64())
-        return concatenatedString.toSha256().toBase64().uppercased()
+        print(Data(SHA256.hash(data: Data(str.utf8)).description.utf8).base64EncodedString())
+        //return concatenatedString.toSha256().toBase64().uppercased()
+        return concatenatedString
     }
     
     static internal func sendCheckoutForm() async throws -> CheckoutFormResult {
@@ -133,82 +134,57 @@ public struct OderoPay {
         return try JSONDecoder().decode(RetrieveInstallmentResult.self, from: data)
     }
     
-//    static internal func sendCompletePaymentForm() async throws -> CompletePaymentFormResult {
-//        let url = URL(string: environment.rawValue + Path.CHECKOUT.rawValue + Action.COMPLETE.rawValue)!
-//        var request = URLRequest(url: url)
-//        
-//        // generate signature
-//        let signature = try generateSignature(for: url.absoluteString, body: String())
-//        
-//        // method
-//        request.httpMethod = HTTPMethod.POST.rawValue
-//        
-//        // header custom
-//        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-//        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
-//        request.setValue(signature, forHTTPHeaderField: "x-signature")
-//        request.setValue("V1", forHTTPHeaderField: "x-auth-version")
-//        request.setValue(token, forHTTPHeaderField: "x-token")
-//        
-//        // header default
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        
-//        // body
-//        let encodedBody = try JSONEncoder().encode(OderoPay.completePaymentForm)
-//        request.httpBody = encodedBody
-//        
-//        // send request
-//        let (data, _) = try await URLSession.shared.data(with: request)
-//        print(data)
-//        return try JSONDecoder().decode(CompletePaymentFormResult.self, from: data)
+    static internal func sendCompletePaymentForm() async throws -> CompletePaymentFormResult {
+        let url = URL(string: environment.rawValue + Path.CHECKOUT.rawValue + Action.COMPLETE.rawValue)!
+        var request = URLRequest(url: url)
+        
+        // generate signature
+        let signature = try generateSignature(for: url.absoluteString, body: String())
+        
+        // method
+        request.httpMethod = HTTPMethod.POST.rawValue
+        
+        // header custom
+        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
+        request.setValue(signature, forHTTPHeaderField: "x-signature")
+        request.setValue("V1", forHTTPHeaderField: "x-auth-version")
+        request.setValue(token, forHTTPHeaderField: "x-token")
+        
+        // header default
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // body
+        let encodedBody = try JSONEncoder().encode(OderoPay.completePaymentForm)
+        request.httpBody = encodedBody
+        
+        // send request
+        let (data, _) = try await URLSession.shared.data(with: request)
+        print(data)
+        return try JSONDecoder().decode(CompletePaymentFormResult.self, from: data)
+    }
+}
+
+//extension String {
+//    func toSha256() -> String{
+//        if let stringData = self.data(using: String.Encoding.utf8) {
+//            return stringData.sha256()
+//        }
+//        return ""
 //    }
-}
-
-extension Data{
-    public func sha256() -> String{
-        return hexStringFromData(input: digest(input: self as NSData))
-    }
-    
-    private func digest(input : NSData) -> NSData {
-        let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
-        var hash = [UInt8](repeating: 0, count: digestLength)
-        CC_SHA256(input.bytes, UInt32(input.length), &hash)
-        return NSData(bytes: hash, length: digestLength)
-    }
-    
-    private  func hexStringFromData(input: NSData) -> String {
-        var bytes = [UInt8](repeating: 0, count: input.length)
-        input.getBytes(&bytes, length: input.length)
-        
-        var hexString = ""
-        for byte in bytes {
-            hexString += String(format:"%02x", UInt8(byte))
-        }
-        
-        return hexString
-    }
-}
-
-extension String {
-    func toSha256() -> String{
-        if let stringData = self.data(using: String.Encoding.utf8) {
-            return stringData.sha256()
-        }
-        return ""
-    }
-    
-    func fromBase64() -> String? {
-        guard let data = Data(base64Encoded: self) else {
-            return nil
-        }
-
-        return String(data: data, encoding: .utf8)
-    }
-
-    func toBase64() -> String {
-        return Data(self.utf8).base64EncodedString()
-    }
-}
+//
+//    func fromBase64() -> String? {
+//        guard let data = Data(base64Encoded: self) else {
+//            return nil
+//        }
+//
+//        return String(data: data, encoding: .utf8)
+//    }
+//
+//    func toBase64() -> String {
+//        return Data(self.utf8).base64EncodedString()
+//    }
+//}
 
 @available(iOS, deprecated: 15.0, message: "Use the built-in API instead")
 extension URLSession {

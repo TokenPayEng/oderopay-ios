@@ -142,14 +142,14 @@ class CreditOrDebitCardPaymentView: UIView {
         )
         
         OderoPay.setCompletePaymentForm(to: form)
-//        Task {
-//            do {
-//                print(try await OderoPay.sendCompletePaymentForm().hasData() ?? "no data")
-//                print(try await OderoPay.sendCompletePaymentForm().hasErrors() ?? "no error")
-//            } catch {
-//                print(error)
-//            }
-//        }
+        Task {
+            do {
+                print(try await OderoPay.sendCompletePaymentForm().hasData() ?? "no data")
+                print(try await OderoPay.sendCompletePaymentForm().hasErrors() ?? "no error")
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 
