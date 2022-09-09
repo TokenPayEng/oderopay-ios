@@ -91,10 +91,6 @@ public struct OderoPay {
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        print(request.url)
-        print(request.allHTTPHeaderFields)
-        print(String(data: request.httpBody!, encoding: .utf8))
-        
         // body
         let encodedBody = try JSONEncoder().encode(OderoPay.checkoutForm)
         request.httpBody = encodedBody
@@ -102,6 +98,9 @@ public struct OderoPay {
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)
         
+        print(request.url)
+        print(request.allHTTPHeaderFields)
+        print(String(data: request.httpBody!, encoding: .utf8))
         print(String(data: data, encoding: .utf8))
         
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
