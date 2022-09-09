@@ -69,6 +69,7 @@ public struct OderoPay {
     static private func generateSignature(for url: String, body: String) throws -> String {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
+        print(concatenatedString)
         return concatenatedString.toSha256().toBase64().uppercased()
     }
     
@@ -97,12 +98,6 @@ public struct OderoPay {
         
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)
-        
-        print(request.url)
-        print(request.allHTTPHeaderFields)
-        print(String(data: request.httpBody!, encoding: .utf8))
-        print(String(data: data, encoding: .utf8))
-        
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
     }
 
