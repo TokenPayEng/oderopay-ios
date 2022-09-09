@@ -70,8 +70,10 @@ public struct OderoPay {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
         let str = "https://api-gateway.tokenpay.com.tr/onboarding/v1/sub-merchants/1key-1FooBar123!Xa15Fp11T"
-        print(Data(SHA256.hash(data: Data(str.utf8)).compactMap { String(format: "%02x", $0) }.joined().utf8).base64EncodedString())
-        return (Data(SHA256.hash(data: Data(concatenatedString.utf8)).compactMap { String(format: "%02x", $0) }.joined().utf8).base64EncodedString()).uppercased()
+        let sha256hash = SHA256.hash(data: Data(concatenatedString.utf8))
+        let testhash = SHA256.hash(data: Data(str.utf8))
+        print(testhash.description.data(using: .utf8)!.base64EncodedString().uppercased())
+        return sha256hash.description.data(using: .utf8)!.base64EncodedString().uppercased()
     }
     
     static internal func sendCheckoutForm() async throws -> CheckoutFormResult {
