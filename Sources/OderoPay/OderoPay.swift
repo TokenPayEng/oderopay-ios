@@ -101,7 +101,7 @@ public struct OderoPay {
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        print("randomKey")
+        print(randomKey)
         
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)
