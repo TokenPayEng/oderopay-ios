@@ -71,10 +71,10 @@ public struct OderoPay {
         let concatenatedString = url + apiKey + secretKey + randomKey + body
         let str = "https://api-gateway.tokenpay.com.tr/onboarding/v1/sub-merchants/1key-1FooBar123!Xa15Fp11T"
         let sha256hash = SHA256.hash(data: Data(concatenatedString.utf8))
-        print(sha256hash)
-        print(sha256hash.description)
-        print(sha256hash.hashValue)
         let testhash = SHA256.hash(data: Data(str.utf8))
+        print(testhash)
+        print(testhash.hashValue)
+        print(testhash.description)
         return sha256hash.description.data(using: .utf8)!.base64EncodedString().uppercased()
     }
     
