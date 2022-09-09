@@ -66,6 +66,12 @@ public struct OderoPay {
         OderoPay.completePaymentForm
     }
     
+    static private func generateSignature(for url: String, body: String) throws -> String {
+        guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
+        let concatenatedString = url + apiKey + secretKey + randomKey + body
+        return concatenatedString.toSha256().toBase64().uppercased()
+    }
+    
     static internal func sendCheckoutForm() async throws -> CheckoutFormResult {
         let url = URL(string: APIGateway.SANDBOX.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         var request = URLRequest(url: url)
@@ -85,19 +91,20 @@ public struct OderoPay {
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        print(request.url)
+        print(request.allHTTPHeaderFields)
+        print(String(data: request.httpBody!, encoding: .utf8))
+        
         // body
         let encodedBody = try JSONEncoder().encode(OderoPay.checkoutForm)
         request.httpBody = encodedBody
         
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)
+        
+        print(String(data: data, encoding: .utf8))
+        
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
-    }
-    
-    static private func generateSignature(for url: String, body: String) throws -> String {
-        guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
-        let concatenatedString = url + apiKey + secretKey + randomKey + body
-        return concatenatedString.toSha256().toBase64().uppercased()
     }
 
     static internal func retrieveInstallments(for binNumber: String, withPrice price: Double, in currency: Currency) async throws -> RetrieveInstallmentResult {
@@ -126,13 +133,8 @@ public struct OderoPay {
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        print(request.url)
-        print(request.allHTTPHeaderFields)
-        print(String(data: request.httpBody!, encoding: .utf8))
-        
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)
-        print(String(data: data, encoding: .utf8))
         return try JSONDecoder().decode(RetrieveInstallmentResult.self, from: data)
     }
     
