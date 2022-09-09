@@ -70,6 +70,7 @@ public struct OderoPay {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
         let teststr = "https://api-gateway.tokenpay.com.tr/onboarding/v1/sub-merchants/1key-1FooBar123!Xa15Fp11T"
+        print(SHA256.hash(data: Data(teststr.utf8)))
         print(Data(SHA256.hash(data: Data(teststr.utf8)).compactMap { String(format: "%02x", $0) }.joined().utf8).base64EncodedString())
         let sha256hash = SHA256.hash(data: Data(concatenatedString.utf8))
         return Data(sha256hash.hashValue.description.utf8).base64EncodedString()
