@@ -75,7 +75,7 @@
                                 <rect key="frame" x="0.0" y="246" width="390" height="564"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-ew-psv" userLabel="Payment Options">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="154"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="564"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0C-VT-AcG">
                                                 <rect key="frame" x="20" y="0.0" width="350" height="22"/>
@@ -132,7 +132,6 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="m2B-NF-SFB" secondAttribute="bottom" constant="20" id="3Be-gf-6dP"/>
                                             <constraint firstItem="u0C-VT-AcG" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="20" id="8HZ-ad-Tzv"/>
                                             <constraint firstItem="u0C-VT-AcG" firstAttribute="top" secondItem="dUD-ew-psv" secondAttribute="top" id="A6q-gy-Sho"/>
                                             <constraint firstAttribute="trailing" secondItem="mD7-Ni-MbP" secondAttribute="trailing" constant="55" id="E29-UR-8NS"/>
