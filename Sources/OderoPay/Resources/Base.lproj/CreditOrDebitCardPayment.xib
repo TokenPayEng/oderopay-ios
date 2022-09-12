@@ -66,7 +66,7 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="01J-wf-IUN" secondAttribute="trailing" id="5iS-Bj-3Gn"/>
-                <constraint firstAttribute="bottom" secondItem="01J-wf-IUN" secondAttribute="bottom" priority="750" id="TnB-c1-IpR"/>
+                <constraint firstAttribute="bottom" secondItem="01J-wf-IUN" secondAttribute="bottom" id="TnB-c1-IpR"/>
                 <constraint firstItem="01J-wf-IUN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dgn-5W-qMk"/>
                 <constraint firstItem="01J-wf-IUN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="v5B-4C-z2w"/>
             </constraints>
