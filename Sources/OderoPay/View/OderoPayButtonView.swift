@@ -152,70 +152,70 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                 print("generating random key...")
                 print("sending checkout form...")
                 OderoPay.assignRandomKey(using: NSUUID().uuidString)
-                let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
-                navigationController.pushViewController(commonPaymentPageViewController, animated: true)
-//                Task {
-//                    do {
-//                        let checkoutFormResponse = try await OderoPay.sendCheckoutForm()
-//                        
-//                        if checkoutFormResponse.hasErrors() != nil {
-//                            print("checkout form returned with errors --- FAIL ❌")
-//                            print("Error code: \(String(describing: checkoutFormResponse.hasErrors()?.getErrorCode()))")
-//                            print("Error description: \(String(describing: checkoutFormResponse.hasErrors()?.getErrorDescription()))")
-//                            
-//                            showErrorAlert(ofType: .MISSING_DATA, .NOW)
-//                            
-//                            return
-//                        }
-//                        
-//                        guard let resultFromServer = checkoutFormResponse.hasData() else {
-//                            print("Error occured ---- FAIL ❌")
-//                            print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
-//                            
-//                            showErrorAlert(ofType: .SERVER, .LATER)
-//                            
-//                            return
-//                        }
-//                        
-//                        print("retrieving token...")
-//                        let token = resultFromServer.getToken()
-//                        print("token retrieved ---- SUCCESS ✅")
-//                        print(token)
-//                        print("checkout form sent ---- SUCCESS ✅\n")
-//                        OderoPay.assignRetrievedToken(withValue: token)
-//                        
-//                        showLoadingIndicator(false)
-//                        
-//                        print("STEP #4 ---- (LOCAL)")
-//                        print("retrieving displaying view settings...")
-//                        print("display settings retrieved ---- SUCCESS ✅")
-//                        if OderoPay.isAsWebView() {
-//                            print("displaying as Safari Web View\n")
-//                            print("retrieving web view url and creating safari view controller...")
-//                            let webViewURL = URL(string: resultFromServer.getWebViewURL())
-//                            let safariVC = SFSafariViewController(url: webViewURL!)
-//                            print("safari webview url and view controller created ---- SUCCESS ✅\n")
-//                            
-//                            print("Navigating to the Common Payment Page ---- (WEB VIEW)")
-//                            navigationController.present(safariVC, animated: true)
-//                            
-//                        } else {
-//                            print("displaying as Native\n")
-//                            
-//                            print("Navigating to the Common Payment Page ---- (NATIVE)")
-//                            let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
-//                            navigationController.pushViewController(commonPaymentPageViewController, animated: true)
-//                        }
-//                    } catch {
-//                        print("network error occured ---- FAIL ❌")
-//                        print("HINT: \(error)")
-//                        showLoadingIndicator(false)
-//                        
-//                        showErrorAlert(ofType: .NETWORK, .LATER)
-//                        
-//                        return
-//                    }
-//                }
+//                let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
+//                navigationController.pushViewController(commonPaymentPageViewController, animated: true)
+                Task {
+                    do {
+                        let checkoutFormResponse = try await OderoPay.sendCheckoutForm()
+                        
+                        if checkoutFormResponse.hasErrors() != nil {
+                            print("checkout form returned with errors --- FAIL ❌")
+                            print("Error code: \(String(describing: checkoutFormResponse.hasErrors()?.getErrorCode()))")
+                            print("Error description: \(String(describing: checkoutFormResponse.hasErrors()?.getErrorDescription()))")
+                            
+                            showErrorAlert(ofType: .MISSING_DATA, .NOW)
+                            
+                            return
+                        }
+                        
+                        guard let resultFromServer = checkoutFormResponse.hasData() else {
+                            print("Error occured ---- FAIL ❌")
+                            print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
+                            
+                            showErrorAlert(ofType: .SERVER, .LATER)
+                            
+                            return
+                        }
+                        
+                        print("retrieving token...")
+                        let token = resultFromServer.getToken()
+                        print("token retrieved ---- SUCCESS ✅")
+                        print(token)
+                        print("checkout form sent ---- SUCCESS ✅\n")
+                        OderoPay.assignRetrievedToken(withValue: token)
+                        
+                        showLoadingIndicator(false)
+                        
+                        print("STEP #4 ---- (LOCAL)")
+                        print("retrieving displaying view settings...")
+                        print("display settings retrieved ---- SUCCESS ✅")
+                        if OderoPay.isAsWebView() {
+                            print("displaying as Safari Web View\n")
+                            print("retrieving web view url and creating safari view controller...")
+                            let webViewURL = URL(string: resultFromServer.getWebViewURL())
+                            let safariVC = SFSafariViewController(url: webViewURL!)
+                            print("safari webview url and view controller created ---- SUCCESS ✅\n")
+                            
+                            print("Navigating to the Common Payment Page ---- (WEB VIEW)")
+                            navigationController.present(safariVC, animated: true)
+                            
+                        } else {
+                            print("displaying as Native\n")
+                            
+                            print("Navigating to the Common Payment Page ---- (NATIVE)")
+                            let commonPaymentPageViewController = CommonPaymentPageViewController.getStoryboardViewController()
+                            navigationController.pushViewController(commonPaymentPageViewController, animated: true)
+                        }
+                    } catch {
+                        print("network error occured ---- FAIL ❌")
+                        print("HINT: \(error)")
+                        showLoadingIndicator(false)
+                        
+                        showErrorAlert(ofType: .NETWORK, .LATER)
+                        
+                        return
+                    }
+                }
             } else {
                 print("checkout form is not provided by developer ---- FAIL ❌")
                 print("HINT: checkout form should be initialized with correct values.")
