@@ -132,6 +132,9 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="ds7-ip-sd7" firstAttribute="top" secondItem="GyA-Ue-tB7" secondAttribute="bottom" constant="15" id="Rvy-vO-vkj"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                 </stackView>
