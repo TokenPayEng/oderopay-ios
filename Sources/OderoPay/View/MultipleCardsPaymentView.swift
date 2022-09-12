@@ -52,6 +52,9 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        firstCardView.isHidden = !multipleCardsPaymentController!.firstCardController.isformEnabled
+        secondCardView.isHidden = !multipleCardsPaymentController?.secondCardController.isformEnabled
+        
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
     
         self.firstAmountTextField.delegate = self
