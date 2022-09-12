@@ -35,6 +35,6 @@ class MultipleCardsPaymentController: FormProtocol {
         self.firstCardController = firstCardController
         self.secondCardController = secondCardController
         self.firstCardController.isformEnabled = true
-        self.secondCardController.isformEnabled = true
+        self.secondCardController.isformEnabled = false
     }
 }
