@@ -109,7 +109,7 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-eI-xSz" userLabel="Amount &amp; Label 2">
-                                    <rect key="frame" x="0.0" y="460.5" width="346" height="73.5"/>
+                                    <rect key="frame" x="0.0" y="460.5" width="346" height="64.5"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-9x-x7d">
                                             <rect key="frame" x="0.0" y="0.0" width="346" height="45"/>
@@ -120,7 +120,7 @@
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Amount to be withdrawn from the second card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXp-nh-i3Y">
-                                            <rect key="frame" x="0.0" y="50" width="346" height="23.5"/>
+                                            <rect key="frame" x="0.0" y="50" width="346" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -131,11 +131,8 @@
                                     </constraints>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEv-Dd-SpL" customClass="CreditOrDebitCardPaymentView" customModule="OderoPay">
-                                    <rect key="frame" x="0.0" y="549" width="346" height="350"/>
+                                    <rect key="frame" x="0.0" y="540" width="346" height="359"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="350" id="BKj-Fb-74k"/>
-                                    </constraints>
                                 </view>
                             </subviews>
                         </stackView>
