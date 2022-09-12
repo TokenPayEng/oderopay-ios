@@ -133,6 +133,9 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEv-Dd-SpL" customClass="CreditOrDebitCardPaymentView" customModule="OderoPay">
                                     <rect key="frame" x="0.0" y="181" width="346" height="796"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="750" constant="796" id="kuL-Kq-yeJ"/>
+                                    </constraints>
                                 </view>
                             </subviews>
                         </stackView>
