@@ -16,7 +16,7 @@ class MultipleCardsPaymentController: FormProtocol {
     var isformEnabled: Bool = false
     
     var firstVerticalDividerHeight: CGFloat {
-        firstCardController.height
+        firstCardController.height + 60
     }
     
     var height: CGFloat {
