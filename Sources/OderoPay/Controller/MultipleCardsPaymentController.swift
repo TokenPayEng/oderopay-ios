@@ -25,7 +25,7 @@ class MultipleCardsPaymentController: FormProtocol {
         }
         
         print(firstCardController.height + secondCardController.height + 151)
-        return firstCardController.height + secondCardController.height + 400
+        return firstCardController.height + secondCardController.height + 151
     }
     
     var image: UIImage {
@@ -35,5 +35,7 @@ class MultipleCardsPaymentController: FormProtocol {
     init(_ firstCardController: CreditOrDebitCardPaymentController, and secondCardController: CreditOrDebitCardPaymentController) {
         self.firstCardController = firstCardController
         self.secondCardController = secondCardController
+        self.firstCardController.isformEnabled = true
+        self.secondCardController.isformEnabled = true
     }
 }
