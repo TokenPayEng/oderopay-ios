@@ -137,20 +137,12 @@
                             </subviews>
                         </stackView>
                     </subviews>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="rQX-Cy-n9C" secondAttribute="trailing" id="0Hi-za-cAE"/>
-                        <constraint firstItem="rQX-Cy-n9C" firstAttribute="top" secondItem="D4J-4J-1RS" secondAttribute="top" id="1BE-f9-zWE"/>
-                        <constraint firstItem="dAv-YE-pAd" firstAttribute="top" secondItem="D4J-4J-1RS" secondAttribute="top" id="DhU-ZR-YcB"/>
-                        <constraint firstAttribute="bottom" secondItem="rQX-Cy-n9C" secondAttribute="bottom" id="ixC-Hi-8vy"/>
-                        <constraint firstItem="dAv-YE-pAd" firstAttribute="leading" secondItem="D4J-4J-1RS" secondAttribute="leading" id="r24-1E-rjx"/>
-                        <constraint firstAttribute="bottom" secondItem="dAv-YE-pAd" secondAttribute="bottom" id="sNh-Bt-HTd"/>
-                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="D4J-4J-1RS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1l3-pX-CZB"/>
-                <constraint firstAttribute="bottom" secondItem="D4J-4J-1RS" secondAttribute="bottom" priority="999" id="6jj-rV-Kcv"/>
+                <constraint firstAttribute="bottom" secondItem="D4J-4J-1RS" secondAttribute="bottom" id="6jj-rV-Kcv"/>
                 <constraint firstAttribute="trailing" secondItem="D4J-4J-1RS" secondAttribute="trailing" id="Py7-ba-BOY"/>
                 <constraint firstItem="D4J-4J-1RS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="S0i-48-3Gc"/>
             </constraints>
