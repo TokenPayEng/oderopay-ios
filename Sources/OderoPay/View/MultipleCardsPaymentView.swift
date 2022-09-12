@@ -37,11 +37,11 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         commonInit()
     }
     
-//    override public func layoutSubviews() {
-//        super.layoutSubviews()
-//        
-//        firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
-//    }
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        
+        firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
+    }
     
     private func commonInit() {
         Bundle.module.loadNibNamed("MultipleCardsPayment", owner: self, options: nil)
