@@ -25,25 +25,25 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="01J-wf-IUN">
                     <rect key="frame" x="0.0" y="0.0" width="485" height="404"/>
                     <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-Ro-gLy" customClass="CardInformationView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="0.0" width="485" height="153"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-Ro-gLy" customClass="CardInformationView" customModule="OderoPay">
+                            <rect key="frame" x="0.0" y="0.0" width="485" height="160"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" priority="750" constant="160" id="sUn-pj-0EH"/>
+                                <constraint firstAttribute="height" constant="160" id="sUn-pj-0EH"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tWI-bo-H4c" customClass="InstallmentView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="168" width="485" height="96"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tWI-bo-H4c" customClass="InstallmentView" customModule="OderoPay">
+                            <rect key="frame" x="0.0" y="175" width="485" height="96"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" priority="750" constant="96" id="gB5-Si-fdk"/>
+                                <constraint firstAttribute="height" priority="999" constant="96" id="gB5-Si-fdk"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-pP-ABi" customClass="OptionsView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="279" width="485" height="65"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-pP-ABi" customClass="OptionsView" customModule="OderoPay">
+                            <rect key="frame" x="0.0" y="286" width="485" height="58"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" priority="750" constant="65" id="7gX-UU-R7E"/>
+                                <constraint firstAttribute="height" priority="998" constant="65" id="7gX-UU-R7E"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-9H-Hdu">
