@@ -15,31 +15,6 @@ class MultipleCardsPaymentController: FormProtocol {
     
     var isformEnabled: Bool = false
     
-//    var installmentsEnabledFirstCard: Bool = false
-//    var hasInstallmentFirstCard: Bool {
-//        firstCardController.hasInstallments()
-//    }
-//
-//    var installmentItemsFirstCard: [RetrieveInstallmentItem] {
-//        hasInstallmentFirstCard ? firstCardController.retrieveInstallments() : []
-//    }
-//
-//    var installmentsEnabledSecondCard: Bool = false
-//    var hasInstallmentSecondCard: Bool {
-//        secondCardController.hasInstallments()
-//    }
-//
-//    var installmentItemsSecondCard: [RetrieveInstallmentItem] {
-//        hasInstallmentSecondCard ? secondCardController.retrieveInstallments() : []
-//    }
-//
-//    var isFirstCardValid: Bool {
-//        firstCardController.isCardValid()
-//    }
-//    var isSecondCardValid: Bool {
-//        secondCardController.isCardValid()
-//    }
-    
     var firstVerticalDividerHeight: CGFloat {
         firstCardController.height
     }
@@ -50,7 +25,7 @@ class MultipleCardsPaymentController: FormProtocol {
         }
         
         print(firstCardController.height + secondCardController.height + 151)
-        return firstCardController.height + secondCardController.height + 151
+        return firstCardController.height + secondCardController.height + 400
     }
     
     var image: UIImage {
