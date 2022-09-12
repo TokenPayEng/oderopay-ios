@@ -23,31 +23,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="01J-wf-IUN">
-                    <rect key="frame" x="0.0" y="0.0" width="485" height="411"/>
+                    <rect key="frame" x="0.0" y="0.0" width="485" height="406"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-Ro-gLy" customClass="CardInformationView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="0.0" width="485" height="160"/>
+                            <rect key="frame" x="0.0" y="0.0" width="485" height="155"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="160" id="sUn-pj-0EH"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tWI-bo-H4c" customClass="InstallmentView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="175" width="485" height="96"/>
+                            <rect key="frame" x="0.0" y="170" width="485" height="96"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="96" id="gB5-Si-fdk"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-pP-ABi" customClass="OptionsView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="286" width="485" height="65"/>
+                            <rect key="frame" x="0.0" y="281" width="485" height="65"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="65" id="7gX-UU-R7E"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-9H-Hdu">
-                            <rect key="frame" x="0.0" y="366" width="485" height="45"/>
+                            <rect key="frame" x="0.0" y="361" width="485" height="45"/>
                             <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="IzV-Ev-193"/>
@@ -67,6 +67,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="01J-wf-IUN" secondAttribute="trailing" id="5iS-Bj-3Gn"/>
                 <constraint firstItem="01J-wf-IUN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dgn-5W-qMk"/>
+                <constraint firstAttribute="bottom" secondItem="01J-wf-IUN" secondAttribute="bottom" id="n3p-bT-wZ2"/>
                 <constraint firstItem="01J-wf-IUN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="v5B-4C-z2w"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
