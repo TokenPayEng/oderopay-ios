@@ -57,14 +57,10 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         self.firstAmountTextField.delegate = self
         self.secondAmountTextField.delegate = self
         
-        firstAmountTextField.addPreviousNextToolbar(
+        firstAmountTextField.addNextToolbar(
             onNext: (
                 target: self,
                 action: #selector(moveNextTextField)
-            ),
-            onPrevious: (
-                target: self,
-                action: #selector(movePreviousTextField)
             )
         )
 
@@ -76,14 +72,10 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             comment: "amount of money to be paid from the first credit card"
         )
         
-        secondAmountTextField.addPreviousNextToolbar(
+        secondAmountTextField.addNextToolbar(
             onNext: (
                 target: self,
                 action: #selector(moveNextTextField)
-            ),
-            onPrevious: (
-                target: self,
-                action: #selector(movePreviousTextField)
             )
         )
 
@@ -117,14 +109,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             firstCardView.cardInformationView.cardNumberTextField.becomeFirstResponder()
         } else if secondAmountTextField.isFirstResponder {
             secondCardView.cardInformationView.cardNumberTextField.becomeFirstResponder()
-        }
-    }
-
-    @objc func movePreviousTextField() {
-        if firstCardView.cardInformationView.cardNumberTextField.isFirstResponder {
-            firstAmountTextField.becomeFirstResponder()
-        } else if secondCardView.cardInformationView.cardNumberTextField.isFirstResponder {
-            secondAmountTextField.becomeFirstResponder()
         }
     }
 }
