@@ -19,38 +19,10 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     @IBOutlet weak var firstCircleImageView: UIImageView!
     @IBOutlet weak var firstAmountTextField: UITextField!
-//        didSet {
-//            firstAmountTextField.addPreviousNextToolbar(
-//                onNext: (
-//                    target: self,
-//                    action: #selector(moveNextTextField)
-//                ),
-//                onPrevious: (
-//                    target: self,
-//                    action: #selector(movePreviousTextField)
-//                )
-//            )
-//
-//            firstAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrency())"
-//        }
     @IBOutlet weak var firstVerticalDividerHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var secondCircleImageView: UIImageView!
     @IBOutlet weak var secondAmountTextField: UITextField!
-//        didSet {
-//            secondAmountTextField.addPreviousNextToolbar(
-//                onNext: (
-//                    target: self,
-//                    action: #selector(moveNextTextField)
-//                ),
-//                onPrevious: (
-//                    target: self,
-//                    action: #selector(movePreviousTextField)
-//                )
-//            )
-//
-//            secondAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrency())"
-//        }
 
     @IBOutlet weak var firstCardView: CreditOrDebitCardPaymentView!
     @IBOutlet weak var secondCardView: CreditOrDebitCardPaymentView!
@@ -85,49 +57,43 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         self.firstAmountTextField.delegate = self
         self.secondAmountTextField.delegate = self
         
+        firstAmountTextField.addPreviousNextToolbar(
+            onNext: (
+                target: self,
+                action: #selector(moveNextTextField)
+            ),
+            onPrevious: (
+                target: self,
+                action: #selector(movePreviousTextField)
+            )
+        )
+
+        firstAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrency())"
+        
         firstCardAmountLabel.text = NSLocalizedString(
             "firstCardAmount",
             bundle: Bundle.module,
             comment: "amount of money to be paid from the first credit card"
         )
-//        firstCardInformationView.cardNumberTextField.addPreviousNextToolbar(
-//            onNext: (
-//                target: self,
-//                action: #selector(moveNextTextField)
-//            ),
-//            onPrevious: (
-//                target: self,
-//                action: #selector(movePreviousTextField)
-//            )
-//        )
-//
-//        firstCardInformationView.cardholderTextField.addPreviousNextToolbar(
-//            onNext: (
-//                target: self,
-//                action: #selector(moveNextTextField)
-//            ),
-//            onPrevious: (
-//                target: self,
-//                action: #selector(movePreviousTextField)
-//            )
-//        )
+        
+        secondAmountTextField.addPreviousNextToolbar(
+            onNext: (
+                target: self,
+                action: #selector(moveNextTextField)
+            ),
+            onPrevious: (
+                target: self,
+                action: #selector(movePreviousTextField)
+            )
+        )
+
+        secondAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrency())"
         
         secondCardAmountLabel.text = NSLocalizedString(
             "secondCardAmount",
             bundle: Bundle.module,
             comment: "amount of money to be paid from the second credit card"
         )
-        
-//        secondCardInformationView.cardNumberTextField.addPreviousNextToolbar(
-//            onNext: (
-//                target: self,
-//                action: #selector(moveNextTextField)
-//            ),
-//            onPrevious: (
-//                target: self,
-//                action: #selector(movePreviousTextField)
-//            )
-//        )
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -146,31 +112,19 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         }
     }
     
-//    @objc func moveNextTextField() {
-//        if firstAmountTextField.isFirstResponder {
-//            firstCardInformationView.cardNumberTextField.becomeFirstResponder()
-//        } else if firstCardInformationView.cardholderTextField.isFirstResponder {
-//            secondAmountTextField.becomeFirstResponder()
-//        } else if secondAmountTextField.isFirstResponder {
-//            secondCardInformationView.cardNumberTextField.becomeFirstResponder()
-//        } else if firstCardInformationView.cardNumberTextField.isFirstResponder {
-//            firstCardInformationView.expireDateTextField.becomeFirstResponder()
-//        } else if secondCardInformationView.cardNumberTextField.isFirstResponder {
-//            secondCardInformationView.expireDateTextField.becomeFirstResponder()
-//        }
-//    }
-//
-//    @objc func movePreviousTextField() {
-//        if firstCardInformationView.cardNumberTextField.isFirstResponder {
-//            firstAmountTextField.becomeFirstResponder()
-//        } else if secondAmountTextField.isFirstResponder {
-//            firstCardInformationView.cardholderTextField.becomeFirstResponder()
-//        } else if secondCardInformationView.cardNumberTextField.isFirstResponder {
-//            secondAmountTextField.becomeFirstResponder()
-//        } else if firstCardInformationView.cardholderTextField.isFirstResponder {
-//            firstCardInformationView.cvcTextField.becomeFirstResponder()
-//        } else if firstAmountTextField.isFirstResponder {
-//            firstAmountTextField.resignFirstResponder()
-//        }
-//    }
+    @objc func moveNextTextField() {
+        if firstAmountTextField.isFirstResponder {
+            firstCardView.cardInformationView.cardNumberTextField.becomeFirstResponder()
+        } else if secondAmountTextField.isFirstResponder {
+            secondCardView.cardInformationView.cardNumberTextField.becomeFirstResponder()
+        }
+    }
+
+    @objc func movePreviousTextField() {
+        if firstCardView.cardInformationView.cardNumberTextField.isFirstResponder {
+            firstAmountTextField.becomeFirstResponder()
+        } else if secondCardView.cardInformationView.cardNumberTextField.isFirstResponder {
+            secondAmountTextField.becomeFirstResponder()
+        }
+    }
 }

@@ -23,8 +23,7 @@ class MultipleCardsPaymentController: FormProtocol {
         if !isformEnabled {
             return 0
         }
-        print(firstCardController.height)
-        print(secondCardController.height)
+
         return firstCardController.height + secondCardController.height + 181
     }
     
