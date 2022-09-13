@@ -114,6 +114,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
 //                textField.text! = String(format: "%.2f", textField.text!)
                 
                 textField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
+                
+                secondAmountTextField.text = String(format: "%.2f", secondAmountTextField.text!)
                 secondAmountTextField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
             }
         }
