@@ -10,6 +10,9 @@ import UIKit
 
 class MultipleCardsPaymentController: FormProtocol {
     
+    private let totalPrice: Double = OderoPay.getCheckoutForm().getCheckoutPriceRaw()
+    lazy var firstAmount: Double = 0
+    lazy var secondAmount: Double = 0
     var firstCardController: CreditOrDebitCardPaymentController
     var secondCardController: CreditOrDebitCardPaymentController
     

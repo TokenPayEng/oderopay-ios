@@ -67,7 +67,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             )
         )
 
-        firstAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
+        firstAmountTextField.placeholder = "\(String(format: "%.2f", multipleCardsPaymentController!.firstAmount)) \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
         
         firstCardAmountLabel.text = NSLocalizedString(
             "firstCardAmount",
@@ -82,7 +82,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             )
         )
 
-        secondAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
+        secondAmountTextField.placeholder = "\(String(format: "%.2f", multipleCardsPaymentController!.secondAmount)) \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
         
         secondCardAmountLabel.text = NSLocalizedString(
             "secondCardAmount",
@@ -119,6 +119,18 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                 secondAmountTextField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
             }
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == firstAmountTextField {
+            guard let currentInput = textField.text as? NSString else { return false }
+            let updatedInput = currentInput.replacingCharacters(in: range, with: string)
+            multipleCardsPaymentController!.firstAmount = updatedInput
+            textField.text = String(format: "%.2f", multipleCardsPaymentController!.firstAmount)
+        }
+        
+        return true
     }
     
     @objc func moveNextTextField() {
