@@ -82,7 +82,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             )
         )
 
-        secondAmountTextField.placeholder = "\(String(format: "%.2f", multipleCardsPaymentController!.secondAmount)) \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
+        secondAmountTextField.text = "\(String(format: "%.2f", multipleCardsPaymentController!.secondAmount)) \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
         secondAmountTextField.backgroundColor = .systemGray5
         
         secondCardAmountLabel.text = NSLocalizedString(
