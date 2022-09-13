@@ -10,8 +10,13 @@ import UIKit
 
 class MultipleCardsPaymentController: FormProtocol {
     
+    var firstCardController: CreditOrDebitCardPaymentController
+    var secondCardController: CreditOrDebitCardPaymentController
+    
     private let totalPrice: Double = OderoPay.getCheckoutForm().getCheckoutPriceRaw()
+    
     private var _firstAmount: Double = 0
+    
     var firstAmount: Double {
         get {
             return _firstAmount
@@ -24,11 +29,10 @@ class MultipleCardsPaymentController: FormProtocol {
             }
         }
     }
+    
     var secondAmount: Double {
         totalPrice - firstAmount
     }
-    var firstCardController: CreditOrDebitCardPaymentController
-    var secondCardController: CreditOrDebitCardPaymentController
     
     var isformEnabled: Bool = false
     

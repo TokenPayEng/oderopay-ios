@@ -57,7 +57,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         self.firstAmountTextField.delegate = self
         self.secondAmountTextField.delegate = self
         
-        firstCardView.isHidden = !multipleCardsPaymentController!.firstCardController.isformEnabled
+        firstCardView.isHidden = multipleCardsPaymentController!.firstCardController.isPaymentComplete ? true : !multipleCardsPaymentController!.firstCardController.isformEnabled
         secondCardView.isHidden = !multipleCardsPaymentController!.secondCardController.isformEnabled
         
         firstCircleImageView.image = multipleCardsPaymentController!.firstCircleImage
