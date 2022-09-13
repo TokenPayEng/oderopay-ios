@@ -45,7 +45,7 @@ class MultipleCardsPaymentController: FormProtocol {
             return 0
         }
 
-        var calculatingHeight = firstCardController.height + secondCardController.height
+        let calculatingHeight = firstCardController.height + secondCardController.height
         
         if secondCardController.isformEnabled {
             return calculatingHeight + 151
