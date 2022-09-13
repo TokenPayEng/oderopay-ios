@@ -61,10 +61,20 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         secondCardView.isHidden = !multipleCardsPaymentController!.secondCardController.isformEnabled
         
         firstCircleImageView.image = multipleCardsPaymentController!.firstCircleImage
-        firstCircleImageView.tintColor = OderoColors.gray.color
+        secondCircleImageView.image = multipleCardsPaymentController!.secondCircleImage
+        firstCircleImageView.tintColor = multipleCardsPaymentController!.firstCardController.isformEnabled ? OderoColors.black.color : .systemGray4
+        secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
+        
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
         
         firstAmountTextField.addNextToolbar(
+            onNext: (
+                target: self,
+                action: #selector(moveNextTextField)
+            )
+        )
+        
+        secondAmountTextField.addNextToolbar(
             onNext: (
                 target: self,
                 action: #selector(moveNextTextField)
@@ -77,15 +87,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             "firstCardAmount",
             bundle: Bundle.module,
             comment: "amount of money to be paid from the first credit card"
-        )
-        
-        secondCircleImageView.image = multipleCardsPaymentController!.secondCircleImage
-        
-        secondAmountTextField.addNextToolbar(
-            onNext: (
-                target: self,
-                action: #selector(moveNextTextField)
-            )
         )
 
         secondAmountTextField.text = "\(String(format: "%.2f", multipleCardsPaymentController!.secondAmount)) \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
