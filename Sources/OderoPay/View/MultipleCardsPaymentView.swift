@@ -20,7 +20,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     @IBOutlet weak var firstAmountTextField: UITextField!
     
     @IBOutlet weak var firstVerticalDividerView: UIView!
-    @IBOutlet weak var secondVerticalDividerView: UIImageView!
+    @IBOutlet weak var secondVerticalDividerView: UIView!
     
     @IBOutlet weak var firstVerticalDividerHeightConstraint: NSLayoutConstraint!
     
@@ -77,7 +77,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             secondVerticalDividerView.backgroundColor = OderoColors.success.color
             
             secondCircleImageView.image = multipleCardsPaymentController!.secondCircleImage
-            //secondCircleImageView.tintColor = OderoColors.success.color
+            secondCircleImageView.tintColor = OderoColors.success.color
         }
     }
     
