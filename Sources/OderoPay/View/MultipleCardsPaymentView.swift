@@ -128,7 +128,9 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             secondAmountTextField.text = String(format: "%.2f", multipleCardsPaymentController!.secondAmount)
             secondAmountTextField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
             
-            return multipleCardsPaymentController!.validFirstAmount
+            if Double(updatedInput)! > multipleCardsPaymentController.totalPrice {
+                return false
+            }
         }
         
         return true
