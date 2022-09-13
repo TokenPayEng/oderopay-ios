@@ -14,8 +14,6 @@ class CardInformationView: UIView, UITextFieldDelegate {
     lazy private var cardNumberPattern: String = "#### ##"
     lazy private var expireDatePattern: String = "##/##"
     
-    lazy private var successCGColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
-    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var coreStackView: UIStackView!
     
@@ -126,7 +124,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 4
-        textField.layer.borderColor = successCGColor
+        textField.layer.borderColor = OderoColors.success.cgColor
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -392,10 +390,10 @@ extension UITextField {
         if UITextField.errorState {
             self.layer.borderWidth = 1
             self.layer.cornerRadius = 4
-            self.layer.borderColor = UIColor(red: 235/255, green: 0/255, blue: 27/255, alpha: 1).cgColor
+            self.layer.borderColor = OderoColors.error.cgColor
         } else {
             if self.isEditing {
-                self.layer.borderColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
+                self.layer.borderColor = OderoColors.success.cgColor
             } else {
                 self.layer.borderWidth = 0
             }

@@ -10,7 +10,6 @@ import UIKit
 class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     var multipleCardsPaymentController: MultipleCardsPaymentController? = nil
-    lazy private var successCGColor = UIColor(red: 108/255, green: 209/255, blue: 78/255, alpha: 1).cgColor
     
     @IBOutlet var contentView: UIView!
     
@@ -43,6 +42,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         super.layoutSubviews()
         
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
+        firstVerticalDividerView.backgroundColor = multipleCardsPaymentController!.firstCardController.isPaymentComplete ? OderoColors.success.color : OderoColors.gray.color
     }
     
     private func commonInit() {
@@ -60,7 +60,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         firstCardView.isHidden = !multipleCardsPaymentController!.firstCardController.isformEnabled
         secondCardView.isHidden = !multipleCardsPaymentController!.secondCardController.isformEnabled
         
-        firstCircleImageView = UIImageView(image: multipleCardsPaymentController!.firstCircleImage)
+        firstCircleImageView.image = multipleCardsPaymentController!.firstCircleImage
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
         
         firstAmountTextField.addNextToolbar(
@@ -78,7 +78,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             comment: "amount of money to be paid from the first credit card"
         )
         
-        secondCircleImageView = UIImageView(image: multipleCardsPaymentController!.secondCircleImage)
+        secondCircleImageView.image = multipleCardsPaymentController!.secondCircleImage
         
         secondAmountTextField.addNextToolbar(
             onNext: (
@@ -100,7 +100,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 4
-        textField.layer.borderColor = successCGColor
+        textField.layer.borderColor = OderoColors.success.cgColor
         
         if textField == firstAmountTextField {
             if textField.text!.contains(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign) {
