@@ -98,7 +98,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
         if textField == firstAmountTextField {
             if textField.text!.contains(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().rawValue) {
-                textField.text! = textField.text!.suffix(2)
+                textField.text! = String(textField.text!.dropLast(2))
             }
         }
     }
