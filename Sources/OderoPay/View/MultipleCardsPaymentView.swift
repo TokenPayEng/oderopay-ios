@@ -42,8 +42,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         super.layoutSubviews()
         
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
-        multipleCardsPaymentController!.secondCardController.isformEnabled = multipleCardsPaymentController!.firstCardController.isPaymentComplete
-        secondCardView.isHidden = !multipleCardsPaymentController!.firstCardController.isPaymentComplete
     }
     
     @objc func updateOnPaymentComplete() {
@@ -54,6 +52,12 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
         firstCircleImageView.tintColor = multipleCardsPaymentController!.firstCardController.isPaymentComplete ? OderoColors.success.color : multipleCardsPaymentController!.firstCardController.isformEnabled ? OderoColors.black.color : .systemGray4
         secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isPaymentComplete ? OderoColors.success.color : multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
+        
+        if  !multipleCardsPaymentController!.secondCardController.isformEnabled && multipleCardsPaymentController!.firstCardController.isPaymentComplete {
+            multipleCardsPaymentController!.secondCardController.isformEnabled = true
+            secondCardView.isHidden = !multipleCardsPaymentController!.firstCardController.isPaymentComplete
+            NotificationCenter.default.post(name: Notification.Name("update2Height"), object: nil)
+        }
     }
     
     private func commonInit() {

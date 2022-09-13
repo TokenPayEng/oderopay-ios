@@ -109,11 +109,17 @@ public class CommonPaymentPageViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateHeights), name: NSNotification.Name(rawValue: "updateHeights"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(update2Height), name: NSNotification.Name(rawValue: "update2Height"), object: nil)
+        
         creditCardOrDebitCardButton.setImage(creditOrDebitCardPaymentController.image, for: .normal)
     }
     
     @objc func updateHeights() {
         creditOrDebitCardViewHeightConstraint.constant = creditOrDebitCardPaymentController.height
+        multipleCardsViewHeightConstraint.constant = multipleCardsPaymentController.height
+    }
+    
+    @objc func update2Height() {
         multipleCardsViewHeightConstraint.constant = multipleCardsPaymentController.height
     }
     
