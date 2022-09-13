@@ -71,7 +71,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             NotificationCenter.default.post(name: Notification.Name("update2Height"), object: nil)
         }
         
-        if !multipleCardsPaymentController!.secondCardController.isPaymentComplete {
+        if multipleCardsPaymentController!.secondCardController.isPaymentComplete {
 
             print("2")
             multipleCardsPaymentController!.secondCardController.isformEnabled = false
