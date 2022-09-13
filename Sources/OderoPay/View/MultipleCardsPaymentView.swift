@@ -38,12 +38,12 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         commonInit()
     }
     
-//    override public func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//        firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
-//    }
-//
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        
+        firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
+    }
+    
     @objc func updateOnPaymentComplete() {
         firstVerticalDividerView.backgroundColor = multipleCardsPaymentController!.firstCardController.isPaymentComplete ? OderoColors.success.color : OderoColors.gray.color
         
