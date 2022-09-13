@@ -123,18 +123,16 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             guard let currentInput = textField.text as? NSString else { return false }
             let updatedInput = currentInput.replacingCharacters(in: range, with: string)
             
-            if updatedInput.count > 1 {
-                multipleCardsPaymentController!.firstAmount = Double(updatedInput)!
-                
-                secondAmountTextField.text = String(format: "%.2f", multipleCardsPaymentController!.secondAmount)
-                secondAmountTextField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
-                
-                if Double(updatedInput)! > multipleCardsPaymentController!.getTotalPrice() {
-                    return false
-                }
-            } else {
-                multipleCardsPaymentController!.firstAmount = 0
+   
+            multipleCardsPaymentController!.firstAmount = Double(updatedInput) ?? 0
+            
+            secondAmountTextField.text = String(format: "%.2f", multipleCardsPaymentController!.secondAmount)
+            secondAmountTextField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
+            
+            if Double(updatedInput)! > multipleCardsPaymentController!.getTotalPrice() {
+                return false
             }
+            
         }
         
         return true
