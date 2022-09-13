@@ -45,7 +45,13 @@ class MultipleCardsPaymentController: FormProtocol {
             return 0
         }
 
-        return firstCardController.height + secondCardController.height + (self.secondCardController.isformEnabled ? 166 : 166)
+        var calculatingHeight = firstCardController.height + secondCardController.height
+        
+        if secondCardController.isformEnabled {
+            return calculatingHeight += 181
+        }
+        
+        return calculatingHeight + 166
     }
     
     var image: UIImage {
