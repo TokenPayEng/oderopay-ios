@@ -42,6 +42,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         super.layoutSubviews()
         
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
+        multipleCardsPaymentController!.secondCardController.isformEnabled = !multipleCardsPaymentController!.secondCardController.isPaymentComplete
     }
     
     @objc func updateOnPaymentComplete() {
@@ -55,7 +56,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
       //  firstCardView.isHidden = multipleCardsPaymentController!.firstCardController.isPaymentComplete
         secondCardView.isHidden = multipleCardsPaymentController!.secondCardController.isPaymentComplete
-        multipleCardsPaymentController!.secondCardController.isformEnabled = !multipleCardsPaymentController!.secondCardController.isPaymentComplete
     }
     
     private func commonInit() {
