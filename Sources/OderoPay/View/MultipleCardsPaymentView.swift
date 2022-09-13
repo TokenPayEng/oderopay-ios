@@ -132,6 +132,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                 if Double(updatedInput)! > multipleCardsPaymentController!.totalPrice {
                     return false
                 }
+            } else {
+                multipleCardsPaymentController!.firstAmount = 0
             }
         }
         
