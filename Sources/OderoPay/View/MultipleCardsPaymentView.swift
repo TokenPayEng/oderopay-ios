@@ -67,7 +67,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             )
         )
 
-        firstAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrency())"
+        firstAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
         
         firstCardAmountLabel.text = NSLocalizedString(
             "firstCardAmount",
@@ -82,7 +82,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             )
         )
 
-        secondAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrency())"
+        secondAmountTextField.placeholder = "0.00 \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
         
         secondCardAmountLabel.text = NSLocalizedString(
             "secondCardAmount",
@@ -111,7 +111,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             else {
                 textField.isError(false)
                 secondAmountTextField.text = String(OderoPay.getCheckoutForm().getCheckoutPriceRaw() - Double(textField.text!)!)
-                textField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().rawValue)")
+                textField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
             }
         }
     }
