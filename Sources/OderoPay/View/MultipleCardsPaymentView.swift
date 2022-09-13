@@ -55,6 +55,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
       //  firstCardView.isHidden = multipleCardsPaymentController!.firstCardController.isPaymentComplete
         secondCardView.isHidden = multipleCardsPaymentController!.secondCardController.isPaymentComplete
+        multipleCardsPaymentController!.secondCardController.isformEnabled = !multipleCardsPaymentController!.secondCardController.isPaymentComplete
     }
     
     private func commonInit() {
