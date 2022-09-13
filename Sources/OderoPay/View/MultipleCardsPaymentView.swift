@@ -43,6 +43,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
         multipleCardsPaymentController!.secondCardController.isformEnabled = multipleCardsPaymentController!.firstCardController.isPaymentComplete
+        secondCardView.isHidden = !multipleCardsPaymentController!.firstCardController.isPaymentComplete
     }
     
     @objc func updateOnPaymentComplete() {
@@ -53,9 +54,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
         firstCircleImageView.tintColor = multipleCardsPaymentController!.firstCardController.isPaymentComplete ? OderoColors.success.color : multipleCardsPaymentController!.firstCardController.isformEnabled ? OderoColors.black.color : .systemGray4
         secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isPaymentComplete ? OderoColors.success.color : multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
-        
-      //  firstCardView.isHidden = multipleCardsPaymentController!.firstCardController.isPaymentComplete
-        secondCardView.isHidden = multipleCardsPaymentController!.secondCardController.isPaymentComplete
     }
     
     private func commonInit() {
