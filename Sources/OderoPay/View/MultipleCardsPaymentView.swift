@@ -110,6 +110,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             if textField.text!.isEmpty { textField.isError(true) }
             else {
                 textField.isError(false)
+                textField.text = String(format: "%.2f", multipleCardsPaymentController!.firstAmount)
                 textField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
                 secondAmountTextField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
             }
@@ -122,7 +123,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             guard let currentInput = textField.text as? NSString else { return false }
             let updatedInput = currentInput.replacingCharacters(in: range, with: string)
             multipleCardsPaymentController!.firstAmount = Double(updatedInput)!
-            textField.text = String(format: "%.2f", multipleCardsPaymentController!.firstAmount)
             secondAmountTextField.text = String(format: "%.2f", multipleCardsPaymentController!.secondAmount)
         }
         
