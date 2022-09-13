@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "OderoPay",
-    defaultLocalization: "ru",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v13)
     ],
