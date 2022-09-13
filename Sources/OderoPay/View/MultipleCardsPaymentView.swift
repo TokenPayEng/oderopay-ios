@@ -97,7 +97,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         textField.layer.borderColor = successCGColor
         
         if textField == firstAmountTextField {
-            if textField.text!.contains(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().rawValue) {
+            if textField.text!.contains(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign) {
                 textField.text! = String(textField.text!.dropLast(2))
             }
         }
@@ -110,7 +110,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             if textField.text!.isEmpty { textField.isError(true) }
             else {
                 textField.isError(false)
-                secondAmountTextField.text = String(OderoPay.getCheckoutForm().getCheckoutPriceRaw() - Double(textField.text!)!)
+                firstAmountTextField.text = String(format: "%.2f", textField.text!)
+                secondAmountTextField.text = String(format: "%.2f",OderoPay.getCheckoutForm().getCheckoutPriceRaw() - Double(textField.text!)!)
                 textField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
             }
         }
