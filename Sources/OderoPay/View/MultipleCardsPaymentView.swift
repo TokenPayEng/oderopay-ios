@@ -42,6 +42,9 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         super.layoutSubviews()
         
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
+    }
+    
+    @objc func updateOnPaymentComplete() {
         firstVerticalDividerView.backgroundColor = multipleCardsPaymentController!.firstCardController.isPaymentComplete ? OderoColors.success.color : OderoColors.gray.color
         
         firstCircleImageView.image = multipleCardsPaymentController!.firstCircleImage
@@ -62,6 +65,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
         self.firstAmountTextField.delegate = self
         self.secondAmountTextField.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateOnPaymentComplete), name: NSNotification.Name(rawValue: "completePayment"), object: nil)
         
         firstCardView.isHidden = multipleCardsPaymentController!.firstCardController.isPaymentComplete ? true : !multipleCardsPaymentController!.firstCardController.isformEnabled
         secondCardView.isHidden = !multipleCardsPaymentController!.secondCardController.isformEnabled

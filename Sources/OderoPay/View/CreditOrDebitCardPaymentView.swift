@@ -144,6 +144,7 @@ class CreditOrDebitCardPaymentView: UIView {
         OderoPay.setCompletePaymentForm(to: form)
         
         creditOrDebitCardPaymentController!.isPaymentComplete = true
+        NotificationCenter.default.post(name: Notification.Name("completePayment"), object: nil)
         
 //        Task {
 //            do {
