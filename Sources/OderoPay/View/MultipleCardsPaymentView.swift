@@ -73,7 +73,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                 action: #selector(moveNextTextField)
             )
         )
-        
         secondAmountTextField.addNextToolbar(
             onNext: (
                 target: self,
@@ -82,16 +81,14 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         )
 
         firstAmountTextField.placeholder = "\(String(format: "%.2f", multipleCardsPaymentController!.firstAmount)) \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
+        secondAmountTextField.text = "\(String(format: "%.2f", multipleCardsPaymentController!.secondAmount)) \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
+        secondAmountTextField.backgroundColor = OderoColors.gray.color
         
         firstCardAmountLabel.text = NSLocalizedString(
             "firstCardAmount",
             bundle: Bundle.module,
             comment: "amount of money to be paid from the first credit card"
         )
-
-        secondAmountTextField.text = "\(String(format: "%.2f", multipleCardsPaymentController!.secondAmount)) \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
-        secondAmountTextField.backgroundColor = OderoColors.gray.color
-        
         secondCardAmountLabel.text = NSLocalizedString(
             "secondCardAmount",
             bundle: Bundle.module,
