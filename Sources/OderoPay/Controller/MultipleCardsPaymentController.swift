@@ -13,11 +13,13 @@ class MultipleCardsPaymentController: FormProtocol {
     private let totalPrice: Double = OderoPay.getCheckoutForm().getCheckoutPriceRaw()
     var firstAmount: Double {
         get {
-            return self.firstAmount
+            self.firstAmount
         }
-        set {
+        set (newValue) {
             if newValue < totalPrice {
                 self.firstAmount = newValue
+            } else {
+                print("Cannot set to more than total price")
             }
         }
     }
