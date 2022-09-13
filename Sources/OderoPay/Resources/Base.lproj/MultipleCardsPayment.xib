@@ -21,6 +21,7 @@
                 <outlet property="secondCardAmountLabel" destination="qXp-nh-i3Y" id="Pt1-is-nsj"/>
                 <outlet property="secondCardView" destination="XEv-Dd-SpL" id="BiH-Hi-nbP"/>
                 <outlet property="secondCircleImageView" destination="lYf-3o-wUb" id="1pW-4g-oPB"/>
+                <outlet property="secondVerticalDividerView" destination="lYf-3o-wUb" id="EEb-AN-kKQ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

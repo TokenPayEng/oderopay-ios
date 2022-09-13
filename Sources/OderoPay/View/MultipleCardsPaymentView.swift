@@ -20,6 +20,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     @IBOutlet weak var firstAmountTextField: UITextField!
     
     @IBOutlet weak var firstVerticalDividerView: UIView!
+    @IBOutlet weak var secondVerticalDividerView: UIImageView!
+    
     @IBOutlet weak var firstVerticalDividerHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var secondCircleImageView: UIImageView!
@@ -45,28 +47,41 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     }
     
     @objc func updateOnPaymentComplete() {
-        firstVerticalDividerView.backgroundColor = multipleCardsPaymentController!.firstCardController.isPaymentComplete ? OderoColors.success.color : OderoColors.gray.color
-        
-        firstCircleImageView.image = multipleCardsPaymentController!.firstCircleImage
-        secondCircleImageView.image = multipleCardsPaymentController!.secondCircleImage
-        
-        firstCircleImageView.tintColor = multipleCardsPaymentController!.firstCardController.isPaymentComplete ? OderoColors.success.color : multipleCardsPaymentController!.firstCardController.isformEnabled ? OderoColors.black.color : .systemGray4
-        secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isPaymentComplete ? OderoColors.success.color : multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
-        
         if  !multipleCardsPaymentController!.secondCardController.isformEnabled && multipleCardsPaymentController!.firstCardController.isPaymentComplete {
             
+            print("1")
             multipleCardsPaymentController!.firstCardController.isformEnabled = false
             multipleCardsPaymentController!.secondCardController.isformEnabled = true
             
-            firstCardView.isHidden = multipleCardsPaymentController!.firstCardController.isPaymentComplete
-            secondCardView.isHidden = !multipleCardsPaymentController!.firstCardController.isPaymentComplete
+            firstCardView.isHidden = true
+            secondCardView.isHidden = false
+            
+            firstVerticalDividerView.backgroundColor = OderoColors.success.color
             
             firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
             
             firstAmountTextField.isEnabled = false
             firstAmountTextField.backgroundColor = OderoColors.gray.color
             
+            firstCircleImageView.image = multipleCardsPaymentController!.firstCircleImage
+            firstCircleImageView.tintColor = OderoColors.success.color
+
+            secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
+            
             NotificationCenter.default.post(name: Notification.Name("update2Height"), object: nil)
+        }
+        
+        if !multipleCardsPaymentController!.secondCardController.isPaymentComplete {
+
+            print("2")
+            multipleCardsPaymentController!.secondCardController.isformEnabled = false
+            
+            secondCardView.isHidden = true
+            
+            secondVerticalDividerView.backgroundColor = OderoColors.success.color
+            
+            secondCircleImageView.image = multipleCardsPaymentController!.secondCircleImage
+            secondCircleImageView.tintColor = OderoColors.success.color
         }
     }
     
