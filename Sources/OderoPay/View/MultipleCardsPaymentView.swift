@@ -52,6 +52,9 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
         firstCircleImageView.tintColor = multipleCardsPaymentController!.firstCardController.isPaymentComplete ? OderoColors.success.color : multipleCardsPaymentController!.firstCardController.isformEnabled ? OderoColors.black.color : .systemGray4
         secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isPaymentComplete ? OderoColors.success.color : multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
+        
+      //  firstCardView.isHidden = multipleCardsPaymentController!.firstCardController.isPaymentComplete
+        secondCardView.isHidden = multipleCardsPaymentController!.secondCardController.isPaymentComplete
     }
     
     private func commonInit() {
@@ -68,7 +71,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateOnPaymentComplete), name: NSNotification.Name(rawValue: "completePayment"), object: nil)
         
-        firstCardView.isHidden = multipleCardsPaymentController!.firstCardController.isPaymentComplete ? true : !multipleCardsPaymentController!.firstCardController.isformEnabled
+        firstCardView.isHidden = !multipleCardsPaymentController!.firstCardController.isformEnabled
         secondCardView.isHidden = !multipleCardsPaymentController!.secondCardController.isformEnabled
         
         firstCircleImageView.image = multipleCardsPaymentController!.firstCircleImage
