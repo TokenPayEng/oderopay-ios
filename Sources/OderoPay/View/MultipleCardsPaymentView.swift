@@ -110,9 +110,11 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             if textField.text!.isEmpty { textField.isError(true) }
             else {
                 textField.isError(false)
-                secondAmountTextField.text = String(format: "%.2f", String(OderoPay.getCheckoutForm().getCheckoutPriceRaw() - Double(textField.text!)!))
-                textField.text! = String(format: "%.2f", textField.text!)
+                secondAmountTextField.text = String(OderoPay.getCheckoutForm().getCheckoutPriceRaw() - Double(textField.text!)!)
+//                textField.text! = String(format: "%.2f", textField.text!)
+                
                 textField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
+                secondAmountTextField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
             }
         }
     }
