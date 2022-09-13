@@ -95,15 +95,24 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 4
         textField.layer.borderColor = successCGColor
+        
+        if textField == firstAmountTextField {
+            if textField.text!.contains(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().rawValue) {
+                textField.text! = textField.text!.suffix(2)
+            }
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 0
         
-        if textField == firstAmountTextField || textField == secondAmountTextField {
+        if textField == firstAmountTextField {
             if textField.text!.isEmpty { textField.isError(true) }
-        } else {
-            textField.isError(false)
+            else {
+                textField.isError(false)
+                secondAmountTextField.text = String(OderoPay.getCheckoutForm().getCheckoutPriceRaw() - Double(textField.text!)!)
+                textField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().rawValue)")
+            }
         }
     }
     

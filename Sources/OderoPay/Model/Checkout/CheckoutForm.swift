@@ -82,7 +82,8 @@ public class CheckoutForm: Codable {
     public func getCheckoutCurrencyRaw() -> Currency {
         currency
     }
-    /// Function returns checkout price with discounts applied without the currency value. Of type Double.
+    
+    /// - Returns: Function returns checkout price with discounts applied without the currency value. Of type Double.
     public func getCheckoutPriceRaw() -> Double {
         paidPrice
     }
