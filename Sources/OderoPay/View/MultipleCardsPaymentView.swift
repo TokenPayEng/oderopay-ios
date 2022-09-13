@@ -54,7 +54,9 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isPaymentComplete ? OderoColors.success.color : multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
         
         if  !multipleCardsPaymentController!.secondCardController.isformEnabled && multipleCardsPaymentController!.firstCardController.isPaymentComplete {
+            multipleCardsPaymentController!.firstCardController.isformEnabled = false
             multipleCardsPaymentController!.secondCardController.isformEnabled = true
+            firstCardView.isHidden = multipleCardsPaymentController!.firstCardController.isPaymentComplete
             secondCardView.isHidden = !multipleCardsPaymentController!.firstCardController.isPaymentComplete
             NotificationCenter.default.post(name: Notification.Name("update2Height"), object: nil)
         }
