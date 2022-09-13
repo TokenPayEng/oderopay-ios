@@ -48,8 +48,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     @objc func updateOnPaymentComplete() {
         if  !multipleCardsPaymentController!.secondCardController.isformEnabled && multipleCardsPaymentController!.firstCardController.isPaymentComplete {
-            
-            print("1")
             multipleCardsPaymentController!.firstCardController.isformEnabled = false
             multipleCardsPaymentController!.secondCardController.isformEnabled = true
             
@@ -72,8 +70,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         }
         
         if multipleCardsPaymentController!.secondCardController.isPaymentComplete {
-
-            print("2")
             multipleCardsPaymentController!.secondCardController.isformEnabled = false
             
             secondCardView.isHidden = true
@@ -81,7 +77,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             secondVerticalDividerView.backgroundColor = OderoColors.success.color
             
             secondCircleImageView.image = multipleCardsPaymentController!.secondCircleImage
-            secondCircleImageView.tintColor = OderoColors.success.color
+            //secondCircleImageView.tintColor = OderoColors.success.color
         }
     }
     
