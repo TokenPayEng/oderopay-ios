@@ -61,6 +61,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         secondCardView.isHidden = !multipleCardsPaymentController!.secondCardController.isformEnabled
         
         firstCircleImageView.image = multipleCardsPaymentController!.firstCircleImage
+        firstCircleImageView.tintColor = OderoColors.gray.color
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
         
         firstAmountTextField.addNextToolbar(
@@ -88,7 +89,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         )
 
         secondAmountTextField.text = "\(String(format: "%.2f", multipleCardsPaymentController!.secondAmount)) \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
-        secondAmountTextField.backgroundColor = .systemGray5
+        secondAmountTextField.backgroundColor = OderoColors.gray.color
         
         secondCardAmountLabel.text = NSLocalizedString(
             "secondCardAmount",
