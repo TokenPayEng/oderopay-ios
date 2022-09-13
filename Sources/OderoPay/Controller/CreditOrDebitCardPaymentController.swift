@@ -13,7 +13,9 @@ class CreditOrDebitCardPaymentController: FormProtocol {
     var cardController: CardController
     
     var isformEnabled: Bool = false
+    
     var installmentsEnabled: Bool = false
+    
     var hasInstallment: Bool {
         cardController.hasInstallments()
     }
@@ -24,6 +26,8 @@ class CreditOrDebitCardPaymentController: FormProtocol {
     var isCardValid: Bool {
         cardController.isCardValid()
     }
+    
+    var isPaymentComplete: Bool = false
     
     var height: CGFloat {
         if !isformEnabled {

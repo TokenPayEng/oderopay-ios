@@ -48,6 +48,14 @@ class MultipleCardsPaymentController: FormProtocol {
         isformEnabled ? UIImage(systemName: "chevron.down")! : UIImage(systemName: "chevron.right")!
     }
     
+    var firstCircleImage: UIImage {
+        firstCardController.isPaymentComplete ? UIImage(systemName: "checkmark.circle.fill")! : UIImage(systemName: "1.circle.fill")!
+    }
+    
+    var secondCircleImage: UIImage {
+        secondCardController.isPaymentComplete ? UIImage(systemName: "checkmark.circle.fill")! : UIImage(systemName: "2.circle.fill")!
+    }
+    
     init(_ firstCardController: CreditOrDebitCardPaymentController, and secondCardController: CreditOrDebitCardPaymentController) {
         self.firstCardController = firstCardController
         self.secondCardController = secondCardController

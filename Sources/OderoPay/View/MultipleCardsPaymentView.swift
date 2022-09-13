@@ -19,6 +19,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     
     @IBOutlet weak var firstCircleImageView: UIImageView!
     @IBOutlet weak var firstAmountTextField: UITextField!
+    
+    @IBOutlet weak var firstVerticalDividerView: UIView!
     @IBOutlet weak var firstVerticalDividerHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var secondCircleImageView: UIImageView!
@@ -52,13 +54,14 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        self.firstAmountTextField.delegate = self
+        self.secondAmountTextField.delegate = self
+        
         firstCardView.isHidden = !multipleCardsPaymentController!.firstCardController.isformEnabled
         secondCardView.isHidden = !multipleCardsPaymentController!.secondCardController.isformEnabled
         
+        firstCircleImageView = UIImageView(image: multipleCardsPaymentController!.firstCircleImage)
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
-    
-        self.firstAmountTextField.delegate = self
-        self.secondAmountTextField.delegate = self
         
         firstAmountTextField.addNextToolbar(
             onNext: (
@@ -74,6 +77,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             bundle: Bundle.module,
             comment: "amount of money to be paid from the first credit card"
         )
+        
+        secondCircleImageView = UIImageView(image: multipleCardsPaymentController!.secondCircleImage)
         
         secondAmountTextField.addNextToolbar(
             onNext: (

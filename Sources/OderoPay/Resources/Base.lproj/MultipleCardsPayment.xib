@@ -16,6 +16,7 @@
                 <outlet property="firstCardView" destination="GyA-Ue-tB7" id="YgN-gz-e0F"/>
                 <outlet property="firstCircleImageView" destination="7Lo-2D-UUn" id="4cf-v4-Mkt"/>
                 <outlet property="firstVerticalDividerHeightConstraint" destination="Szo-Cf-ser" id="RY7-9z-rwz"/>
+                <outlet property="firstVerticalDividerView" destination="RIv-e3-SZr" id="E5e-yr-jUU"/>
                 <outlet property="secondAmountTextField" destination="7HU-9x-x7d" id="GWn-pt-eBN"/>
                 <outlet property="secondCardAmountLabel" destination="qXp-nh-i3Y" id="Pt1-is-nsj"/>
                 <outlet property="secondCardView" destination="XEv-Dd-SpL" id="BiH-Hi-nbP"/>
