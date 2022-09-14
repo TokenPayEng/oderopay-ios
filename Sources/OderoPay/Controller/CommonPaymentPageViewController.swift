@@ -187,7 +187,13 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     private func presentPaymentInfo() {
-        let paymentInformationViewController = PaymentInformationViewController()
+        guard let paymentInformationViewController = UIStoryboard(
+            name: "PaymentInformation",
+            bundle: .main).instantiateViewController(identifier: "MyViewController") as? PaymentInformationViewController
+        else {
+            fatalError("Unable to Instantiate My View Controller")
+        }
+        
         let navigation = UINavigationController(rootViewController: paymentInformationViewController)
         
         navigation.modalPresentationStyle = .pageSheet
