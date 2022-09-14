@@ -197,6 +197,7 @@ public class CommonPaymentPageViewController: UIViewController {
         let navigation = UINavigationController(rootViewController: paymentInformationViewController)
         
         navigation.modalPresentationStyle = .pageSheet
+        navigation.isModalInPresentation = true
         
         if #available(iOS 15.0, *) {
             if let sheet = navigation.sheetPresentationController {
