@@ -80,14 +80,7 @@ public struct OderoPay {
     static private func generateSignature(for url: String, body: String) throws -> String {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
-
-        let str = "AAAAAAAA"
-        let hmac_md55 = str.hmac(algorithm: .sha512, key: secretKey)
-        print(hmac_md55)
-        
-        print(concatenatedString)
         let hmac_md5 = concatenatedString.hmac(algorithm: .sha512, key: secretKey)
-        //print(hmac_md5)
         return hmac_md5
     }
     
