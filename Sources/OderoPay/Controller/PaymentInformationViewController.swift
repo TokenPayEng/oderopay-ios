@@ -41,13 +41,6 @@ class PaymentInformationViewController: UIViewController {
     }
 
     @IBAction func backToCheckout(_ sender: Any) {
-        //self.navigationController?.popViewController(animated: true)?.navigationController?.popViewController(animated: true)
-        for (index, viewController) in self.navigationController!.viewControllers.enumerated() {
-            print(viewController)
-            print(index)
-        }
-        
-        print(self.navigationController!.viewControllers.count)
-        //self.navigationController?.popToViewController(CommonPaymentPageViewController.parent!, animated: true)
+        self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 2], animated: true)
     }
 }
