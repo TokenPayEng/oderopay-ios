@@ -104,7 +104,7 @@ public struct OderoPay {
         
         // header custom
         request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-        request.setValue("111", forHTTPHeaderField: "x-rnd-key")
+        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
         request.setValue(signature, forHTTPHeaderField: "x-signature")
         request.setValue("V1", forHTTPHeaderField: "x-auth-version")
         request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
