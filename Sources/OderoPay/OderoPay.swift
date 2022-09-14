@@ -82,7 +82,7 @@ public struct OderoPay {
         let concatenatedString = url + apiKey + secretKey + randomKey + body
 
         let str = "AAAAAAAA"
-        let hmac_md55 = str.hmac(algorithm: .sha512, key: secretKey)
+        let hmac_md55 = str.hmac(algorithm: .sha256, key: secretKey)
         print(hmac_md55)
         print(Data(hmac_md55.utf8).base64EncodedString())
         
