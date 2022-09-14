@@ -43,6 +43,7 @@ class PaymentInformationViewController: UIViewController {
         let presentingViewController = self.presentingViewController
         self.dismiss(animated: true) {
             if let  destinationVC = presentingViewController?.navigationController?.viewControllers.filter({$0 is CommonPaymentPageViewController}).first {
+                print("im here")
                 destinationVC.dismiss(animated: true)
             }
         }
