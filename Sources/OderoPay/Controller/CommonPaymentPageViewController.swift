@@ -197,8 +197,6 @@ public class CommonPaymentPageViewController: UIViewController {
         else {
             fatalError("Unable to instantiate Payment Information")
         }
-    
-        navigationController?.addChild(paymentInformationViewController)
         
         navigationController?.modalPresentationStyle = .pageSheet
         navigationController?.isModalInPresentation = true
@@ -209,7 +207,7 @@ public class CommonPaymentPageViewController: UIViewController {
             }
         }
         
-        present(navigationController!,animated: true, completion: nil)
+        navigationController?.present(paymentInformationViewController,animated: true)
     }
 }
 
