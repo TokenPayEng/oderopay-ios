@@ -198,6 +198,8 @@ public class CommonPaymentPageViewController: UIViewController {
             fatalError("Unable to instantiate Payment Information")
         }
         
+        navigationController?.addChild(paymentInformationViewController)
+        
         paymentInformationViewController.modalPresentationStyle = .pageSheet
         paymentInformationViewController.isModalInPresentation = true
         
