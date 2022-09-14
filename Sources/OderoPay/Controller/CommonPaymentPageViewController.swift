@@ -132,7 +132,7 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @objc func pop() {
-        navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     override public func viewDidDisappear(_ animated: Bool) {
