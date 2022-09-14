@@ -40,8 +40,7 @@ class PaymentInformationViewController: UIViewController {
     }
 
     @IBAction func backToCheckout(_ sender: Any) {
-        self.dismiss(animated: true, completion: {
-            NotificationCenter.default.post(name: Notification.Name("pop"), object: nil)
-        })
+        self.dismiss(animated: true)
+        NotificationCenter.default.post(name: Notification.Name("pop"), object: nil)
     }
 }
