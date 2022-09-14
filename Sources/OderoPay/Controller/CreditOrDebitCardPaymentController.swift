@@ -48,10 +48,6 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         return calculatingHeight
     }
     
-    var image: UIImage {
-        isformEnabled ? UIImage(systemName: "chevron.down")! : UIImage(systemName: "chevron.right")!
-    }
-    
     init(_ cardController: CardController) {
         self.cardController = cardController
     }

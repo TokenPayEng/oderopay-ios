@@ -10,8 +10,8 @@ import UIKit
 
 public class CommonPaymentPageViewController: UIViewController {
 
-    var creditOrDebitCardPaymentController: CreditOrDebitCardPaymentController {
-        creditOrDebitCardView.creditOrDebitCardPaymentController!
+    var singleCardPaymentController: SingleCardPaymentController {
+        singleCardView.singleCardPaymentController!
     }
     var multipleCardsPaymentController: MultipleCardsPaymentController {
         multipleCardsView.multipleCardsPaymentController!
@@ -22,14 +22,15 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     // ---------------------CreditOrDebitCardPayment----------------------
-    @IBOutlet weak var creditOrDebitCardView: CreditOrDebitCardPaymentView! {
+    
+    @IBOutlet weak var singleCardView: SingleCardPaymentView! {
         didSet {
-            creditOrDebitCardView.isHidden = !creditOrDebitCardPaymentController.isformEnabled
+            singleCardView.isHidden = !singleCardPaymentController.isformEnabled
         }
     }
-    @IBOutlet weak var creditOrDebitCardViewHeightConstraint: NSLayoutConstraint! {
+    @IBOutlet weak var singleCardViewHeightConstraint: NSLayoutConstraint! {
         didSet {
-            creditOrDebitCardViewHeightConstraint.constant = creditOrDebitCardPaymentController.height
+            singleCardViewHeightConstraint.constant = singleCardPaymentController.height
         }
     }
     
@@ -113,11 +114,11 @@ public class CommonPaymentPageViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(callPaymentInformation), name: NSNotification.Name(rawValue: "callPaymentInformation"), object: nil)
         
-        creditCardOrDebitCardButton.setImage(creditOrDebitCardPaymentController.image, for: .normal)
+        creditCardOrDebitCardButton.setImage(singleCardPaymentController.image, for: .normal)
     }
     
     @objc func updateHeights() {
-        creditOrDebitCardViewHeightConstraint.constant = creditOrDebitCardPaymentController.height
+        singleCardViewHeightConstraint.constant = singleCardPaymentController.height
         multipleCardsViewHeightConstraint.constant = multipleCardsPaymentController.height
     }
     
@@ -166,8 +167,8 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
-        creditOrDebitCardView.creditOrDebitCardPaymentController!.isformEnabled.toggle()
-        collapseSection(creditOrDebitCardView, ofHeight: creditOrDebitCardPaymentController.height, using: creditCardOrDebitCardButton, and: creditOrDebitCardViewHeightConstraint)
+        singleCardView.singleCardPaymentController!.isformEnabled.toggle()
+        collapseSection(singleCardView, ofHeight: singleCardPaymentController.height, using: creditCardOrDebitCardButton, and: singleCardViewHeightConstraint)
     }
     
     @IBAction func collapseMultipleCreditSection(_ sender: Any) {

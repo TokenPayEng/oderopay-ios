@@ -92,11 +92,11 @@
                                                     <action selector="collapseCreditOrDebitSection:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RCq-vf-LeO"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mD7-Ni-MbP" customClass="CreditOrDebitCardPaymentView" customModule="OderoPay">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mD7-Ni-MbP" userLabel="Single Card View" customClass="SingleCardPaymentView" customModule="OderoPay">
                                                 <rect key="frame" x="55" y="42" width="280" height="0.0"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" id="24l-1t-6Uw"/>
+                                                    <constraint firstAttribute="height" id="24l-1t-6Uw" userLabel="Single Card View Height Constraint"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LtQ-yj-jgd" userLabel="Custom Divider">
@@ -185,13 +185,13 @@
                     </view>
                     <connections>
                         <outlet property="creditCardOrDebitCardButton" destination="u0C-VT-AcG" id="vif-jk-oC9"/>
-                        <outlet property="creditOrDebitCardView" destination="mD7-Ni-MbP" id="vwI-2z-2de"/>
-                        <outlet property="creditOrDebitCardViewHeightConstraint" destination="24l-1t-6Uw" id="Gq8-2p-xic"/>
                         <outlet property="multipleCardsView" destination="m2B-NF-SFB" id="bHK-Zz-rgY"/>
                         <outlet property="multipleCardsViewHeightConstraint" destination="Bso-AA-IuS" id="vfI-hC-I4L"/>
                         <outlet property="multipleCreditCardsButton" destination="oyD-Vs-TKn" id="m0Y-lJ-9Qo"/>
                         <outlet property="paymentMethodLabel" destination="mkD-Gd-ecN" id="G9X-7e-SQq"/>
                         <outlet property="scrollView" destination="ms6-OV-ZKm" id="21j-da-rYT"/>
+                        <outlet property="singleCardView" destination="mD7-Ni-MbP" id="W3J-Xz-g0w"/>
+                        <outlet property="singleCardViewHeightConstraint" destination="24l-1t-6Uw" id="NEP-sX-FuP"/>
                         <outlet property="totalPriceLabel" destination="xAV-Be-ZQE" id="X4Y-0J-sU4"/>
                         <outlet property="totalPriceValueLabel" destination="Lbd-Nw-W7u" id="9ss-x7-9c2"/>
                     </connections>
