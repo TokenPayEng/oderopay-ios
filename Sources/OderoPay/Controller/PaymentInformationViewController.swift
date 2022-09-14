@@ -40,12 +40,8 @@ class PaymentInformationViewController: UIViewController {
     }
 
     @IBAction func backToCheckout(_ sender: Any) {
-        let presentingViewController = self.presentingViewController
-        self.dismiss(animated: true) {
-            if let  destinationVC = presentingViewController?.navigationController?.viewControllers.filter({$0 is CommonPaymentPageViewController}).first {
-                print("im here")
-                destinationVC.dismiss(animated: true)
-            }
-        }
+        self.dismiss(animated: true, completion: {
+            NotificationCenter.default.post(name: Notification.Name("pop"), object: nil)
+        })
     }
 }

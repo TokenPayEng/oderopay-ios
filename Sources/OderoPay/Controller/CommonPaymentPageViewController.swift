@@ -113,6 +113,8 @@ public class CommonPaymentPageViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(callPaymentInformation), name: NSNotification.Name(rawValue: "callPaymentInformation"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(callPaymentInformation), name: NSNotification.Name(rawValue: "pop"), object: nil)
+        
         creditCardOrDebitCardButton.setImage(creditOrDebitCardPaymentController.image, for: .normal)
     }
     
@@ -129,9 +131,17 @@ public class CommonPaymentPageViewController: UIViewController {
         presentPaymentInfo()
     }
     
+    @objc func pop() {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     override public func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateHeights"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "update2Height"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "callPaymentInformation"), object: nil)
+        NotificationCenter.default.removeObserver(self,name: NSNotification.Name(rawValue: "pop"), object: nil)
     }
     
     override public func viewWillAppear(_ animated: Bool) {
