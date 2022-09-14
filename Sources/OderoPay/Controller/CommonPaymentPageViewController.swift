@@ -197,19 +197,19 @@ public class CommonPaymentPageViewController: UIViewController {
         else {
             fatalError("Unable to instantiate Payment Information")
         }
-        
+    
         navigationController?.addChild(paymentInformationViewController)
         
-        paymentInformationViewController.modalPresentationStyle = .pageSheet
-        paymentInformationViewController.isModalInPresentation = true
+        navigationController?.modalPresentationStyle = .pageSheet
+        navigationController?.isModalInPresentation = true
         
         if #available(iOS 15.0, *) {
-            if let sheet = paymentInformationViewController.sheetPresentationController {
+            if let sheet = navigationController?.sheetPresentationController {
                 sheet.detents = [.medium()]
             }
         }
         
-        present(paymentInformationViewController,animated: true, completion: nil)
+        present(navigationController!,animated: true, completion: nil)
     }
 }
 
