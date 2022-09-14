@@ -13,6 +13,16 @@ public struct OderoPay {
     
     static private var asWebView: Bool = false
     
+    static private var paymentCompleted: Bool = false
+    
+    static internal func setPaymentStatus(to status: Bool) {
+        self.paymentCompleted = status
+    }
+    
+    static internal func isPaymentCompleted() -> Bool {
+        self.paymentCompleted
+    }
+    
     static internal func assignRetrievedToken(withValue token: String) {
         self.token = token
     }

@@ -203,8 +203,6 @@ public class CommonPaymentPageViewController: UIViewController {
             if let sheet = navigation.sheetPresentationController {
                 sheet.detents = [.medium()]
             }
-        } else {
-            print("nil")
         }
         
         present(navigation,animated: true, completion: nil)
