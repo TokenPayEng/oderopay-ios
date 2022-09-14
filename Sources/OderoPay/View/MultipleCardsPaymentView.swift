@@ -78,6 +78,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             
             secondCircleImageView.image = multipleCardsPaymentController!.secondCircleImage
             secondCircleImageView.tintColor = OderoColors.success.color
+            
+            NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
         }
     }
     

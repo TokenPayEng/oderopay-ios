@@ -111,6 +111,8 @@ public class CommonPaymentPageViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(update2Height), name: NSNotification.Name(rawValue: "update2Height"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(callPaymentInformation), name: NSNotification.Name(rawValue: "callPaymentInformation"), object: nil)
+        
         creditCardOrDebitCardButton.setImage(creditOrDebitCardPaymentController.image, for: .normal)
     }
     
@@ -121,6 +123,10 @@ public class CommonPaymentPageViewController: UIViewController {
     
     @objc func update2Height() {
         multipleCardsViewHeightConstraint.constant = multipleCardsPaymentController.height
+    }
+    
+    @objc func callPaymentInformation() {
+        presentPaymentInfo()
     }
     
     override public func viewDidDisappear(_ animated: Bool) {
@@ -180,9 +186,21 @@ public class CommonPaymentPageViewController: UIViewController {
         section.layoutIfNeeded()
     }
     
+    private func presentPaymentInfo() {
+        let paymentInformationViewController = PaymentInformationViewController()
+        let navigation = UINavigationController(rootViewController: paymentInformationViewController)
+        
+        navigation.modalPresentationStyle = .pageSheet
+        
+//        if let sheet = navigation.sheetPresentationController {
+//            sheet.detents = [.medium()]
+//        }
+        
+        present(navigation,animated: true, completion: nil)
+    }
 }
 
-public extension UIViewController {
+extension UIViewController {
     static func getStoryboardViewController() -> UIViewController {
         let commonPaymentPageStoryboardViewController = UIStoryboard(name: "CommonPaymentPage", bundle: Bundle.module)
         
