@@ -20,7 +20,7 @@ class PaymentInformationViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         button.layer.cornerRadius = 4
-        containerView.layer.contents = 8
+        containerView.layer.cornerRadius = 8
         
         
         if OderoPay.isPaymentCompleted() {
