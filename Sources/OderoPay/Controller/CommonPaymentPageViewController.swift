@@ -207,8 +207,7 @@ public class CommonPaymentPageViewController: UIViewController {
             }
         }
         
-        navigationController?.present(paymentInformationViewController,animated: true)
-        //present(paymentInformationViewController,animated: true, completion: nil)
+        present(paymentInformationViewController,animated: true, completion: nil)
     }
 }
 
