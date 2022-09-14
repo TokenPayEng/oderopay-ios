@@ -126,7 +126,7 @@ public struct OderoPay {
         var request = URLRequest(url: urlComponents.url!)
         
         // generate signature
-        let signature = try generateSignature(for: url.absoluteString, body: String())
+        let signature = try generateSignature(for: urlComponents.url!.absoluteString, body: String())
         
         // method
         request.httpMethod = HTTPMethod.GET.rawValue
