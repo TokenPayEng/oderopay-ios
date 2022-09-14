@@ -199,11 +199,11 @@ public class CommonPaymentPageViewController: UIViewController {
         navigation.modalPresentationStyle = .pageSheet
         navigation.isModalInPresentation = true
         
-        if #available(iOS 15.0, *) {
-            if let sheet = navigation.sheetPresentationController {
-                sheet.detents = [.medium()]
-            }
-        }
+//        if #available(iOS 15.0, *) {
+//            if let sheet = navigation.sheetPresentationController {
+//                sheet.detents = [.medium()]
+//            }
+//        }
         
         present(navigation,animated: true, completion: nil)
     }
