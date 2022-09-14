@@ -7,6 +7,7 @@ public struct OderoPay {
     static private var secretKey = String()
     static private var randomKey = String()
     static private var token = String()
+    static private var iOSHeader = String("IOSMOBILSDK")
     
     static private var checkoutForm = CheckoutForm()
     static private var completePaymentForm = CompletePaymentForm()
@@ -79,9 +80,14 @@ public struct OderoPay {
     static private func generateSignature(for url: String, body: String) throws -> String {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
-        let teststr = "https://api-gateway.tokenpay.com.tr/onboarding/v1/sub-merchants/1key-1FooBar123!Xa15Fp11T"
-        print(SHA256.hash(data: Data(teststr.utf8)))
-        print(Data(SHA256.hash(data: Data(teststr.utf8)).compactMap { String(format: "%02x", $0) }.joined().utf8).base64EncodedString())
+
+        let str = "Copyright © 2018 Vincent. All rights reserved."
+        let key = "Created by Vincent on 27/02/2018."
+        let hmac_sha1 = str.hmac(algorithm: .sha1, key: key)
+        print(hmac_sha1)
+        let hmac_md5 = str.hmac(algorithm: .sha512, key: key)
+        print(hmac_md5)
+        
         let sha256hash = SHA256.hash(data: Data(concatenatedString.utf8))
         return Data(sha256hash.hashValue.description.utf8).base64EncodedString()
     }
@@ -105,6 +111,7 @@ public struct OderoPay {
         request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
         request.setValue(signature, forHTTPHeaderField: "x-signature")
         request.setValue("V1", forHTTPHeaderField: "x-auth-version")
+        request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
         
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -136,6 +143,7 @@ public struct OderoPay {
         request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
         request.setValue(signature, forHTTPHeaderField: "x-signature")
         request.setValue("V1", forHTTPHeaderField: "x-auth-version")
+        request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
         
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -161,6 +169,7 @@ public struct OderoPay {
         request.setValue(signature, forHTTPHeaderField: "x-signature")
         request.setValue("V1", forHTTPHeaderField: "x-auth-version")
         request.setValue(token, forHTTPHeaderField: "x-token")
+        request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
         
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

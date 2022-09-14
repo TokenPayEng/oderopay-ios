@@ -147,14 +147,14 @@ class CreditOrDebitCardPaymentView: UIView {
         
         NotificationCenter.default.post(name: Notification.Name("completePayment"), object: nil)
         
-//        Task {
-//            do {
-//                print(try await OderoPay.sendCompletePaymentForm().hasData() ?? "no data")
-//                print(try await OderoPay.sendCompletePaymentForm().hasErrors() ?? "no error")
-//            } catch {
-//                print(error)
-//            }
-//        }
+        Task {
+            do {
+                print(try await OderoPay.sendCompletePaymentForm().hasData() ?? "no data")
+                print(try await OderoPay.sendCompletePaymentForm().hasErrors() ?? "no error")
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 

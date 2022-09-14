@@ -22,7 +22,6 @@ class PaymentInformationViewController: UIViewController {
         button.layer.cornerRadius = 4
         containerView.layer.cornerRadius = 16
         
-        
         if OderoPay.isPaymentCompleted() {
             imageView.image = UIImage(named: "success", in: .module, with: .none)
             titleLabel.text = NSLocalizedString("paymentSuccess", bundle: .module, comment: "on successful payment")
