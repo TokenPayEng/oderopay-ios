@@ -40,7 +40,7 @@ class PaymentInformationViewController: UIViewController {
     }
 
     @IBAction func backToCheckout(_ sender: Any) {
-        print(self.navigationController)
+        print(self.parent)
         self.dismiss(animated: true)
     }
 }
