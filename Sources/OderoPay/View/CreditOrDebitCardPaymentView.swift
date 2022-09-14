@@ -99,6 +99,12 @@ class CreditOrDebitCardPaymentView: UIView {
         }
     }
     
+    @objc func updateOnPaymentComplete() {
+        if creditOrDebitCardPaymentController!.isPaymentComplete {
+            NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
+        }
+    }
+    
     private func commonInit() {
         Bundle.module.loadNibNamed("CreditOrDebitCardPayment", owner: self, options: nil)
         
@@ -107,6 +113,8 @@ class CreditOrDebitCardPaymentView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateOnPaymentComplete), name: NSNotification.Name(rawValue: "completePayment"), object: nil)
         
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
@@ -144,6 +152,8 @@ class CreditOrDebitCardPaymentView: UIView {
         OderoPay.setCompletePaymentForm(to: form)
         
         creditOrDebitCardPaymentController!.isPaymentComplete = true
+        
+        // if multicard is
         NotificationCenter.default.post(name: Notification.Name("completePayment"), object: nil)
         
 //        Task {
