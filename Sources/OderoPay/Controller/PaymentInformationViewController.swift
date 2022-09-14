@@ -9,6 +9,7 @@ import UIKit
 
 class PaymentInformationViewController: UIViewController {
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -19,6 +20,7 @@ class PaymentInformationViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         button.layer.cornerRadius = 4
+        containerView.layer.contents = 8
         
         
         if OderoPay.isPaymentCompleted() {

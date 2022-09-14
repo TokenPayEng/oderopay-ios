@@ -17,60 +17,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="k1x-Ae-TpF">
-                                <rect key="frame" x="60" y="84" width="294" height="277"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSF-0u-dNC">
+                                <rect key="frame" x="50" y="284.5" width="314" height="327"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success" translatesAutoresizingMaskIntoConstraints="NO" id="Bbw-Tg-MoF">
-                                        <rect key="frame" x="109" y="0.0" width="76" height="80.5"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkM-q2-BZ9">
-                                        <rect key="frame" x="87" y="100.5" width="120" height="32.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eit-XR-mLe" userLabel="Subtitle Label">
-                                        <rect key="frame" x="108" y="153" width="78.5" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" red="0.58735877280000004" green="0.62374758720000001" blue="0.68368530270000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description 2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-lk-gE4" userLabel="Subtitle Label2">
-                                        <rect key="frame" x="101.5" y="191" width="91.5" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" red="0.58735877280000004" green="0.62374758720000001" blue="0.68368530270000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeR-rb-2iH">
-                                        <rect key="frame" x="0.0" y="229" width="294" height="48"/>
-                                        <color key="backgroundColor" red="0.96266549830000003" green="0.96266549830000003" blue="0.96266549830000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="15"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="GO BACK">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="backToCheckout:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hio-tU-rT4"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="k1x-Ae-TpF">
+                                        <rect key="frame" x="25" y="25" width="264" height="277"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success" translatesAutoresizingMaskIntoConstraints="NO" id="Bbw-Tg-MoF">
+                                                <rect key="frame" x="94" y="0.0" width="76" height="80.5"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkM-q2-BZ9">
+                                                <rect key="frame" x="72" y="100.5" width="120" height="32.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eit-XR-mLe" userLabel="Subtitle Label">
+                                                <rect key="frame" x="93" y="153" width="78.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.58735877280000004" green="0.62374758720000001" blue="0.68368530270000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description 2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-lk-gE4" userLabel="Subtitle Label2">
+                                                <rect key="frame" x="86.5" y="191" width="91.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.58735877280000004" green="0.62374758720000001" blue="0.68368530270000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeR-rb-2iH">
+                                                <rect key="frame" x="0.0" y="229" width="264" height="48"/>
+                                                <color key="backgroundColor" red="0.96266549830000003" green="0.96266549830000003" blue="0.96266549830000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="15"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="GO BACK">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="backToCheckout:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hio-tU-rT4"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="SeR-rb-2iH" firstAttribute="leading" secondItem="k1x-Ae-TpF" secondAttribute="leading" id="4PM-EC-ciU"/>
+                                            <constraint firstAttribute="trailing" secondItem="SeR-rb-2iH" secondAttribute="trailing" id="zXV-G0-pV2"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="SeR-rb-2iH" firstAttribute="leading" secondItem="k1x-Ae-TpF" secondAttribute="leading" id="4PM-EC-ciU"/>
-                                    <constraint firstAttribute="trailing" secondItem="SeR-rb-2iH" secondAttribute="trailing" id="zXV-G0-pV2"/>
+                                    <constraint firstItem="k1x-Ae-TpF" firstAttribute="top" secondItem="rSF-0u-dNC" secondAttribute="top" constant="25" id="B36-Ds-3IN"/>
+                                    <constraint firstItem="k1x-Ae-TpF" firstAttribute="leading" secondItem="rSF-0u-dNC" secondAttribute="leading" constant="25" id="P2F-de-eZ7"/>
+                                    <constraint firstAttribute="trailing" secondItem="k1x-Ae-TpF" secondAttribute="trailing" constant="25" id="yAp-UN-CKO"/>
+                                    <constraint firstAttribute="bottom" secondItem="k1x-Ae-TpF" secondAttribute="bottom" constant="25" id="yfr-1f-eeO"/>
                                 </constraints>
-                            </stackView>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.96266549830000003" green="0.96266549830000003" blue="0.96266549830000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="k1x-Ae-TpF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="a60-b8-YAR"/>
-                            <constraint firstItem="k1x-Ae-TpF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="60" id="fZY-uy-vMg"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="k1x-Ae-TpF" secondAttribute="trailing" constant="60" id="pxD-tC-MBf"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rSF-0u-dNC" secondAttribute="trailing" constant="50" id="N9J-iO-oGo"/>
+                            <constraint firstItem="rSF-0u-dNC" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="TBH-9w-SKr"/>
+                            <constraint firstItem="rSF-0u-dNC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="fTO-9U-9PL"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="button" destination="SeR-rb-2iH" id="Adh-9B-9n2"/>
+                        <outlet property="containerView" destination="rSF-0u-dNC" id="Mc7-Es-rSt"/>
                         <outlet property="imageView" destination="Bbw-Tg-MoF" id="pLS-gb-A6Z"/>
                         <outlet property="subtitleLabel" destination="Eit-XR-mLe" id="lVS-SK-Qxg"/>
                         <outlet property="subtitleLabel2" destination="SKU-lk-gE4" id="ot4-QM-wab"/>
