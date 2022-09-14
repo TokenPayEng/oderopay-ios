@@ -81,6 +81,7 @@ public struct OderoPay {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
 
+        print(body)
         let hmac_md5 = concatenatedString.hmac(algorithm: .sha512, key: secretKey)
         print(hmac_md5)
         
@@ -103,7 +104,7 @@ public struct OderoPay {
         
         // header custom
         request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
+        request.setValue("111", forHTTPHeaderField: "x-rnd-key")
         request.setValue(signature, forHTTPHeaderField: "x-signature")
         request.setValue("V1", forHTTPHeaderField: "x-auth-version")
         request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
