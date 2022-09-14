@@ -40,7 +40,11 @@ class PaymentInformationViewController: UIViewController {
     }
 
     @IBAction func backToCheckout(_ sender: Any) {
-        self.dismiss(animated: true)
-        self.parent?.presentingViewController?.navigationController?.popViewController(animated: true)
+        let presentingViewController = self.presentingViewController
+        self.dismiss(animated: true) {
+            if let  destinationVC = presentingViewController?.navigationController?.viewControllers.filter({$0 is CommonPaymentPageViewController}).first {
+                presentingViewController?.navigationController?.popToViewController(destinationVC, animated: false)
+                        }
+        }
     }
 }
