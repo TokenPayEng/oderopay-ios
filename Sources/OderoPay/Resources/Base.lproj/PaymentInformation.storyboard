@@ -50,6 +50,9 @@
                                         <state key="normal" title="GO BACK">
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backToCheckout:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hio-tU-rT4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

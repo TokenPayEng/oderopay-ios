@@ -39,4 +39,7 @@ class PaymentInformationViewController: UIViewController {
         }
     }
 
+    @IBAction func backToCheckout(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
 }
