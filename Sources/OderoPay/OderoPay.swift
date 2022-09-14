@@ -84,7 +84,7 @@ public struct OderoPay {
         print(concatenatedString)
         let hmac_md5 = concatenatedString.hmac(algorithm: .sha512, key: secretKey)
         print(hmac_md5)
-        
+        print(Data(hmac_md5.utf8).base64EncodedString())
         return Data(hmac_md5.utf8).base64EncodedString()
     }
     
