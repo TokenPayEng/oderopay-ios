@@ -196,7 +196,7 @@ public class CommonPaymentPageViewController: UIViewController {
 //            sheet.detents = [.medium()]
 //        }
         
-        present(navigation,animated: true, completion: nil)
+        present(paymentInformationViewController,animated: true, completion: nil)
     }
 }
 
