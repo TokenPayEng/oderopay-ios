@@ -132,7 +132,7 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @objc func pop() {
-        _ = navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     override public func viewDidDisappear(_ animated: Bool) {
@@ -169,7 +169,7 @@ public class CommonPaymentPageViewController: UIViewController {
     // ---------------------UIButton-Actions---------------------
     
     @IBAction func popViewController(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func collapseCreditOrDebitSection(_ sender: Any) {
