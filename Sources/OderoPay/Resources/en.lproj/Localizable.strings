@@ -24,7 +24,7 @@
 
 "paymentSuccess" = "Payment is received!";
 "paymentError" = "Payment not received";
-"paymentErrorHelp" = "The transaction was not approved by the bank, please check the information you entered. If you are sure of the information you entered, you can contact your bank.";
+"paymentErrorHelp" = "The transaction was not approved by the bank, please check the information you entered. \n If you are sure of the information you entered, you can contact your bank.";
 
 "returnToCheckout" = "Return to Checkout Page";
 "returnToHome" = "returning to home screen...";
