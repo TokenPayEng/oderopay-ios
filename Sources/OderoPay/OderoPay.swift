@@ -81,15 +81,12 @@ public struct OderoPay {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
 
-        let str = "Copyright © 2018 Vincent. All rights reserved."
-        let key = "Created by Vincent on 27/02/2018."
-        let hmac_sha1 = str.hmac(algorithm: .sha1, key: key)
+        let hmac_sha1 = concatenatedString.hmac(algorithm: .sha1, key: secretKey)
         print(hmac_sha1)
-        let hmac_md5 = str.hmac(algorithm: .sha512, key: key)
+        let hmac_md5 = concatenatedString.hmac(algorithm: .sha512, key: secretKey)
         print(hmac_md5)
         
-        let sha256hash = SHA256.hash(data: Data(concatenatedString.utf8))
-        return Data(sha256hash.hashValue.description.utf8).base64EncodedString()
+        return Data(hmac_md5.utf8).base64EncodedString()
     }
     
     static internal func sendCheckoutForm() async throws -> CheckoutFormResult {
