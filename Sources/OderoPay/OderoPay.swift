@@ -82,15 +82,13 @@ public struct OderoPay {
         let concatenatedString = url + apiKey + secretKey + randomKey + body
 
         let str = "AAAAAAAA"
-        let hmac_md55 = str.hmac(algorithm: .sha256, key: secretKey)
+        let hmac_md55 = str.hmac(algorithm: .sha512, key: secretKey)
         print(hmac_md55)
-        print(Data(hmac_md55.utf8).base64EncodedString())
         
         print(concatenatedString)
         let hmac_md5 = concatenatedString.hmac(algorithm: .sha512, key: secretKey)
         //print(hmac_md5)
-        //print(Data(hmac_md5.utf8).base64EncodedString())
-        return Data(hmac_md5.utf8).base64EncodedString()
+        return hmac_md5
     }
     
     static internal func sendCheckoutForm() async throws -> CheckoutFormResult {
