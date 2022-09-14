@@ -24,7 +24,8 @@
 
 "paymentSuccess" = "Ödəniş alındı!";
 "paymentError" = "Ödəniş alınmadı";
-"paymentErrorHelp" = "Əməliyyat bank tərəfindən təsdiqlənməyib, daxil etdiyiniz məlumatları yoxlayın. Daxil etdiyiniz məlumatlardan əminsinizsə, bankınızla əlaqə saxlaya bilərsiniz.";
+"paymentErrorHelp" = "Əməliyyat bank tərəfindən təsdiqlənməyib, daxil etdiyiniz məlumatları yoxlayın.";
+"paymentErrorHelp2" = "Daxil etdiyiniz məlumatlardan əminsinizsə, bankınızla əlaqə saxlaya bilərsiniz.";
 
 "returnToCheckout" = "Ödəniş Səhifəsinə Qayıdın";
 "returnToHome" = "ana ekranına qayıdır...";

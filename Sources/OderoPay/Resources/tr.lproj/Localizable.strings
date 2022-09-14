@@ -24,7 +24,8 @@
 
 "paymentSuccess" = "Ödemeniz alındı!";
 "paymentError" = "Ödeme alınamadı";
-"paymentErrorHelp" = "İşlem banka tarafından onaylanmadı, girdiğiniz bilgileri kontrol ediniz. Girdiğiniz bilgilerden eminseniz bankanız ile iletişime geçebilirsiniz.";
+"paymentErrorHelp" = "İşlem banka tarafından onaylanmadı, girdiğiniz bilgileri kontrol ediniz.";
+"paymentErrorHelp2" = "Girdiğiniz bilgilerden eminseniz bankanız ile iletişime geçebilirsiniz.";
 
 "returnToCheckout" = "Ödeme Sayfasına Dön";
 "returnToHome" = "ana sayfaya dönülüyor...";
