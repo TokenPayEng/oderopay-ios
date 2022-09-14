@@ -162,6 +162,7 @@ public class CommonPaymentPageViewController: UIViewController {
     // ---------------------UIButton-Actions---------------------
     
     @IBAction func popViewController(_ sender: Any) {
+        print(navigationController)
         navigationController?.popViewController(animated: true)
     }
     
