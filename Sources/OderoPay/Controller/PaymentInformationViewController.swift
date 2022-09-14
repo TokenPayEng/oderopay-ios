@@ -43,8 +43,8 @@ class PaymentInformationViewController: UIViewController {
         let presentingViewController = self.presentingViewController
         self.dismiss(animated: true) {
             if let  destinationVC = presentingViewController?.navigationController?.viewControllers.filter({$0 is CommonPaymentPageViewController}).first {
-                presentingViewController?.navigationController?.popToViewController(destinationVC, animated: false)
-                        }
+                destinationVC.dismiss(animated: true)
+            }
         }
     }
 }
