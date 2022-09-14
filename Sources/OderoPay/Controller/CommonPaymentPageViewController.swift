@@ -189,7 +189,7 @@ public class CommonPaymentPageViewController: UIViewController {
     private func presentPaymentInfo() {
         guard let paymentInformationViewController = UIStoryboard(
             name: "PaymentInformation",
-            bundle: .main).instantiateViewController(identifier: "MyViewController") as? PaymentInformationViewController
+            bundle: .main).instantiateViewController(identifier: "PaymentInformation") as? PaymentInformationViewController
         else {
             fatalError("Unable to Instantiate My View Controller")
         }
