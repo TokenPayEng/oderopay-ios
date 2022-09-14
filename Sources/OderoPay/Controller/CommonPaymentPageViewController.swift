@@ -162,7 +162,6 @@ public class CommonPaymentPageViewController: UIViewController {
     // ---------------------UIButton-Actions---------------------
     
     @IBAction func popViewController(_ sender: Any) {
-        print(navigationController)
         navigationController?.popViewController(animated: true)
     }
     
@@ -198,17 +197,7 @@ public class CommonPaymentPageViewController: UIViewController {
             fatalError("Unable to instantiate Payment Information")
         }
         
-        paymentInformationViewController.modalPresentationStyle = .pageSheet
-        paymentInformationViewController.isModalInPresentation = true
-        
-        if #available(iOS 15.0, *) {
-            if let sheet = paymentInformationViewController.sheetPresentationController {
-                sheet.detents = [.medium()]
-            }
-        }
-        
         navigationController?.pushViewController(paymentInformationViewController, animated: true)
-        //navigationController?.present(paymentInformationViewController,animated: true)
     }
 }
 

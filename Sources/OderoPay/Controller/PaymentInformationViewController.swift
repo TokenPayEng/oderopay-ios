@@ -17,6 +17,7 @@ class PaymentInformationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
         button.layer.cornerRadius = 4
         
         
@@ -40,10 +41,6 @@ class PaymentInformationViewController: UIViewController {
     }
 
     @IBAction func backToCheckout(_ sender: Any) {
-        print(self)
-        print(self.navigationController)
-        print(self.parent)
-        print(self.parent?.navigationController)
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)?.navigationController?.popViewController(animated: true)
     }
 }
