@@ -10,8 +10,8 @@ import Foundation
 public class Card: Codable {
     private var cardNumber: String
     private var expireMonth: Months
-    private var expireYear: Int
-    private var cvc: Int
+    private var expireYear: String
+    private var cvc: String
     private var cardHolderName: String
     
     // optional
@@ -22,19 +22,19 @@ public class Card: Codable {
     
     convenience init() {
         self.init(
-            number: "",
+            number: "0000000000000000",
             expiringAt: .december,
-            2000,
-            withCode: 000,
-            belongsTo: "Someone"
+            "2000",
+            withCode: "000",
+            belongsTo: "John Doe"
         )
     }
     
     /// public initializer for the checkout form class.
     public init(number cardNumber: String,
                 expiringAt expireMonth: Months,
-                _ expireYear: Int,
-                withCode cvc: Int,
+                _ expireYear: String,
+                withCode cvc: String,
                 belongsTo cardHolderName: String,
                 aliasedAs cardAlias: String? = nil,
                 shouldBeStored storeCardAfterSuccessPayment: Bool? = nil,

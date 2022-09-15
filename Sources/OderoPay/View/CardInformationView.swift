@@ -133,6 +133,24 @@ class CardInformationView: UIView, UITextFieldDelegate {
         if textField == cardNumberTextField {
             textField.isError(!cardController.isCardNumberValid(textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)))
         }
+        
+        if textField == cvcTextField {
+            if textField.text!.count < 3 {
+                textField.isError(true)
+            } else {
+                textField.isError(false)
+                cardController.setCVC(to: textField.text!)
+            }
+        }
+        
+        if textField == cardholderTextField {
+            if textField.text!.isEmpty {
+                textField.isError(true)
+            } else {
+                textField.isError(false)
+                cardController.setCardHolder(to: textField.text!)
+            }
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -308,6 +326,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
             }
             
             textField.text = formatBy(pattern: expireDatePattern, this: cardController.getUpdatedExpireDate())
+            print(cardController.getUpdatedExpireDate())
             return false
         }
         

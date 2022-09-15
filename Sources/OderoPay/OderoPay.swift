@@ -115,7 +115,6 @@ public struct OderoPay {
     }
 
     static internal func retrieveInstallments(for binNumber: String, withPrice price: Double, in currency: Currency) async throws -> RetrieveInstallmentResult {
-        let url = URL(string: environment.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
         var urlComponents = URLComponents(string: environment.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
         urlComponents.queryItems = [
             URLQueryItem(name: "binNumber", value: binNumber),
@@ -150,11 +149,15 @@ public struct OderoPay {
         let url = URL(string: environment.rawValue + Path.CHECKOUT.rawValue + Action.COMPLETE.rawValue)!
         var request = URLRequest(url: url)
         
-        // generate signature
-        let signature = try generateSignature(for: url.absoluteString, body: String())
-        
         // method
         request.httpMethod = HTTPMethod.POST.rawValue
+        
+        // body
+        let encodedBody = try JSONEncoder().encode(OderoPay.completePaymentForm)
+        request.httpBody = encodedBody
+        
+        // generate signature
+        let signature = try generateSignature(for: url.absoluteString, body: String(data: request.httpBody!, encoding: .utf8)!)
         
         // header custom
         request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
@@ -166,10 +169,6 @@ public struct OderoPay {
         
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        // body
-        let encodedBody = try JSONEncoder().encode(OderoPay.completePaymentForm)
-        request.httpBody = encodedBody
         
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)

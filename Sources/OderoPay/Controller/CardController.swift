@@ -10,12 +10,26 @@ import Foundation
 class CardController {
     private var isValidCard: Bool = false
     private var installmentFound: Bool = false
+      
+    private var cardNumber: String {
+        updatedCardNumber
+    }
+    
+    private var expireDate: String {
+        updatedExpireDate
+    }
+    private var cvc: String = String()
+    private var cardHolder: String = String()
+    
     private var installmentItems: [RetrieveInstallmentItem] = []
     private var force3DSChoice: Bool = false
     private var installmentChoice: Int = 0
+    private var saveCardChoice: Bool = false
+    
     private var cardAssociation: CardAssociation = .UNDEFINED
     private var cardIinRangeString: String = String()
     private var currentCardNumber: String = String()
+    
     private var updatedCardNumber: String = String()
     
     private var expireMonth: String = String()
@@ -24,6 +38,30 @@ class CardController {
     private var updatedExpireDate: String = String()
     let month = Calendar.current.component(.month, from: Date())
     let year = Calendar.current.component(.year, from: Date())
+    
+    func setCardHolder(to name: String) {
+        self.cardHolder = name
+    }
+    
+    func setCVC(to cvc: String) {
+        self.cvc = cvc
+    }
+    
+    func retrieveCardNumber() -> String {
+        self.cardNumber
+    }
+    
+//    func retrieveExpireDate() -> (Months ,String) {
+//        self.expireDate
+//    }
+    
+    func retrieveCVC() -> String {
+        self.cvc
+    }
+    
+    func retrieveCardHolder() -> String {
+        self.cardHolder
+    }
     
     func setCurrentCardNumber(to number: String) {
         self.currentCardNumber = number.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
@@ -145,6 +183,10 @@ class CardController {
     
     func retrieveForce3DSChoiceOption() -> Bool {
         force3DSChoice
+    }
+    
+    func retrieveSaveCardChoiceOption() -> Bool {
+        saveCardChoice
     }
     
     func setInstallmentChoice(_ index: Int) {

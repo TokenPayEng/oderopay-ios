@@ -134,11 +134,12 @@ class CreditOrDebitCardPaymentView: UIView {
         let form = CompletePaymentForm(paymentType: .CARD_PAYMENT,
                             cardPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
                             installment: .single,
-                            card: Card(number: creditOrDebitCardPaymentController!.cardController.getUpdatedCardNumber(),
+                            card: Card(number: creditOrDebitCardPaymentController!.cardController.retrieveCardNumber(),
                                        expiringAt: .december,
-                                       2023,
-                                       withCode: 333,
-                                       belongsTo: "Imran Hajiyev")
+                                       "2023",
+                                       withCode: creditOrDebitCardPaymentController!.cardController.retrieveCVC(),
+                                       belongsTo: creditOrDebitCardPaymentController!.cardController.retrieveCardHolder()
+                                      )
         )
         
         OderoPay.setCompletePaymentForm(to: form)
@@ -146,15 +147,14 @@ class CreditOrDebitCardPaymentView: UIView {
         creditOrDebitCardPaymentController!.isPaymentComplete = true
         
         NotificationCenter.default.post(name: Notification.Name("completePayment"), object: nil)
-        
-        Task {
-            do {
-                print(try await OderoPay.sendCompletePaymentForm().hasData() ?? "no data")
-                print(try await OderoPay.sendCompletePaymentForm().hasErrors() ?? "no error")
-            } catch {
-                print(error)
-            }
-        }
+//        Task {
+//            do {
+//                print(try await OderoPay.sendCompletePaymentForm().hasData() ?? "no data")
+//                print(try await OderoPay.sendCompletePaymentForm().hasErrors() ?? "no error")
+//            } catch {
+//                print(error)
+//            }
+//        }
     }
 }
 
