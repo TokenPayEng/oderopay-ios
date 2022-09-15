@@ -28,10 +28,19 @@ class SingleCardPaymentView: UIView {
         if singleCardPaymentController!.cardController.isPaymentComplete {
             
             guard let expireDate = singleCardPaymentController!.cardController.cardController.retrieveExpireDate() else {
-                NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
                 OderoPay.setPaymentStatus(to: false)
+                NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
                 return
             }
+            
+            print(singleCardPaymentController!.cardController.cardController.retrieveExpireDate())
+            print(OderoPay.getCheckoutForm().getCheckoutPriceRaw())
+            print(Installment(rawValue: singleCardPaymentController!.cardController.cardController.retrieveInstallmentChoice())!)
+            print(singleCardPaymentController!.cardController.cardController.retrieveCardNumber())
+            print(expireDate.0)
+            print(expireDate.1)
+            print(singleCardPaymentController!.cardController.cardController.retrieveCVC())
+            print(singleCardPaymentController!.cardController.cardController.retrieveCardHolder())
 
             let form = CompletePaymentForm(
                                 paymentType: .CARD_PAYMENT,
@@ -47,21 +56,19 @@ class SingleCardPaymentView: UIView {
                                     )
             )
             
-            
-            print(form)
-            OderoPay.setCompletePaymentForm(to: form)
-            OderoPay.setPaymentStatus(to: true)
-            
-            //        Task {
-            //            do {
-            //                print(try await OderoPay.sendCompletePaymentForm().hasData() ?? "no data")
-            //                print(try await OderoPay.sendCompletePaymentForm().hasErrors() ?? "no error")
-            //            } catch {
-            //                print(error)
-            //            }
-            //        }
-            
-            NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
+//            OderoPay.setCompletePaymentForm(to: form)
+//            OderoPay.setPaymentStatus(to: true)
+//
+//            Task {
+//                do {
+//                    print(try await OderoPay.sendCompletePaymentForm().hasData() ?? "no data")
+//                    print(try await OderoPay.sendCompletePaymentForm().hasErrors() ?? "no error")
+//                } catch {
+//                    print(error)
+//                }
+//            }
+//
+//            NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
         }
     }
     
