@@ -9,8 +9,18 @@ import Foundation
 
 class CardController {
     private var isValidCard: Bool = false
+    private var isValidExpire: Bool {
+        expireDate.count == 5
+    }
+    private var isValidCVC: Bool {
+        cvc.count == 3
+    }
+    private var isValidName: Bool {
+        !cardHolder.isEmpty
+    }
+    
     private var installmentFound: Bool = false
-      
+    
     private var cardNumber: String {
         updatedCardNumber
     }
@@ -271,6 +281,10 @@ class CardController {
     
     func isCardValid() -> Bool {
         isValidCard
+    }
+    
+    func isCardInfoValid() -> Bool {
+        isValidCard && isValidExpire && isValidCVC && isValidName
     }
     
     func luhnAlgorithm(_ number: String) -> Bool {

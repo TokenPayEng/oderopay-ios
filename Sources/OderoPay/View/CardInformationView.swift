@@ -135,7 +135,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         }
         
         if textField == expireDateTextField {
-            if textField.text!.count < 4 {
+            if textField.text!.count < 5 {
                 textField.isError(true)
             } else {
                 textField.isError(false)

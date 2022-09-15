@@ -133,8 +133,30 @@ class CreditOrDebitCardPaymentView: UIView {
     }
     
     @IBAction func makePayment(_ sender: Any) {
-        creditOrDebitCardPaymentController!.isPaymentComplete = true
-        NotificationCenter.default.post(name: Notification.Name("completePayment"), object: nil)
+
+        if creditOrDebitCardPaymentController!.cardController.isCardInfoValid() {
+            creditOrDebitCardPaymentController!.isPaymentComplete = true
+            NotificationCenter.default.post(name: Notification.Name("completePayment"), object: nil)
+        } else {
+            showErrorAlert(ofType: .INTERNAL, .NOW)
+        }
+    }
+    
+    func showErrorAlert(ofType type: ErrorTypes, _ description: ErrorDescriptions) {
+        let alert = UIAlertController(
+            title: ErrorTypes.getLocalized(type),
+            message: ErrorDescriptions.getLocalized(description),
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: .default,
+                handler: { (_) in })
+        )
+        
+        findViewController()?.present(alert, animated: true, completion: nil)
     }
 }
 
