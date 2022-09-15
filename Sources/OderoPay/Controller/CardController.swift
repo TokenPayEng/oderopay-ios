@@ -112,7 +112,7 @@ class CardController {
         if currentCardNumber.count == 6 && updatedCardNumber.count == 5 {
             self.installmentFound = false
             self.force3DSChoice = false
-            self.installmentChoice = 0
+            self.installmentChoice = 1
             
             NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
         }
@@ -135,7 +135,7 @@ class CardController {
                     
                     self.installmentFound = false
                     self.force3DSChoice = false
-                    self.installmentChoice = 0
+                    self.installmentChoice = 1
                     
                     return
                 }
@@ -146,7 +146,7 @@ class CardController {
                     
                     self.installmentFound = false
                     self.force3DSChoice = false
-                    self.installmentChoice = 0
+                    self.installmentChoice = 1
                     
                     return
                 }
@@ -158,7 +158,7 @@ class CardController {
                 
                 self.installmentFound = !self.installmentItems.isEmpty
                 self.force3DSChoice = self.installmentItems.first?.getForce3ds() ?? false
-                self.installmentChoice = 0
+                self.installmentChoice = 1
 
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
@@ -169,7 +169,7 @@ class CardController {
                 print("HINT: \(error)")
                 self.installmentFound = false
                 self.force3DSChoice = false
-                self.installmentChoice = 0
+                self.installmentChoice = 1
                 
                 return
             }
