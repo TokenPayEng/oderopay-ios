@@ -134,6 +134,15 @@ class CardInformationView: UIView, UITextFieldDelegate {
             textField.isError(!cardController.isCardNumberValid(textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)))
         }
         
+        if textField == expireDateTextField {
+            if textField.text!.count < 4 {
+                textField.isError(true)
+            } else {
+                textField.isError(false)
+                cardController.setExpireDate(to: textField.text!)
+            }
+        }
+        
         if textField == cvcTextField {
             if textField.text!.count < 3 {
                 textField.isError(true)
@@ -326,7 +335,6 @@ class CardInformationView: UIView, UITextFieldDelegate {
             }
             
             textField.text = formatBy(pattern: expireDatePattern, this: cardController.getUpdatedExpireDate())
-            print(cardController.getUpdatedExpireDate())
             return false
         }
         

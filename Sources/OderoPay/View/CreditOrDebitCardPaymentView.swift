@@ -125,21 +125,31 @@ class CreditOrDebitCardPaymentView: UIView {
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         if let tag = sender.view?.tag {
             installmentView.selected = tag
+            creditOrDebitCardPaymentController!.cardController.setInstallmentChoice(tag)
+            print(tag)
         }
         
         layoutSubviews()
     }
     
     @IBAction func makePayment(_ sender: Any) {
-        let form = CompletePaymentForm(paymentType: .CARD_PAYMENT,
+        
+        guard let expireDate = creditOrDebitCardPaymentController!.cardController.retrieveExpireDate() else { return }
+        
+        
+        // TODO: how to type and etc
+        let form = CompletePaymentForm(
+                            paymentType: .CARD_PAYMENT,
                             cardPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
                             installment: .single,
-                            card: Card(number: creditOrDebitCardPaymentController!.cardController.retrieveCardNumber(),
-                                       expiringAt: .december,
-                                       "2023",
-                                       withCode: creditOrDebitCardPaymentController!.cardController.retrieveCVC(),
-                                       belongsTo: creditOrDebitCardPaymentController!.cardController.retrieveCardHolder()
-                                      )
+                            card:
+                                Card(
+                                    number: creditOrDebitCardPaymentController!.cardController.retrieveCardNumber(),
+                                    expiringAt: expireDate.0,
+                                    expireDate.1,
+                                    withCode: creditOrDebitCardPaymentController!.cardController.retrieveCVC(),
+                                    belongsTo: creditOrDebitCardPaymentController!.cardController.retrieveCardHolder()
+                                )
         )
         
         OderoPay.setCompletePaymentForm(to: form)

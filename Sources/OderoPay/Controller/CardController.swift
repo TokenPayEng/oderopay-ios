@@ -15,9 +15,7 @@ class CardController {
         updatedCardNumber
     }
     
-    private var expireDate: String {
-        updatedExpireDate
-    }
+    private var expireDate: String = String()
     private var cvc: String = String()
     private var cardHolder: String = String()
     
@@ -47,13 +45,18 @@ class CardController {
         self.cvc = cvc
     }
     
+    func setExpireDate(to expireDate: String) {
+        self.expireDate = expireDate
+    }
+    
     func retrieveCardNumber() -> String {
         self.cardNumber
     }
     
-//    func retrieveExpireDate() -> (Months ,String) {
-//        self.expireDate
-//    }
+    func retrieveExpireDate() -> (Months ,String)? {
+        guard let month = Months(rawValue: String(self.expireDate.prefix(2))) else { return nil }
+        return (month, "20\(self.expireDate.suffix(2))")
+    }
     
     func retrieveCVC() -> String {
         self.cvc
