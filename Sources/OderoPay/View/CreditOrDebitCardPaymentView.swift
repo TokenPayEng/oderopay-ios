@@ -138,7 +138,7 @@ class CreditOrDebitCardPaymentView: UIView {
             creditOrDebitCardPaymentController!.isPaymentComplete = true
             NotificationCenter.default.post(name: Notification.Name("completePayment"), object: nil)
         } else {
-            showErrorAlert(ofType: .MISSING_DATA, .NOW)
+            showErrorAlert(ofType: .MISSING_DATA, .CARD)
         }
     }
     

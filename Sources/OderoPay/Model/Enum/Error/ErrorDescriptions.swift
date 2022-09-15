@@ -10,6 +10,7 @@ import Foundation
 enum ErrorDescriptions: String {
     case LATER = "laterErrorDescription"
     case NOW = "errorDescription"
+    case CARD = "cardErrorDescription"
     
     func localizedString() -> String {
         return NSLocalizedString(self.rawValue, bundle: .module,comment: "")

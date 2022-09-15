@@ -43,3 +43,4 @@
 
 "laterErrorDescription" = "Bir şeyler yanlış gitti. Lütfen daha sonra tekrar deneyiniz.";
 "errorDescription" = "Bir şeyler yanlış gitti. Lütfen tekrar deneyin.";
+"cardErrorDescription" = "Sağlanan kart bilgileri geçersiz.";

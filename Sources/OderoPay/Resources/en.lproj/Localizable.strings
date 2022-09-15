@@ -43,4 +43,4 @@
 
 "laterErrorDescription" = "Something went wrong. Please try again later.";
 "errorDescription" = "Something went wrong. Please try again.";
-
+"cardErrorDescription" = "Provided card information is invalid.";
