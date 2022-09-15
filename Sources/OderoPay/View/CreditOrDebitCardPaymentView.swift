@@ -39,13 +39,13 @@ class CreditOrDebitCardPaymentView: UIView {
             if !creditOrDebitCardPaymentController!.installmentsEnabled {
                 installmentView.installmentOptionsStackView.removeFullyAllArrangedSubviews()
                 
-                for (index, installmentItem) in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems().enumerated() {
+                for installmentItem in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems() {
             
                     let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
                     let installmentItemView = InstallmentOptionView()
                     installmentItemView.frame.size = CGSize(width: installmentView.frame.size.width, height: 45)
                     
-                    installmentItemView.tag = index
+                    installmentItemView.tag = installmentItem.getInstallmentNumber()
                     installmentItemView.addGestureRecognizer(tap)
                 
                     installmentItemView.installmentPriceLabel.text = String(format: "%.2f", installmentItem.getInstallmentTotalPrice()) + " \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)"
