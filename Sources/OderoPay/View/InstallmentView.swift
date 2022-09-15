@@ -12,6 +12,7 @@ class InstallmentView: UIView {
     var selected: Int = 1
     
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var choiceLabel: UILabel!
     @IBOutlet weak var installmentOptionsStackView: UIStackView!
     
     override init(frame: CGRect) {
@@ -29,5 +30,7 @@ class InstallmentView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        choiceLabel.text = NSLocalizedString("installmentChoices", bundle: .module, comment: "choices for installments")
     }
 }

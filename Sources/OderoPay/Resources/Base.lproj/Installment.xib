@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InstallmentView" customModule="OderoPay">
             <connections>
+                <outlet property="choiceLabel" destination="Z2f-YL-Vb8" id="uBw-wK-thq"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="sOc-hg-97Y"/>
                 <outlet property="installmentOptionsStackView" destination="fpD-Xh-mqe" id="0cA-O2-xkW"/>
             </connections>
