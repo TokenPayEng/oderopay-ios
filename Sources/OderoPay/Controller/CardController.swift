@@ -21,7 +21,7 @@ class CardController {
     
     private var installmentItems: [RetrieveInstallmentItem] = []
     private var force3DSChoice: Bool = false
-    private var installmentChoice: Int = 0
+    private var installmentChoice: Int = 1
     private var saveCardChoice: Bool = false
     
     private var cardAssociation: CardAssociation = .UNDEFINED
