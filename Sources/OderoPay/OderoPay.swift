@@ -146,7 +146,7 @@ public struct OderoPay {
     }
     
     static internal func sendCompletePaymentForm() async throws -> CompletePaymentFormResult {
-        let url = URL(string: environment.rawValue + Path.CHECKOUT.rawValue + Action.COMPLETE.rawValue)!
+        let url = URL(string: environment.rawValue + Path.COMMON_PAYMENT_PAGE.rawValue + Action.COMPLETE.rawValue)!
         var request = URLRequest(url: url)
         
         // method
