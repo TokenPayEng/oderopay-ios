@@ -29,6 +29,10 @@ class PaymentInformationViewController: UIViewController {
             
             subtitleLabel2.isHidden = true
             button.isHidden = true
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 3], animated: true)
+            }
         } else {
             imageView.image = UIImage(named: "error", in: .module, with: .none)
             titleLabel.text = NSLocalizedString("paymentError", bundle: .module, comment: "on failure")
