@@ -33,9 +33,11 @@ class SingleCardPaymentView: UIView {
                 return
             }
             
+            print(singleCardPaymentController!.cardController.cardController.retrieveInstallmentChoice())
+            
             print(singleCardPaymentController!.cardController.cardController.retrieveExpireDate())
             print(OderoPay.getCheckoutForm().getCheckoutPriceRaw())
-            print(Installment(rawValue: singleCardPaymentController!.cardController.cardController.retrieveInstallmentChoice())!)
+//            print(Installment(rawValue: singleCardPaymentController!.cardController.cardController.retrieveInstallmentChoice())!)
             print(singleCardPaymentController!.cardController.cardController.retrieveCardNumber())
             print(expireDate.0)
             print(expireDate.1)

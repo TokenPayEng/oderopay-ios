@@ -197,7 +197,7 @@ class CardController {
     }
     
     func retrieveInstallmentChoice() -> Int {
-        installmentChoice
+        self.installmentChoice
     }
     
     // card association
