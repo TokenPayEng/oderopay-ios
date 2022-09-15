@@ -27,7 +27,11 @@ class SingleCardPaymentView: UIView {
     @objc func updateOnPaymentComplete() {
         if singleCardPaymentController!.cardController.isPaymentComplete {
             
-            guard let expireDate = singleCardPaymentController!.cardController.cardController.retrieveExpireDate() else { return }
+            guard let expireDate = singleCardPaymentController!.cardController.cardController.retrieveExpireDate() else {
+                NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
+                OderoPay.setPaymentStatus(to: false)
+                return
+            }
 
             let form = CompletePaymentForm(
                                 paymentType: .CARD_PAYMENT,
@@ -46,6 +50,7 @@ class SingleCardPaymentView: UIView {
             
             print(form)
             OderoPay.setCompletePaymentForm(to: form)
+            OderoPay.setPaymentStatus(to: true)
             
             //        Task {
             //            do {
