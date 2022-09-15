@@ -133,38 +133,8 @@ class CreditOrDebitCardPaymentView: UIView {
     }
     
     @IBAction func makePayment(_ sender: Any) {
-        
-        guard let expireDate = creditOrDebitCardPaymentController!.cardController.retrieveExpireDate() else { return }
-        
-        
-        // TODO: how to type and etc
-        let form = CompletePaymentForm(
-                            paymentType: .CARD_PAYMENT,
-                            cardPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
-                            installment: .single,
-                            card:
-                                Card(
-                                    number: creditOrDebitCardPaymentController!.cardController.retrieveCardNumber(),
-                                    expiringAt: expireDate.0,
-                                    expireDate.1,
-                                    withCode: creditOrDebitCardPaymentController!.cardController.retrieveCVC(),
-                                    belongsTo: creditOrDebitCardPaymentController!.cardController.retrieveCardHolder()
-                                )
-        )
-        
-        OderoPay.setCompletePaymentForm(to: form)
-        
         creditOrDebitCardPaymentController!.isPaymentComplete = true
-        
         NotificationCenter.default.post(name: Notification.Name("completePayment"), object: nil)
-//        Task {
-//            do {
-//                print(try await OderoPay.sendCompletePaymentForm().hasData() ?? "no data")
-//                print(try await OderoPay.sendCompletePaymentForm().hasErrors() ?? "no error")
-//            } catch {
-//                print(error)
-//            }
-//        }
     }
 }
 

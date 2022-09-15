@@ -196,7 +196,7 @@ class CardController {
         installmentChoice = index
     }
     
-    func getInstallmentChoice() -> Int {
+    func retrieveInstallmentChoice() -> Int {
         installmentChoice
     }
     
