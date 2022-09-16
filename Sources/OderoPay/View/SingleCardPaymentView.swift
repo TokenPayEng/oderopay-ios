@@ -46,14 +46,44 @@ class SingleCardPaymentView: UIView {
 
             Task {
                 do {
-                    print(try await OderoPay.sendCompletePaymentForm().hasData() ?? "no data")
-                    print(try await OderoPay.sendCompletePaymentForm().hasErrors() ?? "no error")
+                    
+                    let completePaymentFormResponse = try await OderoPay.sendCompletePaymentForm()
+                    
+                    if completePaymentFormResponse.hasErrors() != nil {
+                        print("complete payment form returned with errors --- FAIL ❌")
+                        print("Error code: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorCode()))")
+                        print("Error description: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorDescription()))")
+
+                        showErrorAlert(ofType: .MISSING_DATA, .NOW)
+
+                        return
+                    }
+                    
+                    guard let resultFromServer = completePaymentFormResponse.hasData() else {
+                        print("Error occured ---- FAIL ❌")
+                        print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
+
+                        showErrorAlert(ofType: .SERVER, .LATER)
+
+                        return
+                    }
+                    
+                    print("retrieving content...")
+                    let content = resultFromServer.getHtmlContent()
+                    print("content retrieved ---- SUCCESS ✅")
+                    print(content)
+                    print("complete payment form sent ---- SUCCESS ✅\n")
+                    
+                    NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
                 } catch {
-                    print(error)
+                    print("network error occured ---- FAIL ❌")
+                    print("HINT: \(error)")
+
+                    showErrorAlert(ofType: .NETWORK, .LATER)
+
+                    return
                 }
             }
-
-            NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
         }
     }
     
@@ -69,5 +99,22 @@ class SingleCardPaymentView: UIView {
         NotificationCenter.default.addObserver(self, selector: #selector(updateOnPaymentComplete), name: NSNotification.Name(rawValue: "completePayment"), object: nil)
         
         cardView.isHidden = !singleCardPaymentController!.cardController.isformEnabled
+    }
+    
+    func showErrorAlert(ofType type: ErrorTypes, _ description: ErrorDescriptions) {
+        let alert = UIAlertController(
+            title: ErrorTypes.getLocalized(type),
+            message: ErrorDescriptions.getLocalized(description),
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: .default,
+                handler: { (_) in })
+        )
+        
+        findViewController()?.present(alert, animated: true, completion: nil)
     }
 }
