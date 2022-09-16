@@ -31,14 +31,14 @@ public class CompletePaymentForm: Codable {
     /// public initializer for the checkout form class.
     public init(paymentType: PaymentMethod,
                 cardPrice: Double,
-                walletPrice: Double? = nil ,
+                walletPrice: Double? = nil,
                 totalPointPrice: Double? = nil,
                 loyaltyPointPrice: Double? = nil,
                 installment: Installment,
                 card: Card) {
         self.paymentType = paymentType
         self.cardPrice = cardPrice
-        self.walletPrice = walletPrice
+        self.walletPrice = walletPrice ?? 0
         self.totalPointPrice = totalPointPrice
         self.loyaltyPointPrice = loyaltyPointPrice
         self.installment = installment
