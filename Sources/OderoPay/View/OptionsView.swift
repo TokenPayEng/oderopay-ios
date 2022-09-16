@@ -11,7 +11,7 @@ class OptionsView: UIView {
 
     var threeDSSelected: Bool = false
     var block3DSChoice: Bool = false
-    private var saveCardSelected: Bool = false
+    var saveCardSelected: Bool = false
     
     @IBOutlet var contentView: UIView!
     
