@@ -1,6 +1,6 @@
 # OderoPay
 
-OderoPay is a Swift Package that lets you integrate your iOS application to the Odero Payment Ecosystem.
+OderoPay is a Swift Package that lets you integrate your iOS application with the Odero Payment Ecosystem.
 
 ## Installation
 
@@ -9,12 +9,27 @@ In Xcode open `File` => `Add Packages...` => enter this Github repository.
 ## Support
 
 OderoPay supports `Visa`, `Visa Electron`, `MasterCard`, `Maestro` and `American Express` card associations.
+OderoPay supports following payment: `Single Card`, `Multiple Cards`
+OderoPay supports 3DS Secure Payment
+OderoPay supports Card Storage feature
 
 ## Usage
 
-SET API KEY AND ETC
+If you are in possesion of _API_KEY_ and _SECRET_KEY_ then you can proceed further. Otherwise visit Merchant Panel and retrieve _API_KEY_ and _SECRET_KEY_.
 
-SET WEB VIEW NATIVE BY DEFAULT
+In your project's `AppDelegate` file add the following code inside the application(didFinishLaunchingWithOptions) function. You can copy the code as follows:
+
+```swift
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+        OderoPay.setEnvironment(to: .SANDBOX)
+        OderoPay.authorizeWithKeys(apiKey: "QqLEuyZcztlikVSfLJZNLwBCFYtphFzk", secretKey: "cONMqzNoYFvOshYuSjybwqJrbjJygian")
+        return true
+    }
+```
+
+`OderoPay.setEnvironment(to: _)` function lets you choose between two environments: `SANDBOX` and `PROD`
+`OderoPay.authorizeWithKeys(apiKey: _, secretKey: _)` function lets you set your specific keys.
 
 Add `View` to your .storyboard file, place it where you would like payment button to appear. In the
 IdentityInspector select `OderoButtonView` class for your newly added `View`. Connect IBOutlet
@@ -23,14 +38,39 @@ to the related ViewController class.
 ```swift
     @IBOutlet weak var oderoPayButtonView: OderoPayButtonView!
 ```
-In order to be able to navigate to the Payment Page you need to pass `NavigationController` as a parameter
-to the initNavigationController function.
+In order to be able to navigate to the Payment Page you need to do the following:
+
+1. Instantiate navigation controller for the OderoPay Button
+2. Set desired `CheckoutForm` and pass it to the OderoPay Button.
+3. Set desired size and color to the View that represents the OderoPay Button (Optional)
+
+If you want to display the Payment Page in Native View you can omit the following part.
+
+4. You can display the Payment Page either in Native View or Web View (Optional)
+
+Code example:
 
 ```swift
-    @IBOutlet weak var oderoPayButtonView: OderoPayButtonView! {
-        didSet {
-            oderoPayButtonView.initNavigationController(named: self.navigationController!)
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.        
+        oderoPayButtonView.addOderoPayButtonOutline(colored: .black)
+        oderoPayButtonView.setOderoPayImageSize(height: 40, width: 80)
+        oderoPayButtonView.initNavigationController(named: self.navigationController!)
+        
+        // to display Payment Page (Common Payment Page) as WebView
+        // OderoPay.changeToWebView(true)
+        
+        OderoPay.setCheckoutForm(
+            to: CheckoutForm(
+                orderNumber: "from_iOS_Package_#2",
+                ofProducts: products.map { product in PaymentItem(named: product.name, for: product.totalPrice)},
+                ofType: .PRODUCT,
+                priceToPayInitial: totalPrice,
+                priceToPayAfterDiscounts: totalPrice,
+                in: .TRY
+            )
+        )
     }
 ```
 
@@ -53,6 +93,57 @@ Code example:
 ```swift
     oderoPayButtonView.initNavigationController(named: self.navigationController!)
 ```
+
+## Setting Checkout Form
+
+`CheckoutForm` has the following initializers
+
+```swift
+   init(
+        orderNumber: String?,
+        ofProducts: [PaymentItem],
+        ofType paymentType: PaymentType,
+        priceToPayInitial: Double,
+        priceToPayAfterDiscounts: Double,
+        in currency: Currency,
+        withExistingWalletBalance: Double? = nil,
+        fromBuyerWithId: Double? = nil,
+        withUserEmail: String? = nil,
+        withUserCardKey: String? = nil
+    )
+```
+
+`PaymentItem` has the following initializers
+
+```swift
+    public init(
+        named name: String,
+        for price: Double,
+        externalId: String? = nil,
+        subMerchantId: Int? = nil,
+        subMerchantPrice: Double? = nil
+    )
+```
+
+`Currency` has values of `AZN`, `TRY`, `USD`, `EURO`
+
+In order to set the checkout form call you can look for the following code example
+
+Code example:
+
+```swift
+    OderoPay.setCheckoutForm(
+        to: CheckoutForm(
+            orderNumber: "from_iOS_Package_#2",
+            ofProducts: products.map { product in PaymentItem(named: product.name, for: product.totalPrice)},
+            ofType: .PRODUCT,
+            priceToPayInitial: totalPrice,
+            priceToPayAfterDiscounts: totalPrice,
+            in: .TRY
+        )
+    )
+```
+
 
 ## Changing OderoPay button color
 
