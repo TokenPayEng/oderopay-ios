@@ -125,6 +125,8 @@ Code example:
     )
 ```
 
+`PaymentType` has values of `PRODUCT`, `LISTING`, `SUBSCRIPTION`
+
 `Currency` has values of `AZN`, `TRY`, `USD`, `EURO`
 
 In order to set the checkout form call you can look for the following code example
