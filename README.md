@@ -9,8 +9,11 @@ In Xcode open `File` => `Add Packages...` => enter this Github repository.
 ## Support
 
 OderoPay supports `Visa`, `Visa Electron`, `MasterCard`, `Maestro` and `American Express` card associations.
+
 OderoPay supports following payment: `Single Card`, `Multiple Cards`
+
 OderoPay supports 3DS Secure Payment
+
 OderoPay supports Card Storage feature
 
 ## Usage
@@ -29,6 +32,7 @@ In your project's `AppDelegate` file add the following code inside the applicati
 ```
 
 `OderoPay.setEnvironment(to: _)` function lets you choose between three environments: `SANDBOX`, `PROD_TR` and `PROD_AZ`
+
 `OderoPay.authorizeWithKeys(apiKey: _, secretKey: _)` function lets you set your specific keys.
 
 Add `View` to your .storyboard file, place it where you would like payment button to appear. In the
