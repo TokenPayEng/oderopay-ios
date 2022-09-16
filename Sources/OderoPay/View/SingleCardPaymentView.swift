@@ -37,7 +37,8 @@ class SingleCardPaymentView: UIView {
                                         expiringAt: singleCardPaymentController!.cardController.cardController.retrieveExpireDate()!.0,
                                         singleCardPaymentController!.cardController.cardController.retrieveExpireDate()!.1,
                                         withCode: singleCardPaymentController!.cardController.cardController.retrieveCVC(),
-                                        belongsTo: singleCardPaymentController!.cardController.cardController.retrieveCardHolder()
+                                        belongsTo: singleCardPaymentController!.cardController.cardController.retrieveCardHolder(),
+                                        shouldBeStored: singleCardPaymentController!.cardController.cardController.retrieveSaveCardChoiceOption()
                                     )
             )
             
@@ -45,8 +46,13 @@ class SingleCardPaymentView: UIView {
 
             Task {
                 do {
+                    let completePaymentFormResponse: CompletePaymentFormResult
                     
-                    let completePaymentFormResponse = try await OderoPay.sendCompletePaymentForm()
+                    if singleCardPaymentController!.cardController.cardController.retrieveForce3DSChoiceOption() {
+                        completePaymentFormResponse = try await OderoPay.sendComplete3DSPaymentForm()
+                    } else {
+                        completePaymentFormResponse = try await OderoPay.sendCompletePaymentForm()
+                    }
                     
                     if completePaymentFormResponse.hasErrors() != nil {
                         print("complete payment form returned with errors --- FAIL ❌")
