@@ -104,7 +104,7 @@ public struct OderoPay {
         request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
         request.setValue(signature, forHTTPHeaderField: "x-signature")
         request.setValue("V1", forHTTPHeaderField: "x-auth-version")
-        request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
+        //request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
         
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
