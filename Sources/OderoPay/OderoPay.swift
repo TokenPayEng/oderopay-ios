@@ -115,11 +115,10 @@ public struct OderoPay {
     }
 
     static internal func retrieveInstallments(for binNumber: String, withPrice price: Double, in currency: Currency) async throws -> RetrieveInstallmentResult {
-        var urlComponents = URLComponents(string: environment.getOOS() + Path.RETRIEVE_INSTALLMENTS.rawValue)!
+        var urlComponents = URLComponents(string: environment.getOOS() + Path.COMMON_PAYMENT_PAGE.rawValue + Action.INSTALLMENTS.rawValue)!
         urlComponents.queryItems = [
             URLQueryItem(name: "binNumber", value: binNumber),
-            URLQueryItem(name: "price", value: String(price)),
-            URLQueryItem(name: "currency", value: currency.rawValue)
+            // URLQueryItem(name: "walletPrice", value: String(price)),
         ]
         
         var request = URLRequest(url: urlComponents.url!)
@@ -135,6 +134,7 @@ public struct OderoPay {
         request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
         request.setValue(signature, forHTTPHeaderField: "x-signature")
         request.setValue("V1", forHTTPHeaderField: "x-auth-version")
+        request.setValue(token, forHTTPHeaderField: "x-token")
         request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
         
         // header default
@@ -177,7 +177,7 @@ public struct OderoPay {
     }
     
     static internal func sendComplete3DSPaymentForm() async throws -> CompletePaymentFormResult {
-        let url = URL(string: environment.getOOS() + Path.COMMON_PAYMENT_PAGE_3DS.rawValue + Action.COMPLETE.rawValue)!
+        let url = URL(string: environment.getOOS() + Path.COMMON_PAYMENT_PAGE.rawValue + Action.THREEDS_INIT.rawValue)!
         var request = URLRequest(url: url)
         
         // method
