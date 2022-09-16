@@ -160,12 +160,12 @@ public struct OderoPay {
         let signature = try generateSignature(for: url.absoluteString, body: String(data: request.httpBody!, encoding: .utf8)!)
         
         // header custom
-        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
-        request.setValue(signature, forHTTPHeaderField: "x-signature")
-        request.setValue("V1", forHTTPHeaderField: "x-auth-version")
+//        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+//        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
+//        request.setValue(signature, forHTTPHeaderField: "x-signature")
+//        request.setValue("V1", forHTTPHeaderField: "x-auth-version")
         request.setValue(token, forHTTPHeaderField: "x-token")
-        request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
+//        request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
         
         print(request.allHTTPHeaderFields)
         
