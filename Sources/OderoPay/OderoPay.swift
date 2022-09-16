@@ -160,21 +160,19 @@ public struct OderoPay {
         let signature = try generateSignature(for: url.absoluteString, body: String(data: request.httpBody!, encoding: .utf8)!)
         
         // header custom
-//        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-//        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
-//        request.setValue(signature, forHTTPHeaderField: "x-signature")
-//        request.setValue("V1", forHTTPHeaderField: "x-auth-version")
+        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
+        request.setValue(signature, forHTTPHeaderField: "x-signature")
+        request.setValue("V1", forHTTPHeaderField: "x-auth-version")
         request.setValue(token, forHTTPHeaderField: "x-token")
-//        request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
-        
-        print(request.allHTTPHeaderFields)
+        request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
         
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)
-        print(String(data: data, encoding: .utf8))
+        print(String(data: data, encoding: .utf8) as Any)
         return try JSONDecoder().decode(CompletePaymentFormResult.self, from: data)
     }
 }
