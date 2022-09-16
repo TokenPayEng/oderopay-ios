@@ -115,7 +115,7 @@ public struct OderoPay {
     }
 
     static internal func retrieveInstallments(for binNumber: String, withPrice price: Double, in currency: Currency) async throws -> RetrieveInstallmentResult {
-        var urlComponents = URLComponents(string: environment.rawValue + Path.RETRIEVE_INSTALLMENTS.rawValue)!
+        var urlComponents = URLComponents(string: environment.getOOS() + Path.RETRIEVE_INSTALLMENTS.rawValue)!
         urlComponents.queryItems = [
             URLQueryItem(name: "binNumber", value: binNumber),
             URLQueryItem(name: "price", value: String(price)),
@@ -146,7 +146,7 @@ public struct OderoPay {
     }
     
     static internal func sendCompletePaymentForm() async throws -> CompletePaymentFormResult {
-        let url = URL(string: environment.rawValue + Path.COMMON_PAYMENT_PAGE.rawValue + Action.COMPLETE.rawValue)!
+        let url = URL(string: environment.getOOS() + Path.COMMON_PAYMENT_PAGE.rawValue + Action.COMPLETE.rawValue)!
         var request = URLRequest(url: url)
         
         // method
@@ -177,7 +177,7 @@ public struct OderoPay {
     }
     
     static internal func sendComplete3DSPaymentForm() async throws -> CompletePaymentFormResult {
-        let url = URL(string: environment.rawValue + Path.COMMON_PAYMENT_PAGE_3DS.rawValue + Action.COMPLETE.rawValue)!
+        let url = URL(string: environment.getOOS() + Path.COMMON_PAYMENT_PAGE_3DS.rawValue + Action.COMPLETE.rawValue)!
         var request = URLRequest(url: url)
         
         // method
