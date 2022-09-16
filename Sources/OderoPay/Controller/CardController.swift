@@ -29,7 +29,7 @@ class CardController {
     private var cvc: String = String()
     private var cardHolder: String = String()
     
-    private var installmentItems: [RetrieveInstallmentItem] = []
+    private var installmentItem: RetrieveInstallmentDataResult? = nil
     private var installmentChoice: Int = 1
     private var block3DSChoice: Bool = false
     private var force3DSChoice: Bool = false
@@ -166,13 +166,13 @@ class CardController {
                 }
             
                 print("retrieving installments...")
-                self.installmentItems = resultFromServer.getItems()
+                self.installmentItem = resultFromServer
                 print("items retrieved ---- SUCCESS ✅")
                 print("installments retrieved for card with bin number: \(updatedCardNumber) ---- SUCCESS ✅\n")
                 
-                self.installmentFound = !self.installmentItems.isEmpty
-                self.force3DSChoice = self.installmentItems.first?.getForce3ds() ?? false
-                self.block3DSChoice = self.installmentItems.first?.getForce3ds() ?? false
+                self.installmentFound = self.installmentItem != nil
+                self.force3DSChoice = self.installmentItem!.getForce3ds()
+                self.block3DSChoice = self.installmentItem!.getForce3ds()
                 self.installmentChoice = 1
 
                 DispatchQueue.main.async {
@@ -196,8 +196,8 @@ class CardController {
         installmentFound
     }
     
-    func retrieveInstallments() -> [RetrieveInstallmentItem] {
-        installmentItems
+    func retrieveInstallment() -> RetrieveInstallmentDataResult? {
+        installmentItem
     }
     
     func toggleForce3DSChoiceOption() {

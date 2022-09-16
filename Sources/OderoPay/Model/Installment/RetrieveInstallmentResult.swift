@@ -21,14 +21,6 @@ public struct RetrieveInstallmentResult: Codable {
 }
 
 public struct RetrieveInstallmentDataResult: Codable {
-    private let items: [RetrieveInstallmentItem]
-    
-    public func getItems() -> [RetrieveInstallmentItem] {
-        items
-    }
-}
-
-public struct RetrieveInstallmentItem: Codable {
     private let binNumber: String
     private let price: Double
     private let cardType: String?

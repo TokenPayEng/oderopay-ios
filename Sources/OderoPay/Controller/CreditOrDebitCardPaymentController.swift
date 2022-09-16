@@ -19,8 +19,8 @@ class CreditOrDebitCardPaymentController: FormProtocol {
     var hasInstallment: Bool {
         cardController.hasInstallments()
     }
-    var installmentItems: [RetrieveInstallmentItem] {
-        hasInstallment ? cardController.retrieveInstallments() : []
+    var installmentItem: RetrieveInstallmentDataResult? {
+        hasInstallment ? cardController.retrieveInstallment() : nil
     }
     
     var isCardValid: Bool {
@@ -37,7 +37,7 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         var calculatingHeight: CGFloat = 220
         
         if hasInstallment {
-            let count = cardController.retrieveInstallments().first!.getInstallmentItems().count
+            let count = cardController.retrieveInstallment()!.getInstallmentItems().count
             calculatingHeight += CGFloat(51 + (60 * count))
         }
         

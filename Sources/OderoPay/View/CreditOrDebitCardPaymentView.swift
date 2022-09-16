@@ -39,7 +39,7 @@ class CreditOrDebitCardPaymentView: UIView {
             if !creditOrDebitCardPaymentController!.installmentsEnabled {
                 installmentView.installmentOptionsStackView.removeFullyAllArrangedSubviews()
                 
-                for installmentItem in creditOrDebitCardPaymentController!.cardController.retrieveInstallments().first!.getInstallmentItems() {
+                for installmentItem in creditOrDebitCardPaymentController!.cardController.retrieveInstallment()!.getInstallmentItems() {
             
                     let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
                     let installmentItemView = InstallmentOptionView()
