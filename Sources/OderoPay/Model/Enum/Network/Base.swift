@@ -9,5 +9,6 @@ import Foundation
 
 public enum APIGateway: String {
     case SANDBOX = "https://sandbox-api-gateway.tokenpay.com.tr"
-    case PROD = "https://api-gateway.tokenpay.com.tr"
+    case PROD_TR = "https://api-gateway.tokenpay.com.tr"
+    case PROD_AZ = "https://api-gateway.odero.az"
 }

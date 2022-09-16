@@ -28,7 +28,7 @@ In your project's `AppDelegate` file add the following code inside the applicati
     }
 ```
 
-`OderoPay.setEnvironment(to: _)` function lets you choose between two environments: `SANDBOX` and `PROD`
+`OderoPay.setEnvironment(to: _)` function lets you choose between three environments: `SANDBOX`, `PROD_TR` and `PROD_AZ`
 `OderoPay.authorizeWithKeys(apiKey: _, secretKey: _)` function lets you set your specific keys.
 
 Add `View` to your .storyboard file, place it where you would like payment button to appear. In the
