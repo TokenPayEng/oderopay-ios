@@ -172,7 +172,7 @@ public struct OderoPay {
         
         // send request
         let (data, _) = try await URLSession.shared.data(with: request)
-        print(data)
+        print(String(data: data, encoding: .utf8))
         return try JSONDecoder().decode(CompletePaymentFormResult.self, from: data)
     }
 }
