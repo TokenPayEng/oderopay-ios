@@ -167,6 +167,8 @@ public struct OderoPay {
         request.setValue(token, forHTTPHeaderField: "x-token")
         request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
         
+        print(request.allHTTPHeaderFields)
+        
         // header default
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
