@@ -46,9 +46,6 @@
                                 </label>
                             </subviews>
                             <gestureRecognizers/>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="FSi-wf-dy2" appends="YES" id="iMb-vU-0X8"/>
-                            </connections>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="RbV-hj-Xf5">
                             <rect key="frame" x="0.0" y="76.5" width="414" height="61.5"/>
@@ -69,9 +66,6 @@
                                 </label>
                             </subviews>
                             <gestureRecognizers/>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="qq4-92-pg8" appends="YES" id="b3W-YA-Rhk"/>
-                            </connections>
                         </stackView>
                     </subviews>
                     <constraints>
@@ -94,16 +88,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="137.68115942028987" y="-154.6875"/>
         </view>
-        <tapGestureRecognizer id="FSi-wf-dy2">
-            <connections>
-                <action selector="threeDSClicked:" destination="-1" id="xeA-r3-nAb"/>
-            </connections>
-        </tapGestureRecognizer>
-        <tapGestureRecognizer id="qq4-92-pg8">
-            <connections>
-                <action selector="saveCardClicked:" destination="-1" id="HkE-2X-yW5"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="square" catalog="system" width="128" height="114"/>

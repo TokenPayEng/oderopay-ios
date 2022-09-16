@@ -87,17 +87,23 @@ class CreditOrDebitCardPaymentView: UIView {
         }
         
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
-        optionsView.threeDSSelected = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
-        optionsView.block3DSChoice = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
-
-        optionsView.saveCardSelected = true
         
-        if optionsView.threeDSSelected {
-            optionsView.threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
-            optionsView.threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+        if !creditOrDebitCardPaymentController!.cardController.retrieveBlock3DSChoiceOption() {
+            if creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption() {
+                optionsView.threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
+                optionsView.threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
+            } else {
+                optionsView.threeDSCheckImageView.image = UIImage(systemName: "square")
+                optionsView.threeDSCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+            }
+        }
+        
+        if creditOrDebitCardPaymentController!.cardController.retrieveSaveCardChoiceOption() {
+            optionsView.saveCardCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
+            optionsView.saveCardCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
         } else {
-            optionsView.threeDSCheckImageView.image = UIImage(systemName: "square")
-            optionsView.threeDSCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+            optionsView.saveCardCheckImageView.image = UIImage(systemName: "square")
+            optionsView.saveCardCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
         }
     }
     
@@ -111,8 +117,13 @@ class CreditOrDebitCardPaymentView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
+        
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
-        optionsView.threeDSSelected = creditOrDebitCardPaymentController!.cardController.retrieveForce3DSChoiceOption()
+        
+        let tapSave = UITapGestureRecognizer(target: self, action: #selector(self.handleTapSave(_:)))
+        let tap3DS = UITapGestureRecognizer(target: self, action: #selector(self.handleTap3DS(_:)))
+        optionsView.saveCardChoiceStackView.addGestureRecognizer(tapSave)
+        optionsView.threeDSChoiceStackView.addGestureRecognizer(tap3DS)
         
         makePaymentButton.layer.cornerRadius = 8
         makePaymentButton.setTitle(
@@ -130,6 +141,18 @@ class CreditOrDebitCardPaymentView: UIView {
             creditOrDebitCardPaymentController!.cardController.setInstallmentChoice(tag)
             print(tag)
         }
+        
+        layoutSubviews()
+    }
+    
+    @objc func handleTapSave(_ sender: UITapGestureRecognizer) {
+        creditOrDebitCardPaymentController!.cardController.toggleSaveCardChoiceOption()
+        
+        layoutSubviews()
+    }
+    
+    @objc func handleTap3DS(_ sender: UITapGestureRecognizer) {
+        creditOrDebitCardPaymentController!.cardController.toggleForce3DSChoiceOption()
         
         layoutSubviews()
     }

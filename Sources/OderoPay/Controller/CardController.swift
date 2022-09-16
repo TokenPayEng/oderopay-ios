@@ -31,6 +31,7 @@ class CardController {
     
     private var installmentItems: [RetrieveInstallmentItem] = []
     private var installmentChoice: Int = 1
+    private var block3DSChoice: Bool = false
     private var force3DSChoice: Bool = false
     private var saveCardChoice: Bool = false
     
@@ -122,6 +123,7 @@ class CardController {
         if currentCardNumber.count == 6 && updatedCardNumber.count == 5 {
             self.installmentFound = false
             self.force3DSChoice = false
+            self.block3DSChoice = false
             self.installmentChoice = 1
             
             NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
@@ -143,6 +145,7 @@ class CardController {
                     print("Error code: \(String(describing: retrieveInstallmentsResponse.hasErrors()?.getErrorCode()))")
                     print("Error description: \(String(describing: retrieveInstallmentsResponse.hasErrors()?.getErrorDescription()))")
                     
+                    self.block3DSChoice = false
                     self.installmentFound = false
                     self.force3DSChoice = false
                     self.installmentChoice = 1
@@ -154,6 +157,7 @@ class CardController {
                     print("Error occured ---- FAIL ❌")
                     print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
                     
+                    self.block3DSChoice = false
                     self.installmentFound = false
                     self.force3DSChoice = false
                     self.installmentChoice = 1
@@ -168,6 +172,7 @@ class CardController {
                 
                 self.installmentFound = !self.installmentItems.isEmpty
                 self.force3DSChoice = self.installmentItems.first?.getForce3ds() ?? false
+                self.block3DSChoice = self.installmentItems.first?.getForce3ds() ?? false
                 self.installmentChoice = 1
 
                 DispatchQueue.main.async {
@@ -178,6 +183,7 @@ class CardController {
                 print("network error occured ---- FAIL ❌")
                 print("HINT: \(error)")
                 self.installmentFound = false
+                self.force3DSChoice = false
                 self.force3DSChoice = false
                 self.installmentChoice = 1
                 
@@ -194,16 +200,20 @@ class CardController {
         installmentItems
     }
     
-    func setForce3DSChoiceOption(to choice: Bool) {
-        force3DSChoice = choice
+    func toggleForce3DSChoiceOption() {
+        force3DSChoice.toggle()
+    }
+    
+    func toggleSaveCardChoiceOption() {
+        saveCardChoice.toggle()
+    }
+    
+    func retrieveBlock3DSChoiceOption() -> Bool {
+        block3DSChoice
     }
     
     func retrieveForce3DSChoiceOption() -> Bool {
         force3DSChoice
-    }
-    
-    func setSaveCardChoiceOption(to choice: Bool) {
-        saveCardChoice = choice
     }
     
     func retrieveSaveCardChoiceOption() -> Bool {

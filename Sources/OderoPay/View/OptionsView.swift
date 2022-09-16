@@ -8,10 +8,6 @@
 import UIKit
 
 class OptionsView: UIView {
-
-    var threeDSSelected: Bool = false
-    var block3DSChoice: Bool = false
-    var saveCardSelected: Bool = false
     
     @IBOutlet var contentView: UIView!
     
@@ -42,31 +38,5 @@ class OptionsView: UIView {
         threeDSLabel.text = NSLocalizedString("3dsPrompt", bundle: .module, comment: "Use 3DS Prompt")
         saveCardLabel.text = NSLocalizedString("saveCardPrompt", bundle: .module, comment: "Save Card Prompt")
 
-    }
-    
-    @IBAction func threeDSClicked(_ sender: UITapGestureRecognizer) {
-        if !block3DSChoice {
-            threeDSSelected.toggle()
-            
-            if threeDSSelected {
-                threeDSCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
-                threeDSCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
-            } else {
-                threeDSCheckImageView.image = UIImage(systemName: "square")
-                threeDSCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
-            }
-        }
-    }
-    
-    @IBAction func saveCardClicked(_ sender: UITapGestureRecognizer) {
-        saveCardSelected.toggle()
-        
-        if saveCardSelected {
-            saveCardCheckImageView.image = UIImage(systemName: "checkmark.square.fill")
-            saveCardCheckImageView.tintColor = UIColor.init(red: 53/255, green: 211/255, blue: 47/255, alpha: 1)
-        } else {
-            saveCardCheckImageView.image = UIImage(systemName: "square")
-            saveCardCheckImageView.tintColor = UIColor.init(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
-        }
     }
 }
