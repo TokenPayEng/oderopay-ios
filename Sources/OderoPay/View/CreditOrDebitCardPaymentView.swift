@@ -141,23 +141,6 @@ class CreditOrDebitCardPaymentView: UIView {
             showErrorAlert(ofType: .MISSING_DATA, .CARD)
         }
     }
-    
-    func showErrorAlert(ofType type: ErrorTypes, _ description: ErrorDescriptions) {
-        let alert = UIAlertController(
-            title: ErrorTypes.getLocalized(type),
-            message: ErrorDescriptions.getLocalized(description),
-            preferredStyle: .alert
-        )
-        
-        alert.addAction(
-            UIAlertAction(
-                title: "OK",
-                style: .default,
-                handler: { (_) in })
-        )
-        
-        findViewController()?.present(alert, animated: true, completion: nil)
-    }
 }
 
 extension UIStackView {

@@ -92,23 +92,6 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
         }
     }
     
-    func showErrorAlert(ofType type: ErrorTypes, _ description: ErrorDescriptions) {
-        let alert = UIAlertController(
-            title: ErrorTypes.getLocalized(type),
-            message: ErrorDescriptions.getLocalized(description),
-            preferredStyle: .alert
-        )
-        
-        alert.addAction(
-            UIAlertAction(
-                title: "OK",
-                style: .default,
-                handler: { (_) in })
-        )
-        
-        navigationController?.topViewController?.present(alert, animated: true, completion: nil)
-    }
-    
     // --------------------------------------------------------
     
     private func commonInit() {
@@ -243,5 +226,22 @@ extension UIView {
         } else {
             return nil
         }
+    }
+    
+    func showErrorAlert(ofType type: ErrorTypes, _ description: ErrorDescriptions) {
+        let alert = UIAlertController(
+            title: ErrorTypes.getLocalized(type),
+            message: ErrorDescriptions.getLocalized(description),
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: .default,
+                handler: { (_) in })
+        )
+        
+        findViewController()?.present(alert, animated: true, completion: nil)
     }
 }
