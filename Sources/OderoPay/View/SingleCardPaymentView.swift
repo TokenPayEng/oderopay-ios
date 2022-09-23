@@ -79,7 +79,7 @@ class SingleCardPaymentView: UIView {
                     print(content)
                     print("complete payment form sent ---- SUCCESS ✅\n")
                     
-                    OderoPay.setPaymentStatus(to: content.contains("success"))
+                    OderoPay.setPaymentStatus(to: !content.contains("error"))
                     
                     NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
                 } catch {
