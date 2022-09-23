@@ -59,7 +59,7 @@ class SingleCardPaymentView: UIView {
                         print("Error code: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorCode()))")
                         print("Error description: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorDescription()))")
 
-                        showErrorAlert(ofType: .MISSING_DATA, .NOW)
+                        showErrorAlert(ofType: .SERVER, .NOW)
 
                         return
                     }
