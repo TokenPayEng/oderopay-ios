@@ -302,7 +302,11 @@ class CardController {
     }
     
     func isCardInfoValid() -> Bool {
-        isValidCard && isValidExpire && isValidCVC && isValidName
+        print(isValidCard)
+        print(isValidExpire)
+        print(isValidCVC)
+        print(isValidName)
+        return isValidCard && isValidExpire && isValidCVC && isValidName
     }
     
     func luhnAlgorithm(_ number: String) -> Bool {
