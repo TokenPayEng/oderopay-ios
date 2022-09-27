@@ -9,10 +9,14 @@ public struct OderoPay {
     static private var token = String()
     static private var iOSHeader = String("IOSMOBILSDK")
     
+    static private var asWebView: Bool = false
+    
+    static private var singleCardPaymentEnabled: Bool = true
+    static private var multipleCardsPaymentEnabled: Bool = true
+    static private var tokenFlexPaymentEnabled: Bool = false
+    
     static private var checkoutForm = CheckoutForm()
     static private var completePaymentForm = CompletePaymentForm()
-    
-    static private var asWebView: Bool = false
     
     static private var paymentCompleted: Bool = false
     
@@ -22,6 +26,45 @@ public struct OderoPay {
     
     static internal func isPaymentCompleted() -> Bool {
         self.paymentCompleted
+    }
+    
+    // single card toggle
+    static internal func isSingleCardPaymentEnabled() -> Bool {
+        self.singleCardPaymentEnabled
+    }
+    
+    static public func enableSingleCardPayment() {
+        self.singleCardPaymentEnabled = true
+    }
+    
+    static public func disableSingleCardPayment() {
+        self.singleCardPaymentEnabled = false
+    }
+    
+    // multiple cards toggle
+    static internal func isMultipleCardsPaymentEnabled() -> Bool {
+        self.multipleCardsPaymentEnabled
+    }
+    
+    static public func enableMultipleCardsPayment() {
+        self.multipleCardsPaymentEnabled = true
+    }
+    
+    static public func disableMultipleCardsPayment() {
+        self.multipleCardsPaymentEnabled = false
+    }
+    
+    //  token flex toggle
+    static internal func isTokenFlexPaymentEnabled() -> Bool {
+        self.tokenFlexPaymentEnabled
+    }
+    
+    static public func enableTokenFlexPayment() {
+        self.tokenFlexPaymentEnabled = true
+    }
+    
+    static public func disableTokenFlexPayment() {
+        self.tokenFlexPaymentEnabled = false
     }
     
     static internal func assignRetrievedToken(withValue token: String) {

@@ -10,7 +10,7 @@ In Xcode open `File` => `Add Packages...` => enter this Github repository.
 
 OderoPay supports `Visa`, `Visa Electron`, `MasterCard`, `Maestro` and `American Express` card associations.
 
-OderoPay supports following payment: `Single Card`, `Multiple Cards`
+OderoPay supports following payment: `Single Card`, `Multiple Cards`, `TokenFlex`
 
 OderoPay supports 3DS Secure Payment
 
@@ -81,6 +81,22 @@ Code example:
 ## Functionality and Customizability
 
 OderoPay Swift Package comes with UI customizability and detailed description of functionality. First comes customizability of the Common Payment Page, next functionality description.
+
+## Enabling and Disabling Payment Methods
+
+As it was stated OderoPay Swift Package supports following payments - `Single Card`, `Multiple Cards`, `TokenFlex`. In order to enable or disable the payment methods you can use specific functions listed below.
+
+List of functions:
+
+```swift
+    OderoPay.enableSingleCardPayment()
+    OderoPay.enableMultipleCardsPayment()
+    OderoPay.enableTokenFlexPayment()
+    
+    OderoPay.disableSingleCardPayment()
+    OderoPay.disableMultipleCardsPayment()
+    OderoPay.disableTokenFlexPayment()
+```
 
 ## Navigating to Common Payment Page using OderoPay button
 

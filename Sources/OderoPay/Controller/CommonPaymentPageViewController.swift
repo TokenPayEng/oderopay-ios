@@ -92,20 +92,14 @@ public class CommonPaymentPageViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var confirmPaymentButton: UIButton! {
-        didSet {
-            confirmPaymentButton.layer.cornerRadius = 6
-            confirmPaymentButton.setTitle(
-                NSLocalizedString("makePayment",
-                                  bundle: Bundle.module,
-                                  comment: "make payment with chosen payment method"),
-                for: .normal)
-        }
-    }
     @IBOutlet weak var scrollView: UIScrollView!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        creditCardOrDebitCardButton.isHidden = !OderoPay.isSingleCardPaymentEnabled()
+        multipleCreditCardsButton.isHidden = !OderoPay.isMultipleCardsPaymentEnabled()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateHeights), name: NSNotification.Name(rawValue: "updateHeights"), object: nil)
