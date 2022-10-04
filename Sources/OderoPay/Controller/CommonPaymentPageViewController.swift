@@ -102,8 +102,8 @@ public class CommonPaymentPageViewController: UIViewController {
         super.viewDidLoad()
         
         creditCardOrDebitCardButton.isHidden = !OderoPay.isSingleCardPaymentEnabled()
-        singleAndMultipleDivider.isHidden = !OderoPay.isSingleCardPaymentEnabled()
         multipleCreditCardsButton.isHidden = !OderoPay.isMultipleCardsPaymentEnabled()
+        singleAndMultipleDivider.isHidden = !OderoPay.isSingleCardPaymentEnabled() || !OderoPay.isMultipleCardsPaymentEnabled()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
