@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="D4J-4J-1RS" userLabel="MainView">
-                    <rect key="frame" x="0.0" y="0.0" width="386" height="746"/>
+                    <rect key="frame" x="15" y="0.0" width="346" height="746"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dAv-YE-pAd" userLabel="Stepper">
                             <rect key="frame" x="0.0" y="0.0" width="30" height="746"/>
@@ -72,13 +72,13 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rQX-Cy-n9C" userLabel="Cards">
-                            <rect key="frame" x="40" y="0.0" width="346" height="746"/>
+                            <rect key="frame" x="40" y="0.0" width="306" height="746"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="li3-oC-ap2" userLabel="Amount &amp; Label 1">
-                                    <rect key="frame" x="0.0" y="0.0" width="346" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="306" height="60"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aq4-hT-vc9">
-                                            <rect key="frame" x="0.0" y="0.0" width="346" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="306" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="he1-8X-Da5"/>
                                             </constraints>
@@ -86,7 +86,7 @@
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="next"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3s-Tp-Vu2">
-                                            <rect key="frame" x="0.0" y="50" width="346" height="10"/>
+                                            <rect key="frame" x="0.0" y="50" width="306" height="10"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -97,21 +97,21 @@
                                     </constraints>
                                 </stackView>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GyA-Ue-tB7" customClass="CreditOrDebitCardPaymentView" customModule="OderoPay">
-                                    <rect key="frame" x="0.0" y="75" width="346" height="350"/>
+                                    <rect key="frame" x="0.0" y="75" width="306" height="350"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ds7-ip-sd7" userLabel="Horizontal Divider">
-                                    <rect key="frame" x="0.0" y="440" width="346" height="1"/>
+                                    <rect key="frame" x="0.0" y="440" width="306" height="1"/>
                                     <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="XJO-9v-p28"/>
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-eI-xSz" userLabel="Amount &amp; Label 2">
-                                    <rect key="frame" x="0.0" y="456" width="346" height="60"/>
+                                    <rect key="frame" x="0.0" y="456" width="306" height="60"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-9x-x7d">
-                                            <rect key="frame" x="0.0" y="0.0" width="346" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="306" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="dQs-E6-yxO"/>
                                             </constraints>
@@ -119,7 +119,7 @@
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Amount to be withdrawn from the second card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXp-nh-i3Y">
-                                            <rect key="frame" x="0.0" y="50" width="346" height="10"/>
+                                            <rect key="frame" x="0.0" y="50" width="306" height="10"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -130,7 +130,7 @@
                                     </constraints>
                                 </stackView>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XEv-Dd-SpL" customClass="CreditOrDebitCardPaymentView" customModule="OderoPay">
-                                    <rect key="frame" x="0.0" y="531" width="346" height="215"/>
+                                    <rect key="frame" x="0.0" y="531" width="306" height="215"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                             </subviews>
@@ -142,16 +142,16 @@
             <constraints>
                 <constraint firstItem="D4J-4J-1RS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1l3-pX-CZB"/>
                 <constraint firstAttribute="bottom" secondItem="D4J-4J-1RS" secondAttribute="bottom" priority="999" id="6jj-rV-Kcv"/>
-                <constraint firstAttribute="trailing" secondItem="D4J-4J-1RS" secondAttribute="trailing" id="Py7-ba-BOY"/>
-                <constraint firstItem="D4J-4J-1RS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="S0i-48-3Gc"/>
+                <constraint firstAttribute="trailing" secondItem="D4J-4J-1RS" secondAttribute="trailing" constant="25" id="Py7-ba-BOY"/>
+                <constraint firstItem="D4J-4J-1RS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="S0i-48-3Gc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-397.10144927536237" y="-220.98214285714286"/>
         </view>
     </objects>
     <resources>
-        <image name="1.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="2.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="1.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="2.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
