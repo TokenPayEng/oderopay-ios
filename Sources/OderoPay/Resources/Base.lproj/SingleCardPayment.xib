@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Y3-6d-yUu" customClass="CreditOrDebitCardPaymentView" customModule="OderoPay">
-                    <rect key="frame" x="25" y="0.0" width="364" height="487"/>
+                    <rect key="frame" x="35" y="0.0" width="344" height="487"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
@@ -28,8 +28,8 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="7Y3-6d-yUu" secondAttribute="bottom" id="AnK-ZU-JAi"/>
                 <constraint firstItem="7Y3-6d-yUu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FtV-t6-bCw"/>
-                <constraint firstItem="7Y3-6d-yUu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="ajP-Tl-oq2"/>
-                <constraint firstAttribute="trailing" secondItem="7Y3-6d-yUu" secondAttribute="trailing" constant="25" id="ofZ-SB-0Gu"/>
+                <constraint firstItem="7Y3-6d-yUu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="ajP-Tl-oq2"/>
+                <constraint firstAttribute="trailing" secondItem="7Y3-6d-yUu" secondAttribute="trailing" constant="35" id="ofZ-SB-0Gu"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="131.8840579710145" y="233.37053571428569"/>
