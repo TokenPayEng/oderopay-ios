@@ -8,14 +8,14 @@
 import Foundation
 
 public enum APIGateway: String {
-    case SANDBOX = "https://sandbox-api-gateway.tokenpay.com.tr"
+    case SANDBOX = "https://sandbox-api-gateway.oderopay.com.tr"
     case PROD_TR = "https://api-gateway.oderopay.com.tr"
     case PROD_AZ = "https://api-gateway.odero.az"
     
     func getOOS() -> String {
         switch self {
         case .SANDBOX:
-            return "https://sandbox-oos.tokenpay.com.tr"
+            return "https://sandbox-oos.oderopay.com.tr"
         case .PROD_TR:
             return "https://oos.oderopay.com.tr"
         case .PROD_AZ:
