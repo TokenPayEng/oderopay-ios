@@ -48,17 +48,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pGW-6o-moo" userLabel="Payment Method">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pGW-6o-moo" userLabel="Payment Method">
                                 <rect key="frame" x="0.0" y="171" width="393" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Method" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkD-Gd-ecN">
-                                        <rect key="frame" x="20" y="10" width="223" height="30"/>
+                                        <rect key="frame" x="20" y="10" width="176.66666666666666" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="odero-logo" translatesAutoresizingMaskIntoConstraints="NO" id="ps8-cb-BJn">
-                                        <rect key="frame" x="263" y="10" width="130" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="odero-logo-tr" translatesAutoresizingMaskIntoConstraints="NO" id="ps8-cb-BJn">
+                                        <rect key="frame" x="216.66666666666663" y="10" width="176.33333333333337" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="hol-rs-91Q"/>
                                             <constraint firstAttribute="width" constant="130" id="t8R-XH-ENU"/>
@@ -66,9 +66,6 @@
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="JfB-EP-n4B"/>
-                                </constraints>
                                 <edgeInsets key="layoutMargins" top="10" left="20" bottom="10" right="0.0"/>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ms6-OV-ZKm">
@@ -201,7 +198,7 @@
     <resources>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
-        <image name="odero-logo" width="126" height="46"/>
+        <image name="odero-logo-tr" width="124" height="31"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
