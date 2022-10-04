@@ -102,6 +102,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" id="24l-1t-6Uw" userLabel="Single Card View Height Constraint"/>
                                                         </constraints>
+                                                        <edgeInsets key="layoutMargins" top="0.0" left="25" bottom="0.0" right="25"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LtQ-yj-jgd" userLabel="Custom Divider">
                                                         <rect key="frame" x="0.0" y="62" width="393" height="10"/>
