@@ -23,3 +23,23 @@ public enum APIGateway: String {
         }
     }
 }
+
+public enum Environment {
+    case SANDBOX_TR
+    case SANDBOX_AZ
+    case PROD_TR
+    case PROD_AZ
+    
+    func getBaseURL() -> APIGateway {
+        switch self {
+        case .SANDBOX_TR:
+            return APIGateway.SANDBOX
+        case .SANDBOX_AZ:
+            return APIGateway.SANDBOX
+        case .PROD_TR:
+            return APIGateway.PROD_TR
+        case .PROD_AZ:
+            return APIGateway.PROD_AZ
+        }
+    }
+}

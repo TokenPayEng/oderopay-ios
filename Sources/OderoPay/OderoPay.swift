@@ -2,7 +2,7 @@ import Foundation
 import CryptoKit
 
 public struct OderoPay {
-    static private var environment = APIGateway.SANDBOX
+    static private var environment = Environment.SANDBOX_AZ.getBaseURL()
     static private var apiKey = String()
     static private var secretKey = String()
     static private var randomKey = String()
@@ -76,8 +76,8 @@ public struct OderoPay {
         self.secretKey = secretKey
     }
     
-    static public func setEnvironment(to environment: APIGateway) {
-        self.environment = environment
+    static public func setEnvironment(to environment: Environment) {
+        self.environment = environment.getBaseURL()
     }
     
     static internal func assignRandomKey(using key: String) {
