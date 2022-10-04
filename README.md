@@ -167,9 +167,9 @@ Code example:
 ```
 
 
-## Changing OderoPay button color
+## Changing OderoPay button color (Currently AZ Version Only)
 
-OderoPay button color comes in two variations: black and white. You can also add button outline to the button itself. It's recommended to use black color variation or white color with black outline variation for light backgrounds, and white color variation for the dark backgrounds.
+OderoPay button color in Azerbaijan (for now) comes in two variations: black and white. You can also add button outline to the button itself. It's recommended to use black color variation or white color with black outline variation for light backgrounds, and white color variation for the dark backgrounds.
 
 Function header:
 
