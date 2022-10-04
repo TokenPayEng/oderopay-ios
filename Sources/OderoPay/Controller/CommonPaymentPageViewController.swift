@@ -34,6 +34,10 @@ public class CommonPaymentPageViewController: UIViewController {
         }
     }
     
+    // ---------------------Vertical Divider-------------------------
+    
+    @IBOutlet weak var singleAndMultipleDivider: UIView!
+    
     // ---------------------MultipleCardPayment----------------------
     @IBOutlet weak var multipleCardsView: MultipleCardsPaymentView! {
         didSet {
@@ -98,6 +102,7 @@ public class CommonPaymentPageViewController: UIViewController {
         super.viewDidLoad()
         
         creditCardOrDebitCardButton.isHidden = !OderoPay.isSingleCardPaymentEnabled()
+        singleAndMultipleDivider.isHidden = !OderoPay.isSingleCardPaymentEnabled()
         multipleCreditCardsButton.isHidden = !OderoPay.isMultipleCardsPaymentEnabled()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

@@ -185,6 +185,7 @@
                         <outlet property="multipleCreditCardsButton" destination="oyD-Vs-TKn" id="M4j-HI-LcI"/>
                         <outlet property="paymentMethodLabel" destination="mkD-Gd-ecN" id="G9X-7e-SQq"/>
                         <outlet property="scrollView" destination="ms6-OV-ZKm" id="21j-da-rYT"/>
+                        <outlet property="singleAndMultipleDivider" destination="LtQ-yj-jgd" id="Gnn-7G-aK5"/>
                         <outlet property="singleCardView" destination="mD7-Ni-MbP" id="W3J-Xz-g0w"/>
                         <outlet property="singleCardViewHeightConstraint" destination="24l-1t-6Uw" id="NEP-sX-FuP"/>
                         <outlet property="totalPriceLabel" destination="xAV-Be-ZQE" id="X4Y-0J-sU4"/>
