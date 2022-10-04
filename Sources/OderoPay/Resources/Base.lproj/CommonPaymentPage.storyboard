@@ -75,79 +75,72 @@
                                 <rect key="frame" x="0.0" y="261" width="393" height="557"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-ew-psv" userLabel="Payment Options">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="154"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="134"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0C-VT-AcG">
-                                                <rect key="frame" x="20" y="0.0" width="353" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="ceu-zi-nkf"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Credit Card or Debit Card" image="chevron.down" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="collapseCreditOrDebitSection:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RCq-vf-LeO"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mD7-Ni-MbP" userLabel="Single Card View" customClass="SingleCardPaymentView" customModule="OderoPay">
-                                                <rect key="frame" x="55" y="42" width="283" height="0.0"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" id="24l-1t-6Uw" userLabel="Single Card View Height Constraint"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LtQ-yj-jgd" userLabel="Custom Divider">
-                                                <rect key="frame" x="0.0" y="62" width="393" height="10"/>
-                                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="10" id="tCr-0y-74B"/>
-                                                </constraints>
-                                            </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyD-Vs-TKn">
-                                                <rect key="frame" x="20" y="92" width="353" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="8x4-T5-oUM"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Multiple Credit Cards" image="chevron.down" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="collapseMultipleCreditSection:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xhz-LA-Dso"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2B-NF-SFB" customClass="MultipleCardsPaymentView" customModule="OderoPay">
-                                                <rect key="frame" x="15" y="134" width="323" height="0.0"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" id="Bso-AA-IuS"/>
-                                                </constraints>
-                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="n6k-iz-DQR">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="134"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0C-VT-AcG">
+                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="22" id="ceu-zi-nkf"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Credit Card or Debit Card" image="chevron.down" catalog="system">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="collapseCreditOrDebitSection:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RCq-vf-LeO"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mD7-Ni-MbP" userLabel="Single Card View" customClass="SingleCardPaymentView" customModule="OderoPay">
+                                                        <rect key="frame" x="0.0" y="42" width="393" height="0.0"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" id="24l-1t-6Uw" userLabel="Single Card View Height Constraint"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LtQ-yj-jgd" userLabel="Custom Divider">
+                                                        <rect key="frame" x="0.0" y="62" width="393" height="10"/>
+                                                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="10" id="tCr-0y-74B"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyD-Vs-TKn">
+                                                        <rect key="frame" x="0.0" y="92" width="393" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="22" id="8x4-T5-oUM"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Multiple Credit Cards" image="chevron.down" catalog="system">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="collapseMultipleCreditSection:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xhz-LA-Dso"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2B-NF-SFB" customClass="MultipleCardsPaymentView" customModule="OderoPay">
+                                                        <rect key="frame" x="0.0" y="134" width="393" height="0.0"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" id="Bso-AA-IuS"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="m2B-NF-SFB" secondAttribute="bottom" constant="20" id="3Be-gf-6dP"/>
-                                            <constraint firstItem="u0C-VT-AcG" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="20" id="8HZ-ad-Tzv"/>
-                                            <constraint firstItem="u0C-VT-AcG" firstAttribute="top" secondItem="dUD-ew-psv" secondAttribute="top" id="A6q-gy-Sho"/>
-                                            <constraint firstAttribute="trailing" secondItem="mD7-Ni-MbP" secondAttribute="trailing" constant="55" id="E29-UR-8NS"/>
-                                            <constraint firstItem="m2B-NF-SFB" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="15" id="GOj-xV-gkR"/>
-                                            <constraint firstItem="LtQ-yj-jgd" firstAttribute="top" secondItem="mD7-Ni-MbP" secondAttribute="bottom" constant="20" id="L3f-Wd-ZxU"/>
-                                            <constraint firstItem="mD7-Ni-MbP" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="55" id="MfB-5q-WWp"/>
-                                            <constraint firstItem="mD7-Ni-MbP" firstAttribute="top" secondItem="u0C-VT-AcG" secondAttribute="bottom" constant="20" id="UzC-yN-296"/>
-                                            <constraint firstItem="oyD-Vs-TKn" firstAttribute="top" secondItem="LtQ-yj-jgd" secondAttribute="bottom" constant="20" id="W1z-Z7-4gi"/>
-                                            <constraint firstItem="oyD-Vs-TKn" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" constant="20" id="bam-u4-8wJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="oyD-Vs-TKn" secondAttribute="trailing" constant="20" id="dhB-Qp-QMz"/>
-                                            <constraint firstAttribute="trailing" secondItem="u0C-VT-AcG" secondAttribute="trailing" constant="20" id="dkE-0o-yqP"/>
-                                            <constraint firstItem="m2B-NF-SFB" firstAttribute="top" secondItem="oyD-Vs-TKn" secondAttribute="bottom" constant="20" id="oDx-0a-02x"/>
-                                            <constraint firstItem="LtQ-yj-jgd" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" id="qSU-6C-afM"/>
-                                            <constraint firstAttribute="trailing" secondItem="m2B-NF-SFB" secondAttribute="trailing" constant="55" id="uOO-jO-FQx"/>
-                                            <constraint firstAttribute="trailing" secondItem="LtQ-yj-jgd" secondAttribute="trailing" id="wDh-1o-022"/>
+                                            <constraint firstItem="n6k-iz-DQR" firstAttribute="leading" secondItem="dUD-ew-psv" secondAttribute="leading" id="7gz-vh-rYe"/>
+                                            <constraint firstItem="n6k-iz-DQR" firstAttribute="top" secondItem="dUD-ew-psv" secondAttribute="top" id="AIs-cu-dSA"/>
+                                            <constraint firstAttribute="bottom" secondItem="n6k-iz-DQR" secondAttribute="bottom" id="JC5-5P-Thb"/>
+                                            <constraint firstAttribute="trailing" secondItem="n6k-iz-DQR" secondAttribute="trailing" id="hoi-aQ-cXT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
