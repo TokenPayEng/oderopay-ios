@@ -47,14 +47,16 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
     }
     
     public func changeDefaultColor(fromWhiteToBlack value: Bool) {
-        if value {
-            oderoPayImageView.image = UIImage(named: "odero-pay-white", in: .module, compatibleWith: nil)
-            oderoPayButton.tintColor = .black
-            oderoPayButton.backgroundColor = .black
-        } else {
-            oderoPayImageView.image = UIImage(named: "odero-pay-black", in: .module, compatibleWith: nil)
-            oderoPayButton.tintColor = .white
-            oderoPayButton.backgroundColor = .white
+        if OderoPay.getEnvironment() == .PROD_AZ || OderoPay.getEnvironment() == .SANDBOX_AZ {
+            if value {
+                oderoPayImageView.image = UIImage(named: "odero-pay-white", in: .module, compatibleWith: nil)
+                oderoPayButton.tintColor = .black
+                oderoPayButton.backgroundColor = .black
+            } else {
+                oderoPayImageView.image = UIImage(named: "odero-pay-black", in: .module, compatibleWith: nil)
+                oderoPayButton.tintColor = .white
+                oderoPayButton.backgroundColor = .white
+            }
         }
     }
     
@@ -99,6 +101,21 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        var logoImageName: String
+        
+        switch OderoPay.getEnvironment() {
+        case .PROD_AZ:
+            logoImageName = "odero-pay-black"
+        case .PROD_TR:
+            logoImageName = "odero-logo-tr"
+        case .SANDBOX_AZ:
+            logoImageName = "odero-pay-black"
+        case .SANDBOX_TR:
+            logoImageName = "odero-logo-tr"
+        }
+        
+        oderoPayImageView.image = UIImage(named: logoImageName, in: .module, with: nil)
     }
     
     @IBAction func initCommonPaymentPage(_ sender: Any) {
