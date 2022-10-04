@@ -12,7 +12,7 @@ public enum APIGateway: String {
     case PROD_TR = "https://api-gateway.oderopay.com.tr"
     case PROD_AZ = "https://api-gateway.odero.az"
     
-    func getOOS() -> String {
+    func getBaseURL() -> String {
         switch self {
         case .SANDBOX:
             return "https://sandbox-oos.oderopay.com.tr"
@@ -30,7 +30,7 @@ public enum Environment {
     case PROD_TR
     case PROD_AZ
     
-    func getBaseURL() -> APIGateway {
+    func getGateway() -> APIGateway {
         switch self {
         case .SANDBOX_TR:
             return APIGateway.SANDBOX

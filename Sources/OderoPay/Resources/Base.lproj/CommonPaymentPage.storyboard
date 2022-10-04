@@ -180,6 +180,7 @@
                     </view>
                     <connections>
                         <outlet property="creditCardOrDebitCardButton" destination="u0C-VT-AcG" id="vif-jk-oC9"/>
+                        <outlet property="logoImageView" destination="ps8-cb-BJn" id="g2a-yl-ysR"/>
                         <outlet property="multipleCardsView" destination="m2B-NF-SFB" id="bHK-Zz-rgY"/>
                         <outlet property="multipleCardsViewHeightConstraint" destination="Bso-AA-IuS" id="vfI-hC-I4L"/>
                         <outlet property="multipleCreditCardsButton" destination="oyD-Vs-TKn" id="M4j-HI-LcI"/>

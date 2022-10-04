@@ -2,7 +2,7 @@ import Foundation
 import CryptoKit
 
 public struct OderoPay {
-    static private var environment = Environment.SANDBOX_AZ.getBaseURL()
+    static private var environment = Environment.SANDBOX_AZ
     static private var apiKey = String()
     static private var secretKey = String()
     static private var randomKey = String()
@@ -77,7 +77,11 @@ public struct OderoPay {
     }
     
     static public func setEnvironment(to environment: Environment) {
-        self.environment = environment.getBaseURL()
+        self.environment = environment
+    }
+    
+    static internal func getEnvironment() -> Environment {
+        self.environment
     }
     
     static internal func assignRandomKey(using key: String) {
@@ -158,7 +162,7 @@ public struct OderoPay {
     }
 
     static internal func retrieveInstallments(for binNumber: String, withPrice price: Double, in currency: Currency) async throws -> RetrieveInstallmentResult {
-        var urlComponents = URLComponents(string: environment.getOOS() + Path.COMMON_PAYMENT_PAGE.rawValue + Action.INSTALLMENTS.rawValue)!
+        var urlComponents = URLComponents(string: environment.getGateway().getBaseURL() + Path.COMMON_PAYMENT_PAGE.rawValue + Action.INSTALLMENTS.rawValue)!
         urlComponents.queryItems = [
             URLQueryItem(name: "binNumber", value: binNumber),
             // URLQueryItem(name: "walletPrice", value: String(price)),
@@ -189,7 +193,7 @@ public struct OderoPay {
     }
     
     static internal func sendCompletePaymentForm() async throws -> CompletePaymentFormResult {
-        let url = URL(string: environment.getOOS() + Path.COMMON_PAYMENT_PAGE.rawValue + Action.COMPLETE.rawValue)!
+        let url = URL(string: environment.getGateway().getBaseURL() + Path.COMMON_PAYMENT_PAGE.rawValue + Action.COMPLETE.rawValue)!
         var request = URLRequest(url: url)
         
         // method
@@ -220,7 +224,7 @@ public struct OderoPay {
     }
     
     static internal func sendComplete3DSPaymentForm() async throws -> CompletePaymentFormResult {
-        let url = URL(string: environment.getOOS() + Path.COMMON_PAYMENT_PAGE.rawValue + Action.THREEDS_INIT.rawValue)!
+        let url = URL(string: environment.getGateway().getBaseURL() + Path.COMMON_PAYMENT_PAGE.rawValue + Action.THREEDS_INIT.rawValue)!
         var request = URLRequest(url: url)
         
         // method

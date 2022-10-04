@@ -97,9 +97,25 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var logoImageName: String
+        
+        switch OderoPay.getEnvironment() {
+        case .PROD_AZ:
+            logoImageName = "odero-logo"
+        case .PROD_TR:
+            logoImageName = "odero-logo-tr"
+        case .SANDBOX_AZ:
+            logoImageName = "odero-logo"
+        case .SANDBOX_TR:
+            logoImageName = "odero-logo-tr"
+        }
+        
+        logoImageView.image = UIImage(named: logoImageName, in: .module, with: nil)
         
         creditCardOrDebitCardButton.isHidden = !OderoPay.isSingleCardPaymentEnabled()
         multipleCreditCardsButton.isHidden = !OderoPay.isMultipleCardsPaymentEnabled()
