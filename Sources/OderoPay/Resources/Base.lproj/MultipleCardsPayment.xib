@@ -96,19 +96,22 @@
                                         <constraint firstAttribute="height" constant="60" id="2BW-rW-VM6"/>
                                     </constraints>
                                 </stackView>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GyA-Ue-tB7" customClass="CreditOrDebitCardPaymentView" customModule="OderoPay">
-                                    <rect key="frame" x="0.0" y="75" width="286" height="350"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GyA-Ue-tB7" customClass="CreditOrDebitCardPaymentView" customModule="OderoPay">
+                                    <rect key="frame" x="0.0" y="75" width="286" height="0.0"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="250" id="udK-SP-x0U"/>
+                                    </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ds7-ip-sd7" userLabel="Horizontal Divider">
-                                    <rect key="frame" x="0.0" y="440" width="286" height="1"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ds7-ip-sd7" userLabel="Horizontal Divider">
+                                    <rect key="frame" x="0.0" y="90" width="286" height="1"/>
                                     <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="XJO-9v-p28"/>
                                     </constraints>
                                 </view>
-                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-eI-xSz" userLabel="Amount &amp; Label 2">
-                                    <rect key="frame" x="0.0" y="456" width="286" height="60"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-eI-xSz" userLabel="Amount &amp; Label 2">
+                                    <rect key="frame" x="0.0" y="106" width="286" height="60"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00 $" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-9x-x7d">
                                             <rect key="frame" x="0.0" y="0.0" width="286" height="45"/>
@@ -129,8 +132,8 @@
                                         <constraint firstAttribute="height" constant="60" id="ge8-Zl-I7I"/>
                                     </constraints>
                                 </stackView>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XEv-Dd-SpL" customClass="CreditOrDebitCardPaymentView" customModule="OderoPay">
-                                    <rect key="frame" x="0.0" y="531" width="286" height="215"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEv-Dd-SpL" customClass="CreditOrDebitCardPaymentView" customModule="OderoPay">
+                                    <rect key="frame" x="0.0" y="181" width="286" height="565"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                             </subviews>
