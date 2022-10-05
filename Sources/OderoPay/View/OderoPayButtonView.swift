@@ -119,7 +119,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
     }
     
     @IBAction func initCommonPaymentPage(_ sender: Any) {
-        print("Started process of initialization for Common Payment Page\n")
+        print("\nStarted process of initialization for Common Payment Page\n")
         print("retrieving unique keys...")
         
         if OderoPay.areKeysProvided() {
