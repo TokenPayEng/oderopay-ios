@@ -303,6 +303,18 @@ class CardController {
         isValidCard
     }
     
+    func isExpireValid() -> Bool {
+        isValidExpire
+    }
+    
+    func isCVCValid() -> Bool {
+        isValidCVC
+    }
+    
+    func isNameValid() -> Bool {
+        isValidName
+    }
+    
     func isCardInfoValid() -> Bool {
         isValidCard && isValidExpire && isValidCVC && isValidName
     }

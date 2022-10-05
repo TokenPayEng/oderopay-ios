@@ -124,30 +124,18 @@ class CardInformationView: UIView, UITextFieldDelegate {
         }
         
         if textField == expireDateTextField {
-            if textField.text!.count < 5 {
-                textField.isError(true)
-            } else {
-                textField.isError(false)
-                cardController.setExpireDate(to: textField.text!)
-            }
+            cardController.setExpireDate(to: textField.text!)
+            textField.isError(cardController.isExpireValid())
         }
         
         if textField == cvcTextField {
-            if textField.text!.count < 3 {
-                textField.isError(true)
-            } else {
-                textField.isError(false)
-                cardController.setCVC(to: textField.text!)
-            }
+            cardController.setCVC(to: textField.text!)
+            textField.isError(cardController.isCVCValid())
         }
         
         if textField == cardholderTextField {
-            if textField.text!.isEmpty {
-                textField.isError(true)
-            } else {
-                textField.isError(false)
-                cardController.setCardHolder(to: textField.text!)
-            }
+            cardController.setCardHolder(to: textField.text!)
+            textField.isError(cardController.isNameValid())
         }
     }
     
