@@ -50,10 +50,10 @@ class SingleCardPaymentView: UIView {
                     
                     if singleCardPaymentController!.cardController.cardController.retrieveForce3DSChoiceOption() {
                         completePaymentFormResponse = try await OderoPay.sendComplete3DSPaymentForm()
-                        print("3ds payment")
+                        print("\n⚠️ 3DS PAYMENT ⚠️\n")
                     } else {
                         completePaymentFormResponse = try await OderoPay.sendCompletePaymentForm()
-                        print("normal payment")
+                        print("\n⚠️ NON-3DS PAYMENT ⚠️\n")
                     }
                     
                     if completePaymentFormResponse.hasErrors() != nil {
