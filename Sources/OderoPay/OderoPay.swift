@@ -180,7 +180,7 @@ public struct OderoPay {
         let encodedBody = try JSONEncoder().encode(OderoPay.checkoutForm)
         request.httpBody = encodedBody
         
-        print("\nSending checkout request with following request body: \n")
+        print("sending checkout request with following request body:")
         print(String(data: encodedBody, encoding: .utf8) as Any)
         
         // generate signature
@@ -243,7 +243,7 @@ public struct OderoPay {
         let encodedBody = try JSONEncoder().encode(OderoPay.completePaymentForm)
         request.httpBody = encodedBody
         
-        print("\nSending payment request with following request body: \n")
+        print("sending payment request with following request body:")
         print(String(data: encodedBody, encoding: .utf8) as Any)
         
         // generate signature
@@ -276,7 +276,7 @@ public struct OderoPay {
         let encodedBody = try JSONEncoder().encode(OderoPay.completePaymentForm)
         request.httpBody = encodedBody
         
-        print("\nSending 3DS payment request with following request body: \n")
+        print("sending 3DS payment request with following request body:")
         print(String(data: encodedBody, encoding: .utf8) as Any)
         
         // generate signature
