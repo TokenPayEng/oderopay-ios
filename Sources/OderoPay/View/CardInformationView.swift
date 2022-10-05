@@ -120,12 +120,13 @@ class CardInformationView: UIView, UITextFieldDelegate {
         textField.layer.borderWidth = 0
         
         if textField == cardNumberTextField {
-            textField.isError(!cardController.isCardNumberValid(textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)))
+            let passed = cardController.isCardNumberValid(textField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression))
+            textField.isError(!passed)
         }
         
         if textField == expireDateTextField {
             let passed = cardController.isExpireDateValid(textField.text!)
-            textField.isError(passed)
+            textField.isError(!passed)
             
             if passed {
                 cardController.setExpireDate(to: textField.text!)
@@ -134,7 +135,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         
         if textField == cvcTextField {
             let passed = cardController.isCVCCodeValid(textField.text!)
-            textField.isError(passed)
+            textField.isError(!passed)
             
             if passed {
                 cardController.setCVC(to: textField.text!)
@@ -143,7 +144,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         
         if textField == cardholderTextField {
             let passed = cardController.isNameHolderValid(textField.text!)
-            textField.isError(passed)
+            textField.isError(!passed)
             
             if passed {
                 cardController.setCardHolder(to: textField.text!)
