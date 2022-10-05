@@ -427,6 +427,10 @@ extension UITextField {
         }
     }
     
+    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return action == #selector(UIResponderStandardEditActions.cut) || action == #selector(UIResponderStandardEditActions.copy)
+    }
+    
     func forLeftView(use image: UIImage) {
         let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
         imageView.contentMode = .scaleAspectFit
