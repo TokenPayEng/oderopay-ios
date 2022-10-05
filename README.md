@@ -88,10 +88,15 @@ OderoPay Swift Package comes with built in, pre-defined `success` and `error` pa
 Hint: Instantiate them all at the same place, during the initial setup. You can set custom screen right after setting the checkout form.
 Requirements:
 
-1. You have to instantiate two screens: one for `success` scenario and one for the `error`/`failure` scenario.
-2. Afterwards you either pass these screens as ViewControllers or Storyboards with ViewController Identifier.
+1. You have to call function that enables the usage of custom screens.
+2. Next, you have to instantiate two screens: one for `success` scenario and one for the `error`/`failure` scenario.
+3. Lastly, you either pass these screens as ViewControllers or Storyboards with ViewController Identifier.
 
 Functions headers:
+
+```swift
+    OderoPay.useCustomEndScreens(_ value: Bool)
+```
 
 ```swift    
     // success screen which requires your custom Success Screen's ViewController
@@ -111,6 +116,13 @@ Functions headers:
 ```swift    
     // error screen which requires your custom Error/Warning Screen's Storyboard with ViewControllers Identified (ID)
     OderoPay.instantiateCustomErrorScreenWith(storyboard: UIStoryboard, identifiedBy: String)
+```
+
+Code Example:
+
+```swift
+    OderoPay.useCustomEndScreens(true)  // enables custom screens, now you can call above methods
+    OderoPay.useCustomEndScreens(false) // comes by default
 ```
 
 
