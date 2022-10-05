@@ -85,9 +85,10 @@ OderoPay Swift Package comes with UI customizability and detailed description of
 ## Using Custom or Pre-defined End Screens
 
 OderoPay Swift Package comes with built in, pre-defined `success` and `error` payment result screens. However if you want to use your own such screens, you have a couple of options of how to integrate your screens to the overall payment flow. 
-Hint: Instantiate them all at the same place, during the initial setup. You can set custom screen right after setting the checkout form.
-Requirements:
 
+Hint: Instantiate them all at the same place, during the initial setup. You can set custom screen right after setting the checkout form.
+
+Requirements:
 1. You have to call function that enables the usage of custom screens.
 2. Next, you have to instantiate two screens: one for `success` scenario and one for the `error`/`failure` scenario.
 3. Lastly, you either pass these screens as ViewControllers or Storyboards with ViewController Identifier.
