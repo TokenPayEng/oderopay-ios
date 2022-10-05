@@ -4,7 +4,7 @@ OderoPay is a Swift Package that lets you integrate your iOS application with th
 
 ## Installation
 
-In Xcode open `File` => `Add Packages...` => enter this Github repository.
+In Xcode open `File` => `Add Packages...` => enter this Github repository. Use up to latest minor version to get the latest stable version.
 
 ## Support
 
@@ -82,21 +82,41 @@ Code example:
 
 OderoPay Swift Package comes with UI customizability and detailed description of functionality. First comes customizability of the Common Payment Page, next functionality description.
 
+## Using Custom or Pre-defined End Screens
+
+OderoPay Swift Package comes with built in, pre-defined `success` and `error` payment result screens. However if you want to use your own such screens, you have a couple of options of how to integrate your screens to the overall payment flow. 
+Hint: Instantiate them all at the same place, during the initial setup. You can set custom screen right after setting the checkout form.
+Requirements:
+
+1. You have to instantiate two screens: one for `success` scenario and one for the `error`/`failure` scenario.
+2. Afterwards you either pass these screens as ViewControllers or Storyboards with ViewController Identifier.
+
+Functions headers:
+
+```swift    
+    // success screen which requires your custom Success Screen's ViewController
+    OderoPay.instantiateCustomSuccessScreenWith(viewController: UIViewController)
+```
+    
+```swift    
+    // success screen which requires your custom Success Screen's Storyboard with ViewControllers Identified (ID)
+    OderoPay.instantiateCustomSuccessScreenWith(storyboard: UIStoryboard, identifiedBy: String)
+```
+ 
+```swift    
+    // error screen which requires your custom Error/Warning Screen's ViewController
+    OderoPay.instantiateCustomErrorScreenWith(viewController: UIViewController)
+```
+ 
+```swift    
+    // error screen which requires your custom Error/Warning Screen's Storyboard with ViewControllers Identified (ID)
+    OderoPay.instantiateCustomErrorScreenWith(storyboard: UIStoryboard, identifiedBy: String)
+```
+
+
 ## Enabling and Disabling Payment Methods
 
-As it was stated OderoPay Swift Package supports following payments - `Single Card`, `Multiple Cards`, `TokenFlex`. In order to enable or disable the payment methods you can use specific functions listed below.
-
-List of functions:
-
-```swift
-    OderoPay.enableSingleCardPayment()
-    OderoPay.enableMultipleCardsPayment()
-    OderoPay.enableTokenFlexPayment()
-    
-    OderoPay.disableSingleCardPayment()
-    OderoPay.disableMultipleCardsPayment()
-    OderoPay.disableTokenFlexPayment()
-```
+As it was stated OderoPay Swift Package supports following payments - `Single Card`, `Multiple Cards`, `TokenFlex`. Options which will be enabled or disabled are chosen by your company during the onboarding to the OderoPay System using the Merchant Panel.
 
 ## Navigating to Common Payment Page using OderoPay button
 

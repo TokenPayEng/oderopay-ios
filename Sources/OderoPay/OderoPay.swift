@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 import CryptoKit
 
 public struct OderoPay {
@@ -10,6 +11,9 @@ public struct OderoPay {
     static private var iOSHeader = String("IOSMOBILSDK")
     
     static private var asWebView: Bool = false
+    static private var predefinedScreens: Bool = true
+    static private var customSuccessScreenViewController: UIViewController = UIViewController()
+    static private var customErrorScreenViewController: UIViewController = UIViewController()
     
     static private var singleCardPaymentEnabled: Bool = true
     static private var multipleCardsPaymentEnabled: Bool = true
@@ -94,6 +98,40 @@ public struct OderoPay {
     
     static internal func getKeys() -> (String, String) {
         (self.apiKey, self.secretKey)
+    }
+    
+    static public func useCustomEndScreens(_ value: Bool) {
+        self.predefinedScreens = !value
+    }
+    
+    static internal func shouldUseCustomEndScreens() -> Bool {
+        !self.predefinedScreens
+    }
+    
+    // success screens
+    static public func instantiateCustomSuccessScreenWith(viewController: UIViewController) {
+        self.customSuccessScreenViewController = viewController
+    }
+    
+    static public func instantiateCustomSuccessScreenWith(storyboard: UIStoryboard, identifiedBy: String) {
+        self.customSuccessScreenViewController = storyboard.instantiateViewController(withIdentifier: identifiedBy)
+    }
+    
+    static internal func getCustomSuccessScreenViewController() -> UIViewController {
+        self.customSuccessScreenViewController
+    }
+    
+    // error screens
+    static public func instantiateCustomErrorScreenWith(viewController: UIViewController) {
+        self.customErrorScreenViewController = viewController
+    }
+    
+    static public func instantiateCustomErrorScreenWith(storyboard: UIStoryboard, identifiedBy: String) {
+        self.customErrorScreenViewController = storyboard.instantiateViewController(withIdentifier: identifiedBy)
+    }
+    
+    static internal func getCustomErrorScreenViewController() -> UIViewController {
+        self.customErrorScreenViewController
     }
     
     static internal func isAsWebView() -> Bool {

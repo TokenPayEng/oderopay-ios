@@ -206,14 +206,22 @@ public class CommonPaymentPageViewController: UIViewController {
     }
     
     private func presentPaymentInfo() {
-        guard let paymentInformationViewController = UIStoryboard(
-            name: "PaymentInformation",
-            bundle: .module).instantiateViewController(identifier: "PaymentInformation") as? PaymentInformationViewController
-        else {
-            fatalError("Unable to instantiate Payment Information")
+        var viewController: UIViewController = UIViewController()
+        
+        if OderoPay.shouldUseCustomEndScreens() {
+            viewController = OderoPay.isPaymentCompleted() ? OderoPay.getCustomSuccessScreenViewController() : OderoPay.getCustomErrorScreenViewController()
+        } else {
+            guard let paymentInformationViewController = UIStoryboard(
+                name: "PaymentInformation",
+                bundle: .module).instantiateViewController(identifier: "PaymentInformation") as? PaymentInformationViewController
+            else {
+                fatalError("Unable to instantiate Payment Information")
+            }
+            
+            viewController = paymentInformationViewController
         }
         
-        navigationController?.pushViewController(paymentInformationViewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
