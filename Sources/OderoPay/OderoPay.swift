@@ -165,7 +165,6 @@ public struct OderoPay {
     static private func generateSignature(for url: String, body: String) throws -> String {
         guard !randomKey.isEmpty else { throw CheckoutError.emptyRandomKey }
         let concatenatedString = url + apiKey + secretKey + randomKey + body
-        print(concatenatedString)
         let hmac_md5 = concatenatedString.hmac(algorithm: .sha512, key: secretKey)
         return hmac_md5
     }
@@ -180,6 +179,9 @@ public struct OderoPay {
         // body
         let encodedBody = try JSONEncoder().encode(OderoPay.checkoutForm)
         request.httpBody = encodedBody
+        
+        print("\nSending checkout request with following request body: \n")
+        print(String(data: encodedBody, encoding: .utf8) as Any)
         
         // generate signature
         let signature = try generateSignature(for: url.absoluteString, body: String(data: request.httpBody!, encoding: .utf8)!)
