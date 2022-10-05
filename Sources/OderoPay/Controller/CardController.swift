@@ -294,8 +294,6 @@ class CardController {
     }
     
     func isExpireDateValid(_ date: String) -> Bool {
-        print(date)
-        
         if date.count == 5 && date.contains("/") {
             isValidExpire = true
         } else {
@@ -306,14 +304,10 @@ class CardController {
     }
     
     func isCVCCodeValid(_ code: String) -> Bool {
-        print(code)
-        
         return code.count == 3
     }
     
     func isNameHolderValid(_ name: String) -> Bool {
-        print(name)
-        
         if name.range(of: "^[A-Z][a-z]{2,}(?: [A-Z][a-z]*)*$", options: .regularExpression) != nil {
             isValidName = true
         } else {
@@ -340,7 +334,12 @@ class CardController {
     }
     
     func isCardInfoValid() -> Bool {
-        isValidCard && isValidExpire && isValidCVC && isValidName
+        print(isCardValid())
+        print(isExpireValid())
+        print(isCVCValid())
+        print(isNameValid())
+        
+        return isValidCard && isValidExpire && isValidCVC && isValidName
     }
     
     func luhnAlgorithm(_ number: String) -> Bool {
