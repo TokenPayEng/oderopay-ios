@@ -203,6 +203,8 @@ public struct OderoPay {
         let encodedBody = try JSONEncoder().encode(OderoPay.completePaymentForm)
         request.httpBody = encodedBody
         
+        print(String(data: encodedBody, encoding: .utf8) as Any)
+        
         // generate signature
         let signature = try generateSignature(for: url.absoluteString, body: String(data: request.httpBody!, encoding: .utf8)!)
         
@@ -233,6 +235,8 @@ public struct OderoPay {
         // body
         let encodedBody = try JSONEncoder().encode(OderoPay.completePaymentForm)
         request.httpBody = encodedBody
+        
+        print(String(data: encodedBody, encoding: .utf8) as Any)
         
         // generate signature
         let signature = try generateSignature(for: url.absoluteString, body: String(data: request.httpBody!, encoding: .utf8)!)

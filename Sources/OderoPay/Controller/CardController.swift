@@ -9,15 +9,9 @@ import Foundation
 
 class CardController {
     private var isValidCard: Bool = false
-    private var isValidExpire: Bool {
-        expireDate.count == 5
-    }
-    private var isValidCVC: Bool {
-        cvc.count == 3
-    }
-    private var isValidName: Bool {
-        !cardHolder.isEmpty
-    }
+    private var isValidExpire: Bool = false
+    private var isValidCVC: Bool = false
+    private var isValidName: Bool = false
     
     private var installmentFound: Bool = false
     
@@ -297,6 +291,36 @@ class CardController {
         
         NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
         return isValidCard
+    }
+    
+    func isExpireDateValid(_ date: String) -> Bool {
+        print(date)
+        
+        if date.count == 5 && date.contains("/") {
+            isValidExpire = true
+        } else {
+            isValidExpire = false
+        }
+        
+        return isValidExpire
+    }
+    
+    func isCVCCodeValid(_ code: String) -> Bool {
+        print(code)
+        
+        return code.count == 3
+    }
+    
+    func isNameHolderValid(_ name: String) -> Bool {
+        print(name)
+        
+        if name.range(of: "^[A-Z][a-z]{2,}(?: [A-Z][a-z]*)*$", options: .regularExpression) != nil {
+            isValidName = true
+        } else {
+            isValidName = false
+        }
+        
+        return isValidName
     }
     
     func isCardValid() -> Bool {
