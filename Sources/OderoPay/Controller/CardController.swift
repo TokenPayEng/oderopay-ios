@@ -304,7 +304,8 @@ class CardController {
     }
     
     func isCVCCodeValid(_ code: String) -> Bool {
-        return code.count == 3
+        isValidCVC = code.count == 3
+        return isValidCVC
     }
     
     func isNameHolderValid(_ name: String) -> Bool {
@@ -333,12 +334,7 @@ class CardController {
         isValidName
     }
     
-    func isCardInfoValid() -> Bool {
-        print(isCardValid())
-        print(isExpireValid())
-        print(isCVCValid())
-        print(isNameValid())
-        
+    func isCardInfoValid() -> Bool {        
         return isValidCard && isValidExpire && isValidCVC && isValidName
     }
     
