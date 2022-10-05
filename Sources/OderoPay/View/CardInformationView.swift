@@ -17,81 +17,10 @@ class CardInformationView: UIView, UITextFieldDelegate {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var coreStackView: UIStackView!
     
-    @IBOutlet weak var cardNumberTextField: UITextField! {
-        didSet {
-            cardNumberTextField.forLeftView(use: UIImage(systemName: "creditcard")!)
-            cardNumberTextField.placeholder = NSLocalizedString("cardNumber",
-                                                                bundle: Bundle.module,
-                                                                comment: "card number")
-            
-            cardNumberTextField.addPreviousNextToolbar(
-                onNext: (
-                    target: self,
-                    action: #selector(moveNextTextField)
-                ),
-                onPrevious: (
-                    target: self,
-                    action: #selector(movePreviousTextField)
-                )
-            )
-        }
-    }
-    
-    @IBOutlet weak var expireDateTextField: UITextField! {
-        didSet {
-            expireDateTextField.forLeftView(use: UIImage(systemName: "calendar")!)
-            expireDateTextField.placeholder = NSLocalizedString("mm/yy",
-                                                               bundle: Bundle.module,
-                                                               comment: "card expire month and year")
-            
-            expireDateTextField.addPreviousNextToolbar(
-                onNext: (
-                    target: self,
-                    action: #selector(moveNextTextField)
-                ),
-                onPrevious: (
-                    target: self,
-                    action: #selector(movePreviousTextField)
-                )
-            )
-        }
-    }
-    
-    @IBOutlet weak var cvcTextField: UITextField! {
-        didSet {
-            cvcTextField.forLeftView(use: UIImage(systemName: "lock")!)
-            cvcTextField.placeholder = NSLocalizedString("cvc",
-                                                         bundle: Bundle.module,
-                                                         comment: "card cvc code")
-            
-            cvcTextField.addPreviousNextToolbar(
-                onNext: (
-                    target: self,
-                    action: #selector(moveNextTextField)
-                ),
-                onPrevious: (
-                    target: self,
-                    action: #selector(movePreviousTextField)
-                )
-            )
-        }
-    }
-    
-    @IBOutlet weak var cardholderTextField: UITextField! {
-        didSet {
-            cardholderTextField.forLeftView(use: UIImage(systemName: "person")!)
-            cardholderTextField.placeholder = NSLocalizedString("cardHolderNameSurname",
-                                                                    bundle: Bundle.module,
-                                                                    comment: "card holder's name and surname")
-            
-            cardholderTextField.addPreviousToolbar(
-                onPrevious: (
-                    target: self,
-                    action: #selector(movePreviousTextField)
-                )
-            )
-        }
-    }
+    @IBOutlet weak var cardNumberTextField: TextField!
+    @IBOutlet weak var expireDateTextField: UITextField!
+    @IBOutlet weak var cvcTextField: UITextField!
+    @IBOutlet weak var cardholderTextField: UITextField!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -113,6 +42,66 @@ class CardInformationView: UIView, UITextFieldDelegate {
         self.expireDateTextField.delegate = self
         self.cvcTextField.delegate = self
         self.cardholderTextField.delegate = self
+        
+        cardNumberTextField.forLeftView(use: UIImage(systemName: "creditcard")!)
+        cardNumberTextField.placeholder = NSLocalizedString("cardNumber",
+                                                            bundle: Bundle.module,
+                                                            comment: "card number")
+        
+        cardNumberTextField.addPreviousNextToolbar(
+            onNext: (
+                target: self,
+                action: #selector(moveNextTextField)
+            ),
+            onPrevious: (
+                target: self,
+                action: #selector(movePreviousTextField)
+            )
+        )
+        
+        expireDateTextField.forLeftView(use: UIImage(systemName: "calendar")!)
+        expireDateTextField.placeholder = NSLocalizedString("mm/yy",
+                                                           bundle: Bundle.module,
+                                                           comment: "card expire month and year")
+        
+        expireDateTextField.addPreviousNextToolbar(
+            onNext: (
+                target: self,
+                action: #selector(moveNextTextField)
+            ),
+            onPrevious: (
+                target: self,
+                action: #selector(movePreviousTextField)
+            )
+        )
+        
+        cvcTextField.forLeftView(use: UIImage(systemName: "lock")!)
+        cvcTextField.placeholder = NSLocalizedString("cvc",
+                                                     bundle: Bundle.module,
+                                                     comment: "card cvc code")
+        
+        cvcTextField.addPreviousNextToolbar(
+            onNext: (
+                target: self,
+                action: #selector(moveNextTextField)
+            ),
+            onPrevious: (
+                target: self,
+                action: #selector(movePreviousTextField)
+            )
+        )
+        
+        cardholderTextField.forLeftView(use: UIImage(systemName: "person")!)
+        cardholderTextField.placeholder = NSLocalizedString("cardHolderNameSurname",
+                                                                bundle: Bundle.module,
+                                                                comment: "card holder's name and surname")
+        
+        cardholderTextField.addPreviousToolbar(
+            onPrevious: (
+                target: self,
+                action: #selector(movePreviousTextField)
+            )
+        )
     }
     
     // delegate functions
