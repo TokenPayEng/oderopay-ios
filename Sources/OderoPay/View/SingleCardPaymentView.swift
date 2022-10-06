@@ -78,10 +78,10 @@ class SingleCardPaymentView: UIView {
                     print("retrieving content...")
                     let content = resultFromServer.getHtmlContent()
                     print("content retrieved ---- SUCCESS ✅")
-                    print( String(data: Data(base64Encoded: content)!, encoding: .utf8) as Any)
+                    let decodedContent = String(data: Data(base64Encoded: content)!, encoding: .utf8) ?? "error"
                     print("complete payment form sent ---- SUCCESS ✅\n")
                     
-                    OderoPay.setPaymentStatus(to: !content.contains("error"))
+                    OderoPay.setPaymentStatus(to: !decodedContent.contains("error"))
                     
                     NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
                 } catch {
