@@ -40,7 +40,9 @@
 "serverError" = "OderoPay Server Hatası";
 "missingError" = "Eksik Bilgiler Hatası";
 "unknownError" = "Bilinmeyen Hata";
+"insufficientFundsError" = "Yetersiz bakiye";
 
 "laterErrorDescription" = "Bir şeyler yanlış gitti. Lütfen daha sonra tekrar deneyiniz.";
 "errorDescription" = "Bir şeyler yanlış gitti. Lütfen tekrar deneyin.";
 "cardErrorDescription" = "Sağlanan kart bilgileri geçersiz.";
+"fundsDescription" = "Bu işlemi tamamlamak için yeterli bakiyeniz yok.";

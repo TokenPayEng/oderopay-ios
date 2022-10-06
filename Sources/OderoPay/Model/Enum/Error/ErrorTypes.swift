@@ -13,6 +13,7 @@ enum ErrorTypes: String {
     case SERVER = "serverError"
     case MISSING_DATA = "missingError"
     case UNKNOWN = "unknownError"
+    case INSUFFICIENT_FUNDS = "insufficientFundsError"
     
     func localizedString() -> String {
         return NSLocalizedString(self.rawValue, bundle: .module,comment: "")

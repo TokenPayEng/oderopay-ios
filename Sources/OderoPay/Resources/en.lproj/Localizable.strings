@@ -40,7 +40,9 @@
 "serverError" = "OderoPay Server Error";
 "missingError" = "Missing Data Error";
 "unknownError" = "Unknown Error";
+"insufficientFundsError" = "Insufficient Funds";
 
 "laterErrorDescription" = "Something went wrong. Please try again later.";
 "errorDescription" = "Something went wrong. Please try again.";
 "cardErrorDescription" = "Provided card information is invalid.";
+"fundsDescription" = "You don't have enough funds to complete this transaction.";

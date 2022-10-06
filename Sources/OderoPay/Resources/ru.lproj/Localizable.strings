@@ -40,7 +40,9 @@
 "serverError" = "Серверная ошибка OderoPay";
 "missingError" = "Недостающие параметры";
 "unknownError" = "Неизвестная ошибка";
+"insufficientFundsError" = "Недостаточно средств";
 
 "laterErrorDescription" = "Что-то пошло не так. Попробуйте снова позже.";
 "errorDescription" = "Что-то пошло не так. Попробуйте снова.";
 "cardErrorDescription" = "Предоставленные данные карты недействительны.";
+"fundsDescription" = "На вашем балансе не хватает средств для осуществления транзакции";
