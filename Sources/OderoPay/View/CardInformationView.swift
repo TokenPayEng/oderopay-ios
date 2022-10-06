@@ -483,7 +483,7 @@ extension UITextField {
     func addPreviousToolbar(onPrevious: (target: Any, action: Selector)) {
      
         let toolbar: UIToolbar = UIToolbar(
-            frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35)
+            frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 45)
         )
         
         toolbar.items = [
