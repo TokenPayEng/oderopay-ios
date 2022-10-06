@@ -102,6 +102,10 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 action: #selector(movePreviousTextField)
             )
         )
+        
+        let suggestions = cardholderTextField.inputAssistantItem
+        suggestions.leadingBarButtonGroups = []
+        suggestions.trailingBarButtonGroups = []
     }
     
     // delegate functions
@@ -497,9 +501,6 @@ extension UITextField {
         
         toolbar.sizeToFit()
         self.inputAccessoryView = toolbar
-        let suggestions = self.inputAssistantItem
-        suggestions.leadingBarButtonGroups = []
-        suggestions.trailingBarButtonGroups = []
     }
     
     func addNextToolbar(onNext: (target: Any, action: Selector)) {
