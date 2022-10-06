@@ -29,7 +29,7 @@
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DsE-5F-Qfc" customClass="TextField" customModule="OderoPay">
                             <rect key="frame" x="0.0" y="0.0" width="575" height="52.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="continue"/>
                         </textField>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3A9-E4-hTG" userLabel="Expire&amp;Code">
                             <rect key="frame" x="0.0" y="67.5" width="575" height="52"/>
