@@ -104,6 +104,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
         )
         
         cardholderTextField.autocorrectionType = .no
+        cardholderTextField.spellCheckingType = .no
     }
     
     // delegate functions
