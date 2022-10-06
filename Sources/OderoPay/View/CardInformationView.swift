@@ -102,9 +102,6 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 action: #selector(movePreviousTextField)
             )
         )
-        
-        self.cardholderTextField.inputAssistantItem.leadingBarButtonGroups.removeAll()
-        self.cardholderTextField.inputAssistantItem.trailingBarButtonGroups.removeAll()
     }
     
     // delegate functions
@@ -486,7 +483,7 @@ extension UITextField {
     func addPreviousToolbar(onPrevious: (target: Any, action: Selector)) {
      
         let toolbar: UIToolbar = UIToolbar(
-            frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 45)
+            frame: CGRect(x: 45, y: 0, width: UIScreen.main.bounds.width, height: 45)
         )
         
         toolbar.items = [
