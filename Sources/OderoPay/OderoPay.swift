@@ -182,6 +182,7 @@ public struct OderoPay {
         
         print("sending checkout request with following request body:")
         print(String(data: encodedBody, encoding: .utf8) as Any)
+        print("retrieving token...")
         
         // generate signature
         let signature = try generateSignature(for: url.absoluteString, body: String(data: request.httpBody!, encoding: .utf8)!)
@@ -197,7 +198,6 @@ public struct OderoPay {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // send request
-        print("retrieving token...")
         let (data, _) = try await URLSession.shared.data(with: request)
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
     }
