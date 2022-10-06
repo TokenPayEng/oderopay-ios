@@ -78,7 +78,7 @@ class SingleCardPaymentView: UIView {
                     print("retrieving content...")
                     let content = resultFromServer.getHtmlContent()
                     print("content retrieved ---- SUCCESS ✅")
-                    print(content)
+                    print( String(data: Data(base64Encoded: content)!, encoding: .utf8) as Any)
                     print("complete payment form sent ---- SUCCESS ✅\n")
                     
                     OderoPay.setPaymentStatus(to: !content.contains("error"))
