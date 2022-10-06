@@ -40,7 +40,7 @@
 "serverError" = "OderoPay Server Xətası";
 "missingError" = "Çatışmayan Məlumat Xətası";
 "unknownError" = "Naməlum Xəta";
-"insufficientFundsError" = "Vəsait Yoxdur";
+"insufficientFundsError" = "Çatışmayan Vəsait";
 
 "laterErrorDescription" = "Xəta baş verdi. Zəhmət olmasa bir az sonra yenə cəhd edin.";
 "errorDescription" = "Xəta baş verdi. Yenidən cəhd edin.";

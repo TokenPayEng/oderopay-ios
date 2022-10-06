@@ -62,10 +62,8 @@ class SingleCardPaymentView: UIView {
                         print("Error description: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorDescription()))")
 
                         if completePaymentFormResponse.hasErrors()?.getErrorCode() == "4999" {
-                            print(String(describing: completePaymentFormResponse.hasErrors()?.getErrorCode()))
                             showErrorAlert(ofType: .INSUFFICIENT_FUNDS, .FUNDS)
                         } else {
-                            print("here")
                             showErrorAlert(ofType: .SERVER, .NOW)
                         }
 
