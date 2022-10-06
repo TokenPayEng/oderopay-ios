@@ -14,6 +14,8 @@ public class CompletePaymentForm: Codable {
     private var installment: Installment
     private var card: Card
     
+    // optional for single, mandatory for multi 
+    
     // optional
     private var walletPrice: Double?
     private var totalPointPrice: Double?

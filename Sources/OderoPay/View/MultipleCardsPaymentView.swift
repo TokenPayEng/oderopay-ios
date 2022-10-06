@@ -52,15 +52,15 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
 //            let form = CompletePaymentForm(
 //                                paymentType: .MULTI_CARD_PAYMENT,
 //                                cardPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
-//                                installment: Installment(rawValue: singleCardPaymentController!.cardController.cardController.retrieveInstallmentChoice())!,
+//                                installment: Installment(rawValue: multipleCardsPaymentController!.firstCardController.cardController.retrieveInstallmentChoice())!,
 //                                card:
 //                                    Card(
-//                                        number: singleCardPaymentController!.cardController.cardController.retrieveCardNumber(),
-//                                        expiringAt: singleCardPaymentController!.cardController.cardController.retrieveExpireDate()!.0,
-//                                        singleCardPaymentController!.cardController.cardController.retrieveExpireDate()!.1,
-//                                        withCode: singleCardPaymentController!.cardController.cardController.retrieveCVC(),
-//                                        belongsTo: singleCardPaymentController!.cardController.cardController.retrieveCardHolder(),
-//                                        shouldBeStored: singleCardPaymentController!.cardController.cardController.retrieveSaveCardChoiceOption()
+//                                        number: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardNumber(),
+//                                        expiringAt: multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.0,
+//                                        multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.1,
+//                                        withCode: multipleCardsPaymentController!.firstCardController.cardController.retrieveCVC(),
+//                                        belongsTo: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardHolder(),
+//                                        shouldBeStored: multipleCardsPaymentController!.firstCardController.cardController.retrieveSaveCardChoiceOption()
 //                                    )
 //            )
 //
