@@ -103,9 +103,8 @@ class CardInformationView: UIView, UITextFieldDelegate {
             )
         )
         
-        let suggestions = cardholderTextField.inputAssistantItem
-        suggestions.leadingBarButtonGroups = []
-        suggestions.trailingBarButtonGroups = []
+        self.cardholderTextField.inputAssistantItem.leadingBarButtonGroups.removeAll()
+        self.cardholderTextField.inputAssistantItem.trailingBarButtonGroups.removeAll()
     }
     
     // delegate functions
