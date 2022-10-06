@@ -96,11 +96,7 @@ class CardInformationView: UIView, UITextFieldDelegate {
                                                                 bundle: Bundle.module,
                                                                 comment: "card holder's name and surname")
         
-        cardholderTextField.addPreviousNextToolbar(
-            onNext: (
-                target: self,
-                action: #selector(moveNextTextField)
-            ),
+        cardholderTextField.addPreviousToolbar(
             onPrevious: (
                 target: self,
                 action: #selector(movePreviousTextField)
