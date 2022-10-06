@@ -197,6 +197,7 @@ public struct OderoPay {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // send request
+        print("retrieving token...")
         let (data, _) = try await URLSession.shared.data(with: request)
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
     }

@@ -175,7 +175,6 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                             return
                         }
 
-                        print("retrieving token...")
                         let token = resultFromServer.getToken()
                         print("token retrieved ---- SUCCESS ✅")
                         print(token)
