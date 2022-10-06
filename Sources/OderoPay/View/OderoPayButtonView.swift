@@ -13,24 +13,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
     var navigationController: UINavigationController?
     
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var oderoPayImageView: UIImageView! {
-        didSet {
-            var logoImageName: String
-            
-            switch OderoPay.getEnvironment() {
-            case .PROD_AZ:
-                logoImageName = "odero-pay-black"
-            case .PROD_TR:
-                logoImageName = "odero-logo-tr"
-            case .SANDBOX_AZ:
-                logoImageName = "odero-pay-black"
-            case .SANDBOX_TR:
-                logoImageName = "odero-logo-tr"
-            }
-            
-            oderoPayImageView.image = UIImage(named: logoImageName, in: .module, with: nil)
-        }
-    }
+    @IBOutlet weak var oderoPayImageView: UIImageView!
     @IBOutlet weak var oderoPayButton: UIButton! {
         didSet {
             oderoPayButton.layer.cornerRadius = 8
@@ -118,6 +101,21 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        var logoImageName: String
+        
+        switch OderoPay.getEnvironment() {
+        case .PROD_AZ:
+            logoImageName = "odero-pay-black"
+        case .PROD_TR:
+            logoImageName = "odero-logo-tr"
+        case .SANDBOX_AZ:
+            logoImageName = "odero-pay-black"
+        case .SANDBOX_TR:
+            logoImageName = "odero-logo-tr"
+        }
+        
+        oderoPayImageView.image = UIImage(named: logoImageName, in: .module, with: nil)
     }
     
     @IBAction func initCommonPaymentPage(_ sender: Any) {
