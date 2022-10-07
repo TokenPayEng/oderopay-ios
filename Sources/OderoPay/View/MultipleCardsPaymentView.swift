@@ -67,7 +67,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             )
 
             OderoPay.setCompletePaymentForm(to: form)
-            Double((firstAmountTextField.text!.suffix(5)))!
+            print(Double((firstAmountTextField.text!.suffix(5)))!)
 //
 //            Task {
 //                do {
