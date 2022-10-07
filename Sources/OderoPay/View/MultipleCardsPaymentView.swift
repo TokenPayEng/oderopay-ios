@@ -47,107 +47,23 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     }
     
     @objc func updateOnPaymentComplete() {
-        if  !multipleCardsPaymentController!.secondCardController.isformEnabled && multipleCardsPaymentController!.firstCardController.isPaymentComplete {
-            
-            print(Double(firstAmountTextField.text!.dropLast(5)) as Any)
-            
-//            let form = CompletePaymentForm(
-//                                paymentType: .MULTI_CARD_PAYMENT,
-//                                orderedAs: 1,
-//                                withPhase: .PRE_AUTH,
-//                                cardPrice: Double((firstAmountTextField.text!.suffix(5)))!,
-//                                installment: Installment(rawValue: multipleCardsPaymentController!.firstCardController.cardController.retrieveInstallmentChoice())!,
-//                                card:
-//                                    Card(
-//                                        number: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardNumber(),
-//                                        expiringAt: multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.0,
-//                                        multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.1,
-//                                        withCode: multipleCardsPaymentController!.firstCardController.cardController.retrieveCVC(),
-//                                        belongsTo: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardHolder(),
-//                                        shouldBeStored: multipleCardsPaymentController!.firstCardController.cardController.retrieveSaveCardChoiceOption()
-//                                    )
-//            )
-//
-//            OderoPay.setCompletePaymentForm(to: form)
-//
-//            Task {
-//                do {
-//                    let completePaymentFormResponse: CompletePaymentFormResult
-//
-//                    if singleCardPaymentController!.cardController.cardController.retrieveForce3DSChoiceOption() {
-//                        completePaymentFormResponse = try await OderoPay.sendComplete3DSPaymentForm()
-//                        print("\n⚠️ 3DS PAYMENT ⚠️\n")
-//                    } else {
-//                        completePaymentFormResponse = try await OderoPay.sendCompletePaymentForm()
-//                        print("\n⚠️ NON-3DS PAYMENT ⚠️\n")
-//                    }
-//
-//                    if completePaymentFormResponse.hasErrors() != nil {
-//                        print("complete payment form returned with errors --- FAIL ❌")
-//                        print("Error code: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorCode()))")
-//                        print("Error description: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorDescription()))")
-//
-//                        showErrorAlert(ofType: .SERVER, .NOW)
-//
-//                        return
-//                    }
-//
-//                    guard let resultFromServer = completePaymentFormResponse.hasData() else {
-//                        print("Error occured ---- FAIL ❌")
-//                        print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
-//
-//                        showErrorAlert(ofType: .SERVER, .LATER)
-//
-//                        return
-//                    }
-//
-//                    print("retrieving content...")
-//                    let content = resultFromServer.getHtmlContent()
-//                    print("content retrieved ---- SUCCESS ✅")
-//                    print(content)
-//                    print("complete payment form sent ---- SUCCESS ✅\n")
-//
-//                    OderoPay.setPaymentStatus(to: !content.contains("error"))
-//
-//                    NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
-//                } catch {
-//                    print("network error occured ---- FAIL ❌")
-//                    print("HINT: \(error)")
-//
-//                    showErrorAlert(ofType: .NETWORK, .LATER)
-//
-//                    return
-//                }
-//            }
-            
-            multipleCardsPaymentController!.firstCardController.isformEnabled = false
-            multipleCardsPaymentController!.secondCardController.isformEnabled = true
-            
-            firstCardView.isHidden = true
-            secondCardView.isHidden = false
-            
-            firstVerticalDividerView.backgroundColor = OderoColors.success.color
-            
-            firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
-            
-            firstAmountTextField.isEnabled = false
-            firstAmountTextField.backgroundColor = OderoColors.gray.color
-            
-            firstCircleImageView.image = multipleCardsPaymentController!.firstCircleImage
-            firstCircleImageView.tintColor = OderoColors.success.color
-
-            secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
-            
-            NotificationCenter.default.post(name: Notification.Name("update2Height"), object: nil)
-        }
+        var isFirstPaymentSuccessful: Bool = false
+        var isSecondPaymentSuccessful: Bool = false
         
-        if multipleCardsPaymentController!.secondCardController.isPaymentComplete {
+        if  !multipleCardsPaymentController!.secondCardController.isformEnabled && multipleCardsPaymentController!.firstCardController.isPaymentComplete {
+
+            guard let firstCardPrice = Double(firstAmountTextField.text!.dropLast(5)) else { return }
+            
+            if firstCardPrice == 0 {
+                showErrorAlert(ofType: .MISSING_DATA, .NOW)
+                return
+            }
             
             let form = CompletePaymentForm(
                                 paymentType: .MULTI_CARD_PAYMENT,
-                                orderedAs: 2,
+                                orderedAs: 1,
                                 withPhase: .PRE_AUTH,
-                                cardPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
+                                cardPrice: firstCardPrice,
                                 installment: Installment(rawValue: multipleCardsPaymentController!.firstCardController.cardController.retrieveInstallmentChoice())!,
                                 card:
                                     Card(
@@ -161,17 +77,169 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             )
 
             OderoPay.setCompletePaymentForm(to: form)
+
+            Task {
+                do {
+                    let completePaymentFormResponse: CompletePaymentFormResult
+
+                    if multipleCardsPaymentController!.firstCardController.cardController.retrieveForce3DSChoiceOption() {
+                        completePaymentFormResponse = try await OderoPay.sendComplete3DSPaymentForm()
+                        print("\n⚠️ 3DS PAYMENT - MULTICARD PAYMENT (CARD #1) ⚠️\n")
+                    } else {
+                        completePaymentFormResponse = try await OderoPay.sendCompletePaymentForm()
+                        print("\n⚠️ NON-3DS PAYMENT - MULTICARD PAYMENT (CARD #1) ⚠️\n")
+                    }
+
+                    if completePaymentFormResponse.hasErrors() != nil {
+                        print("complete payment form returned with errors --- FAIL ❌")
+                        print("Error code: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorCode()))")
+                        print("Error description: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorDescription()))")
+
+                        showErrorAlert(ofType: .SERVER, .NOW)
+
+                        return
+                    }
+
+                    guard let resultFromServer = completePaymentFormResponse.hasData() else {
+                        print("Error occured ---- FAIL ❌")
+                        print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
+
+                        showErrorAlert(ofType: .SERVER, .LATER)
+
+                        return
+                    }
+
+                    print("retrieving content...")
+                    let content = resultFromServer.getHtmlContent()
+                    print("content retrieved ---- SUCCESS ✅")
+                    let decodedContent = String(data: Data(base64Encoded: content)!, encoding: .utf8) ?? "error"
+                    print("complete payment form sent ---- SUCCESS ✅\n")
+                    isFirstPaymentSuccessful = !decodedContent.contains("error")
+
+                    if isFirstPaymentSuccessful {
+                        multipleCardsPaymentController!.firstCardController.isformEnabled = false
+                        multipleCardsPaymentController!.secondCardController.isformEnabled = true
+                        
+                        firstCardView.isHidden = true
+                        secondCardView.isHidden = false
+                        
+                        firstVerticalDividerView.backgroundColor = OderoColors.success.color
+                        
+                        firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
+                        
+                        firstAmountTextField.isEnabled = false
+                        firstAmountTextField.backgroundColor = OderoColors.gray.color
+                        
+                        firstCircleImageView.image = multipleCardsPaymentController!.firstCircleImage
+                        firstCircleImageView.tintColor = OderoColors.success.color
+
+                        secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
+                        
+                        NotificationCenter.default.post(name: Notification.Name("update2Height"), object: nil)
+                    } else {
+                        firstVerticalDividerView.backgroundColor = OderoColors.error.color
+                        firstCircleImageView.tintColor = OderoColors.error.color
+                    }
+                    
+                } catch {
+                    print("network error occured ---- FAIL ❌")
+                    print("HINT: \(error)")
+
+                    showErrorAlert(ofType: .NETWORK, .LATER)
+
+                    return
+                }
+            }
+        }
+        
+        if multipleCardsPaymentController!.secondCardController.isPaymentComplete {
             
-            multipleCardsPaymentController!.secondCardController.isformEnabled = false
+            guard let secondCardPrice = Double(secondAmountTextField.text!.dropLast(5)) else { return }
             
-            secondCardView.isHidden = true
+            let form = CompletePaymentForm(
+                                paymentType: .MULTI_CARD_PAYMENT,
+                                orderedAs: 2,
+                                withPhase: .PRE_AUTH,
+                                cardPrice: secondCardPrice,
+                                installment: Installment(rawValue: multipleCardsPaymentController!.secondCardController.cardController.retrieveInstallmentChoice())!,
+                                card:
+                                    Card(
+                                        number: multipleCardsPaymentController!.secondCardController.cardController.retrieveCardNumber(),
+                                        expiringAt: multipleCardsPaymentController!.secondCardController.cardController.retrieveExpireDate()!.0,
+                                        multipleCardsPaymentController!.secondCardController.cardController.retrieveExpireDate()!.1,
+                                        withCode: multipleCardsPaymentController!.secondCardController.cardController.retrieveCVC(),
+                                        belongsTo: multipleCardsPaymentController!.secondCardController.cardController.retrieveCardHolder(),
+                                        shouldBeStored: multipleCardsPaymentController!.secondCardController.cardController.retrieveSaveCardChoiceOption()
+                                    )
+            )
+
+            OderoPay.setCompletePaymentForm(to: form)
             
-            secondVerticalDividerView.backgroundColor = OderoColors.success.color
             
-            secondCircleImageView.image = multipleCardsPaymentController!.secondCircleImage
-            secondCircleImageView.tintColor = OderoColors.success.color
-            
-            NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
+            Task {
+                do {
+                    let completePaymentFormResponse: CompletePaymentFormResult
+
+                    if multipleCardsPaymentController!.secondCardController.cardController.retrieveForce3DSChoiceOption() {
+                        completePaymentFormResponse = try await OderoPay.sendComplete3DSPaymentForm()
+                        print("\n⚠️ 3DS PAYMENT - MULTICARD PAYMENT (CARD #2) ⚠️\n")
+                    } else {
+                        completePaymentFormResponse = try await OderoPay.sendCompletePaymentForm()
+                        print("\n⚠️ NON-3DS PAYMENT - MULTICARD PAYMENT (CARD #2) ⚠️\n")
+                    }
+
+                    if completePaymentFormResponse.hasErrors() != nil {
+                        print("complete payment form returned with errors --- FAIL ❌")
+                        print("Error code: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorCode()))")
+                        print("Error description: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorDescription()))")
+
+                        showErrorAlert(ofType: .SERVER, .NOW)
+
+                        return
+                    }
+
+                    guard let resultFromServer = completePaymentFormResponse.hasData() else {
+                        print("Error occured ---- FAIL ❌")
+                        print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
+
+                        showErrorAlert(ofType: .SERVER, .LATER)
+
+                        return
+                    }
+
+                    print("retrieving content...")
+                    let content = resultFromServer.getHtmlContent()
+                    print("content retrieved ---- SUCCESS ✅")
+                    let decodedContent = String(data: Data(base64Encoded: content)!, encoding: .utf8) ?? "error"
+                    print("complete payment form sent ---- SUCCESS ✅\n")
+                    isSecondPaymentSuccessful = !decodedContent.contains("error")
+
+                    if isSecondPaymentSuccessful {
+                        multipleCardsPaymentController!.secondCardController.isformEnabled = false
+                        
+                        secondCardView.isHidden = true
+                        
+                        secondVerticalDividerView.backgroundColor = OderoColors.success.color
+                        
+                        secondCircleImageView.image = multipleCardsPaymentController!.secondCircleImage
+                        secondCircleImageView.tintColor = OderoColors.success.color
+                        
+                        OderoPay.setPaymentStatus(to: isFirstPaymentSuccessful && isSecondPaymentSuccessful)
+                        NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
+                    } else {
+                        secondVerticalDividerView.backgroundColor = OderoColors.error.color
+                        secondCircleImageView.tintColor = OderoColors.error.color
+                    }
+                    
+                } catch {
+                    print("network error occured ---- FAIL ❌")
+                    print("HINT: \(error)")
+
+                    showErrorAlert(ofType: .NETWORK, .LATER)
+
+                    return
+                }
+            }
         }
     }
     
