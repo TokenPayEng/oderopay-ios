@@ -96,7 +96,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                         print("Error description: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorDescription()))")
 
                         showErrorAlert(ofType: .SERVER, .NOW)
-
+                        firstVerticalDividerView.backgroundColor = OderoColors.error.color
+                        firstCircleImageView.tintColor = OderoColors.error.color
                         return
                     }
 
@@ -105,7 +106,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                         print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
 
                         showErrorAlert(ofType: .SERVER, .LATER)
-
+                        firstVerticalDividerView.backgroundColor = OderoColors.error.color
+                        firstCircleImageView.tintColor = OderoColors.error.color
                         return
                     }
 
@@ -146,7 +148,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     print("HINT: \(error)")
 
                     showErrorAlert(ofType: .NETWORK, .LATER)
-
+                    firstVerticalDividerView.backgroundColor = OderoColors.error.color
+                    firstCircleImageView.tintColor = OderoColors.error.color
                     return
                 }
             }
