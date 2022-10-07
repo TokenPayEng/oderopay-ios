@@ -117,6 +117,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     let decodedContent = String(data: Data(base64Encoded: content)!, encoding: .utf8) ?? "error"
                     print("complete payment form sent ---- SUCCESS ✅\n")
                     isFirstPaymentSuccessful = !decodedContent.contains("error")
+                    print(isFirstPaymentSuccessful)
 
                     if isFirstPaymentSuccessful {
                         multipleCardsPaymentController!.firstCardController.isformEnabled = false
@@ -216,6 +217,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     let decodedContent = String(data: Data(base64Encoded: content)!, encoding: .utf8) ?? "error"
                     print("complete payment form sent ---- SUCCESS ✅\n")
                     isSecondPaymentSuccessful = !decodedContent.contains("error")
+                    print(isSecondPaymentSuccessful)
 
                     if isSecondPaymentSuccessful {
                         multipleCardsPaymentController!.secondCardController.isformEnabled = false
@@ -228,6 +230,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                         secondCircleImageView.tintColor = OderoColors.success.color
                         
                         OderoPay.setPaymentStatus(to: isFirstPaymentSuccessful && isSecondPaymentSuccessful)
+                        print(isFirstPaymentSuccessful && isSecondPaymentSuccessful)
                         NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
                     } else {
                         secondVerticalDividerView.backgroundColor = OderoColors.error.color
