@@ -49,8 +49,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     @objc func updateOnPaymentComplete() {
         if  !multipleCardsPaymentController!.secondCardController.isformEnabled && multipleCardsPaymentController!.firstCardController.isPaymentComplete {
             
-            print(firstAmountTextField.text!.suffix(5))
-            print(Double((firstAmountTextField.text!.suffix(5)))!)
+            print(Double(firstAmountTextField.text!.dropLast(5)) as Any)
             
 //            let form = CompletePaymentForm(
 //                                paymentType: .MULTI_CARD_PAYMENT,
