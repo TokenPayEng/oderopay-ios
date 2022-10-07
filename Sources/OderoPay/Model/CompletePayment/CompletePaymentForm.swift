@@ -43,6 +43,8 @@ public class CompletePaymentForm: Codable {
                 installment: Installment,
                 card: Card) {
         self.paymentType = paymentType
+        self.paymentOrder = orderedAs
+        self.paymentPhase = withPhase
         self.cardPrice = cardPrice
         self.walletPrice = walletPrice ?? 0
         self.totalPointPrice = totalPointPrice
