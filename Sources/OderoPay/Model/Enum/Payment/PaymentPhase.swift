@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum PaymentPhase {
-    case AUTH
-    case PRE_AUTH
-    case POST_AUTH
+public enum PaymentPhase: String, Codable {
+    case AUTH = "AUTH"
+    case PRE_AUTH = "PRE_AUTH"
+    case POST_AUTH = "POST_AUTH"
 }

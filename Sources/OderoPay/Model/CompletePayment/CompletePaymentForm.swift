@@ -14,7 +14,9 @@ public class CompletePaymentForm: Codable {
     private var installment: Installment
     private var card: Card
     
-    // optional for single, mandatory for multi 
+    // optional for single, mandatory for multi
+    private var paymentOrder: Int?
+    private var paymentPhase: PaymentPhase?
     
     // optional
     private var walletPrice: Double?
@@ -32,6 +34,8 @@ public class CompletePaymentForm: Codable {
     
     /// public initializer for the checkout form class.
     public init(paymentType: PaymentMethod,
+                orderedAs: Int? = nil,
+                withPhase: PaymentPhase? = nil,
                 cardPrice: Double,
                 walletPrice: Double? = nil,
                 totalPointPrice: Double? = nil,

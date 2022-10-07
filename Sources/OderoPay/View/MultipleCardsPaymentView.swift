@@ -49,22 +49,24 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     @objc func updateOnPaymentComplete() {
         if  !multipleCardsPaymentController!.secondCardController.isformEnabled && multipleCardsPaymentController!.firstCardController.isPaymentComplete {
             
-//            let form = CompletePaymentForm(
-//                                paymentType: .MULTI_CARD_PAYMENT,
-//                                cardPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
-//                                installment: Installment(rawValue: multipleCardsPaymentController!.firstCardController.cardController.retrieveInstallmentChoice())!,
-//                                card:
-//                                    Card(
-//                                        number: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardNumber(),
-//                                        expiringAt: multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.0,
-//                                        multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.1,
-//                                        withCode: multipleCardsPaymentController!.firstCardController.cardController.retrieveCVC(),
-//                                        belongsTo: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardHolder(),
-//                                        shouldBeStored: multipleCardsPaymentController!.firstCardController.cardController.retrieveSaveCardChoiceOption()
-//                                    )
-//            )
-//
-//            OderoPay.setCompletePaymentForm(to: form)
+            let form = CompletePaymentForm(
+                                paymentType: .MULTI_CARD_PAYMENT,
+                                orderedAs: 1,
+                                withPhase: .PRE_AUTH,
+                                cardPrice: Double((firstAmountTextField.text!.suffix(5)))!,
+                                installment: Installment(rawValue: multipleCardsPaymentController!.firstCardController.cardController.retrieveInstallmentChoice())!,
+                                card:
+                                    Card(
+                                        number: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardNumber(),
+                                        expiringAt: multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.0,
+                                        multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.1,
+                                        withCode: multipleCardsPaymentController!.firstCardController.cardController.retrieveCVC(),
+                                        belongsTo: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardHolder(),
+                                        shouldBeStored: multipleCardsPaymentController!.firstCardController.cardController.retrieveSaveCardChoiceOption()
+                                    )
+            )
+
+            OderoPay.setCompletePaymentForm(to: form)
 //
 //            Task {
 //                do {
@@ -138,6 +140,26 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         }
         
         if multipleCardsPaymentController!.secondCardController.isPaymentComplete {
+            
+            let form = CompletePaymentForm(
+                                paymentType: .MULTI_CARD_PAYMENT,
+                                orderedAs: 2,
+                                withPhase: .PRE_AUTH,
+                                cardPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
+                                installment: Installment(rawValue: multipleCardsPaymentController!.firstCardController.cardController.retrieveInstallmentChoice())!,
+                                card:
+                                    Card(
+                                        number: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardNumber(),
+                                        expiringAt: multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.0,
+                                        multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.1,
+                                        withCode: multipleCardsPaymentController!.firstCardController.cardController.retrieveCVC(),
+                                        belongsTo: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardHolder(),
+                                        shouldBeStored: multipleCardsPaymentController!.firstCardController.cardController.retrieveSaveCardChoiceOption()
+                                    )
+            )
+
+            OderoPay.setCompletePaymentForm(to: form)
+            
             multipleCardsPaymentController!.secondCardController.isformEnabled = false
             
             secondCardView.isHidden = true
