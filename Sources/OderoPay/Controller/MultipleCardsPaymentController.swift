@@ -44,7 +44,7 @@ class MultipleCardsPaymentController: FormProtocol {
         if !isformEnabled {
             return 0
         }
-
+        
         return firstCardController.height + secondCardController.height + 166
     }
     
@@ -70,10 +70,77 @@ class MultipleCardsPaymentController: FormProtocol {
         self.firstCardController.cardController.controllerType = .MULTI_FIRST
         self.secondCardController.cardController.controllerType = .MULTI_SECOND
         
-        self.firstAmount = 0        
+        self.firstAmount = 0
     }
     
     func getTotalPrice() -> Double {
         totalPrice
+    }
+    
+    func makeFirstPayment(for price: Double) async throws -> CompletePaymentFormResult {
+        let form = CompletePaymentForm(
+            paymentType: .MULTI_CARD_PAYMENT,
+            orderedAs: 1,
+            withPhase: .PRE_AUTH,
+            cardPrice: price,
+            installment: Installment(rawValue: firstCardController.cardController.retrieveInstallmentChoice())!,
+            card:
+                Card(
+                    number: firstCardController.cardController.retrieveCardNumber(),
+                    expiringAt: firstCardController.cardController.retrieveExpireDate()!.0,
+                    firstCardController.cardController.retrieveExpireDate()!.1,
+                    withCode: firstCardController.cardController.retrieveCVC(),
+                    belongsTo: firstCardController.cardController.retrieveCardHolder(),
+                    shouldBeStored: firstCardController.cardController.retrieveSaveCardChoiceOption()
+                )
+        )
+        
+        OderoPay.setCompletePaymentForm(to: form)
+        
+        let completePaymentFormResponse: CompletePaymentFormResult
+
+        if firstCardController.cardController.retrieveForce3DSChoiceOption() {
+            completePaymentFormResponse = try await OderoPay.sendComplete3DSPaymentForm()
+            print("\n⚠️ 3DS PAYMENT - MULTICARD PAYMENT (CARD #1) ⚠️\n")
+        } else {
+            completePaymentFormResponse = try await OderoPay.sendCompletePaymentForm()
+            print("\n⚠️ NON-3DS PAYMENT - MULTICARD PAYMENT (CARD #1) ⚠️\n")
+        }
+        
+        return completePaymentFormResponse
+    }
+    
+    func makeSecondPayment(for price: Double) async throws -> CompletePaymentFormResult {
+        
+        let form = CompletePaymentForm(
+                            paymentType: .MULTI_CARD_PAYMENT,
+                            orderedAs: 2,
+                            withPhase: .PRE_AUTH,
+                            cardPrice: price,
+                            installment: Installment(rawValue: secondCardController.cardController.retrieveInstallmentChoice())!,
+                            card:
+                                Card(
+                                    number: secondCardController.cardController.retrieveCardNumber(),
+                                    expiringAt: secondCardController.cardController.retrieveExpireDate()!.0,
+                                    secondCardController.cardController.retrieveExpireDate()!.1,
+                                    withCode: secondCardController.cardController.retrieveCVC(),
+                                    belongsTo: secondCardController.cardController.retrieveCardHolder(),
+                                    shouldBeStored: secondCardController.cardController.retrieveSaveCardChoiceOption()
+                                )
+        )
+
+        OderoPay.setCompletePaymentForm(to: form)
+        
+        let completePaymentFormResponse: CompletePaymentFormResult
+
+        if secondCardController.cardController.retrieveForce3DSChoiceOption() {
+            completePaymentFormResponse = try await OderoPay.sendComplete3DSPaymentForm()
+            print("\n⚠️ 3DS PAYMENT - MULTICARD PAYMENT (CARD #2) ⚠️\n")
+        } else {
+            completePaymentFormResponse = try await OderoPay.sendCompletePaymentForm()
+            print("\n⚠️ NON-3DS PAYMENT - MULTICARD PAYMENT (CARD #2) ⚠️\n")
+        }
+
+        return completePaymentFormResponse
     }
 }

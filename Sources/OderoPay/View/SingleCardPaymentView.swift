@@ -27,12 +27,41 @@ class SingleCardPaymentView: UIView {
     @objc func updateOnPaymentComplete() {
         Task {
             do {
-                let errorIfExists: (ErrorTypes?, ErrorDescriptions?) = try await singleCardPaymentController!.makePayment()
+                let response: CompletePaymentFormResult? = try await singleCardPaymentController!.makePayment()
                 
-                guard let type = errorIfExists.0 else { return }
-                guard let description = errorIfExists.1 else { return }
+                guard let response = response else { return }
                 
-                showErrorAlert(ofType: type, description)
+                if response.hasErrors() != nil {
+                    print("complete payment form returned with errors --- FAIL ❌")
+                    print("Error code: \(String(describing: response.hasErrors()?.getErrorCode()))")
+                    print("Error description: \(String(describing: response.hasErrors()?.getErrorDescription()))")
+                    
+                    if response.hasErrors()?.getErrorCode() == "4999" {
+                        showErrorAlert(ofType: .INSUFFICIENT_FUNDS, .FUNDS)
+                        return
+                    } else {
+                        showErrorAlert(ofType: .SERVER, .NOW)
+                        return
+                    }
+                }
+                
+                guard let resultFromServer = response.hasData() else {
+                    print("Error occured ---- FAIL ❌")
+                    print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
+                    
+                    showErrorAlert(ofType: .SERVER, .LATER)
+                    return
+                }
+                
+                print("retrieving content...")
+                let content = resultFromServer.getHtmlContent()
+                print("content retrieved ---- SUCCESS ✅")
+                let decodedContent = String(data: Data(base64Encoded: content)!, encoding: .utf8) ?? "error"
+                print("complete payment form sent ---- SUCCESS ✅\n")
+                
+                OderoPay.setPaymentStatus(to: !decodedContent.contains("error"))
+                
+                NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
             } catch {
                 print("network error occured ---- FAIL ❌")
                 print("HINT: \(error)")

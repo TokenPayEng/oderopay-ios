@@ -50,50 +50,23 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         var isFirstPaymentSuccessful: Bool = false
         var isSecondPaymentSuccessful: Bool = false
         
+        guard let firstCardPrice = Double(firstAmountTextField.text!.dropLast(5)) else { return }
+    
         if  !multipleCardsPaymentController!.secondCardController.isformEnabled && multipleCardsPaymentController!.firstCardController.isPaymentComplete {
-
-            guard let firstCardPrice = Double(firstAmountTextField.text!.dropLast(5)) else { return }
             
             if firstCardPrice == 0 {
                 showErrorAlert(ofType: .MISSING_DATA, .NOW)
                 return
             }
-            
-            let form = CompletePaymentForm(
-                                paymentType: .MULTI_CARD_PAYMENT,
-                                orderedAs: 1,
-                                withPhase: .PRE_AUTH,
-                                cardPrice: firstCardPrice,
-                                installment: Installment(rawValue: multipleCardsPaymentController!.firstCardController.cardController.retrieveInstallmentChoice())!,
-                                card:
-                                    Card(
-                                        number: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardNumber(),
-                                        expiringAt: multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.0,
-                                        multipleCardsPaymentController!.firstCardController.cardController.retrieveExpireDate()!.1,
-                                        withCode: multipleCardsPaymentController!.firstCardController.cardController.retrieveCVC(),
-                                        belongsTo: multipleCardsPaymentController!.firstCardController.cardController.retrieveCardHolder(),
-                                        shouldBeStored: multipleCardsPaymentController!.firstCardController.cardController.retrieveSaveCardChoiceOption()
-                                    )
-            )
-
-            OderoPay.setCompletePaymentForm(to: form)
 
             Task {
                 do {
-                    let completePaymentFormResponse: CompletePaymentFormResult
+                    let response: CompletePaymentFormResult = try await multipleCardsPaymentController!.makeFirstPayment(for: firstCardPrice)
 
-                    if multipleCardsPaymentController!.firstCardController.cardController.retrieveForce3DSChoiceOption() {
-                        completePaymentFormResponse = try await OderoPay.sendComplete3DSPaymentForm()
-                        print("\n⚠️ 3DS PAYMENT - MULTICARD PAYMENT (CARD #1) ⚠️\n")
-                    } else {
-                        completePaymentFormResponse = try await OderoPay.sendCompletePaymentForm()
-                        print("\n⚠️ NON-3DS PAYMENT - MULTICARD PAYMENT (CARD #1) ⚠️\n")
-                    }
-
-                    if completePaymentFormResponse.hasErrors() != nil {
+                    if response.hasErrors() != nil {
                         print("complete payment form returned with errors --- FAIL ❌")
-                        print("Error code: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorCode()))")
-                        print("Error description: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorDescription()))")
+                        print("Error code: \(String(describing: response.hasErrors()?.getErrorCode()))")
+                        print("Error description: \(String(describing: response.hasErrors()?.getErrorDescription()))")
 
                         showErrorAlert(ofType: .SERVER, .NOW)
                         firstVerticalDividerView.backgroundColor = OderoColors.error.color
@@ -101,7 +74,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                         return
                     }
 
-                    guard let resultFromServer = completePaymentFormResponse.hasData() else {
+                    guard let resultFromServer = response.hasData() else {
                         print("Error occured ---- FAIL ❌")
                         print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
 
@@ -155,49 +128,23 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             
             guard let secondCardPrice = Double(secondAmountTextField.text!.dropLast(5)) else { return }
             
-            let form = CompletePaymentForm(
-                                paymentType: .MULTI_CARD_PAYMENT,
-                                orderedAs: 2,
-                                withPhase: .PRE_AUTH,
-                                cardPrice: secondCardPrice,
-                                installment: Installment(rawValue: multipleCardsPaymentController!.secondCardController.cardController.retrieveInstallmentChoice())!,
-                                card:
-                                    Card(
-                                        number: multipleCardsPaymentController!.secondCardController.cardController.retrieveCardNumber(),
-                                        expiringAt: multipleCardsPaymentController!.secondCardController.cardController.retrieveExpireDate()!.0,
-                                        multipleCardsPaymentController!.secondCardController.cardController.retrieveExpireDate()!.1,
-                                        withCode: multipleCardsPaymentController!.secondCardController.cardController.retrieveCVC(),
-                                        belongsTo: multipleCardsPaymentController!.secondCardController.cardController.retrieveCardHolder(),
-                                        shouldBeStored: multipleCardsPaymentController!.secondCardController.cardController.retrieveSaveCardChoiceOption()
-                                    )
-            )
-
-            OderoPay.setCompletePaymentForm(to: form)
-            
             
             Task {
                 do {
-                    let completePaymentFormResponse: CompletePaymentFormResult
+                    let response: CompletePaymentFormResult = try await multipleCardsPaymentController!.makeSecondPayment(for: secondCardPrice)
 
-                    if multipleCardsPaymentController!.secondCardController.cardController.retrieveForce3DSChoiceOption() {
-                        completePaymentFormResponse = try await OderoPay.sendComplete3DSPaymentForm()
-                        print("\n⚠️ 3DS PAYMENT - MULTICARD PAYMENT (CARD #2) ⚠️\n")
-                    } else {
-                        completePaymentFormResponse = try await OderoPay.sendCompletePaymentForm()
-                        print("\n⚠️ NON-3DS PAYMENT - MULTICARD PAYMENT (CARD #2) ⚠️\n")
-                    }
 
-                    if completePaymentFormResponse.hasErrors() != nil {
+                    if response.hasErrors() != nil {
                         print("complete payment form returned with errors --- FAIL ❌")
-                        print("Error code: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorCode()))")
-                        print("Error description: \(String(describing: completePaymentFormResponse.hasErrors()?.getErrorDescription()))")
+                        print("Error code: \(String(describing: response.hasErrors()?.getErrorCode()))")
+                        print("Error description: \(String(describing: response.hasErrors()?.getErrorDescription()))")
 
                         showErrorAlert(ofType: .SERVER, .NOW)
 
                         return
                     }
 
-                    guard let resultFromServer = completePaymentFormResponse.hasData() else {
+                    guard let resultFromServer = response.hasData() else {
                         print("Error occured ---- FAIL ❌")
                         print("HINT: check your http headers and keys. if everything is correct may be server error. please wait and try again.")
 
