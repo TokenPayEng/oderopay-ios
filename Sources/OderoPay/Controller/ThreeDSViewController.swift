@@ -30,8 +30,37 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if let key = change?[NSKeyValueChangeKey.newKey] {
-            print("observeValue \(key)") // url value
+        if let key = change?[NSKeyValueChangeKey.newKey] as? String {
+            
+            print("\nobserveValue: \(key)\n")
+            if key.contains("success") {
+                OderoPay.setPaymentStatus(to: true)
+                presentResultScreens()
+            }
+            
+            if key.contains("error") {
+                OderoPay.setPaymentStatus(to: false)
+                presentResultScreens()
+            }
         }
+    }
+    
+    func presentResultScreens() {
+        var viewController: UIViewController = UIViewController()
+        
+        if OderoPay.shouldUseCustomEndScreens() {
+            viewController = OderoPay.isPaymentCompleted() ? OderoPay.getCustomSuccessScreenViewController() : OderoPay.getCustomErrorScreenViewController()
+        } else {
+            guard let paymentInformationViewController = UIStoryboard(
+                name: "PaymentInformation",
+                bundle: .module).instantiateViewController(identifier: "PaymentInformation") as? PaymentInformationViewController
+            else {
+                fatalError("Unable to instantiate Payment Information")
+            }
+            
+            viewController = paymentInformationViewController
+        }
+        
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
