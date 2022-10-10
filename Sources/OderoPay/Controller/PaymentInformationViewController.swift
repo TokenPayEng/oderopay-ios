@@ -51,7 +51,7 @@ class PaymentInformationViewController: UIViewController {
                 button.isHidden = true
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 1], animated: true)
+                    self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 3], animated: true)
                 }
             } else {
                 imageView.image = UIImage(named: "error", in: .module, with: .none)
@@ -61,7 +61,7 @@ class PaymentInformationViewController: UIViewController {
                 button.isHidden = true
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 1], animated: true)
+                    self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 3], animated: true)
                 }
             }
         }
