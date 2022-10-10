@@ -59,9 +59,13 @@ class SingleCardPaymentView: UIView {
                 let decodedContent = String(data: Data(base64Encoded: content)!, encoding: .utf8) ?? "error"
                 print("complete payment form sent ---- SUCCESS ✅\n")
                 
-                OderoPay.setPaymentStatus(to: !decodedContent.contains("error"))
-                
-                NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
+                // first check for 3ds
+                if singleCardPaymentController!.cardController.cardController.retrieveForce3DSChoiceOption() {
+                    NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil)
+                } else {
+                    OderoPay.setPaymentStatus(to: !decodedContent.contains("error"))
+                    NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
+                }
             } catch {
                 print("network error occured ---- FAIL ❌")
                 print("HINT: \(error)")

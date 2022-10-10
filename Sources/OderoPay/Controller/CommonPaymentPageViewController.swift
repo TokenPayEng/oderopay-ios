@@ -130,7 +130,9 @@ public class CommonPaymentPageViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(update2Height), name: NSNotification.Name(rawValue: "update2Height"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(callPaymentInformation), name: NSNotification.Name(rawValue: "callPaymentInformation"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(presentPaymentInfo), name: NSNotification.Name(rawValue: "callPaymentInformation"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(present3DSViewController), name: NSNotification.Name(rawValue: "callPaymentInformation3DS"), object: nil)
         
         creditCardOrDebitCardButton.setImage(singleCardPaymentController.image, for: .normal)
     }
@@ -144,16 +146,13 @@ public class CommonPaymentPageViewController: UIViewController {
         multipleCardsViewHeightConstraint.constant = multipleCardsPaymentController.height
     }
     
-    @objc func callPaymentInformation() {
-        presentPaymentInfo()
-    }
-    
     override public func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateHeights"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "update2Height"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "callPaymentInformation"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "callPaymentInformation3DS"), object: nil)
     }
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -208,7 +207,7 @@ public class CommonPaymentPageViewController: UIViewController {
         section.layoutIfNeeded()
     }
     
-    private func presentPaymentInfo() {
+    @objc private func presentPaymentInfo() {
         var viewController: UIViewController = UIViewController()
         
         if OderoPay.shouldUseCustomEndScreens() {
@@ -224,6 +223,11 @@ public class CommonPaymentPageViewController: UIViewController {
             viewController = paymentInformationViewController
         }
         
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc private func present3DSViewController() {
+        let viewController: UIViewController = ThreeDSViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
