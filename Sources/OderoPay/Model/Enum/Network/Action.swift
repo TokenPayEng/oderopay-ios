@@ -12,4 +12,5 @@ enum Action: String {
     case THREEDS_INIT = "/3ds/init"
     case COMPLETE = "/complete"
     case INSTALLMENTS = "/installments"
+    case SETTINGS = "/merchantSettings"
 }

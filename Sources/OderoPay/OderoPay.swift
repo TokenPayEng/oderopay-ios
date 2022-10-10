@@ -46,16 +46,9 @@ public struct OderoPay {
     }
     
     // single card toggle
-    static internal func isSingleCardPaymentEnabled() -> Bool {
-        self.singleCardPaymentEnabled
-    }
-    
-    static public func enableSingleCardPayment() {
-        self.singleCardPaymentEnabled = true
-    }
-    
-    static public func disableSingleCardPayment() {
-        self.singleCardPaymentEnabled = false
+    static internal func isSingleCardPaymentEnabled() async throws -> Bool {
+        let checkoutFormResponse = try await OderoPay.sendCheckoutForm()
+        return self.singleCardPaymentEnabled
     }
     
     // multiple cards toggle
@@ -63,25 +56,9 @@ public struct OderoPay {
         self.multipleCardsPaymentEnabled
     }
     
-    static public func enableMultipleCardsPayment() {
-        self.multipleCardsPaymentEnabled = true
-    }
-    
-    static public func disableMultipleCardsPayment() {
-        self.multipleCardsPaymentEnabled = false
-    }
-    
     //  token flex toggle
     static internal func isTokenFlexPaymentEnabled() -> Bool {
         self.tokenFlexPaymentEnabled
-    }
-    
-    static public func enableTokenFlexPayment() {
-        self.tokenFlexPaymentEnabled = true
-    }
-    
-    static public func disableTokenFlexPayment() {
-        self.tokenFlexPaymentEnabled = false
     }
     
     static internal func assignRetrievedToken(withValue token: String) {
@@ -183,7 +160,7 @@ public struct OderoPay {
     }
     
     static internal func sendCheckoutForm() async throws -> CheckoutFormResult {
-        let url = URL(string: APIGateway.SANDBOX.rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
+        let url = URL(string: environment.getGateway().getBaseURL() + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         var request = URLRequest(url: url)
         
         // method
@@ -213,6 +190,33 @@ public struct OderoPay {
         print("retrieving token...")
         let (data, _) = try await URLSession.shared.data(with: request)
         return try JSONDecoder().decode(CheckoutFormResult.self, from: data)
+    }
+    
+    static internal func retrieveMerchantSettings() async throws -> MerchantSettingsResult {
+        let url = URL(string: environment.getGateway().getBaseURL() + Path.COMMON_PAYMENT_PAGE.rawValue + Action.SETTINGS.rawValue)!
+        var request = URLRequest(url: url)
+        
+        // method
+        request.httpMethod = HTTPMethod.GET.rawValue
+        
+        // generate signature
+        let signature = try generateSignature(for: url.absoluteString, body: String(data: request.httpBody!, encoding: .utf8)!)
+        
+        // header custom
+        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+        request.setValue(randomKey, forHTTPHeaderField: "x-rnd-key")
+        request.setValue(signature, forHTTPHeaderField: "x-signature")
+        request.setValue("V1", forHTTPHeaderField: "x-auth-version")
+        request.setValue(token, forHTTPHeaderField: "x-token")
+        request.setValue(iOSHeader, forHTTPHeaderField: "x-channel")
+        
+        // header default
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // send request
+        let (data, _) = try await URLSession.shared.data(with: request)
+        print(String(data: data, encoding: .utf8) as Any)
+        return try JSONDecoder().decode(MerchantSettingsResult.self, from: data)
     }
 
     static internal func retrieveInstallments(for binNumber: String, withPrice price: Double, in currency: Currency) async throws -> RetrieveInstallmentResult {

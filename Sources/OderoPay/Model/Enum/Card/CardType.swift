@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum CardType {
-    case CREDIT_CARD
-    case DEBIT_CARD
-    case PREPAID_CARD
+enum CardType: String, Codable {
+    case CREDIT_CARD = "CREDIT_CARD"
+    case DEBIT_CARD = "DEBIT_CARD"
+    case PREPAID_CARD = "PREPAID_CARD"
 }
