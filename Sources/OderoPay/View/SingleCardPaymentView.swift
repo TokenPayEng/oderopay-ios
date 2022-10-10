@@ -61,7 +61,7 @@ class SingleCardPaymentView: UIView {
                 
                 // first check for 3ds
                 if singleCardPaymentController!.cardController.cardController.retrieveForce3DSChoiceOption() {
-                    NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil)
+                    NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil, userInfo: ["content": decodedContent])
                 } else {
                     OderoPay.setPaymentStatus(to: !decodedContent.contains("error"))
                     NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)

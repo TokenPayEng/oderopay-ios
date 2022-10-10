@@ -132,7 +132,7 @@ public class CommonPaymentPageViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(presentPaymentInfo), name: NSNotification.Name(rawValue: "callPaymentInformation"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(present3DSViewController), name: NSNotification.Name(rawValue: "callPaymentInformation3DS"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(present3DSViewController(_:)), name: NSNotification.Name(rawValue: "callPaymentInformation3DS"), object: nil)
         
         creditCardOrDebitCardButton.setImage(singleCardPaymentController.image, for: .normal)
     }
@@ -226,8 +226,9 @@ public class CommonPaymentPageViewController: UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @objc private func present3DSViewController() {
-        let viewController: UIViewController = ThreeDSViewController()
+    @objc private func present3DSViewController(_ notification: NSNotification) {
+        let viewController: ThreeDSViewController = ThreeDSViewController()
+        viewController.webViewURL = notification.userInfo!["content"] as! String
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
