@@ -147,6 +147,7 @@ class CardController {
             }
             
             do {
+                print(controllerType)
                 let retrieveInstallmentsResponse = try await OderoPay.retrieveInstallments(
                     for: updatedCardNumber,
                     withPrice: priceToCheck,
