@@ -16,6 +16,8 @@ class PaymentInformationViewController: UIViewController {
     @IBOutlet weak var subtitleLabel2: UILabel!
     @IBOutlet weak var button: UIButton!
     
+    var comingFrom3DS: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
@@ -46,6 +48,10 @@ class PaymentInformationViewController: UIViewController {
     }
 
     @IBAction func backToCheckout(_ sender: Any) {
-        self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 3], animated: true)
+        if comingFrom3DS {
+            self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 4], animated: true)
+        } else {
+            self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 3], animated: true)
+        }
     }
 }

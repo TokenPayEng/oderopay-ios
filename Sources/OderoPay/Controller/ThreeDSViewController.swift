@@ -31,16 +31,12 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let key = change?[NSKeyValueChangeKey.newKey] {
-            
-            print("\nobserveValue: \(key)\n")
-            
             if String(describing: key).contains("success") {
                 OderoPay.setPaymentStatus(to: true)
                 presentResultScreens()
-                print("In here")
             }
             
-            if String(describing: key).contains("error") {
+            if String(describing: key).contains("failure") {
                 OderoPay.setPaymentStatus(to: false)
                 presentResultScreens()
             }
@@ -60,6 +56,7 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
                 fatalError("Unable to instantiate Payment Information")
             }
             
+            paymentInformationViewController.comingFrom3DS = true
             viewController = paymentInformationViewController
         }
         
