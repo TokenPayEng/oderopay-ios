@@ -230,6 +230,8 @@ public class CommonPaymentPageViewController: UIViewController {
                 fatalError("Unable to instantiate Payment Information")
             }
             
+            paymentInformationViewController.comingFrom3DS = false
+            paymentInformationViewController.isFirstMultiCard = false
             viewController = paymentInformationViewController
         }
         

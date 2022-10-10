@@ -41,7 +41,6 @@ class PaymentInformationViewController: UIViewController {
                 }
             }
         } else if isFirstMultiCard {
-            
             if OderoPay.areMultipleCardsPaymentsCompleted().0 {
                 imageView.image = UIImage(named: "success", in: .module, with: .none)
                 titleLabel.text = NSLocalizedString("paymentSuccess", bundle: .module, comment: "on successful payment")
