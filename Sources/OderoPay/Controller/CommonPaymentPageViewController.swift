@@ -228,7 +228,7 @@ public class CommonPaymentPageViewController: UIViewController {
     
     @objc private func present3DSViewController(_ notification: NSNotification) {
         let viewController: ThreeDSViewController = ThreeDSViewController()
-        viewController.webViewURL = notification.userInfo!["content"] as! String
+        viewController.htmlContent = notification.userInfo!["content"] as! String
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

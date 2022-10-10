@@ -11,7 +11,7 @@ import WebKit
 class ThreeDSViewController: UIViewController, WKNavigationDelegate {
 
     var webView: WKWebView!
-    var webViewURL: String = String()
+    var htmlContent: String = String()
     
     override func loadView() {
         webView = WKWebView()
@@ -21,16 +21,7 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(webViewURL)
-        
-        let url = URL(string: webViewURL)!
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+
+        webView.loadHTMLString(htmlContent, baseURL: nil)
     }
 }
