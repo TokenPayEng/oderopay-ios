@@ -133,7 +133,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                 do {
                     let response: CompletePaymentFormResult = try await multipleCardsPaymentController!.makeSecondPayment(for: secondCardPrice)
 
-
                     if response.hasErrors() != nil {
                         print("complete payment form returned with errors --- FAIL ❌")
                         print("Error code: \(String(describing: response.hasErrors()?.getErrorCode()))")
