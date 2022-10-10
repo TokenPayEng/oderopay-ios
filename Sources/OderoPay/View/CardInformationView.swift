@@ -305,12 +305,19 @@ class CardInformationView: UIView, UITextFieldDelegate {
                 if cardController.getExpireYear().count > 1 {
                     cardController.setExpireYear(to: String(cardController.getUpdatedExpireDate().suffix(2)))
                 } else {
-                    if Int(string)! >= (cardController.year % 10) {
+                    
+                    // check if last digit is more that current year's first digit, if not check for more than current year's second digit
+                    if Int(cardController.getExpireYear())! > ((cardController.year % 100) / 10) {
                         textField.isError(false)
                         cardController.setExpireYear(to: cardController.getExpireYear() + string)
                     } else {
-                        textField.isError(true)
-                        return false
+                        if Int(string)! >= (cardController.year % 10) {
+                            textField.isError(false)
+                            cardController.setExpireYear(to: cardController.getExpireYear() + string)
+                        } else {
+                            textField.isError(true)
+                            return false
+                        }
                     }
                 }
                 
