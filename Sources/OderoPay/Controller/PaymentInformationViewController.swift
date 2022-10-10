@@ -33,7 +33,11 @@ class PaymentInformationViewController: UIViewController {
             button.isHidden = true
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 3], animated: true)
+                if self.comingFrom3DS {
+                    self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 4], animated: true)
+                } else {
+                    self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 3], animated: true)
+                }
             }
         } else {
             imageView.image = UIImage(named: "error", in: .module, with: .none)
@@ -48,7 +52,7 @@ class PaymentInformationViewController: UIViewController {
     }
 
     @IBAction func backToCheckout(_ sender: Any) {
-        if comingFrom3DS {
+        if self.comingFrom3DS {
             self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 4], animated: true)
         } else {
             self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 3], animated: true)
