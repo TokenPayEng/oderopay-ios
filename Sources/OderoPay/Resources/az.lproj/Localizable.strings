@@ -47,3 +47,5 @@
 "cardErrorDescription" = "Təqdim olunan kart məlumatı yanlışdır.";
 "fundsDescription" = "Bu tranzaksiyanı tamamlamaq üçün kifayət qədər vəsaitiniz yoxdur.";
 
+"oops" = "Ups, görünür, bütün ödəniş seçimləriniz deaktivdir!"
+

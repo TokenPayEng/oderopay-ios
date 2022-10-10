@@ -46,3 +46,5 @@
 "errorDescription" = "Something went wrong. Please try again.";
 "cardErrorDescription" = "Provided card information is invalid.";
 "fundsDescription" = "You don't have enough funds to complete this transaction.";
+
+"oops" = "Oops, looks like all your payment options are disabled!";

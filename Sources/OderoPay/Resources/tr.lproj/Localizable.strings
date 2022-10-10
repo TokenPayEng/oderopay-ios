@@ -46,3 +46,5 @@
 "errorDescription" = "Bir şeyler yanlış gitti. Lütfen tekrar deneyin.";
 "cardErrorDescription" = "Sağlanan kart bilgileri geçersiz.";
 "fundsDescription" = "Bu işlemi tamamlamak için yeterli bakiyeniz yok.";
+
+"oops" = "Hata! Tüm ödeme seçenekleriniz devre dışı görünüyor!";
