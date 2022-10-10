@@ -8,6 +8,8 @@
 import Foundation
 
 class CardController {
+    var controllerType: CardControllers = .NOT_DEFINED
+    
     private var isValidCard: Bool = false
     private var isValidExpire: Bool = false
     private var isValidCVC: Bool = false
@@ -129,10 +131,25 @@ class CardController {
             
             print("\nStarting process of installments retrieval\n")
             
+            // if single card payment retrieve installments from checkout, else from card price labels
+            var priceToCheck: Double
+            
+            switch controllerType {
+            case .NOT_DEFINED:
+                print("\n‼️ WARNING: Card controller does not appear to have a type. (SINGLE, MULTI-1, MULTI-2) ‼️\n")
+                priceToCheck = 0
+            case .SINGLE_CREDIT:
+                priceToCheck = OderoPay.getCheckoutForm().getCheckoutPriceRaw()
+            case .MULTI_FIRST:
+                priceToCheck = OderoPay.getPricesForMultipleCardsPayment().0
+            case .MULTI_SECOND:
+                priceToCheck = OderoPay.getPricesForMultipleCardsPayment().1
+            }
+            
             do {
                 let retrieveInstallmentsResponse = try await OderoPay.retrieveInstallments(
                     for: updatedCardNumber,
-                    withPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
+                    withPrice: priceToCheck,
                     in: OderoPay.getCheckoutForm().getCheckoutCurrencyRaw()
                 )
                 

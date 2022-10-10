@@ -29,5 +29,6 @@ class SingleCardPaymentController: FormProtocol {
     init(_ cardController: CreditOrDebitCardPaymentController) {
         self.cardController = cardController
         self.cardController.isformEnabled = true
+        self.cardController.cardController.controllerType = .SINGLE_CREDIT
     }
 }

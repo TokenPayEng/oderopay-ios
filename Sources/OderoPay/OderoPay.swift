@@ -19,10 +19,19 @@ public struct OderoPay {
     static private var multipleCardsPaymentEnabled: Bool = true
     static private var tokenFlexPaymentEnabled: Bool = false
     
+    static private var priceForFirstMultiCard: Double = 0
+    static private var priceForSecondMultiCard: Double {
+        OderoPay.checkoutForm.getCheckoutPriceRaw() - priceForFirstMultiCard
+    }
+    
     static private var checkoutForm = CheckoutForm()
     static private var completePaymentForm = CompletePaymentForm()
     
     static private var paymentCompleted: Bool = false
+    
+    static internal func getPricesForMultipleCardsPayment() -> (Double, Double) {
+        (priceForFirstMultiCard, priceForSecondMultiCard)
+    }
     
     static internal func setPaymentStatus(to status: Bool) {
         self.paymentCompleted = status
