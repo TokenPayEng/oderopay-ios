@@ -24,4 +24,9 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
 
         webView.loadHTMLString(htmlContent, baseURL: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
 }
