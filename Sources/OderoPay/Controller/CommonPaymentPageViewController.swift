@@ -158,6 +158,16 @@ public class CommonPaymentPageViewController: UIViewController {
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateHeights), name: NSNotification.Name(rawValue: "updateHeights"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(update2Height), name: NSNotification.Name(rawValue: "update2Height"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(presentPaymentInfo), name: NSNotification.Name(rawValue: "callPaymentInformation"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(present3DSViewController(_:)), name: NSNotification.Name(rawValue: "callPaymentInformation3DS"), object: nil)
     }
     
     override public func viewWillDisappear(_ animated: Bool) {

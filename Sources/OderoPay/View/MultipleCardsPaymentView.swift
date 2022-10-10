@@ -187,7 +187,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     print("complete payment form sent ---- SUCCESS ✅\n")
                     
                     // first check for 3ds
-                    if multipleCardsPaymentController!.firstCardController.cardController.retrieveForce3DSChoiceOption() {
+                    if multipleCardsPaymentController!.secondCardController.cardController.retrieveForce3DSChoiceOption() {
                         NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil, userInfo: ["content": decodedContent, "type": CardControllers.MULTI_SECOND])
                         print("\nStarted 3DS Verification for the Second of the Multiple Cards Payment\n")
                         let isSecondPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().1
