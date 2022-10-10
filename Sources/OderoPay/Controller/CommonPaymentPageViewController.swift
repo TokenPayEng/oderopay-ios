@@ -21,6 +21,7 @@ public class CommonPaymentPageViewController: UIViewController {
         multipleCardsPaymentController.height
     }
     
+    @IBOutlet weak var emptyErrorView: EmptyErrorView!
     // ---------------------CreditOrDebitCardPayment----------------------
     
     @IBOutlet weak var singleCardView: SingleCardPaymentView! {
@@ -120,6 +121,8 @@ public class CommonPaymentPageViewController: UIViewController {
         creditCardOrDebitCardButton.isHidden = !OderoPay.isSingleCardPaymentEnabled()
         multipleCreditCardsButton.isHidden = !OderoPay.isMultipleCardsPaymentEnabled()
         singleAndMultipleDivider.isHidden = !OderoPay.isSingleCardPaymentEnabled() || !OderoPay.isMultipleCardsPaymentEnabled()
+        
+        emptyErrorView.isHidden = OderoPay.isSingleCardPaymentEnabled() || OderoPay.isMultipleCardsPaymentEnabled()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)

@@ -10,6 +10,7 @@ import UIKit
 class EmptyErrorView: UIView {
 
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var messageLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,6 +20,8 @@ class EmptyErrorView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+        
+        messageLabel.text = NSLocalizedString("oops", bundle: .module, comment: "oh no")
     }
     
     private func commonInit() {

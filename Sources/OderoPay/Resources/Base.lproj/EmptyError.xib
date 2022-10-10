@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyErrorView" customModule="OderoPay">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="X7z-aP-eLL"/>
+                <outlet property="messageLabel" destination="vgr-nC-tV6" id="2uQ-2k-DjK"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
