@@ -97,8 +97,9 @@ class SingleCardPaymentController: FormProtocol {
             
             OderoPay.setPaymentStatus(to: !decodedContent.contains("error"))
             
-            NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
-        
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
+            }
         }
         
         return (errorType, errorDescription)
