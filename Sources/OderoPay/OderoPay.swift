@@ -160,7 +160,7 @@ public struct OderoPay {
     }
     
     static internal func sendCheckoutForm() async throws -> CheckoutFormResult {
-        let url = URL(string: environment.getGateway().getBaseURL() + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
+        let url = URL(string: environment.getGateway().rawValue + Path.CHECKOUT.rawValue + Action.INIT.rawValue)!
         var request = URLRequest(url: url)
         
         // method
