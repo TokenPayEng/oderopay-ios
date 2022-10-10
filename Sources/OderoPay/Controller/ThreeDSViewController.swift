@@ -33,16 +33,14 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
         if let key = change?[NSKeyValueChangeKey.newKey] {
             
             print("\nobserveValue: \(key)\n")
-            let x = key as? String
-            print("\nobserveValue2: \(key)\n")
             
-            if x!.contains("success") {
+            if String(describing: key).contains("success") {
                 OderoPay.setPaymentStatus(to: true)
                 presentResultScreens()
                 print("In here")
             }
             
-            if x!.contains("error") {
+            if String(describing: key).contains("error") {
                 OderoPay.setPaymentStatus(to: false)
                 presentResultScreens()
             }
