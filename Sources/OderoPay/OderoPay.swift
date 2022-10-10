@@ -220,6 +220,7 @@ public struct OderoPay {
         urlComponents.queryItems = [
             URLQueryItem(name: "binNumber", value: binNumber),
             URLQueryItem(name: "price", value: String(price)),
+            URLQueryItem(name: "currency", value: currency.rawValue)
         ]
         
         var request = URLRequest(url: urlComponents.url!)

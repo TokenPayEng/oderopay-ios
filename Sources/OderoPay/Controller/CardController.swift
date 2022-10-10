@@ -181,7 +181,7 @@ class CardController {
                 print("retrieving installments...")
                 self.installmentItem = resultFromServer
                 print("items retrieved ---- SUCCESS ✅")
-                print("installments retrieved for card with bin number: \(updatedCardNumber) and initial price: \(priceToCheck)---- SUCCESS ✅\n")
+                print("installments retrieved for card with bin number: \(updatedCardNumber) and initial price: \(priceToCheck) ---- SUCCESS ✅\n")
                 
                 self.installmentFound = self.installmentItem != nil
                 self.force3DSChoice = self.installmentItem!.getForce3ds()
