@@ -185,6 +185,7 @@ class CardController {
                 
                 self.installmentFound = self.installmentItem != nil
                 self.force3DSChoice = self.installmentItem!.getForce3ds()
+                print(self.installmentItem!.getForce3ds())
                 self.block3DSChoice = self.installmentItem!.getForce3ds()
                 self.installmentChoice = 1
 
