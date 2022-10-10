@@ -30,16 +30,19 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if let key = change?[NSKeyValueChangeKey.newKey] as? String {
+        if let key = change?[NSKeyValueChangeKey.newKey] {
             
             print("\nobserveValue: \(key)\n")
+            let x = key as? String
+            print("\nobserveValue2: \(key)\n")
             
-            if key.contains("success") {
+            if x!.contains("success") {
                 OderoPay.setPaymentStatus(to: true)
                 presentResultScreens()
+                print("In here")
             }
             
-            if key.contains("error") {
+            if x!.contains("error") {
                 OderoPay.setPaymentStatus(to: false)
                 presentResultScreens()
             }
