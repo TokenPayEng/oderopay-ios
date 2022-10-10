@@ -309,6 +309,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             if textField.text!.isEmpty { textField.isError(true) }
             else {
                 textField.isError(false)
+                OderoPay.setPriceForFirstMultiCard(Double(textField.text!)!)
                 textField.text = String(format: "%.2f", multipleCardsPaymentController!.firstAmount)
                 textField.text!.append(" \(OderoPay.getCheckoutForm().getCheckoutCurrencyRaw().currencySign)")
             }

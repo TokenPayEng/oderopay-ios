@@ -29,6 +29,10 @@ public struct OderoPay {
     
     static private var paymentCompleted: Bool = false
     
+    static internal func setPriceForFirstMultiCard(_ price: Double) {
+        self.priceForFirstMultiCard = price
+    }
+    
     static internal func getPricesForMultipleCardsPayment() -> (Double, Double) {
         (priceForFirstMultiCard, priceForSecondMultiCard)
     }
