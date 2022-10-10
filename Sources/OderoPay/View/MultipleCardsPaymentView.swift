@@ -45,6 +45,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
         
+        let isFirstPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().0
+        
         firstVerticalDividerView.backgroundColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
         
         firstAmountTextField.backgroundColor = OderoColors.gray.color
@@ -103,8 +105,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     if multipleCardsPaymentController!.firstCardController.cardController.retrieveForce3DSChoiceOption() {
                         NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil, userInfo: ["content": decodedContent, "type": CardControllers.MULTI_FIRST])
                         print("\nStarted 3DS Verification for the First of the Multiple Cards Payment\n")
-                        
-                        let isFirstPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().0
                         
                         multipleCardsPaymentController!.firstCardController.isformEnabled = false
                         multipleCardsPaymentController!.secondCardController.isformEnabled = true
