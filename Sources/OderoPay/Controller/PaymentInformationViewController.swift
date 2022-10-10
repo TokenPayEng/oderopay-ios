@@ -17,6 +17,7 @@ class PaymentInformationViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     
     var comingFrom3DS: Bool = false
+    var isFirstMultiCard: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,32 @@ class PaymentInformationViewController: UIViewController {
                     self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 3], animated: true)
                 }
             }
-        } else {
+        } else if isFirstMultiCard {
+            
+            if OderoPay.areMultipleCardsPaymentsCompleted().0 {
+                imageView.image = UIImage(named: "success", in: .module, with: .none)
+                titleLabel.text = NSLocalizedString("paymentSuccess", bundle: .module, comment: "on successful payment")
+                subtitleLabel.text = NSLocalizedString("returnToHome", bundle: .module, comment: "on successful payment")
+                
+                subtitleLabel2.isHidden = true
+                button.isHidden = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 1], animated: true)
+                }
+            } else {
+                imageView.image = UIImage(named: "error", in: .module, with: .none)
+                titleLabel.text = NSLocalizedString("paymentError", bundle: .module, comment: "on failure")
+                subtitleLabel.text = NSLocalizedString("paymentErrorHelp", bundle: .module, comment: "on failure")
+                subtitleLabel2.text = NSLocalizedString("paymentErrorHelp2", bundle: .module, comment: "on failure")
+                button.isHidden = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 1], animated: true)
+                }
+            }
+        }
+        else {
             imageView.image = UIImage(named: "error", in: .module, with: .none)
             titleLabel.text = NSLocalizedString("paymentError", bundle: .module, comment: "on failure")
             subtitleLabel.text = NSLocalizedString("paymentErrorHelp", bundle: .module, comment: "on failure")

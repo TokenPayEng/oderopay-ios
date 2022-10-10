@@ -37,15 +37,17 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
                 switch fromCardControllerType {
                 case .SINGLE_CREDIT:
                     OderoPay.setPaymentStatus(to: true)
+                    presentResultScreens(forFirstMultiCard: false)
                 case .MULTI_FIRST:
-                    print("oh no 1")
+                    OderoPay.setMultipleCardsPaymentOneStatus(to: true)
+                    NotificationCenter.default.post(name: Notification.Name("update2Height"), object: nil)
+                    presentResultScreens(forFirstMultiCard: true)
                 case .MULTI_SECOND:
-                    print("oh no 2")
+                    OderoPay.setMultipleCardsPaymentTwoStatus(to: true)
+                    presentResultScreens(forFirstMultiCard: false)
                 case .NOT_DEFINED:
                     return
                 }
-                
-                presentResultScreens()
             }
             
             if String(describing: key).contains("failure") {
@@ -53,20 +55,21 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
                 switch fromCardControllerType {
                 case .SINGLE_CREDIT:
                     OderoPay.setPaymentStatus(to: false)
+                    presentResultScreens(forFirstMultiCard: false)
                 case .MULTI_FIRST:
-                    print("oh no 11")
+                    OderoPay.setMultipleCardsPaymentOneStatus(to: false)
+                    presentResultScreens(forFirstMultiCard: true)
                 case .MULTI_SECOND:
-                    print("oh no 22")
+                    OderoPay.setMultipleCardsPaymentTwoStatus(to: false)
+                    presentResultScreens(forFirstMultiCard: false)
                 case .NOT_DEFINED:
                     return
                 }
-                
-                presentResultScreens()
             }
         }
     }
     
-    func presentResultScreens() {
+    func presentResultScreens(forFirstMultiCard firstMulti: Bool) {
         var viewController: UIViewController = UIViewController()
         
         if OderoPay.shouldUseCustomEndScreens() {
@@ -80,6 +83,7 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
             }
             
             paymentInformationViewController.comingFrom3DS = true
+            paymentInformationViewController.isFirstMultiCard = firstMulti
             viewController = paymentInformationViewController
         }
         

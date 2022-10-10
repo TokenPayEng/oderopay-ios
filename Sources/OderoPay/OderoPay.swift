@@ -29,6 +29,8 @@ public struct OderoPay {
     static private var completePaymentForm = CompletePaymentForm()
     
     static private var paymentCompleted: Bool = false
+    static private var multipleCardsPaymentOneCompleted: Bool = false
+    static private var multipleCardsPaymentTwoCompleted: Bool = false
     
     static internal func setPriceForFirstMultiCard(_ price: Double) {
         self.priceForFirstMultiCard = price
@@ -44,6 +46,18 @@ public struct OderoPay {
     
     static internal func isPaymentCompleted() -> Bool {
         self.paymentCompleted
+    }
+    
+    static internal func setMultipleCardsPaymentOneStatus(to status: Bool) {
+        self.multipleCardsPaymentOneCompleted = status
+    }
+    
+    static internal func setMultipleCardsPaymentTwoStatus(to status: Bool) {
+        self.multipleCardsPaymentTwoCompleted = status
+    }
+    
+    static internal func areMultipleCardsPaymentsCompleted() -> (Bool, Bool) {
+        (self.multipleCardsPaymentOneCompleted, self.multipleCardsPaymentTwoCompleted)
     }
     
     static internal func setEnabledPayments(singleCard: Bool, multipleCards: Bool, tokenFlex: Bool, with points: Bool) {

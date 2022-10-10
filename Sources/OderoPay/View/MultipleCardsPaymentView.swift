@@ -47,12 +47,10 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
     }
     
     @objc func updateOnPaymentComplete() {
-        var isFirstPaymentSuccessful: Bool = false
-        var isSecondPaymentSuccessful: Bool = false
-        
-        guard let firstCardPrice = Double(firstAmountTextField.text!.dropLast(5)) else { return }
-    
+        // ----------------------------SECOND CARD-------------------------------
         if  !multipleCardsPaymentController!.secondCardController.isformEnabled && multipleCardsPaymentController!.firstCardController.isPaymentComplete {
+            
+            guard let firstCardPrice = Double(firstAmountTextField.text!.dropLast(5)) else { return }
             
             if firstCardPrice == 0 {
                 showErrorAlert(ofType: .MISSING_DATA, .NOW)
@@ -89,28 +87,56 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     print("content retrieved ---- SUCCESS ✅")
                     let decodedContent = String(data: Data(base64Encoded: content)!, encoding: .utf8) ?? "error"
                     print("complete payment form sent ---- SUCCESS ✅\n")
-                    isFirstPaymentSuccessful = !decodedContent.contains("error")
+                    
+                    // first check for 3ds
+                    if multipleCardsPaymentController!.firstCardController.cardController.retrieveForce3DSChoiceOption() {
+                        NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil, userInfo: ["content": decodedContent, "type": CardControllers.MULTI_FIRST])
+                        
+                        let isFirstPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().0
 
-                    multipleCardsPaymentController!.firstCardController.isformEnabled = false
-                    multipleCardsPaymentController!.secondCardController.isformEnabled = true
-                    
-                    firstCardView.isHidden = true
-                    secondCardView.isHidden = false
-                    
-                    firstVerticalDividerView.backgroundColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
-                    
-                    firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
-                    
-                    firstAmountTextField.isEnabled = false
-                    firstAmountTextField.backgroundColor = OderoColors.gray.color
-                    
-                    firstCircleImageView.image = isFirstPaymentSuccessful ? UIImage(systemName: "checkmark.circle.fill")! : UIImage(systemName: "x.circle.fill")!
-                    
-                    firstCircleImageView.tintColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
+                        multipleCardsPaymentController!.firstCardController.isformEnabled = false
+                        multipleCardsPaymentController!.secondCardController.isformEnabled = true
+                        
+                        firstCardView.isHidden = true
+                        secondCardView.isHidden = false
+                        
+                        firstVerticalDividerView.backgroundColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
+                        
+                        firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
+                        
+                        firstAmountTextField.isEnabled = false
+                        firstAmountTextField.backgroundColor = OderoColors.gray.color
+                        
+                        firstCircleImageView.image = isFirstPaymentSuccessful ? UIImage(systemName: "checkmark.circle.fill")! : UIImage(systemName: "x.circle.fill")!
+                        
+                        firstCircleImageView.tintColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
 
-                    secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
-                    
-                    NotificationCenter.default.post(name: Notification.Name("update2Height"), object: nil)
+                        secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
+                    } else {
+                        OderoPay.setMultipleCardsPaymentOneStatus(to: !decodedContent.contains("error"))
+                        let isFirstPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().0
+
+                        multipleCardsPaymentController!.firstCardController.isformEnabled = false
+                        multipleCardsPaymentController!.secondCardController.isformEnabled = true
+                        
+                        firstCardView.isHidden = true
+                        secondCardView.isHidden = false
+                        
+                        firstVerticalDividerView.backgroundColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
+                        
+                        firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
+                        
+                        firstAmountTextField.isEnabled = false
+                        firstAmountTextField.backgroundColor = OderoColors.gray.color
+                        
+                        firstCircleImageView.image = isFirstPaymentSuccessful ? UIImage(systemName: "checkmark.circle.fill")! : UIImage(systemName: "x.circle.fill")!
+                        
+                        firstCircleImageView.tintColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
+
+                        secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
+                        
+                        NotificationCenter.default.post(name: Notification.Name("update2Height"), object: nil)
+                    }
                     
                 } catch {
                     print("network error occured ---- FAIL ❌")
@@ -124,10 +150,10 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             }
         }
         
+        // ----------------------------SECOND CARD-------------------------------
         if multipleCardsPaymentController!.secondCardController.isPaymentComplete {
             
             guard let secondCardPrice = Double(secondAmountTextField.text!.dropLast(5)) else { return }
-            
             
             Task {
                 do {
@@ -157,20 +183,41 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     print("content retrieved ---- SUCCESS ✅")
                     let decodedContent = String(data: Data(base64Encoded: content)!, encoding: .utf8) ?? "error"
                     print("complete payment form sent ---- SUCCESS ✅\n")
-                    isSecondPaymentSuccessful = !decodedContent.contains("error")
-
-                    multipleCardsPaymentController!.secondCardController.isformEnabled = false
                     
-                    secondCardView.isHidden = true
-                    
-                    secondVerticalDividerView.backgroundColor = isSecondPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
-
-                    secondCircleImageView.image = isSecondPaymentSuccessful ? UIImage(systemName: "checkmark.circle.fill")! : UIImage(systemName: "x.circle.fill")!
-                    secondCircleImageView.tintColor = isSecondPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
-                    
-                    OderoPay.setPaymentStatus(to: isFirstPaymentSuccessful && isSecondPaymentSuccessful)
-                    NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
-                    
+                    // first check for 3ds
+                    if multipleCardsPaymentController!.firstCardController.cardController.retrieveForce3DSChoiceOption() {
+                        NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil, userInfo: ["content": decodedContent, "type": CardControllers.MULTI_SECOND])
+                        
+                        OderoPay.setMultipleCardsPaymentTwoStatus(to: !decodedContent.contains("error"))
+                        let isSecondPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().1
+                        
+                        multipleCardsPaymentController!.secondCardController.isformEnabled = false
+                        
+                        secondCardView.isHidden = true
+                        
+                        secondVerticalDividerView.backgroundColor = isSecondPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
+                        
+                        secondCircleImageView.image = isSecondPaymentSuccessful ? UIImage(systemName: "checkmark.circle.fill")! : UIImage(systemName: "x.circle.fill")!
+                        secondCircleImageView.tintColor = isSecondPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
+                        
+                        OderoPay.setPaymentStatus(to: OderoPay.areMultipleCardsPaymentsCompleted().0 && OderoPay.areMultipleCardsPaymentsCompleted().1)
+                    } else {
+                        OderoPay.setMultipleCardsPaymentTwoStatus(to: !decodedContent.contains("error"))
+                        let isSecondPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().1
+                        
+                        multipleCardsPaymentController!.secondCardController.isformEnabled = false
+                        
+                        secondCardView.isHidden = true
+                        
+                        secondVerticalDividerView.backgroundColor = isSecondPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
+                        
+                        secondCircleImageView.image = isSecondPaymentSuccessful ? UIImage(systemName: "checkmark.circle.fill")! : UIImage(systemName: "x.circle.fill")!
+                        secondCircleImageView.tintColor = isSecondPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
+                        
+                        OderoPay.setPaymentStatus(to: OderoPay.areMultipleCardsPaymentsCompleted().0 && OderoPay.areMultipleCardsPaymentsCompleted().1)
+                        
+                        NotificationCenter.default.post(name: Notification.Name("callPaymentInformation"), object: nil)
+                    }
                 } catch {
                     print("network error occured ---- FAIL ❌")
                     print("HINT: \(error)")
