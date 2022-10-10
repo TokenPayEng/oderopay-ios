@@ -201,7 +201,7 @@ public struct OderoPay {
         request.httpMethod = HTTPMethod.GET.rawValue
         
         // generate signature
-        let signature = try generateSignature(for: url.absoluteString, body: String(data: request.httpBody!, encoding: .utf8)!)
+        let signature = try generateSignature(for: url.absoluteString, body: String())
         
         // header custom
         request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
