@@ -36,13 +36,16 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
                 
                 switch fromCardControllerType {
                 case .SINGLE_CREDIT:
+                    print("\nSingle Card 3DS Payment Success ✅\n")
                     OderoPay.setPaymentStatus(to: true)
                     presentResultScreens(forFirstMultiCard: false)
                 case .MULTI_FIRST:
+                    print("\nFirst Multiple Cards 3DS Payment Success ✅\n")
                     OderoPay.setMultipleCardsPaymentOneStatus(to: true)
                     NotificationCenter.default.post(name: Notification.Name("update2Height"), object: nil)
                     presentResultScreens(forFirstMultiCard: true)
                 case .MULTI_SECOND:
+                    print("\nSecond Multiple Cards 3DS Payment Success ✅\n")
                     OderoPay.setMultipleCardsPaymentTwoStatus(to: true)
                     OderoPay.setPaymentStatus(to: OderoPay.areMultipleCardsPaymentsCompleted().0 && OderoPay.areMultipleCardsPaymentsCompleted().1)
                     presentResultScreens(forFirstMultiCard: false)
@@ -55,12 +58,15 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
                 
                 switch fromCardControllerType {
                 case .SINGLE_CREDIT:
+                    print("\nSingle Card 3DS Payment Failure ❌\n")
                     OderoPay.setPaymentStatus(to: false)
                     presentResultScreens(forFirstMultiCard: false)
                 case .MULTI_FIRST:
+                    print("\nFirst Multiple Cards 3DS Payment Failure ❌\n")
                     OderoPay.setMultipleCardsPaymentOneStatus(to: false)
                     presentResultScreens(forFirstMultiCard: true)
                 case .MULTI_SECOND:
+                    print("\nSecond Multiple Cards 3DS Payment Failure ❌\n")
                     OderoPay.setMultipleCardsPaymentTwoStatus(to: false)
                     presentResultScreens(forFirstMultiCard: false)
                 case .NOT_DEFINED:
