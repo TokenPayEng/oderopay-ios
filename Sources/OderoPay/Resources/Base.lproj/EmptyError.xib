@@ -33,7 +33,6 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="vgr-nC-tV6" secondAttribute="bottom" constant="25" id="8UJ-t6-25Y"/>
                 <constraint firstItem="plL-ll-flf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="JtQ-7w-ssk"/>
-                <constraint firstItem="vgr-nC-tV6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ojh-iV-XvY"/>
                 <constraint firstItem="plL-ll-flf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="Xqc-vS-drU"/>
                 <constraint firstAttribute="trailing" secondItem="vgr-nC-tV6" secondAttribute="trailing" constant="25" id="ebJ-W8-SEE"/>
                 <constraint firstAttribute="trailing" secondItem="plL-ll-flf" secondAttribute="trailing" constant="25" id="hEc-ys-poB"/>
