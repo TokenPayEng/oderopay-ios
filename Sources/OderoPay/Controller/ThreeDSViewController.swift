@@ -12,6 +12,7 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
 
     var webView: WKWebView!
     var htmlContent: String = String()
+    var fromCardControllerType: CardControllers = .NOT_DEFINED
     
     override func loadView() {
         webView = WKWebView()
@@ -32,12 +33,34 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let key = change?[NSKeyValueChangeKey.newKey] {
             if String(describing: key).contains("success") {
-                OderoPay.setPaymentStatus(to: true)
+                
+                switch fromCardControllerType {
+                case .SINGLE_CREDIT:
+                    OderoPay.setPaymentStatus(to: true)
+                case .MULTI_FIRST:
+                    print("oh no 1")
+                case .MULTI_SECOND:
+                    print("oh no 2")
+                case .NOT_DEFINED:
+                    return
+                }
+                
                 presentResultScreens()
             }
             
             if String(describing: key).contains("failure") {
-                OderoPay.setPaymentStatus(to: false)
+                
+                switch fromCardControllerType {
+                case .SINGLE_CREDIT:
+                    OderoPay.setPaymentStatus(to: false)
+                case .MULTI_FIRST:
+                    print("oh no 11")
+                case .MULTI_SECOND:
+                    print("oh no 22")
+                case .NOT_DEFINED:
+                    return
+                }
+                
                 presentResultScreens()
             }
         }
