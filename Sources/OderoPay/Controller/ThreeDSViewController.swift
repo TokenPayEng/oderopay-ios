@@ -24,7 +24,7 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
 
         webView.loadHTMLString(htmlContent, baseURL: nil)
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
-        self.title = "Complete 3DS Verification"
+        self.title = NSLocalizedString("3ds", bundle: .module,comment: "3ds verification")
         webView.allowsBackForwardNavigationGestures = true
     }
     
