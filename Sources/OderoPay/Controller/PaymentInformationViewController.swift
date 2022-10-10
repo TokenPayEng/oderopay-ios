@@ -30,7 +30,7 @@ class PaymentInformationViewController: UIViewController {
             subtitleLabel2.isHidden = true
             button.isHidden = true
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.navigationController?.popToViewController(self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 3], animated: true)
             }
         } else {
