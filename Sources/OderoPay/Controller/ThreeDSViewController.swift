@@ -33,6 +33,7 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
         if let key = change?[NSKeyValueChangeKey.newKey] as? String {
             
             print("\nobserveValue: \(key)\n")
+            
             if key.contains("success") {
                 OderoPay.setPaymentStatus(to: true)
                 presentResultScreens()
