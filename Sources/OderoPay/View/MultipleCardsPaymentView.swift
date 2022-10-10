@@ -44,7 +44,16 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         super.layoutSubviews()
         
         firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
-        print("🧐im called🧐")
+        
+        firstVerticalDividerView.backgroundColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
+        
+        firstAmountTextField.backgroundColor = OderoColors.gray.color
+        
+        firstCircleImageView.image = isFirstPaymentSuccessful ? UIImage(systemName: "checkmark.circle.fill")! : UIImage(systemName: "x.circle.fill")!
+        
+        firstCircleImageView.tintColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
+        
+        secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
     }
     
     @objc func updateOnPaymentComplete() {
@@ -102,19 +111,8 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                         
                         firstCardView.isHidden = true
                         secondCardView.isHidden = false
-                        
-                        firstVerticalDividerView.backgroundColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
-                        
-                        firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
-                        
                         firstAmountTextField.isEnabled = false
-                        firstAmountTextField.backgroundColor = OderoColors.gray.color
-                        
-                        firstCircleImageView.image = isFirstPaymentSuccessful ? UIImage(systemName: "checkmark.circle.fill")! : UIImage(systemName: "x.circle.fill")!
-                        
-                        firstCircleImageView.tintColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
-                        
-                        secondCircleImageView.tintColor = multipleCardsPaymentController!.secondCardController.isformEnabled ? OderoColors.black.color : .systemGray4
+                        firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
                     } else {
                         OderoPay.setMultipleCardsPaymentOneStatus(to: !decodedContent.contains("error"))
                         let isFirstPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().0
