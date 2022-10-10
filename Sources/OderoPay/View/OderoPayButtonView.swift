@@ -84,7 +84,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
             oderoPayButton.addSubview(indicator)
             indicator.startAnimating()
         } else {
-            oderoPayImageView.image = UIImage(named: "odero-pay-black", in: .module, with: .none)
+            oderoPayImageView.image = UIImage(named: getImageByEnvironment(), in: .module, with: .none)
             oderoPayButton.isEnabled = true
             oderoPayButton.alpha = 1.0
             if let indicator = oderoPayButton.viewWithTag(tag) as? UIActivityIndicatorView {
@@ -101,21 +101,7 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        var logoImageName: String
-        
-        switch OderoPay.getEnvironment() {
-        case .PROD_AZ:
-            logoImageName = "odero-pay-black"
-        case .PROD_TR:
-            logoImageName = "odero-logo-tr"
-        case .SANDBOX_AZ:
-            logoImageName = "odero-pay-black"
-        case .SANDBOX_TR:
-            logoImageName = "odero-logo-tr"
-        }
-        
-        oderoPayImageView.image = UIImage(named: logoImageName, in: .module, with: nil)
+        oderoPayImageView.image = UIImage(named: getImageByEnvironment(), in: .module, with: nil)
     }
     
     @IBAction func initCommonPaymentPage(_ sender: Any) {
@@ -259,5 +245,22 @@ extension UIView {
         )
         
         findViewController()?.present(alert, animated: true, completion: nil)
+    }
+    
+    func getImageByEnvironment() -> String {
+        var logoImageName: String
+        
+        switch OderoPay.getEnvironment() {
+        case .PROD_AZ:
+            logoImageName = "odero-pay-black"
+        case .PROD_TR:
+            logoImageName = "odero-logo-tr"
+        case .SANDBOX_AZ:
+            logoImageName = "odero-pay-black"
+        case .SANDBOX_TR:
+            logoImageName = "odero-logo-tr"
+        }
+        
+        return logoImageName
     }
 }
