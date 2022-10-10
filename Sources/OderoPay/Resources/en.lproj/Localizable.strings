@@ -48,3 +48,4 @@
 "fundsDescription" = "You don't have enough funds to complete this transaction.";
 
 "oops" = "Oops, looks like all your payment options are disabled!";
+"3ds" =  "Complete 3DS Verification";

@@ -24,7 +24,8 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
 
         webView.loadHTMLString(htmlContent, baseURL: nil)
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
-        navigationController?.title = "3DS Verification"
+        self.title = "Complete 3DS Verification"
+        webView.allowsBackForwardNavigationGestures = true
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
