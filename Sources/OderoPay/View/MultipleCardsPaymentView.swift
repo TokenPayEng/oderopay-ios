@@ -47,13 +47,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         // ----------------------------FIRST CARD-------------------------------
         if  !multipleCardsPaymentController!.secondCardController.isformEnabled && multipleCardsPaymentController!.firstCardController.isPaymentComplete {
             let isFirstPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().0
-            
-            multipleCardsPaymentController!.firstCardController.isformEnabled = false
-            multipleCardsPaymentController!.secondCardController.isformEnabled = true
-            
-            firstCardView.isHidden = true
-            secondCardView.isHidden = false
-            
+
             firstVerticalDividerView.backgroundColor = isFirstPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
             
             firstVerticalDividerHeightConstraint.constant = multipleCardsPaymentController!.firstVerticalDividerHeight
@@ -70,9 +64,6 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
         // ----------------------------SECOND CARD-------------------------------
         if multipleCardsPaymentController!.secondCardController.isPaymentComplete {
             let isSecondPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().1
-            multipleCardsPaymentController!.secondCardController.isformEnabled = false
-            
-            secondCardView.isHidden = true
             
             secondVerticalDividerView.backgroundColor = isSecondPaymentSuccessful ? OderoColors.success.color : OderoColors.error.color
             
@@ -128,6 +119,11 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     if multipleCardsPaymentController!.firstCardController.cardController.retrieveForce3DSChoiceOption() {
                         NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil, userInfo: ["content": decodedContent, "type": CardControllers.MULTI_FIRST])
                         print("\nStarted 3DS Verification for the First of the Multiple Cards Payment\n")
+                        multipleCardsPaymentController!.firstCardController.isformEnabled = false
+                        multipleCardsPaymentController!.secondCardController.isformEnabled = true
+                        
+                        firstCardView.isHidden = true
+                        secondCardView.isHidden = false
                     } else {
                         OderoPay.setMultipleCardsPaymentOneStatus(to: !decodedContent.contains("error"))
                         let isFirstPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().0
@@ -204,6 +200,9 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     if multipleCardsPaymentController!.firstCardController.cardController.retrieveForce3DSChoiceOption() {
                         NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil, userInfo: ["content": decodedContent, "type": CardControllers.MULTI_SECOND])
                         print("\nStarted 3DS Verification for the Second of the Multiple Cards Payment\n")
+                        multipleCardsPaymentController!.secondCardController.isformEnabled = false
+                    
+                        secondCardView.isHidden = true
                     } else {
                         OderoPay.setMultipleCardsPaymentTwoStatus(to: !decodedContent.contains("error"))
                         let isSecondPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().1
