@@ -47,7 +47,8 @@ public struct OderoPay {
     
     // single card toggle
     static internal func isSingleCardPaymentEnabled() async throws -> Bool {
-        let checkoutFormResponse = try await OderoPay.sendCheckoutForm()
+        let merchantSettings = try await OderoPay.retrieveMerchantSettings()
+        print(merchantSettings)
         return self.singleCardPaymentEnabled
     }
     
