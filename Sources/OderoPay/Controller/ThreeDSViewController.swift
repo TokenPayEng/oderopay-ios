@@ -44,6 +44,7 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
                     presentResultScreens(forFirstMultiCard: true)
                 case .MULTI_SECOND:
                     OderoPay.setMultipleCardsPaymentTwoStatus(to: true)
+                    OderoPay.setPaymentStatus(to: OderoPay.areMultipleCardsPaymentsCompleted().0 && OderoPay.areMultipleCardsPaymentsCompleted().1)
                     presentResultScreens(forFirstMultiCard: false)
                 case .NOT_DEFINED:
                     return
