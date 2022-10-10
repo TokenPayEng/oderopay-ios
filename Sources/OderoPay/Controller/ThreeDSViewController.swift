@@ -23,6 +23,13 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
 
         webView.loadHTMLString(htmlContent, baseURL: nil)
+        webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if let key = change?[NSKeyValueChangeKey.newKey] {
+            print("observeValue \(key)") // url value
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
