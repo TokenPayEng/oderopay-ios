@@ -18,6 +18,7 @@ public struct OderoPay {
     static private var singleCardPaymentEnabled: Bool = true
     static private var multipleCardsPaymentEnabled: Bool = true
     static private var tokenFlexPaymentEnabled: Bool = false
+    static private var payByPointsEnabled: Bool = false
     
     static private var priceForFirstMultiCard: Double = 0
     static private var priceForSecondMultiCard: Double {
@@ -45,11 +46,16 @@ public struct OderoPay {
         self.paymentCompleted
     }
     
+    static internal func setEnabledPayments(singleCard: Bool, multipleCards: Bool, tokenFlex: Bool, with points: Bool) {
+        self.singleCardPaymentEnabled = singleCard
+        self.multipleCardsPaymentEnabled = multipleCards
+        self.tokenFlexPaymentEnabled = tokenFlex
+        self.payByPointsEnabled = points
+    }
+    
     // single card toggle
-    static internal func isSingleCardPaymentEnabled() async throws -> Bool {
-        let merchantSettings = try await OderoPay.retrieveMerchantSettings()
-        print(merchantSettings)
-        return self.singleCardPaymentEnabled
+    static internal func isSingleCardPaymentEnabled() -> Bool {
+        self.singleCardPaymentEnabled
     }
     
     // multiple cards toggle
@@ -60,6 +66,11 @@ public struct OderoPay {
     //  token flex toggle
     static internal func isTokenFlexPaymentEnabled() -> Bool {
         self.tokenFlexPaymentEnabled
+    }
+    
+    //  pay by points toggle
+    static internal func isPayByPointsEnabled() -> Bool {
+        self.payByPointsEnabled
     }
     
     static internal func assignRetrievedToken(withValue token: String) {

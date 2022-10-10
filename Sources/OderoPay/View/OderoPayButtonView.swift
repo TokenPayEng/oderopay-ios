@@ -166,7 +166,15 @@ public class OderoPayButtonView: UIView, SFSafariViewControllerDelegate {
                         print(token)
                         print("checkout form sent ---- SUCCESS ✅\n")
                         OderoPay.assignRetrievedToken(withValue: token)
-
+                        
+                        let merchantSettings = try await OderoPay.retrieveMerchantSettings()
+                        OderoPay.setEnabledPayments(
+                            singleCard: merchantSettings.hasData()?.isCreditCardEnabled() ?? false,
+                            multipleCards: merchantSettings.hasData()?.isMultipleCardsEnabled() ?? false,
+                            tokenFlex: merchantSettings.hasData()?.isTokenFlexEnabled() ?? false,
+                            with: merchantSettings.hasData()?.isPayByPointsEnabled() ?? false
+                        )
+                        
                         showLoadingIndicator(false)
 
                         print("STEP #4 ---- (LOCAL)")

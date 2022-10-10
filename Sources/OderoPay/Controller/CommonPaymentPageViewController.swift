@@ -117,17 +117,9 @@ public class CommonPaymentPageViewController: UIViewController {
         
         logoImageView.image = UIImage(named: logoImageName, in: .module, with: nil)
         
-        Task {
-            do {
-                creditCardOrDebitCardButton.isHidden = try await !OderoPay.isSingleCardPaymentEnabled()
-//                multipleCreditCardsButton.isHidden = try await !OderoPay.isMultipleCardsPaymentEnabled()
-//                singleAndMultipleDivider.isHidden = try await !OderoPay.isSingleCardPaymentEnabled() || try await !OderoPay.isMultipleCardsPaymentEnabled()
-            } catch {
-                print("network error occured (merchant settings) ---- FAIL ❌")
-                print("HINT: \(error)")
-                return
-            }
-        }
+        creditCardOrDebitCardButton.isHidden = !OderoPay.isSingleCardPaymentEnabled()
+        multipleCreditCardsButton.isHidden = !OderoPay.isMultipleCardsPaymentEnabled()
+        singleAndMultipleDivider.isHidden = !OderoPay.isSingleCardPaymentEnabled() || !OderoPay.isMultipleCardsPaymentEnabled()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
