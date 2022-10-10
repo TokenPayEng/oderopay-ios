@@ -219,14 +219,13 @@ public struct OderoPay {
         var urlComponents = URLComponents(string: environment.getGateway().getBaseURL() + Path.COMMON_PAYMENT_PAGE.rawValue + Action.INSTALLMENTS.rawValue)!
         urlComponents.queryItems = [
             URLQueryItem(name: "binNumber", value: binNumber),
-            // URLQueryItem(name: "walletPrice", value: String(price)),
         ]
         
         var request = URLRequest(url: urlComponents.url!)
         
         // generate signature
         let signature = try generateSignature(for: urlComponents.url!.absoluteString, body: String())
-        
+        print(urlComponents.url!.absoluteString)
         // method
         request.httpMethod = HTTPMethod.GET.rawValue
         

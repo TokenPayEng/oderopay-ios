@@ -180,7 +180,6 @@ class CardController {
             
                 print("retrieving installments...")
                 self.installmentItem = resultFromServer
-                print(resultFromServer)
                 print("items retrieved ---- SUCCESS ✅")
                 print("installments retrieved for card with bin number: \(updatedCardNumber) and initial price: \(priceToCheck)---- SUCCESS ✅\n")
                 
