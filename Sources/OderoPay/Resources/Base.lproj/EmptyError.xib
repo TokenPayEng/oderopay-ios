@@ -20,10 +20,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="plL-ll-flf">
-                    <rect key="frame" x="25" y="25" width="325" height="262"/>
+                    <rect key="frame" x="25" y="25" width="325" height="262.66666666666669"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgr-nC-tV6">
-                    <rect key="frame" x="166.66666666666666" y="317" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgr-nC-tV6">
+                    <rect key="frame" x="25" y="317.66666666666669" width="325" height="20.333333333333314"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -35,7 +35,9 @@
                 <constraint firstItem="plL-ll-flf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="JtQ-7w-ssk"/>
                 <constraint firstItem="vgr-nC-tV6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ojh-iV-XvY"/>
                 <constraint firstItem="plL-ll-flf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="Xqc-vS-drU"/>
+                <constraint firstAttribute="trailing" secondItem="vgr-nC-tV6" secondAttribute="trailing" constant="25" id="ebJ-W8-SEE"/>
                 <constraint firstAttribute="trailing" secondItem="plL-ll-flf" secondAttribute="trailing" constant="25" id="hEc-ys-poB"/>
+                <constraint firstItem="vgr-nC-tV6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="kud-zw-l3p"/>
                 <constraint firstItem="vgr-nC-tV6" firstAttribute="top" secondItem="plL-ll-flf" secondAttribute="bottom" constant="30" id="wmr-Ym-dcu"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
