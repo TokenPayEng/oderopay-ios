@@ -105,8 +105,10 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     
                     // first check for 3ds
                     if multipleCardsPaymentController!.firstCardController.cardController.retrieveForce3DSChoiceOption() {
-                        NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil, userInfo: ["content": decodedContent, "type": CardControllers.MULTI_FIRST])
-                        print("\nStarted 3DS Verification for the First of the Multiple Cards Payment\n")
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil, userInfo: ["content": decodedContent, "type": CardControllers.MULTI_FIRST])
+                            print("\nStarted 3DS Verification for the First of the Multiple Cards Payment\n")
+                        }
                         
                         multipleCardsPaymentController!.firstCardController.isformEnabled = false
                         multipleCardsPaymentController!.secondCardController.isformEnabled = true
@@ -189,8 +191,10 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
                     
                     // first check for 3ds
                     if multipleCardsPaymentController!.secondCardController.cardController.retrieveForce3DSChoiceOption() {
-                        NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil, userInfo: ["content": decodedContent, "type": CardControllers.MULTI_SECOND])
-                        print("\nStarted 3DS Verification for the Second of the Multiple Cards Payment\n")
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: Notification.Name("callPaymentInformation3DS"), object: nil, userInfo: ["content": decodedContent, "type": CardControllers.MULTI_SECOND])
+                            print("\nStarted 3DS Verification for the Second of the Multiple Cards Payment\n")
+                        }
                         let isSecondPaymentSuccessful = OderoPay.areMultipleCardsPaymentsCompleted().1
                         
                         multipleCardsPaymentController!.secondCardController.isformEnabled = false
