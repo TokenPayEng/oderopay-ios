@@ -23,7 +23,7 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //webView.loadHTMLString(htmlContent, baseURL: nil)
+        webView.loadHTMLString(htmlContent, baseURL: nil)
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
         self.title = NSLocalizedString("3ds", bundle: .module,comment: "3ds verification")
         self.navigationController?.navigationBar.tintColor = .black
