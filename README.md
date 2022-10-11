@@ -264,6 +264,11 @@ Code example:
     oderoPayButtonView.setOderoPayImageSize(height: 40, width: 80)
 ```
 
+## Known Warnings
+
+Since iOS 16 WKWebKit causes a `@main This method should not be called on main thread warning`. Can be ignored.
+Some of the textfield allegedly cause a constraint break. Can be ignored.
+
 ## License
 
 Copyright © 2022 Token Payment Services and Electronic Money Inc. All rights reserved.
