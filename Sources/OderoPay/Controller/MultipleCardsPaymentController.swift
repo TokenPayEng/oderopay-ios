@@ -82,7 +82,7 @@ class MultipleCardsPaymentController: FormProtocol {
             paymentType: .MULTI_CARD_PAYMENT,
             orderedAs: 1,
             withPhase: .PRE_AUTH,
-            cardPrice: price,
+            cardPrice: firstCardController.cardController.retrieveInstallmentChoice() == 1 ? price : firstCardController.cardController.retrievePriceWithInstallment(),
             installment: Installment(rawValue: firstCardController.cardController.retrieveInstallmentChoice())!,
             card:
                 Card(
@@ -116,7 +116,7 @@ class MultipleCardsPaymentController: FormProtocol {
                             paymentType: .MULTI_CARD_PAYMENT,
                             orderedAs: 2,
                             withPhase: .PRE_AUTH,
-                            cardPrice: price,
+                            cardPrice: secondCardController.cardController.retrieveInstallmentChoice() == 1 ? price : secondCardController.cardController.retrievePriceWithInstallment(),
                             installment: Installment(rawValue: secondCardController.cardController.retrieveInstallmentChoice())!,
                             card:
                                 Card(

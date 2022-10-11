@@ -36,7 +36,7 @@ class SingleCardPaymentController: FormProtocol {
         if cardController.isPaymentComplete {
             let form = CompletePaymentForm(
                 paymentType: .CARD_PAYMENT,
-                cardPrice: OderoPay.getCheckoutForm().getCheckoutPriceRaw(),
+                cardPrice: cardController.cardController.retrieveInstallmentChoice() == 1 ? OderoPay.getCheckoutForm().getCheckoutPriceRaw() : cardController.cardController.retrievePriceWithInstallment(),
                 installment: Installment(rawValue: cardController.cardController.retrieveInstallmentChoice())!,
                 card:
                     Card(

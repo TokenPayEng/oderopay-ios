@@ -236,12 +236,15 @@ class CardController {
     
     func setInstallmentChoice(_ index: Int, is value: Double) {
         installmentChoice = index
-        print(value)
         installmentPrice = value
     }
     
     func retrieveInstallmentChoice() -> Int {
         self.installmentChoice
+    }
+    
+    func retrievePriceWithInstallment() -> Double {
+        self.installmentPrice
     }
     
     // card association
