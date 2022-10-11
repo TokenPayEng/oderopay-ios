@@ -234,10 +234,10 @@ class CardController {
         saveCardChoice
     }
     
-    func setInstallmentChoice(_ index: Int, is value: String) {
+    func setInstallmentChoice(_ index: Int, is value: Double) {
         installmentChoice = index
         print(value)
-        installmentPrice = Double(value)!
+        installmentPrice = value
     }
     
     func retrieveInstallmentChoice() -> Int {
