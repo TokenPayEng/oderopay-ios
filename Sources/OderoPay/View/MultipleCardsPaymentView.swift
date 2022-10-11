@@ -67,7 +67,7 @@ class MultipleCardsPaymentView: UIView, UITextFieldDelegate {
             
             guard let firstCardPrice = Double(firstAmountTextField.text!.dropLast(5)) else { return }
             
-            if firstCardPrice == 0 {
+            if firstCardPrice == 0 || firstCardPrice == OderoPay.getCheckoutForm().getCheckoutPriceRaw() {
                 showErrorAlert(ofType: .MISSING_DATA, .NOW)
                 return
             }
