@@ -38,7 +38,9 @@ class ThreeDSViewController: UIViewController, WKNavigationDelegate {
                 case .SINGLE_CREDIT:
                     print("\nSingle Card 3DS Payment Success ✅\n")
                     OderoPay.setPaymentStatus(to: true)
-                    presentResultScreens(forFirstMultiCard: false)
+                    DispatchQueue.main.async {
+                        self.presentResultScreens(forFirstMultiCard: false)
+                    }
                 case .MULTI_FIRST:
                     print("\nFirst Multiple Cards 3DS Payment Success ✅\n")
                     OderoPay.setMultipleCardsPaymentOneStatus(to: true)
