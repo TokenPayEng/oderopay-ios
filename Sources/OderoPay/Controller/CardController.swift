@@ -27,6 +27,7 @@ class CardController {
     
     private var installmentItem: RetrieveInstallmentDataResult? = nil
     private var installmentChoice: Int = 1
+    private var installmentPrice: Double = 0
     private var block3DSChoice: Bool = false
     private var force3DSChoice: Bool = false
     private var saveCardChoice: Bool = false
@@ -233,8 +234,10 @@ class CardController {
         saveCardChoice
     }
     
-    func setInstallmentChoice(_ index: Int) {
+    func setInstallmentChoice(_ index: Int, is value: String) {
         installmentChoice = index
+        print(value)
+        installmentPrice = Double(value)!
     }
     
     func retrieveInstallmentChoice() -> Int {

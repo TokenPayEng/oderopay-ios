@@ -141,7 +141,7 @@ class CreditOrDebitCardPaymentView: UIView {
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         if let tag = sender.view?.tag {
             installmentView.selected = tag
-            creditOrDebitCardPaymentController!.cardController.setInstallmentChoice(tag)
+            creditOrDebitCardPaymentController!.cardController.setInstallmentChoice(tag, is: String(installmentView.choiceLabel.text!.dropLast(5)))
             print(tag)
         }
         
