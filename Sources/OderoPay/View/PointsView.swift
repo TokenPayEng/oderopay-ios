@@ -30,8 +30,10 @@ class PointsView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-//        loadingIndicator.isHidden = true
-//        insideView.isHidden = true
+        contentView.layer.cornerRadius = 4
+        
+        loadingIndicator.isHidden = true
+        insideView.isHidden = true
     }
     
     @IBAction func toggleView(_ sender: Any) {
