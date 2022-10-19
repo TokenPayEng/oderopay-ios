@@ -119,15 +119,16 @@ class CreditOrDebitCardPaymentView: UIView {
         
         if OderoPay.getEnvironment() == .SANDBOX_TR || OderoPay.getEnvironment() == .PROD_TR {
             creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardInformationView.cardController, with: pointsView.pointsController)
+            pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints
         } else {
             creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardInformationView.cardController)
+            pointsView.removeFromSuperview()
         }
         
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
         
