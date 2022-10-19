@@ -84,7 +84,8 @@ public struct OderoPay {
     
     //  pay by points toggle
     static internal func isPayByPointsEnabled() -> Bool {
-        self.payByPointsEnabled
+        true
+        //self.payByPointsEnabled
     }
     
     static internal func assignRetrievedToken(withValue token: String) {
