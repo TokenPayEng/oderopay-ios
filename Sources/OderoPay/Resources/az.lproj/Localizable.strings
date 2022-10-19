@@ -49,3 +49,10 @@
 
 "oops" = "Ups, görünür, bütün ödəniş seçimləriniz deaktivdir!"
 "3ds" =  "3DS Təsdiqini tamamlayın";
+
+"cardPoints" = "Kart ballarınızı istifadə edin";
+"kamPoints" = "KoçAilem Market Bal";
+"ykbPoints" = "World Bal";
+"totalPoints" = "Cəmi mövcud ballar";
+"useAll" = "Hamısından istifadə edin";
+"kamCaption" = "*İlk öncə KoçAilem Market ballarınız, sonra isə World ballarınız istifadə olunacaq.";

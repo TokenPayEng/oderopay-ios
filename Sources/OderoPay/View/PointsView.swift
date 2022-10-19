@@ -14,6 +14,12 @@ class PointsView: UIView {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var insideView: UIStackView!
     
+    @IBOutlet weak var kamTitle: UILabel!
+    @IBOutlet weak var ykbTitle: UILabel!
+    @IBOutlet weak var totalPointsLabel: UILabel!
+    @IBOutlet weak var useAllLabel: UILabel!
+    @IBOutlet weak var captionsLabel: UILabel!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -32,8 +38,20 @@ class PointsView: UIView {
         
         contentView.layer.cornerRadius = 4
         
+        // translations
+        controllerButton.setTitle(NSLocalizedString("cardPoints", bundle: .module, comment: "card points title"), for: .normal)
+        
+        kamTitle.text = NSLocalizedString("kamPoints", bundle: .module, comment: "koc ailem points")
+        ykbTitle.text = NSLocalizedString("ykbPoints", bundle: .module, comment: "yapi kredi world points")
+        
+        totalPointsLabel.text = NSLocalizedString("totalPoints", bundle: .module, comment: "total points")
+        useAllLabel.text = NSLocalizedString("useAll", bundle: .module, comment: "use all your points")
+        captionsLabel.text = NSLocalizedString("kamCaption", bundle: .module, comment: "important captions")
+        
         loadingIndicator.isHidden = true
         insideView.isHidden = true
+        
+        
     }
     
     @IBAction func toggleView(_ sender: Any) {

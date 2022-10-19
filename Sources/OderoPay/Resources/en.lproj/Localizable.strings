@@ -49,3 +49,10 @@
 
 "oops" = "Oops, looks like all your payment options are disabled!";
 "3ds" =  "Complete 3DS Verification";
+
+"cardPoints" = "Use your card's points";
+"kamPoints" = "KoçAilem Market Point";
+"ykbPoints" = "WorldPoint";
+"totalPoints" = "Total amount of points";
+"useAll" = "Use all your points";
+"kamCaption" = "*Higher priority will be given to your KoçAilem Market points, only then your WorldPoints will be used.";

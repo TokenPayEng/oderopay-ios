@@ -49,3 +49,10 @@
 
 "oops" = "Hata! Tüm ödeme seçenekleriniz devre dışı görünüyor!";
 "3ds" =  "3DS Doğrulaması'nı tamamlayın";
+
+"cardPoints" = "Kart puanınızı kullanın";
+"kamPoints" = "KoçAilem Market Marka Puanı";
+"ykbPoints" = "Worldpuan";
+"totalPoints" = "Kullanılabilir Toplam Puan";
+"useAll" = "Tümünü kullan";
+"kamCaption" = "*Öncelikle KoçAilem Market’e özel puanlarınız, sonrasında ise Worldpuanlarınız kullanılacaktır.";
