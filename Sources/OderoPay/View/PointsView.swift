@@ -30,7 +30,7 @@ class PointsView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        contentView.isHidden = OderoPay.isPayByPointsEnabled()
+        contentView.isHidden = !OderoPay.isPayByPointsEnabled()
         
         loadingIndicator.isHidden = true
         insideView.isHidden = true
@@ -38,5 +38,6 @@ class PointsView: UIView {
     
     @IBAction func toggleView(_ sender: Any) {
         insideView.isHidden = insideView.isHidden ? false : true;
+        controllerButton.imageView?.image =  insideView.isHidden ? UIImage(systemName: "chevron.down") : UIImage(systemName: "chevron.right")
     }
 }
