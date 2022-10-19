@@ -36,10 +36,6 @@ class CreditOrDebitCardPaymentView: UIView {
         pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints
         creditOrDebitCardPaymentController!.arePointsOpen = !pointsView.insideView.isHidden
         
-        if creditOrDebitCardPaymentController!.hasPayByPoints {
-            creditOrDebitCardPaymentController!.pointsController!.retrievePoints()
-        }
-        
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         
         if creditOrDebitCardPaymentController!.hasInstallment {
@@ -121,7 +117,11 @@ class CreditOrDebitCardPaymentView: UIView {
     private func commonInit() {
         Bundle.module.loadNibNamed("CreditOrDebitCardPayment", owner: self, options: nil)
         
-        creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardInformationView.cardController)
+        if OderoPay.getEnvironment() == .SANDBOX_TR || OderoPay.getEnvironment() == .PROD_TR {
+            creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardInformationView.cardController, with: pointsView.pointsController)
+        } else {
+            creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardInformationView.cardController)
+        }
         
         addSubview(contentView)
         contentView.frame = self.bounds

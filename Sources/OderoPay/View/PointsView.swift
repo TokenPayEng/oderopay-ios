@@ -9,6 +9,8 @@ import UIKit
 
 class PointsView: UIView {
     
+    let pointsController: PointsController = PointsController()
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var controllerButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -56,6 +58,8 @@ class PointsView: UIView {
     
     @IBAction func toggleView(_ sender: Any) {
         if insideView.isHidden {
+            pointsController.retrievePoints()
+            
             controllerButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             insideView.isHidden = false
         } else {
