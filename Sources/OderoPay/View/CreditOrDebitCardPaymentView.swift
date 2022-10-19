@@ -123,8 +123,8 @@ class CreditOrDebitCardPaymentView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
-        
         optionsView.isHidden = !creditOrDebitCardPaymentController!.isCardValid
         
         let tapSave = UITapGestureRecognizer(target: self, action: #selector(self.handleTapSave(_:)))
