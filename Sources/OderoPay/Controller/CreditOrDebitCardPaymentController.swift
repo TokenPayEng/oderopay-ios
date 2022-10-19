@@ -52,8 +52,10 @@ class CreditOrDebitCardPaymentController: FormProtocol {
             calculatingHeight += 80
         }
         
-        if hasPayByPoints {
-            calculatingHeight += 82
+        if pointsController != nil {
+            if hasPayByPoints {
+                calculatingHeight += 82
+            }
         }
         
         if arePointsOpen {
