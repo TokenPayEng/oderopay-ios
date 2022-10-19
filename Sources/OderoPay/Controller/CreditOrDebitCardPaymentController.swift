@@ -50,7 +50,8 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         }
         
         if hasPayByPoints {
-            calculatingHeight += 52
+            print(hasPayByPoints)
+//            calculatingHeight += 52
         }
         
         return calculatingHeight
