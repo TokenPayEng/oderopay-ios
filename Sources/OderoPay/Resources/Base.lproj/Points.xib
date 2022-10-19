@@ -18,7 +18,6 @@
                 <outlet property="loadingIndicator" destination="a9r-g9-93a" id="xC0-Jb-cTH"/>
                 <outlet property="totalPointsLabel" destination="9ze-Mu-mFw" id="Bmh-A5-3UQ"/>
                 <outlet property="useAllLabel" destination="nbg-r4-90a" id="4tj-xd-g8d"/>
-                <outlet property="worldTitle" destination="EoL-y2-h50" id="Q0i-ih-0Ed"/>
                 <outlet property="ykbTitle" destination="Ux3-xT-AXx" id="hbm-tg-Mu2"/>
             </connections>
         </placeholder>
