@@ -56,7 +56,7 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         }
         
         if arePointsOpen {
-            calculatingHeight += 378
+            calculatingHeight += 296
         }
         
         return calculatingHeight
