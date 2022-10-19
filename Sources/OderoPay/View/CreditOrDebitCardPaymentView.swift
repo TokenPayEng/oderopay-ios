@@ -33,7 +33,10 @@ class CreditOrDebitCardPaymentView: UIView {
     override public func layoutSubviews() {
         super.layoutSubviews()
 
-        pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints
+        if OderoPay.getEnvironment() == .SANDBOX_TR || OderoPay.getEnvironment() == .PROD_TR {
+            pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints
+        }
+        
         creditOrDebitCardPaymentController!.arePointsOpen = !pointsView.insideView.isHidden
         
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
