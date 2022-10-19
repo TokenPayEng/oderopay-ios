@@ -60,10 +60,10 @@ class PointsView: UIView {
         if insideView.isHidden {
             pointsController.retrievePoints()
             
-            controllerButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+            controllerButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             insideView.isHidden = false
         } else {
-            controllerButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            controllerButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             insideView.isHidden = true
         }
     }
