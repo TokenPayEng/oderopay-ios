@@ -56,6 +56,7 @@ class CreditOrDebitCardPaymentController: FormProtocol {
             }
             
             if pointsController!.getContentState() {
+                pointsController!.retrievePoints()
                 calculatingHeight += 296
             }
         }
@@ -66,7 +67,5 @@ class CreditOrDebitCardPaymentController: FormProtocol {
     init(_ cardController: CardController, with pointsController: PointsController? = nil) {
         self.cardController = cardController
         self.pointsController = pointsController
-        
-        pointsController?.retrievePoints()
     }
 }
