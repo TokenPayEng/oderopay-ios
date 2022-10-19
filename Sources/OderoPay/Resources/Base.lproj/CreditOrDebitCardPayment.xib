@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,11 +19,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="485" height="404"/>
+            <rect key="frame" x="0.0" y="0.0" width="485" height="442"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="01J-wf-IUN">
-                    <rect key="frame" x="0.0" y="0.0" width="485" height="404"/>
+                    <rect key="frame" x="0.0" y="0.0" width="485" height="442"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-Ro-gLy" customClass="CardInformationView" customModule="OderoPay">
                             <rect key="frame" x="0.0" y="0.0" width="485" height="160"/>
@@ -32,22 +32,29 @@
                                 <constraint firstAttribute="height" priority="750" constant="160" id="sUn-pj-0EH"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgT-RM-hm2" userLabel="Points View" customClass="PointsView" customModule="OderoPay">
+                            <rect key="frame" x="0.0" y="175" width="485" height="22"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="750" constant="22" id="tHp-Bh-jUq"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tWI-bo-H4c" customClass="InstallmentView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="175" width="485" height="96"/>
+                            <rect key="frame" x="0.0" y="212" width="485" height="96"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="750" constant="96" id="gB5-Si-fdk"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-pP-ABi" customClass="OptionsView" customModule="OderoPay">
-                            <rect key="frame" x="0.0" y="286" width="485" height="65"/>
+                            <rect key="frame" x="0.0" y="323" width="485" height="65"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="750" constant="65" id="7gX-UU-R7E"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3u-9H-Hdu">
-                            <rect key="frame" x="0.0" y="366" width="485" height="38"/>
+                            <rect key="frame" x="0.0" y="403" width="485" height="39"/>
                             <color key="backgroundColor" red="0.20784313730000001" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="750" constant="45" id="IzV-Ev-193"/>
@@ -71,7 +78,7 @@
                 <constraint firstItem="01J-wf-IUN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="v5B-4C-z2w"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-335.50724637681162" y="-165.40178571428569"/>
+            <point key="canvasLocation" x="-335.50724637681162" y="-152.67857142857142"/>
         </view>
     </objects>
     <resources>
