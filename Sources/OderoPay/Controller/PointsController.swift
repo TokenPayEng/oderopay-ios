@@ -8,7 +8,18 @@
 import Foundation
 
 public class PointsController {
+    
+    private var isContentOpen: Bool = false
+    
     func retrievePoints() {
         print("retrieving points")
+    }
+    
+    func toggleContent(_ value: Bool) {
+        self.isContentOpen = value
+    }
+    
+    func getContentState() -> Bool {
+        isContentOpen
     }
 }
