@@ -11,6 +11,7 @@ import UIKit
 class CreditOrDebitCardPaymentController: FormProtocol {
     
     var cardController: CardController
+    var pointsController: PointsController?
     
     var isformEnabled: Bool = false
     
@@ -62,7 +63,8 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         return calculatingHeight
     }
     
-    init(_ cardController: CardController) {
+    init(_ cardController: CardController, with pointsController: PointsController? = nil) {
         self.cardController = cardController
+        self.pointsController = pointsController
     }
 }

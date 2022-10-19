@@ -36,6 +36,10 @@ class CreditOrDebitCardPaymentView: UIView {
         pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints
         creditOrDebitCardPaymentController!.arePointsOpen = !pointsView.insideView.isHidden
         
+        if creditOrDebitCardPaymentController!.hasPayByPoints {
+            creditOrDebitCardPaymentController!.pointsController!.retrievePoints()
+        }
+        
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         
         if creditOrDebitCardPaymentController!.hasInstallment {
