@@ -59,7 +59,7 @@ class PointsView: UIView {
     @IBAction func toggleView(_ sender: Any) {
         if insideView.isHidden {
             pointsController.toggleContent(true)
-            super.layoutSubviews()
+            self.superview?.layoutSubviews()
             
             insideView.isHidden = false
             controllerButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
