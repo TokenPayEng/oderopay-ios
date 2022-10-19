@@ -15,6 +15,7 @@
                 <outlet property="installmentView" destination="tWI-bo-H4c" id="xKy-yx-aBh"/>
                 <outlet property="makePaymentButton" destination="b3u-9H-Hdu" id="PqR-pv-Jxc"/>
                 <outlet property="optionsView" destination="VbD-pP-ABi" id="Iia-pR-1Je"/>
+                <outlet property="pointsView" destination="zgT-RM-hm2" id="8YT-Nz-GKG"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

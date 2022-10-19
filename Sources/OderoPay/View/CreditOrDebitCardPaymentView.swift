@@ -14,6 +14,7 @@ class CreditOrDebitCardPaymentView: UIView {
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var cardInformationView: CardInformationView!
+    @IBOutlet weak var pointsView: PointsView!
     @IBOutlet weak var installmentView: InstallmentView!
     @IBOutlet weak var optionsView: OptionsView!
     
@@ -32,6 +33,8 @@ class CreditOrDebitCardPaymentView: UIView {
     override public func layoutSubviews() {
         super.layoutSubviews()
 
+        pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints
+        
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
         
         if creditOrDebitCardPaymentController!.hasInstallment {
