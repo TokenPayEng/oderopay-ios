@@ -36,6 +36,11 @@ class PointsView: UIView {
     
     @IBAction func toggleView(_ sender: Any) {
         insideView.isHidden = insideView.isHidden ? false : true;
-        controllerButton.imageView?.image =  insideView.isHidden ? UIImage(systemName: "chevron.down") : UIImage(systemName: "chevron.right")
+        
+        if insideView.isHidden {
+            controllerButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        } else {
+            controllerButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        }
     }
 }
