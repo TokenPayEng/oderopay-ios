@@ -53,6 +53,6 @@
 "cardPoints" = "Карточные баллы";
 "kamPoints" = "Баллы KoçAilem Market";
 "ykbPoints" = "Баллы World";
-"totalPoints" = "Общее количество баллов";
+"totalPoints" = "Всего баллов";
 "useAll" = "Использовать все баллы";
-"kamCaption" = "*Изначально будут потрачены ваши баллы KoçAilem Market, только потом будут потрачены ваши World баллы.";
+"kamCaption" = "*Изначально используются ваши баллы KoçAilem Market, потом World баллы.";
