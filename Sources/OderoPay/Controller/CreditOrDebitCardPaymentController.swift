@@ -31,6 +31,8 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         OderoPay.isPayByPointsEnabled()
     }
     
+    var arePointsOpen: Bool = false
+    
     var isPaymentComplete: Bool = false
     
     var height: CGFloat {
@@ -51,6 +53,10 @@ class CreditOrDebitCardPaymentController: FormProtocol {
         
         if hasPayByPoints {
             calculatingHeight += 82
+        }
+        
+        if arePointsOpen {
+            calculatingHeight += 378
         }
         
         return calculatingHeight
