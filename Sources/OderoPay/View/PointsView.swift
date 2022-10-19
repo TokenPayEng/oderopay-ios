@@ -30,10 +30,8 @@ class PointsView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        contentView.isHidden = !OderoPay.isPayByPointsEnabled()
-        
-        loadingIndicator.isHidden = true
-        insideView.isHidden = true
+//        loadingIndicator.isHidden = true
+//        insideView.isHidden = true
     }
     
     @IBAction func toggleView(_ sender: Any) {
