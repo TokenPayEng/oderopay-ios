@@ -13,9 +13,7 @@ public class PointsController {
     
     func retrievePoints() {
         print("retrieving points")
-        DispatchQueue.main.async {
-            NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
-        }
+        NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
     }
     
     func toggleContent(_ value: Bool) {
