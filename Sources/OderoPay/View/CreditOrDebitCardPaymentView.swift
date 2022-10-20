@@ -121,8 +121,10 @@ class CreditOrDebitCardPaymentView: UIView {
         Bundle.module.loadNibNamed("CreditOrDebitCardPayment", owner: self, options: nil)
         
         if OderoPay.getEnvironment() == .SANDBOX_TR || OderoPay.getEnvironment() == .PROD_TR {
-            creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardInformationView.cardController, with: pointsView.pointsController)
-            pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints
+            if creditOrDebitCardPaymentController!.isCardValid && creditOrDebitCardPaymentController!.cardController.isExpireValid() {
+                creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardInformationView.cardController, with: pointsView.pointsController)
+                pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints
+            }
         } else {
             creditOrDebitCardPaymentController = CreditOrDebitCardPaymentController(cardInformationView.cardController)
             pointsView.removeFromSuperview()
