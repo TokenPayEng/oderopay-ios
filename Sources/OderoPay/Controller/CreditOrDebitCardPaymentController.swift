@@ -56,7 +56,7 @@ class CreditOrDebitCardPaymentController: FormProtocol {
             }
             
             if pointsController!.getContentState() {
-                calculatingHeight += 311
+                calculatingHeight += 326
             }
         }
         
