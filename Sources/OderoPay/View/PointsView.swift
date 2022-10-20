@@ -68,8 +68,5 @@ class PointsView: UIView {
             insideView.isHidden = true
             controllerButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         }
-        
-        super.layoutIfNeeded()
-        superview?.layoutIfNeeded()
     }
 }
