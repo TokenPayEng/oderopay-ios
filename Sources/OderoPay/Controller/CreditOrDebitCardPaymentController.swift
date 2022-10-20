@@ -50,7 +50,7 @@ class CreditOrDebitCardPaymentController: FormProtocol {
             calculatingHeight += 80
         }
         
-        if pointsController != nil {
+        if pointsController != nil && isCardValid && cardController.isExpireValid() {
             if hasPayByPoints {
                 calculatingHeight += 82
             }
