@@ -59,6 +59,7 @@ class PointsView: UIView {
     @IBAction func toggleView(_ sender: Any) {
         if insideView.isHidden {
             pointsController.toggleContent(true)
+            pointsController.retrievePoints()
             
             insideView.isHidden = false
             controllerButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
@@ -68,7 +69,6 @@ class PointsView: UIView {
             insideView.isHidden = true
             controllerButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         }
-        
-        pointsController.retrievePoints()
+        NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
     }
 }

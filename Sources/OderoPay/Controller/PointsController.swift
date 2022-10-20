@@ -13,7 +13,6 @@ public class PointsController {
     
     func retrievePoints() {
         print("retrieving points")
-        NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
     }
     
     func toggleContent(_ value: Bool) {
