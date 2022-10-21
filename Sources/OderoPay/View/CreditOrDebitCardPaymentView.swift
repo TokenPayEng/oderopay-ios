@@ -34,9 +34,7 @@ class CreditOrDebitCardPaymentView: UIView {
         super.layoutSubviews()
 
         if OderoPay.getEnvironment() == .SANDBOX_TR || OderoPay.getEnvironment() == .PROD_TR {
-            if creditOrDebitCardPaymentController!.isCardValid && creditOrDebitCardPaymentController!.cardController.isExpireValid() {
-                pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints
-            }
+            pointsView.isHidden = !creditOrDebitCardPaymentController!.hasPayByPoints && creditOrDebitCardPaymentController!.isCardValid && creditOrDebitCardPaymentController!.cardController.isExpireValid()
         }
     
         installmentView.isHidden = !creditOrDebitCardPaymentController!.hasInstallment
