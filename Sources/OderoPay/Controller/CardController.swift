@@ -323,6 +323,7 @@ class CardController {
             isValidExpire = false
         }
         
+        NotificationCenter.default.post(name: Notification.Name("updateHeights"), object: nil)
         return isValidExpire
     }
     
