@@ -29,7 +29,7 @@ class CreditOrDebitCardPaymentController: FormProtocol {
     }
     
     var hasPayByPoints: Bool {
-        OderoPay.isPayByPointsEnabled()
+        cardController.isExpireValid() && cardController.isCardValid()
     }
     
     var isPaymentComplete: Bool = false
@@ -50,7 +50,7 @@ class CreditOrDebitCardPaymentController: FormProtocol {
             calculatingHeight += 80
         }
         
-        if pointsController != nil && isCardValid && cardController.isExpireValid() {
+        if pointsController != nil {
             if hasPayByPoints {
                 calculatingHeight += 67
             }
